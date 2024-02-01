@@ -1,0 +1,125 @@
+@define-color bg   	  #0f0f0f;
+@define-color bg1   	#0f0f0f;
+@define-color tip   	#0f0f0f;
+@define-color accent 	#e0e0e0;
+@define-color text 	  #e0e0e0;
+@define-color hover	  #666666;
+
+* {
+  border: 1px;
+  border-radius: 0;
+  font-family: firacodenerd;
+  font-weight: normal;
+  font-size: 14px;
+  min-height: 0px;
+}
+
+window#waybar {
+  transition: all 0.1s ease-in-out;
+  background: transparent;
+  color: @text;
+  margin: 5px;
+}
+
+window#waybar.empty #window {
+  /* content: 'Apps'; */
+  padding: 0 10px;
+  margin: 5px;
+}
+
+#workspaces button {
+  transition: all 0.1s ease-in-out;
+  padding: 4px 6px;
+  color: @text;
+  margin: 4px;
+  border-radius: 1px;
+}
+
+#workspaces button.active {
+  transition: all 0.1s ease-in-out;
+  background: @accent;
+  color: @bg;
+}
+
+#workspaces button.active, #workspaces button.focused{
+  transition: all 0.1s ease-in-out;
+  margin: 3px;
+  border: 1px solid @accent;
+}
+
+#workspaces button:hover {
+  transition: all 0.1s ease-in-out;
+  margin: 3px;
+  border: 1px solid @accent;
+}
+
+#workspaces button.empty {
+  transition: all 0.1s ease-in-out;
+  opacity: 0.5;
+}
+
+tooltip {
+  background: @bg;
+  border-radius: 2px;
+  border: 1px solid @accent;
+  color: @text
+}
+
+#custom-language, #custom-playerctl, #custom-spotify, #mpris, #custom-updates, #custom-caffeine, #clock, #battery, #pulseaudio, #wireplumber, #network, #bluetooth, #tray, #backlight, #idle_inhibitor, #cpu, #memory, #custom-wl-gammarelay-brightness, #custom-wl-gammarelay-temperature, #workspaces, #window, #custom-notification, #custom-menu, #custom-power {
+  background: @bg;
+  color: @text;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 5px 5px 5px 5px;
+  border: 1px solid @accent;
+  border-radius: 1px;
+}
+
+/*#custom-menu, #custom-power {
+  background: @bg;
+  font-family: monospace;
+  color: @text;
+  padding: 10px 10px;
+  margin: 5px 5px;
+  border: 1px solid @accent;
+  border-radius: 5px;
+  font-size: 10px;
+}
+*/
+#custom-power {
+  font-weight: normal;
+}
+
+#tray {
+  margin-left: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+}
+
+#window {
+  margin-left: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+  border: 1px solid @accent;
+  border-radius: 1px;
+}
+
+#workspaces {
+  background: @bg;
+  padding: 0 0;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#clock {
+  color: @text;
+  border-radius: 1px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/*#pulseaudio,#wireplumber, #cpu, #battery, #network, #custom-wl-gammarelay-brightness, #custom-wl-gammarelay-temperature #custom-spotify {
+  color: @text;
+}*/

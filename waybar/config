@@ -1,0 +1,318 @@
+{
+"layer": "top",
+"position": "top", 
+"height": 48,
+"output": "eDP-1",
+
+"modules-left": [
+	"hyprland/workspaces",
+	"mpris",
+	//"custom/playerctl",
+  "hyprland/window",
+],
+"modules-center": [ 
+	"clock",
+],
+"modules-right": [
+	//"idle_inhibitor",
+  "tray",
+	"wireplumber",
+	//"backlight", 
+	//"battery",
+	//"network", 
+	//"bluetooth", 
+	"group/group-power",
+	"group/group-connection",
+	"group/group-vitals",
+	"custom/notification",
+],
+
+"group/group-connection": {
+	"orientation": "horizontal",
+	"drawer": {
+		"transition-duration": 500,
+		"transition-left-to-right": false,
+	},
+	"modules": [
+		"network",
+		"bluetooth",
+	],
+},
+
+"group/group-power": {
+	"orientation": "horizontal",
+	"drawer": {
+		"transition-duration": 500,
+		"transition-left-to-right": false,
+	},
+	"modules": [
+		"battery",
+		"idle_inhibitor",
+		"backlight",
+	],
+},
+
+"group/group-vitals": {
+	"orientation": "horizontal",
+	"modules": [
+		"cpu",
+		"memory",
+	],
+},
+
+"hyprland/workspaces": {
+	"disable-scroll": false,
+	"all-outputs": false,
+	"persistent-workspaces": {
+		"1": [],
+		"2": [],
+		"3": [],
+		"4": [],
+		"5": [],
+		"6": [],
+		"7": [],
+		"8": [],
+	},
+	"on-click": "activate",
+	"format": "{icon}",
+	"format-icons": {
+		"1": "1",
+		"2": "2",
+		"3": "3",
+		"4": "4",
+		"5": "5",
+		"6": "6",
+		"7": "7",
+		"8": "8",
+	},
+},
+
+"tray": {
+	"icon-size": 15,
+	"spacing": 10,
+},
+
+"backlight":{
+	"device": "acpi_video0",
+	"format": "{icon} {percent}%",
+	"format-icons": ["󰃞  ","󰃝  ","󰃟  ","󰃠  "],
+	"on-scroll-up": "brightnessctl set 2%+",
+	"on-scroll-down": "brightnessctl set 2%-",
+},
+
+"backlight/slider": {
+	"min": 0,
+	"max": 100,
+	"orientation": "vertical",
+	"device": "acpi_video0",
+},
+
+"battery": {
+	"states": {
+		"good": 95,
+		"warning": 30,
+		"critical": 20
+	},
+	"format": "{icon} {capacity}%",
+	"format-charging": "  {capacity}%",
+	"format-plugged": "󰚥  {capacity}%",
+	"format-alt": "{time} {icon}",
+	"format-icons": ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],
+},
+
+"clock": {
+	"interval": 1,
+	"format": "{:%I:%M:%OS %p   %A   %h %d %Y }",
+	"tooltip-format": "<tt><small>{calendar}</small></tt>",
+	"calendar": {
+		"mode": "month",
+		"on-scroll": 1,
+		"format": {
+			"months": "<span color='#e0e0e0'>{}</span>",
+			"days": "<span color='#e0e0e0'>{}</span>",
+			"weekdays": "<span color='#e0e0e0'><u>{}</u></span>",
+			"today": "<span color='#e0e0e0'><b><u>{}</u></b></span>"
+		}
+	},
+	"actions":  {
+		"on-scroll-up": "shift_up",
+		"on-scroll-down": "shift_down"
+	}
+},
+
+"idle_inhibitor": {
+	"format": "{icon}",
+	"format-icons": {
+		"activated": " ",
+		"deactivated": " "
+	},
+	"tooltip": "true"
+},
+
+"hyprland/window": {  
+	"format": "{}",
+	"rewrite": {
+		"(.*) — LibreWolf": "LibreWolf",
+	},
+	"separate-outputs": false,
+	"on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi"
+},
+
+"network": {
+	"interval": 2,
+	"format": "   OFF", 
+	"format-wifi": "  {essid}",
+	"format-disable": " off",
+	"format-ethernet": "󰈀  {ifname}",
+	//"format-ethernet": "󰈀  | {bandwidthDownBits}   | {bandwidthUpBits}  ",
+	"format-linked": "{ifname} (No IP) ",
+	"format-disconnected": "Disconnected",
+	"tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+	"tooltip-format-ethernet": "Down: {bandwidthDownBits}, Up: {bandwidthUpBits}",
+	"on-click": "sleep 0.1 && $HOME/.config/rofi/scripts/wifi.sh || pkill rofi",
+	"on-click-right": "nm-connection-editor",
+},
+
+"bluetooth": {
+	"interval": 5,
+	"format": "   {status}",
+	"format-disabled": "",
+	"format-connected": "   {device_alias}",
+	"format-connected-battery": "   {device_alias} {device_battery_percentage}%",
+	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+	"on-click": "$HOME/.config/rofi/scripts/bluetooth",
+	"on-click-right": "blueman-manager",
+},
+
+"pulseaudio": {
+	"format": "{volume}% {icon} {format_source}",
+	"format-bluetooth": "{volume}% {icon} {format_source}",
+	"format-bluetooth-muted": " {icon} {format_source}",
+	"format-muted": "M  {format_source}",
+	"format-source": "{volume}%  ",
+	"format-source-muted": " ",
+	"format-icons": {
+		"headphone": " ",
+		"hands-free": " ",
+		"headset": " ",
+		"phone": " ",
+		"portable": " ",
+		"car": " ",
+		"default": ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],
+	},
+	"on-click": "pavucontrol"
+},
+
+"wireplumber": {
+ 	"format": "{icon} {volume}%",
+ 	"format-bluetooth": "{volume}% {icon}",
+	"format-bluetooth-muted": " {icon}",
+	"format-muted": "  {volume}%",
+	"format-icons": {
+		"headphone": " ",
+    		"hands-free": " ",
+    		"headset": " ",
+    		"default": ["  ","  ", "  "],
+	},
+	"on-click": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out",
+	"on-click-right": "helvum",
+	"max-volume": 150,
+	"scroll-step": 2,
+},
+
+"cpu": {
+	"interval": 2,
+	"format": "  {}%",
+	"max-length": 10,
+	"on-click": "missioncenter &",
+},
+
+"memory": {
+	"interval": 2,
+	"format": "  {used:0.1f}GiB",
+	"max-length": 10,
+	"tooltip-format": "Swap: {swapUsed:0.1f}GiB",
+	"on-click": "missioncenter &",
+	},
+
+"mpris": {
+	"interval": 1,
+	"max-length": 25,
+	"format": "󰏤 {title}",
+  "format-paused": "󰐊 {title}",
+  "tooltip-format": "{title}-{artist}-{length}",
+	"ignored-players": ["firefox"]
+},
+
+"custom/playerctl": {
+  "format": "{icon}",
+  "return-type": "json",
+  "max-length": 64,
+  "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+  "on-click": "playerctl play-pause",
+  "on-click-right": "playerctl next",
+  "on-click-middle": "playerctl next",
+  "format-icons": {
+    "Playing": "<span foreground='#e0e0e0'>󰒮 󰏤 󰒭</span>",
+    "Paused": "<span foreground='#cccccc'>󰒮 󰐊 󰒭</span>"
+  },
+},
+
+
+"custom/power": {
+	"format": "⏻",
+},
+
+"custom/menu": {
+	"format": "󰣇 ",
+	"on-click": "rofi -show drun",
+},
+
+"custom/spotify": {
+	"interval": 1,
+	"return-type": "json",
+	"exec": "waybar_media_display",
+	"exec-if": "pgrep spotify",       
+	"on-click":"playerctl --player=spotify play-pause",
+	"escape": true
+},
+
+"custom/wl-gammarelay-temperature": {
+	"format": " {}",
+	"exec": "wl-gammarelay-rs watch {t}",
+	"on-scroll-up": "~/.config/hypr/scripts/brightness.sh temperature-up 100",
+	"on-scroll-down": "~/.config/hypr/scripts/brightness.sh temperature-down 100"
+},
+
+"custom/wl-gammarelay-brightness": {
+	"format": " {}",
+	"exec": "wl-gammarelay-rs watch {bp}",
+	"on-scroll-up": "~/.config/hypr/scripts/brightness.sh brightness-up 0.05",
+	"on-scroll-down": "~/.config/hypr/scripts/brightness.sh brightness-down 0.05",
+},
+
+"custom/notification": {
+	"tooltip": false,
+	"format": "{icon}   {}",
+	"format-icons": {
+		"notification": "<span foreground='white'><sup></sup></span>",
+		"none": "",
+		"dnd-notification": "<span foreground='white'><sup></sup></span>",
+		"dnd-none": "",
+		"inhibited-notification": "<span foreground='white'><sup></sup></span>",
+		"inhibited-none": "",
+		"dnd-inhibited-notification": "<span foreground='white'><sup></sup></span>",
+		"dnd-inhibited-none": ""
+	},
+	"return-type": "json",
+	"exec-if": "which swaync-client",
+	"exec": "swaync-client -swb",
+	"on-click": "sleep 0.1 && swaync-client -t",
+	"on-click-right": "swaync-client -d -sw",
+	"escape": true,
+},
+}

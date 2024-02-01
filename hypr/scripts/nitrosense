@@ -1,0 +1,104 @@
+#!/bin/bash
+
+if [ $# -le 0 ]; then
+	echo "ENA: [w]rite to ec"
+	echo "PWR: [q]uiet [d]efault [p]erformance"
+	echo "FAN: [a]uto  [c]ustom  [m]ax"
+	echo "DBG: [r]ead from ec"
+	echo "DBG: [e]nergy data from intel_rapl"
+	echo "DBG: [n]vidia-powerd restart"
+	exit
+fi
+
+echo on | sudo tee /sys/module/msr/parameters/allow_writes &>/dev/null
+
+if [[ "$(lsmod | grep ec_sys | cut -f1 -d' ' | tr -d '\n' | wc -c)" -ne 6 ]]; then
+	sudo rmmod ec_sys
+	if [ -f ~/ec_sys.ko ]; then
+		if ! sudo insmod ~/ec_sys.ko write_support=1; then
+			sudo dmesg | tail
+			exit
+		fi
+	else
+		sudo modprobe ec_sys write_support=1
+	fi
+fi
+
+EC=/sys/kernel/debug/ec/ec0/io
+
+if [[ $* =~ "r" ]]; then
+	if [[ $(sudo ls $EC 2>/dev/null) ]]; then
+		sudo xxd -g1 $EC
+	fi
+fi
+
+if [[ $* =~ "e" ]]; then
+	find /sys/devices/virtual/powercap -type f -iname "energy_uj" -print -exec bash -c "sudo cat {}" \;
+fi
+
+function ecw() {
+	# shellcheck disable=SC2059
+	printf "$2" | sudo dd of=$EC bs=1 seek="$1" count=1 conv=notrunc &>/dev/null
+}
+
+function set_power_limits() {
+	MSR=/sys/devices/virtual/powercap/intel-rapl/intel-rapl:0
+	MCH=/sys/devices/virtual/powercap/intel-rapl-mmio/intel-rapl-mmio:0
+	for N in "$MSR" "$MCH"; do
+		echo "${1}000000" | sudo tee "$N/constraint_0_power_limit_uw" &>/dev/null
+		echo "${2}000000" | sudo tee "$N/constraint_1_power_limit_uw" &>/dev/null
+		echo "128000000"  | sudo tee "$N/constraint_0_time_window_us" &>/dev/null
+		echo "128000000"  | sudo tee "$N/constraint_1_time_window_us" &>/dev/null
+		[[ "$N" == "$MSR" ]] && NODE=MSR || NODE=MCH
+		echo "[$NODE] PL1 [$(cat "$N/constraint_0_power_limit_uw") $(cat "$N/constraint_0_time_window_us")] PL2 [$(cat "$N/constraint_1_power_limit_uw") $(cat "$N/constraint_1_time_window_us")]"
+	done
+}
+
+ecw $((0x03)) '\x11' # Write-Enable
+
+if [[ $(sudo ls $EC 2>/dev/null) ]]; then
+	if [[ $* =~ "q" ]]; then
+		echo "PWR - Quiet"
+		ecw $((0x2c)) '\x00' # 00 01 04 PWR: quiet default perf
+		ecw $((0x2d)) '\x04' # 04 05 PWR
+		set_power_limits 10 15
+	fi
+	if [[ $* =~ "d" ]]; then
+		echo "PWR - Default"
+		ecw $((0x2c)) '\x01' # 00 01 04 PWR: quiet default perf
+		ecw $((0x2d)) '\x04' # 04 05 PWR
+		set_power_limits 45 75
+	fi
+	if [[ $* =~ "p" ]]; then
+		echo "PWR - Performance"
+		ecw $((0x2c)) '\x04' # 00 01 04 PWR: quiet default perf
+		ecw $((0x2d)) '\x04' # 04 05 PWR
+		set_power_limits 75 95
+	fi
+	if [[ $* =~ "n" ]]; then
+		echo "PWR - nvidia-powerd restart"
+		sudo systemctl restart nvidia-powerd
+	fi
+	if [[ $* =~ "a" ]]; then
+		echo "FAN - Auto"
+		ecw $((0x21)) '\x10' # 10 20 30 GPUF: auto max cust
+		ecw $((0x22)) '\x04' # 04 08 0c CPUF: auto max cust
+	fi
+	if [[ $* =~ "c" ]]; then
+		if [ -z "$2" ]; then
+			echo "Specify FAN Percentage as Second Arg"
+		else
+			PCT="\x$(printf %x "$2")"
+			echo "FAN - Custom ($2%)"
+			ecw $((0x21)) '\x30' # 10 20 30 GPUF: auto max cust
+			ecw $((0x22)) '\x0c' # 04 08 0c CPUF: auto max cust
+			ecw $((0x37)) "$PCT" # 32 64 CPUF PCT: 0-100%
+			ecw $((0x3a)) "$PCT" # 32 64 GPUF PCT: 0-100%
+		fi
+	fi
+	if [[ $* =~ "m" ]]; then
+		echo "FAN - Max"
+		ecw $((0x21)) '\x20' # 10 20 30 GPUF: auto max cust
+		ecw $((0x22)) '\x08' # 04 08 0c CPUF: auto max cust
+	fi
+fi

@@ -1,0 +1,56 @@
+ignore-empty-password
+font="Fira Sans Semibold"
+
+clock
+timestr=%R
+datestr=%a, %e of %B
+
+screenshots
+#image=~/Pictures/Zoro/zoro_l_black.png
+
+fade-in=0.2
+
+effect-blur=20x2
+# effect-greyscale
+effect-scale=0.3
+
+indicator
+# smaller indicator
+indicator-radius=200
+# bigger indicator
+# indicator-radius=300
+indicator-thickness=20
+indicator-caps-lock
+
+key-hl-color=00000066
+
+separator-color=00000000
+
+inside-color=00000033
+inside-clear-color=e0e0e000
+inside-caps-lock-color=e0e0e000
+inside-ver-color=e0e0e000
+inside-wrong-color=e0e0e000
+
+ring-color=e0e0e0
+ring-clear-color=e0e0e0
+ring-caps-lock-color=e0e0e0
+ring-ver-color=e0e0e0
+ring-wrong-color=e0e0e0
+
+line-color=00000000
+line-clear-color=e0e0e0FF
+line-caps-lock-color=e0e0e0FF
+line-ver-color=e0e0e0FF
+line-wrong-color=e0e0e0FF
+
+text-color=e0e0e0
+text-clear-color=e0e0e0
+text-ver-color=e0e0e0
+text-wrong-color=e0e0e0
+
+bs-hl-color=e0e0e0
+caps-lock-key-hl-color=e0e0e0FF
+caps-lock-bs-hl-color=e0e0e0FF
+text-caps-lock-color=e0e0e0
+
