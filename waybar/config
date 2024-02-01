@@ -245,7 +245,7 @@
 	"format": "󰏤 {title}",
   "format-paused": "󰐊 {title}",
   "tooltip-format": "{title}-{artist}-{length}",
-	"ignored-players": ["firefox"]
+	"ignored-players": ["firefox.instance_1_179"],
 },
 
 "custom/playerctl": {
