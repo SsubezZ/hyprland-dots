@@ -16,7 +16,8 @@
 "modules-right": [
 	//"idle_inhibitor",
   "tray",
-	"wireplumber",
+	//"wireplumber",
+	"pulseaudio",
 	//"backlight", 
 	//"battery",
 	//"network", 
@@ -76,14 +77,14 @@
 	"on-click": "activate",
 	"format": "{icon}",
 	"format-icons": {
-		"1": "1",
-		"2": "2",
-		"3": "3",
-		"4": "4",
-		"5": "5",
-		"6": "6",
-		"7": "7",
-		"8": "8",
+		"1": "",
+		"2": "",
+		"3": "",
+		"4": "",
+		"5": "󰊗",
+		"6": "󰙯",
+		"7": "󰗃",
+		"8": "󰓇",
 	},
 },
 
@@ -95,7 +96,7 @@
 "backlight":{
 	"device": "acpi_video0",
 	"format": "{icon} {percent}%",
-	"format-icons": ["󰃞  ","󰃝  ","󰃟  ","󰃠  "],
+	"format-icons": ["󰃞","󰃝","󰃟","󰃠"],
 	"on-scroll-up": "brightnessctl set 2%+",
 	"on-scroll-down": "brightnessctl set 2%-",
 },
@@ -114,15 +115,15 @@
 		"critical": 20
 	},
 	"format": "{icon} {capacity}%",
-	"format-charging": "  {capacity}%",
-	"format-plugged": "󰚥  {capacity}%",
+	"format-charging": "{capacity}%",
+	"format-plugged": "󰚥{capacity}%",
 	"format-alt": "{time} {icon}",
-	"format-icons": ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],
+	"format-icons": ["", "", "", "", "", "", "", "", "", ""],
 },
 
 "clock": {
 	"interval": 1,
-	"format": "{:%I:%M:%OS %p   %A   %h %d %Y }",
+	"format": "{:%I:%M:%OS %p  %A  %h %d %Y}",
 	"tooltip-format": "<tt><small>{calendar}</small></tt>",
 	"calendar": {
 		"mode": "month",
@@ -143,8 +144,8 @@
 "idle_inhibitor": {
 	"format": "{icon}",
 	"format-icons": {
-		"activated": " ",
-		"deactivated": " "
+		"activated": "",
+		"deactivated": ""
 	},
 	"tooltip": "true"
 },
@@ -160,11 +161,11 @@
 
 "network": {
 	"interval": 2,
-	"format": "   OFF", 
-	"format-wifi": "  {essid}",
+	"format": "OFF", 
+	"format-wifi": " {essid}",
 	"format-disable": " off",
-	"format-ethernet": "󰈀  {ifname}",
-	//"format-ethernet": "󰈀  | {bandwidthDownBits}   | {bandwidthUpBits}  ",
+	"format-ethernet": "󰈀 {ifname}",
+	//"format-ethernet": "󰈀 | {bandwidthDownBits}  |{bandwidthUpBits} ",
 	"format-linked": "{ifname} (No IP) ",
 	"format-disconnected": "Disconnected",
 	"tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
@@ -175,10 +176,10 @@
 
 "bluetooth": {
 	"interval": 5,
-	"format": "   {status}",
+	"format": " {status}",
 	"format-disabled": "",
-	"format-connected": "   {device_alias}",
-	"format-connected-battery": "   {device_alias} {device_battery_percentage}%",
+	"format-connected": "{device_alias}",
+	"format-connected-battery": "{device_alias} {device_battery_percentage}%",
 	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
 	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
 	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
@@ -189,34 +190,35 @@
 },
 
 "pulseaudio": {
-	"format": "{volume}% {icon} {format_source}",
-	"format-bluetooth": "{volume}% {icon} {format_source}",
-	"format-bluetooth-muted": " {icon} {format_source}",
-	"format-muted": "M  {format_source}",
-	"format-source": "{volume}%  ",
-	"format-source-muted": " ",
+	"format": "{icon} {volume}%",
+	"format-bluetooth": "{icon} {volume}%",
+	"format-bluetooth-muted": "󰝟 {icon}",
+	"format-muted": "󰝟 {volume}%",
+	"format-source": " {volume}%",
+	"format-source-muted": "",
 	"format-icons": {
-		"headphone": " ",
-		"hands-free": " ",
-		"headset": " ",
-		"phone": " ",
-		"portable": " ",
-		"car": " ",
-		"default": ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],
+		"headphone": "",
+  	"hands-free": "",
+  	"headset": "",
+  	"phone": "",
+  	"portable": "",
+  	"car": "",
+  	"default": ["󰕿", "󰖀", "󰕾"],
 	},
-	"on-click": "pavucontrol"
+	"on-click": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out",
+	"on-click-right": "helvum",
 },
 
 "wireplumber": {
  	"format": "{icon} {volume}%",
  	"format-bluetooth": "{volume}% {icon}",
-	"format-bluetooth-muted": " {icon}",
+	"format-bluetooth-muted": "{icon}",
 	"format-muted": "  {volume}%",
 	"format-icons": {
-		"headphone": " ",
-    		"hands-free": " ",
-    		"headset": " ",
-    		"default": ["  ","  ", "  "],
+		"headphone": "",
+    	"hands-free": "",
+    	"headset": "",
+    	"default": ["","", ""],
 	},
 	"on-click": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out",
 	"on-click-right": "helvum",
@@ -226,14 +228,14 @@
 
 "cpu": {
 	"interval": 2,
-	"format": "  {}%",
+	"format": " {}%",
 	"max-length": 10,
 	"on-click": "missioncenter &",
 },
 
 "memory": {
 	"interval": 2,
-	"format": "  {used:0.1f}GiB",
+	"format": " {used:0.1f}GiB",
 	"max-length": 10,
 	"tooltip-format": "Swap: {swapUsed:0.1f}GiB",
 	"on-click": "missioncenter &",
@@ -245,7 +247,7 @@
 	"format": "󰏤 {title}",
   "format-paused": "󰐊 {title}",
   "tooltip-format": "{title}-{artist}-{length}",
-	"ignored-players": ["firefox.instance_1_179"],
+	"ignored-players": ["firefox"],
 },
 
 "custom/playerctl": {
@@ -268,7 +270,7 @@
 },
 
 "custom/menu": {
-	"format": "󰣇 ",
+	"format": "󰣇",
 	"on-click": "rofi -show drun",
 },
 
@@ -297,7 +299,7 @@
 
 "custom/notification": {
 	"tooltip": false,
-	"format": "{icon}   {}",
+	"format": "{icon} {}",
 	"format-icons": {
 		"notification": "<span foreground='white'><sup></sup></span>",
 		"none": "",
