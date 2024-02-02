@@ -94,7 +94,7 @@
 
 .notification-default-action,
 .notification-action {
-  padding: 4px;
+  padding: 0;
   box-shadow: none;
   background: @background-alpha;
   border: 1px solid @accent;
@@ -114,8 +114,8 @@
 
 /* When alternative actions are visible */
 .notification-default-action:not(:only-child) {
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .notification-action {
@@ -126,12 +126,42 @@
 
 /* add bottom border radius to eliminate clipping */
 .notification-action:first-child {
-  border-bottom-left-radius: 8px;
+  border-bottom-left-radius: 2px;
 }
 
 .notification-action:last-child {
-  border-bottom-right-radius: 8px;
+  border-bottom-right-radius: 2px;
   border-right: 1px solid @accent;
+}
+
+.inline-reply {
+  margin-top: 8px;
+}
+
+.inline-reply-entry {
+  background: @background-alpha;
+  color: @foreground;
+  caret-color: @foreground;
+  border: 1px solid @accent;
+  border-radius: 12px;
+}
+
+.inline-reply-button {
+  margin-left: 4px;
+  background: @background-alpha;
+  border: 1px solid @accent;
+  border-radius: 12px;
+  color: @foreground;
+}
+
+.inline-reply-button:disabled {
+  background: initial;
+  color: @foreground;
+  border: 1px solid transparent;
+}
+
+.inline-reply-button:hover {
+  background: @current-line;
 }
 
 .image {
