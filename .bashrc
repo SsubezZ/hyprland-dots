@@ -51,6 +51,6 @@ alias jellyfinstop="sudo systemctl stop jellyfin"
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
 export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
-export GIT="$HOME/Projects/"
+export GIT="$HOME/Gits/"
 export PS1
 #-----------------------------------------------------------------------------------------------------
