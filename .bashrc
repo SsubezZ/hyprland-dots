@@ -45,10 +45,12 @@ alias confr="cd ~/.config/rofi"
 alias confw="cd ~/.config/waybar"
 alias reloadw="killall -SIGUSR2 waybar"
 alias vim="nvim"
+alias jellyfinstart="sudo systemctl start jellyfin"
+alias jellyfinstop="sudo systemctl stop jellyfin"
 
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
 export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
-export GIT="$HOME/Documents/Projects/"
+export GIT="$HOME/Projects/"
 export PS1
 #-----------------------------------------------------------------------------------------------------

@@ -52,30 +52,29 @@ inputbar {
   spacing:                     0px;
   padding:                     10px 10px;
   background-color:            transparent;
-  background-image:            url("~/.config/rofi/img/q.png", width);
   text-color:                  @foreground;
   orientation:                 horizontal;
   border:               			 1px;
-  border-radius:		           2px;
-  children:                    [ "textbox-prompt-colon", "entry" ];
+  border-radius:		           0;
+  children:                    [ "prompt", "entry" ];
 }
-textbox-prompt-colon {
-  enabled:                     false;
+prompt {
+  enabled:                     true;
   expand:                      false;
   str:                         "";
   padding:                     8px 12px;
-  border:                      0px 4px 4px 4px;
-  border-radius:               0px;
+  border:                      1px;
+  border-radius:               0;
   border-color:                @selected;
-  background-color:            @background-alt;
-  text-color:                  inherit;
+  background-color:            @foreground;
+  text-color:                  @background;
 }
 entry {
   enabled:                     true;
   expand:                      true;
   padding:                     8px 12px;
   border:                      1px;
-  border-radius:               3px;
+  border-radius:               0px;
   border-color:                @selected;
   background-color:            transparent;
   text-color:                  inherit;
@@ -92,7 +91,7 @@ mode-switcher{
   text-color:                  @foreground;
 }
 button {
-  enabled:			 true;
+  enabled:                     true;
   padding:                     8px;
   border-radius:               0px;
   background-color:            @background-alt;

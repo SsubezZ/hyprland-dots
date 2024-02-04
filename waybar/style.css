@@ -65,7 +65,7 @@ tooltip {
   color: @text
 }
 
-#custom-language, #custom-playerctl, #custom-spotify, #mpris, #custom-updates, #custom-caffeine, #clock, #battery, #pulseaudio, #wireplumber, #network, #bluetooth, #tray, #backlight, #idle_inhibitor, #cpu, #memory, #custom-wl-gammarelay-brightness, #custom-wl-gammarelay-temperature, #workspaces, #window, #custom-notification, #custom-menu, #custom-power {
+#custom-language, #custom-playerctl, #custom-spotify, #mpris, #custom-updates, #custom-caffeine, #clock, #battery, #pulseaudio, #wireplumber, #network, #bluetooth, #tray, #backlight, #idle_inhibitor, #privacy, #cpu, #memory, #custom-wl-gammarelay-brightness, #custom-wl-gammarelay-temperature, #workspaces, #window, #custom-notification, #custom-menu, #custom-power {
   background: @bg;
   color: @text;
   padding-left: 10px;
