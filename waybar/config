@@ -274,7 +274,7 @@
 
 "custom/notification": {
 	"tooltip": false,
-	"format": "{icon} {}",
+	"format": "{icon}<span foreground='white'><sup>{}</sup></span>",
 	"format-icons": {
 		"notification": "",
 		"none": "",
