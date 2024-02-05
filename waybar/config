@@ -244,6 +244,8 @@
   "on-click": "playerctl previous",
   "on-click-right": "playerctl --player spotify next",
   "on-click-middle": "playerctl --player spotify play-pause",
+  "on-scroll-up": "playerctl --player spotify volume 0.10+",
+  "on-scroll-down": "playerctl --player spotify volume 0.10-",
   "format-icons": {
     "Playing": "󰏤",
     "Paused": "󰐊",
