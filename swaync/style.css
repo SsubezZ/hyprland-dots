@@ -1,21 +1,22 @@
 @define-color foreground rgb(224, 224, 224);
 @define-color background rgba(15, 15, 15, 0.75);
 @define-color background-alpha rgba(0, 0, 0, 0.1);
-@define-color accent rgba(224, 224, 224, 0.8);
-@define-color current-line rgb(15, 15, 15);
+@define-color accent rgba(224, 224, 224, 1);
 @define-color comment rgb(102, 102, 102);
 
 * {
   all: unset;
-  font-family: Fira Code Mono Font;
-  font-size: 14px;
+  font-family: Fira Sans Mono Font;
+  font-size: 15px;
   transition: 100ms;
 }
 
 .floating-notifications.background .notification-row .notification-background {
   border: 1px solid @accent;
-  border-radius: 2px;
-  margin: 4px;
+  border-radius: 1px;
+  margin-top: 0;
+  margin-bottom: 4;
+  margin-right: 4;
   background-color: @background-alpha;
   color: @foreground;
   padding: 5px;
@@ -23,7 +24,7 @@
 
 .floating-notifications.background .notification-row .notification-background .notification {
   padding: 5px;
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification.critical {
@@ -39,11 +40,12 @@
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .time {
-  color: @background-alpha;
+  color: @foreground;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .body {
-  color: @background-alpha;
+  color: @foreground;
+  margin: 0 5px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
@@ -51,7 +53,7 @@
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  border-radius: 2px;
+  border-radius: 1px;
   color: @foreground;
   background-color: @background-alpha;
   margin: 5px;
@@ -70,7 +72,7 @@
 .floating-notifications.background .notification-row .notification-background .close-button {
   margin: 2px;
   border: 1px solid @accent;
-  border-radius: 2px;
+  border-radius: 1px;
   color: @foreground;
   background-color: @background;
 }
@@ -86,7 +88,7 @@
 }
 
 .control-center {
-  border-radius: 2px;
+  border-radius: 1px;
   background-color: @background-alpha;
   color: @foreground;
   padding: 10px;
@@ -94,11 +96,15 @@
 }
 
 .control-center .widget-title {
+  margin: 5px;
   color: @foreground;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .control-center .widget-title button {
-  border-radius: 2px;
+  font-weight: normal;
+  border-radius: 1px;
   color: @foreground;
   background-color: @background;
   padding: 8px;
@@ -116,7 +122,7 @@
 }
 
 .control-center .notification-row .notification-background {
-  border-radius: 2px;
+  border-radius: 1px;
   color: @foreground;
   background-color: @background;
   margin: 4px 0;
@@ -125,7 +131,7 @@
 
 .control-center .notification-row .notification-background .notification {
   padding: 7px;
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
 .control-center .notification-row .notification-background .notification.critical {
@@ -154,7 +160,7 @@
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  border-radius: 2px;
+  border-radius: 1px;
   color: @foreground;
   background-color: @background;
   margin: 7px;
@@ -173,7 +179,7 @@
 .control-center .notification-row .notification-background .close-button {
   margin: 2px;
   padding: 2px;
-  border-radius: 2px;
+  border-radius: 1px;
   color: @foreground;
   background-color: @background;
   border: 1px solid @accent;
@@ -202,7 +208,7 @@
 progressbar,
 progress,
 trough {
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
 progressbar {
@@ -227,7 +233,7 @@ trough {
 
 .control-center-dnd {
   margin-top: 5px;
-  border-radius: 2px;
+  border-radius: 1px;
   background: @background;
   border: 1px solid @accent;
 }
@@ -238,7 +244,7 @@ trough {
 
 .control-center-dnd slider {
   background: @foreground;
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
 .widget-dnd {
@@ -248,7 +254,7 @@ trough {
 
 .widget-dnd > switch {
   font-size: initial;
-  border-radius: 2px;
+  border-radius: 1px;
   background: #414559;
   border: 1px solid @accent;
 }
@@ -259,6 +265,6 @@ trough {
 
 .widget-dnd > switch slider {
   background: @background;
-  border-radius: 2px;
+  border-radius: 1px;
   border: 1px solid @accent;
 }
