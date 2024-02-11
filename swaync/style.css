@@ -35,7 +35,6 @@
 }
 
 .control-center .notification-row {
-  opacity: 0.5;
   margin: 0px;
 }
 
@@ -113,8 +112,8 @@
 
 /* When alternative actions are visible */
 .notification-default-action:not(:only-child) {
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .notification-action {
@@ -126,10 +125,12 @@
 /* add bottom border radius to eliminate clipping */
 .notification-action:first-child {
   border-bottom-left-radius: 2px;
+  border-top-right-radius: 0;
 }
 
 .notification-action:last-child {
   border-bottom-right-radius: 2px;
+  border-top-left-radius: 0;
   border-right: 1px solid @accent;
 }
 
@@ -235,6 +236,7 @@
   background-clip: border-box;
   padding: 4px;
   color: @foreground;
+  background: rgba(0, 0, 0, 0.1);
   margin: 0px;
   border: 1px solid @accent;
 }
