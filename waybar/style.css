@@ -1,4 +1,4 @@
-@define-color bg   	  #0f0f0f;
+@define-color bg   	  rgba(0, 0, 0, 0.5);
 @define-color bg1   	#0f0f0f;
 @define-color tip   	#0f0f0f;
 @define-color accent 	#e0e0e0;
@@ -59,7 +59,7 @@ window#waybar.empty #window {
 }
 
 tooltip {
-  background: @bg;
+  background: @tip;
   border-radius: 2px;
   border: 1px solid @accent;
   color: @text
