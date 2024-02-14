@@ -259,6 +259,7 @@
 "custom/menu": {
 	"format": "󰣇",
 	"on-click": "sleep 0.1 && rofi -show drun || pkill rofi",
+  "on-click-right": "rofi -show powermenu -modi powermenu:/home/subez/.config/rofi/scripts/power-menu || pkill rofi",
   "tooltip": false,
 },
 
