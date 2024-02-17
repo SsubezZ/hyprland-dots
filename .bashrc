@@ -37,13 +37,8 @@ PS1+="${etc_color}]\n└──╼ " # \n=New Line
 PS1+="${symbol}${reset} "
 
 # Aliases
-alias pacman="sudo pacman"
-alias hypr="nvim ~/.config/hypr/hyprland.conf"
-alias confh="cd ~/.config/hypr"
-alias confs="cd ~/.config/swaync"
-alias confr="cd ~/.config/rofi"
-alias confw="cd ~/.config/waybar"
-alias reloadw="killall -SIGUSR2 waybar"
+#alias pacman="sudo pacman"
+alias hypr="nvim $GIT/hyprland-dots/hypr/hyprland.conf"
 alias vim="nvim"
 alias jellyfinstart="sudo systemctl start jellyfin"
 alias jellyfinstop="sudo systemctl stop jellyfin"
@@ -53,4 +48,6 @@ export PATH="$HOME/.local/bin:$PATH"
 export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
 export GIT="$HOME/Gits/"
 export PS1
+
+neofetch
 #-----------------------------------------------------------------------------------------------------
