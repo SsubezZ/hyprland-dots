@@ -7,11 +7,11 @@
   "control-center-margin-right": 5,
   "control-center-margin-left": 0,
   "control-center-width": 500,
-  "control-center-height": 600,
+  "control-center-height": 800,
   "control-center-layer": "top",
   "fit-to-screen": false,
   "notification-inline-replies": true,
-  "layer": "top",
+  "layer": "overlay",
   "layer-shell": true,
   "cssPriority": "user",
   "notification-icon-size": 64,
@@ -28,7 +28,8 @@
   "script-fail-notify": true,
   "widgets": [
     "title",
-    "notifications"
+    "notifications",
+    "mpris"
   ],
   "widget-config": {
     "title": {
@@ -37,8 +38,8 @@
       "button-text": "Clear All"
     },
     "mpris": {
-      "image-size": 96,
-      "image-radius": 12
+      "image-size": 100,
+      "image-radius": 0
     }
   }
 }

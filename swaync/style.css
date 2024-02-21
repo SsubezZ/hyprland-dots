@@ -2,7 +2,7 @@
 @define-color background rgba(15, 15, 15, 0.75);
 @define-color background-alpha rgba(0, 0, 0, 0.1);
 @define-color accent rgba(224, 224, 224, 1);
-@define-color comment rgb(102, 102, 102);
+@define-color button-alpha rgba(15, 15, 15, 0.5);
 
 * {
   all: unset;
@@ -238,33 +238,45 @@ trough {
   border: 1px solid @accent;
 }
 
-.control-center-dnd:checked {
-  background: @foreground;
-}
-
-.control-center-dnd slider {
-  background: @foreground;
-  border-radius: 1px;
-}
-
-.widget-dnd {
-  margin: 0px;
-  font-size: 1.1rem;
-}
-
-.widget-dnd > switch {
-  font-size: initial;
-  border-radius: 1px;
-  background: #414559;
+.widget-mpris {
   border: 1px solid @accent;
 }
 
-.widget-dnd > switch:checked {
-  background: @foreground;
+.widget-mpris image:not(:last-child) {
+  box-shadow: 0 0 2px black, 0 0 2px black;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 
-.widget-dnd > switch slider {
+.widget-mpris label {
+  text-shadow: 0 0 2px black, 0 0 2px black;
+}
+
+button {
+  color: @foreground;
   background: @background;
-  border-radius: 1px;
+  margin: 5px;
+  padding: 5px;
   border: 1px solid @accent;
+}
+
+button:hover {
+  color: @background;
+  background: @foreground;
+  padding: 5px;
+}
+
+button:disabled {
+  opacity: 0.2;
+}
+
+flat image-button {
+  color: cyan;
+}
+
+carousel {
+}
+
+carouselindicatordots {
+  
 }
