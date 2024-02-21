@@ -96,7 +96,6 @@
 }
 
 .control-center .widget-title {
-  margin: 5px;
   color: @foreground;
   font-size: 25px;
   font-weight: bold;
@@ -107,6 +106,7 @@
   border-radius: 1px;
   color: @foreground;
   background-color: @background;
+  margin: 0;
   padding: 8px;
   border: 1px solid @accent;
 }
@@ -177,7 +177,6 @@
 }
 
 .control-center .notification-row .notification-background .close-button {
-  margin: 2px;
   padding: 2px;
   border-radius: 1px;
   color: @foreground;
