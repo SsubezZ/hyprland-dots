@@ -8,7 +8,6 @@
   all: unset;
   font-family: Fira Sans Mono Font;
   font-size: 15px;
-  transition: 100ms;
 }
 
 .floating-notifications.background .notification-row .notification-background {
