@@ -7,6 +7,8 @@ configuration {
   display-window:             "Windows";
   drun-display-format:        "{name}";
   window-format:              "{w} · {c} · {t}";
+  me-select-entry:            "MousePrimary,MouseSecondary";
+  me-accept-entry:            "!MousePrimary";
 }
 
 @theme "/home/subez/.config/rofi/theme.rasi"
