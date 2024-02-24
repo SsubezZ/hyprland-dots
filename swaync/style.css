@@ -237,17 +237,25 @@ trough {
 }
 
 .widget-mpris {
-  border: 1px solid @accent;
 }
 
 .widget-mpris image:not(:last-child) {
-  box-shadow: 0 0 2px black, 0 0 2px black;
   margin-top: 15px;
   margin-left: 15px;
+  border: 1px solid @accent;
 }
 
 .widget-mpris label {
   text-shadow: 0 0 2px black, 0 0 2px black;
+  margin-right: 20px;
+  padding: 5px;
+  border: 1px solid @accent;
+  border-radius: 1px;
+  background: @button-alpha;
+}
+
+.widget-mpris label:first-child {
+  margin-top: 15px;
 }
 
 button {
@@ -262,6 +270,7 @@ button:hover {
   color: @background;
   background: @foreground;
   padding: 5px;
+  border: 1px solid @background;
 }
 
 button:disabled {
