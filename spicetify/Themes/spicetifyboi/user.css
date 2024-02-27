@@ -27,7 +27,7 @@ TOPBAR
 /* topbar navigation items*/
 .main-topBar-topbarContentWrapper a {
   transition-duration: 0.3s;
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 /* smooth topbar background colour */
@@ -121,7 +121,7 @@ NAVBAR
 
 /* change colors of active tab */
 .main-yourLibraryX-navLink {
-    border-radius: 8px;
+    border-radius: 2px;
     margin: 6px 0;
     padding: 0 10px;
 }
@@ -195,7 +195,7 @@ PLAYBACK BAR
 
 /* round cover art when collapsed */
 .main-coverSlotCollapsed-container .cover-art-image {
-  border-radius: 8px;
+  border-radius: 2px;
   transition-duration: 0.15s;
 }
 
@@ -213,7 +213,7 @@ PLAYBACK BAR
   transition-duration: 0.3s;
   background-color: rgba(var(--spice-rgb-sidebar),.5);
   box-shadow: 0 0 20px 20px rgba(var(--spice-rgb-sidebar),.5);
-  border-radius: 8px;
+  border-radius: 2px;
   z-index: -1;
 }
 
@@ -225,7 +225,7 @@ PLAYBACK BAR
   transition-duration: 0.3s;
   background-color: rgba(var(--spice-rgb-sidebar),.5);
   box-shadow: 0 0 20px 20px rgba(var(--spice-rgb-sidebar),.5);
-  border-radius: 8px;
+  border-radius: 2px;
   z-index: -1;
 }
 
@@ -352,7 +352,7 @@ MAIN VIEW
 /* change input box appearance */
 input {
   background-color: var(--spice-main-secondary) !important;
-  border-radius: 8px !important;
+  border-radius: 2px !important;
   padding: 6px 10px 6px 48px;
   color: var(--spice-text) !important;
 }
@@ -377,7 +377,7 @@ input {
 
 /* change playlist image border-radius */
 .main-entityHeader-image {
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 /* change playing icon from gif to svg */
@@ -399,7 +399,7 @@ input {
 /* change appearance of 'playlist' tag  */
 .main-entityHeader-subtitle.main-entityHeader-small.main-entityHeader-uppercase.main-entityHeader-bold {
   border: 2px var(--spice-text) solid;
-  border-radius: 8px;
+  border-radius: 2px;
   width: fit-content;
   display: inline;
   text-align: center;
@@ -408,7 +408,7 @@ input {
 
 /* change appearance of 'follow' button  */
 .artist-artistOverview-overview .main-actionBar-ActionBarRow > button:first-of-type {
-  border-radius: 8px;
+  border-radius: 2px;
   border: 2px solid var(--spice-button);
 }
 
@@ -493,7 +493,7 @@ a.x-heroCategoryCard-HeroCategoryCard {
 
 .x-sortBox-sortDropdown {
   background-color: var(--spice-main-secondary) !important;
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 [dir="ltr"] .main-actionBar-ActionBarRow > :first-child {
@@ -503,7 +503,7 @@ a.x-heroCategoryCard-HeroCategoryCard {
 .x-filterBox-expandButton:focus,
 .x-filterBox-expandButton:hover {
   background-color: var(--spice-main-secondary) !important;
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 .x-sortBox-sortDropdown,
@@ -670,7 +670,7 @@ NEW HOME LAYOUT
 ---------------
 */
 .main-topBar-navLinks a {
-  border-radius: 8px;
+  border-radius: 2px;
   color: var(--spice-text);
   background-color: var(--spice-main-secondary);
 }
