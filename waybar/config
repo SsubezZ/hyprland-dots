@@ -3,7 +3,7 @@
 "position": "top", 
 "height": 48,
 "output": "eDP-1",
-
+"ipc": true,
 "modules-left": [
 	"custom/menu",
 	"hyprland/workspaces",
@@ -165,7 +165,7 @@
 },
 
 "network": {
-	"interval": 2,
+	"interval": 1,
 	"format": " OFF", 
 	"format-wifi": " {essid}",
 	"format-disable": " off",
