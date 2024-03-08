@@ -236,7 +236,7 @@
 	"interval": 2,
 	"format": " {}%",
 	"max-length": 10,
-	"on-click": "missioncenter &",
+	"on-click": "auto-cpufreq-gtk &",
 },
 
 "memory": {
