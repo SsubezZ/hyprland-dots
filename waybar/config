@@ -155,13 +155,14 @@
 	"tooltip": true
 },
 
-"hyprland/window": {  
+"hyprland/window": {
 	"format": "{}",
 	"rewrite": {
 		"(.*) — LibreWolf": "LibreWolf",
 	},
 	"separate-outputs": false,
-	"on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi"
+	"on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi",
+  "on-click-right": "hyprctl dispatch killactive",
 },
 
 "network": {
