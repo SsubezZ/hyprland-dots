@@ -16,12 +16,12 @@ window {
   location:                    center;
   anchor:                      center;
   fullscreen:                  false;
-  height:               			 500px;
+  height:                      500px;
   width:                       450px;
   x-offset:                    20px;
   y-offset:                    0px;
   border:                      1px;
-  border-color:		 @foreground;
+  border-color:                @foreground;
   /* properties for all widgets */
   enabled:                     true;
   border-radius:               1px;
@@ -54,8 +54,8 @@ inputbar {
   background-color:            transparent;
   text-color:                  @foreground;
   orientation:                 horizontal;
-  border:               			 1px;
-  border-radius:		           0;
+  border:                      1px;
+  border-radius:               0;
   children:                    [ "prompt", "entry" ];
 }
 prompt {
@@ -85,7 +85,7 @@ entry {
 
 /*****----- Mode Switcher -----*****/
 mode-switcher{
-  enabled:                     false;
+  enabled:                     true;
   spacing:                     10px;
   background-color:            transparent;
   text-color:                  @foreground;
@@ -132,7 +132,7 @@ element {
   border-radius:               0px;
   background-color:            transparent;
   text-color:                  @foreground;
-  cursor:                      pointer;  
+  cursor:                      pointer;
 }
 element normal.normal {
   background-color:            inherit;
@@ -178,7 +178,6 @@ element-icon {
   text-color:                  inherit;
   size:                        32px;
   cursor:                      inherit;
-
 }
 element-text {
   background-color:            transparent;
