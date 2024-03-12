@@ -154,7 +154,7 @@
     "(.*) — LibreWolf": "LibreWolf",
   },
   "separate-outputs": false,
-  "on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi",
+  "on-click": "rofi -show window -modi window || pkill rofi",
   "on-click-right": "hyprctl dispatch killactive",
 },
 
@@ -169,7 +169,7 @@
   "format-disconnected": "Disconnected",
   "tooltip-format-wifi": "Strenght: {signalStrength}% |  {bandwidthDownBits} |  {bandwidthUpBits}",
   "tooltip-format-ethernet": " {bandwidthDownBits} |  {bandwidthUpBits}",
-  "on-click": "sleep 0.1 && $HOME/.config/rofi/scripts/wifi.sh || pkill rofi",
+  "on-click": "$HOME/.config/rofi/scripts/wifi.sh || pkill rofi",
   "on-click-right": "nm-connection-editor",
 },
 
@@ -203,7 +203,7 @@
     "car": "",
     "default": ["󰕿", "󰖀", "󰕾"],
   },
-  "on-click": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out",
+  "on-click": "rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
   "on-click-right": "helvum",
   "on-scroll-up": "swayosd-client --output-volume 1 --max-volume 150",
   "on-scroll-down": "swayosd-client --output-volume -1 --max-volume 150",
@@ -221,7 +221,7 @@
     "headset": "",
     "default": ["","", ""],
   },
-  "on-click": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out",
+  "on-click": "rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
   "on-click-right": "helvum",
   "max-volume": 150,
   "scroll-step": 2,
@@ -269,7 +269,7 @@
 
 "custom/menu": {
   "format": "󰣇",
-  "on-click": "sleep 0.1 && rofi -show drun || pkill rofi",
+  "on-click": "rofi -show drun -modi drun,run,filebrowser || pkill rofi",
   "on-click-right": "rofi -show powermenu -modi powermenu:/home/subez/.config/rofi/scripts/power-menu || pkill rofi",
   "tooltip": false,
 },
@@ -290,7 +290,7 @@
   "return-type": "json",
   "exec-if": "which swaync-client",
   "exec": "swaync-client -swb",
-  "on-click": "sleep 0.1 && swaync-client -t",
+  "on-click": "swaync-client -t",
   "on-click-right": "swaync-client -d -sw",
   "escape": true,
 },
