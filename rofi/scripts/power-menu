@@ -40,7 +40,7 @@ icons[cancel]="\Uf0156"
 declare -A actions
 actions[lockscreen]="swaylock"
 #actions[switchuser]="???"
-actions[logout]="wayland-logout"
+actions[logout]="wayland-logout && systemctl --user restart sddm"
 actions[suspend]="systemctl suspend"
 actions[hibernate]="systemctl hibernate"
 actions[reboot]="systemctl reboot"
