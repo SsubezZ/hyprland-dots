@@ -1,0 +1,90 @@
+live_config_reload = true
+working_directory = "None"
+
+[colors.bright]
+black = "0xa6accd"
+blue = "0xadd7ff"
+cyan = "0x89ddff"
+green = "0x5de4c7"
+magenta = "0xfae4fc"
+red = "0xd0679d"
+white = "0xffffff"
+yellow = "0xfffac2"
+
+[colors.cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[colors.normal]
+black = "0x1b1e28"
+blue = "#435c89"
+cyan = "0xadd7ff"
+green = "0x5de4c7"
+magenta = "0xfcc5e9"
+red = "0xd0679d"
+white = "0xffffff"
+yellow = "0xfffac2"
+
+[colors.primary]
+background = "0x131621"
+foreground = "0xa6accd"
+
+[colors.search.focused_match]
+background = "0xadd7ff"
+foreground = "0x1b1e28"
+
+[colors.search.matches]
+background = "0xadd7ff"
+foreground = "0x1b1e28"
+
+[colors.selection]
+background = "0x303340"
+text = "CellForeground"
+
+[colors.vi_mode_cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[cursor]
+style = "Underline"
+vi_mode_style = "Underline"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 11
+
+[font.bold]
+family = "Fira Code Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+y = 0
+
+[font.italic]
+family = "Fira Code Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "Fira Code Nerd Font"
+style = "Regular"
+
+[font.offset]
+y = 0
+
+[scrolling]
+history = 1000
+multiplier = 3
+
+[window]
+decorations = "none"
+opacity = 0.25
+
+[window.dimensions]
+columns = 80
+lines = 35
+
+[window.padding]
+x = 10
+y = 10
