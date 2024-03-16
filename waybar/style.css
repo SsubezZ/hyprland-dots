@@ -1,5 +1,5 @@
-@define-color bg      rgba(0, 0, 0, 0.5);
-@define-color bg1     #0f0f0f;
+@define-color bgm     transparent;
+@define-color bg     #0f0f0f;
 @define-color tip     #0f0f0f;
 @define-color accent  #e0e0e0;
 @define-color text    #e0e0e0;
@@ -57,14 +57,13 @@ window#waybar.empty #window {
 }
 
 tooltip {
-  background: @tip;
   border-radius: 2px;
   border: 1px solid @accent;
   color: @text
 }
 
 #custom-playerctl, #clock, #battery, #pulseaudio, #wireplumber, #network, #bluetooth, #tray, #backlight, #idle_inhibitor, #cpu, #memory, #workspaces, #window, #custom-notification, #custom-menu {
-  background: @bg;
+  background: @bgm;
   color: @text;
   padding-left: 10px;
   padding-right: 10px;
@@ -94,7 +93,7 @@ tooltip {
 }
 
 #workspaces {
-  background: @bg;
+  background: @bgm;
   padding: 0 0;
   margin-left: 5px;
   margin-right: 5px;
@@ -106,3 +105,4 @@ tooltip {
   margin-left: 5px;
   margin-right: 5px;
 }
+  background: @tip;
