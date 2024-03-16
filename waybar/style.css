@@ -6,23 +6,10 @@
 
 * {
   border: 1px;
-  border-radius: 0;
   font-family: Symbols Nerd Font;
   font-weight: normal;
   font-size: 14px;
   min-height: 0px;
-}
-
-window#waybar {
-  transition: all 0.1s ease-in-out;
-  background: transparent;
-  color: @text;
-  margin: 5px;
-}
-
-window#waybar.empty #window {
-  padding: 0 10px;
-  margin: 5px;
 }
 
 #workspaces button {
@@ -34,32 +21,33 @@ window#waybar.empty #window {
 }
 
 #workspaces button.active {
-  transition: all 0.1s ease-in-out;
   background: @accent;
   color: @bg;
 }
 
 #workspaces button.active, #workspaces button.focused {
-  transition: all 0.1s ease-in-out;
   margin: 3px;
   border: 1px solid @accent;
 }
 
 #workspaces button:hover {
-  transition: all 0.1s ease-in-out;
   margin: 3px;
   border: 1px solid @accent;
 }
 
 #workspaces button.empty {
-  transition: all 0.1s ease-in-out;
   opacity: 0.5;
 }
 
-tooltip {
-  border-radius: 2px;
-  border: 1px solid @accent;
-  color: @text
+window#waybar {
+  background: transparent;
+  color: @text;
+  margin: 5px;
+}
+
+window#waybar.empty #window {
+  padding: 0 10px;
+  margin: 5px;
 }
 
 #custom-playerctl, #clock, #battery, #pulseaudio, #wireplumber, #network, #bluetooth, #tray, #backlight, #idle_inhibitor, #cpu, #memory, #workspaces, #window, #custom-notification, #custom-menu {
@@ -70,10 +58,6 @@ tooltip {
   margin: 5px 5px 5px 5px;
   border: 1px solid @accent;
   border-radius: 1px;
-}
-
-#custom-power {
-  font-weight: normal;
 }
 
 #tray {
@@ -105,4 +89,11 @@ tooltip {
   margin-left: 5px;
   margin-right: 5px;
 }
+
+tooltip {
   background: @tip;
+  border-radius: 2px;
+  border: 1px solid @accent;
+  color: @text
+}
+

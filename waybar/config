@@ -24,37 +24,13 @@
   "custom/notification",
 ],
 
-"group/group-connection": {
-  "orientation": "horizontal",
-  "drawer": {
-    "transition-duration": 500,
-    "transition-left-to-right": false,
-  },
-  "modules": [
-    "network",
-    "bluetooth",
-  ],
-},
+//====================MODULES_LEFT====================
 
-"group/group-power": {
-  "orientation": "horizontal",
-  "drawer": {
-    "transition-duration": 500,
-    "transition-left-to-right": false,
-  },
-  "modules": [
-    "battery",
-    "idle_inhibitor",
-    "backlight",
-  ],
-},
-
-"group/group-vitals": {
-  "orientation": "horizontal",
-  "modules": [
-    "cpu",
-    "memory",
-  ],
+"custom/menu": {
+  "format": "󰣇",
+  "on-click": "rofi -show drun -modi drun,run,filebrowser || pkill rofi",
+  "on-click-right": "rofi -show powermenu -modi powermenu:/home/subez/.config/rofi/scripts/power-menu || pkill rofi",
+  "tooltip": false,
 },
 
 "hyprland/workspaces": {
@@ -87,38 +63,34 @@
   },
 },
 
-"tray": {
-  "icon-size": 15,
-  "spacing": 10,
-},
-
-"backlight":{
-  "device": "acpi_video0",
-  "format": "{icon} {percent}%",
-  "format-icons": ["󰃞","󰃝","󰃟","󰃠"],
-  "on-scroll-up": "swayosd-client --brightness raise",
-  "on-scroll-down": "swayosd-client --brightness lower",
-},
-
-"backlight/slider": {
-  "min": 0,
-  "max": 100,
-  "orientation": "vertical",
-  "device": "acpi_video0",
-},
-
-"battery": {
-  "states": {
-    "good": 95,
-    "warning": 30,
-    "critical": 20
+"hyprland/window": {
+  "format": "{}",
+  "rewrite": {
+    "(.*) — LibreWolf": "LibreWolf",
   },
-  "format": "{icon} {capacity}%",
-  "format-charging": " {capacity}%",
-  "format-plugged": "󰚥 {capacity}%",
-  "format-alt": "{time} {icon}",
-  "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+  "separate-outputs": false,
+  "on-click": "rofi -show window -modi window || pkill rofi",
+  "on-click-right": "hyprctl dispatch killactive",
 },
+
+"custom/playerctl": {
+  "format": "{icon} {}",
+  "return-type": "json",
+  "max-length": 25,
+  "exec": "playerctl --player spotify -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+  "on-click": "playerctl previous",
+  "on-click-right": "playerctl --player spotify next",
+  "on-click-middle": "playerctl --player spotify play-pause",
+  "on-scroll-up": "playerctl --player spotify volume 0.05+",
+  "on-scroll-down": "playerctl --player spotify volume 0.05-",
+  "format-icons": {
+    "Playing": "󰏤",
+    "Paused": "󰐊",
+  },
+},
+
+
+//====================MODULES_CENTER====================
 
 "clock": {
   "interval": 1,
@@ -140,6 +112,80 @@
   }
 },
 
+
+//====================MODULES_RIGHT====================
+
+"tray": {
+  "icon-size": 15,
+  "spacing": 10,
+},
+
+"pulseaudio": {
+  "format": "{icon} {volume}%",
+  "format-bluetooth": "{icon} {volume}%",
+  "format-bluetooth-muted": "󰝟 {icon}",
+  "format-muted": "󰝟 {volume}%",
+  "format-source": " {volume}%",
+  "format-source-muted": "",
+  "format-icons": {
+    "headphone": "",
+    "hands-free": "",
+    "headset": "",
+    "phone": "",
+    "portable": "",
+    "car": "",
+    "default": ["󰕾"],
+  },
+  "on-click": "rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
+  "on-click-right": "helvum",
+  "on-scroll-up": "swayosd-client --output-volume 1 --max-volume 150",
+  "on-scroll-down": "swayosd-client --output-volume -1 --max-volume 150",
+  "max-volume": 150,
+},
+
+"wireplumber": {
+  "format": "{icon} {volume}%",
+  "format-bluetooth": "{volume}% {icon}",
+  "format-bluetooth-muted": "{icon}",
+  "format-muted": "  {volume}%",
+  "format-icons": {
+    "headphone": "",
+    "hands-free": "",
+    "headset": "",
+    "default": ["󰕾"],
+  },
+  "on-click": "rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
+  "on-click-right": "helvum",
+  "max-volume": 150,
+  "scroll-step": 2,
+},
+
+"group/group-power": {
+  "orientation": "horizontal",
+  "drawer": {
+    "transition-duration": 500,
+    "transition-left-to-right": false,
+  },
+  "modules": [
+    "battery",
+    "idle_inhibitor",
+    "backlight",
+  ],
+},
+
+"battery": {
+  "states": {
+    "good": 95,
+    "warning": 30,
+    "critical": 20
+  },
+  "format": "{icon} {capacity}%",
+  "format-charging": " {capacity}%",
+  "format-plugged": " {capacity}%",
+  "format-alt": "{time} {icon}",
+  "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+},
+
 "idle_inhibitor": {
   "format": "{icon}",
   "format-icons": {
@@ -149,14 +195,24 @@
   "tooltip": true
 },
 
-"hyprland/window": {
-  "format": "{}",
-  "rewrite": {
-    "(.*) — LibreWolf": "LibreWolf",
+"backlight":{
+  "device": "acpi_video0",
+  "format": "{icon} {percent}%",
+  "format-icons": ["󰃞","󰃝","󰃟","󰃠"],
+  "on-scroll-up": "swayosd-client --brightness raise",
+  "on-scroll-down": "swayosd-client --brightness lower",
+},
+
+"group/group-connection": {
+  "orientation": "horizontal",
+  "drawer": {
+    "transition-duration": 500,
+    "transition-left-to-right": false,
   },
-  "separate-outputs": false,
-  "on-click": "rofi -show window -modi window || pkill rofi",
-  "on-click-right": "hyprctl dispatch killactive",
+  "modules": [
+    "network",
+    "bluetooth",
+  ],
 },
 
 "network": {
@@ -186,46 +242,15 @@
   "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
   "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
   "on-click": "$HOME/.config/rofi/scripts/bluetooth",
-  "on-click-right": "blueman-manager", },
-
-"pulseaudio": {
-  "format": "{icon} {volume}%",
-  "format-bluetooth": "{icon} {volume}%",
-  "format-bluetooth-muted": "󰝟 {icon}",
-  "format-muted": "󰝟 {volume}%",
-  "format-source": " {volume}%",
-  "format-source-muted": "",
-  "format-icons": {
-    "headphone": "",
-    "hands-free": "",
-    "headset": "",
-    "phone": "",
-    "portable": "",
-    "car": "",
-    "default": ["󰕿", "󰖀", "󰕾"],
-  },
-  "on-click": "rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
-  "on-click-right": "helvum",
-  "on-scroll-up": "swayosd-client --output-volume 1 --max-volume 150",
-  "on-scroll-down": "swayosd-client --output-volume -1 --max-volume 150",
-  "max-volume": 150,
+  "on-click-right": "blueman-manager",
 },
 
-"wireplumber": {
-  "format": "{icon} {volume}%",
-  "format-bluetooth": "{volume}% {icon}",
-  "format-bluetooth-muted": "{icon}",
-  "format-muted": "  {volume}%",
-  "format-icons": {
-    "headphone": "",
-    "hands-free": "",
-    "headset": "",
-    "default": ["","", ""],
-  },
-  "on-click": "rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
-  "on-click-right": "helvum",
-  "max-volume": 150,
-  "scroll-step": 2,
+"group/group-vitals": {
+  "orientation": "horizontal",
+  "modules": [
+    "cpu",
+    "memory",
+  ],
 },
 
 "cpu": {
@@ -241,38 +266,6 @@
   "max-length": 10,
   "tooltip-format": "Swap: {swapUsed:0.1f}GiB",
   "on-click": "missioncenter &",
-},
-
-"mpris": {
-  "interval": 1,
-  "max-length": 25,
-  "format": "󰏤 {title}",
-  "format-paused": "󰐊 {title}",
-  "tooltip-format": "{title}-{artist}-{length}",
-  "ignored-players": ["firefox"],
-},
-
-"custom/playerctl": {
-  "format": "{icon} {}",
-  "return-type": "json",
-  "max-length": 25,
-  "exec": "playerctl --player spotify -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-  "on-click": "playerctl previous",
-  "on-click-right": "playerctl --player spotify next",
-  "on-click-middle": "playerctl --player spotify play-pause",
-  "on-scroll-up": "playerctl --player spotify volume 0.05+",
-  "on-scroll-down": "playerctl --player spotify volume 0.05-",
-  "format-icons": {
-    "Playing": "󰏤",
-    "Paused": "󰐊",
-  },
-},
-
-"custom/menu": {
-  "format": "󰣇",
-  "on-click": "rofi -show drun -modi drun,run,filebrowser || pkill rofi",
-  "on-click-right": "rofi -show powermenu -modi powermenu:/home/subez/.config/rofi/scripts/power-menu || pkill rofi",
-  "tooltip": false,
 },
 
 "custom/notification": {
