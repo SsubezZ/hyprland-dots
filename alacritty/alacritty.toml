@@ -38,16 +38,16 @@ background = "0xadd7ff"
 foreground = "0x1b1e28"
 
 [colors.selection]
-background = "0x303340"
-text = "CellForeground"
+background = "CellForeground"
+text = "CellBackground"
 
 [colors.vi_mode_cursor]
 cursor = "CellForeground"
 text = "CellBackground"
 
 [cursor]
-style = "Underline"
-vi_mode_style = "Underline"
+style = "Beam"
+vi_mode_style = "None"
 
 [env]
 TERM = "xterm-256color"
@@ -80,6 +80,8 @@ multiplier = 3
 [window]
 decorations = "none"
 opacity = 0.25
+title = "Terminal"
+# dynamic_title = false
 
 [window.dimensions]
 columns = 80
