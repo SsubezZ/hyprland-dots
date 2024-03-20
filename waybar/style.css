@@ -1,15 +1,14 @@
 @define-color bgm     transparent;
 @define-color bg     #0f0f0f;
-@define-color tip     #0f0f0f;
 @define-color accent  #e0e0e0;
 @define-color text    #e0e0e0;
 
 * {
-  border: 1px;
   font-family: Symbols Nerd Font;
   font-weight: normal;
   font-size: 14px;
   min-height: 0px;
+  border-radius: 1px;
 }
 
 #workspaces button {
@@ -17,7 +16,6 @@
   padding: 4px 6px;
   color: @text;
   margin: 4px;
-  border-radius: 1px;
 }
 
 #workspaces button.active {
@@ -39,6 +37,22 @@
   opacity: 0.5;
 }
 
+#workspaces {
+  background: @bgm;
+  padding: 0 0;
+  margin: 5px;
+  border: 1px solid @accent;
+}
+
+#window {
+  margin-left: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+  border: 1px solid @accent;
+  text-shadow: 0 0 2px black, 0 0 2px black;
+}
+
 window#waybar {
   background: transparent;
   color: @text;
@@ -50,50 +64,24 @@ window#waybar.empty #window {
   margin: 5px;
 }
 
-#custom-playerctl, #clock, #battery, #pulseaudio, #wireplumber, #network, #bluetooth, #tray, #backlight, #idle_inhibitor, #cpu, #memory, #workspaces, #window, #custom-notification, #custom-menu {
+#custom-playerctl, #clock, #battery, #pulseaudio, #wireplumber, #network, #bluetooth, #privacy, #tray, tooltip, #backlight, #idle_inhibitor, #cpu, #memory, #window, #custom-notification, #custom-menu {
   background: @bgm;
   color: @text;
   padding-left: 10px;
   padding-right: 10px;
-  margin: 5px 5px 5px 5px;
+  margin: 5px;
   border: 1px solid @accent;
-  border-radius: 1px;
+  text-shadow: 0 0 2px black, 0 0 2px black;
 }
 
-#tray {
-  margin-left: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: none;
+#privacy {
+  border: 1px solid #90ceaa;
 }
 
-#window {
-  margin-left: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: none;
-  border: 1px solid @accent;
-  border-radius: 1px;
-}
-
-#workspaces {
-  background: @bgm;
-  padding: 0 0;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-#clock {
-  color: @text;
-  border-radius: 1px;
-  margin-left: 5px;
-  margin-right: 5px;
+#custom-notification {
+  font-size: 12px;
 }
 
 tooltip {
-  background: @tip;
-  border-radius: 2px;
-  border: 1px solid @accent;
-  color: @text
+  background: @bg;
 }
-
