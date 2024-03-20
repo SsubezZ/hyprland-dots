@@ -43,6 +43,15 @@ alias vim="nvim"
 alias jellyfinstart="sudo systemctl start jellyfin"
 alias jellyfinstop="sudo systemctl stop jellyfin"
 
+#Nitrosense
+alias nitro="~/.config/hypr/scripts/nitrosense"
+alias nitro-auto="~/.config/hypr/scripts/nitrosense a"
+alias nitro-quiet="~/.config/hypr/scripts/nitrosense qa"
+alias nitro-default="~/.config/hypr/scripts/nitrosense da"
+alias nitro-performance="~/.config/hypr/scripts/nitrosense pa"
+alias nitro-max="~/.config/hypr/scripts/nitrosense m"
+alias nitro-custom="~/.config/hypr/scripts/nitrosense c"
+
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
 export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
