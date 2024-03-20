@@ -47,10 +47,10 @@ function set_power_limits() {
 	for N in "$MSR" "$MCH"; do
 		echo "${1}000000" | sudo tee "$N/constraint_0_power_limit_uw" &>/dev/null
 		echo "${2}000000" | sudo tee "$N/constraint_1_power_limit_uw" &>/dev/null
-		echo "128000000"  | sudo tee "$N/constraint_0_time_window_us" &>/dev/null
-		echo "128000000"  | sudo tee "$N/constraint_1_time_window_us" &>/dev/null
+		echo "128000000" | sudo tee "$N/constraint_0_time_window_us" &>/dev/null
+		echo "128000000" | sudo tee "$N/constraint_1_time_window_us" &>/dev/null
 		[[ "$N" == "$MSR" ]] && NODE=MSR || NODE=MCH
-		echo "[$NODE] PL1 [$(cat "$N/constraint_0_power_limit_uw") $(cat "$N/constraint_0_time_window_us")] PL2 [$(cat "$N/constraint_1_power_limit_uw") $(cat "$N/constraint_1_time_window_us")]"
+		# echo "[$NODE] PL1 [$(cat "$N/constraint_0_power_limit_uw") $(cat "$N/constraint_0_time_window_us")] PL2 [$(cat "$N/constraint_1_power_limit_uw") $(cat "$N/constraint_1_time_window_us")]"
 	done
 }
 
