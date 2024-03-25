@@ -38,7 +38,7 @@ icons[shutdown]="\Uf0425"
 icons[cancel]="\Uf0156"
 
 declare -A actions
-actions[lockscreen]="swaylock"
+actions[lockscreen]="hyprlock"
 #actions[switchuser]="???"
 actions[logout]="wayland-logout && systemctl --user restart sddm"
 actions[suspend]="systemctl suspend"
