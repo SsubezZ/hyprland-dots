@@ -129,6 +129,10 @@
       "type": "audio-in",
       "tooltip-icon-size": 12,
     },
+    {
+      "type": "audio-out",
+      "tooltip-icon-size": 12,
+    },
   ],
 },
 

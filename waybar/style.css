@@ -1,5 +1,5 @@
 @define-color bgm     transparent;
-@define-color bg     #0f0f0f;
+@define-color bg      #0f0f0f;
 @define-color accent  #e0e0e0;
 @define-color text    #e0e0e0;
 
@@ -75,9 +75,14 @@ window#waybar.empty #window {
 }
 
 #privacy {
-  border: 1px solid #90ceaa;
+  color: @bg;
+  border: 1px solid @accent;
+  background-color: #90ceaa;
 }
 
+#privacy.auido-in {
+  background-color: #00cccc;
+}
 #custom-notification {
   font-size: 12px;
 }
