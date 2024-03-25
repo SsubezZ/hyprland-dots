@@ -36,6 +36,10 @@ PS1+="${directory_color}\w" # \w=Working directory
 PS1+="${etc_color}]\n└──╼ " # \n=New Line
 PS1+="${symbol}${reset} "
 
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] &&
+	. /usr/share/bash-completion/bash_completion
+
 # Aliases
 #alias pacman="sudo pacman"
 alias hypr="nvim $GIT/hyprland-dots/hypr/hyprland.conf"
