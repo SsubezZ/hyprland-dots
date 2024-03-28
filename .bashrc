@@ -57,6 +57,8 @@ alias nitro-max="~/.config/hypr/scripts/nitrosense m"
 alias nitro-custom="~/.config/hypr/scripts/nitrosense c"
 
 # PATH
+export VISUAL="nvim"
+export EDITOR="nvim"
 export PATH="$HOME/.local/bin:$PATH"
 export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
 export GIT="$HOME/Gits/"
