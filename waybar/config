@@ -7,8 +7,8 @@
 "modules-left": [
   "custom/menu",
   "hyprland/workspaces",
-  "custom/playerctl",
   "hyprland/window",
+  "custom/playerctl",
 ],
 "modules-center": [
   "clock",
