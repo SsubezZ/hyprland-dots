@@ -3,6 +3,7 @@
 "position": "top",
 "height": 43,
 "output": "eDP-1",
+"reload_style_on_change": true,
 
 "modules-left": [
   "custom/menu",
@@ -34,8 +35,6 @@
 },
 
 "hyprland/workspaces": {
-  "disable-scroll": false,
-  "all-outputs": false,
   "persistent-workspaces": {
     "1": [],
     "2": [],
@@ -47,8 +46,9 @@
     "8": [],
   },
   "on-click": "activate",
-  "on-scroll-up": "hyprctl dispatch -- workspace e+1",
-  "on-scroll-down": "hyprctl dispatch -- workspace e-1",
+  "on-double-click": "hyprctl dispatch togglespecialworkspace magic",
+  "on-scroll-up": "hyprctl dispatch workspace e+1",
+  "on-scroll-down": "hyprctl dispatch workspace e-1",
   "format": "{icon}",
   "format-icons": {
     "1": "",
@@ -195,7 +195,7 @@
 },
 
 "battery": {
-  "interval": 2,
+  "interval": "once",
   "states": {
     "good": 95,
     "warning": 30,
