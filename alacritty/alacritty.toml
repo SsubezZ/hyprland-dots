@@ -79,7 +79,7 @@ multiplier = 3
 
 [window]
 decorations = "none"
-opacity = 0.25
+opacity = 0.5
 title = "Terminal"
 # dynamic_title = false
 
