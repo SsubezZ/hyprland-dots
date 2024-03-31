@@ -10,6 +10,8 @@ if [ $# -le 0 ]; then
 	exit
 fi
 
+find /lib/modules -type f -iname "ec_sys.ko.zst" -exec cp {} ~ \;
+
 echo on | sudo tee /sys/module/msr/parameters/allow_writes &>/dev/null
 
 if [[ "$(lsmod | grep ec_sys | cut -f1 -d' ' | tr -d '\n' | wc -c)" -ne 6 ]]; then
