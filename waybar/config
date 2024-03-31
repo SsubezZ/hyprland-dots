@@ -268,7 +268,7 @@
   "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
   "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
   "on-click": "$HOME/.config/rofi/scripts/bluetooth",
-  "on-click-right": "blueman-manager",
+  "on-click-right": "sleep 0.1 && blueman-manager",
 },
 
 "group/group-vitals": {
@@ -287,7 +287,7 @@
   "interval": 2,
   "format": " {}%",
   "max-length": 10,
-  "on-click": "sleep 0.1 && auto-cpufreq-gtk &",
+  "on-click": "sleep 0.1 && auto-cpufreq-gtk",
 },
 
 "memory": {
@@ -295,7 +295,7 @@
   "format": "󰑭 {used:0.1f}GiB",
   "max-length": 10,
   "tooltip-format": "Swap: {swapUsed:0.1f}GiB",
-  "on-click": "sleep 0.1 && missioncenter &",
+  "on-click": "sleep 0.1 && resources",
 },
 
 "custom/notification": {
