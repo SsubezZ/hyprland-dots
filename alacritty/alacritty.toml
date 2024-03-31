@@ -74,8 +74,8 @@ style = "Regular"
 y = 0
 
 [scrolling]
-history = 1000
-multiplier = 3
+history = 10000
+multiplier = 1
 
 [window]
 decorations = "none"
