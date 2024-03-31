@@ -33,7 +33,7 @@ window {
 mainbox {
   enabled:                     true;
   spacing:                     0px;
-  background-color:            rgba(24, 24, 24, 0.5);
+  background-color:            rgba(15, 15, 15, 0.5);
   orientation:                 vertical;
   children:                    [ "inputbar", "listbox" ];
 }
