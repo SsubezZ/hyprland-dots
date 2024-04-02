@@ -33,6 +33,7 @@ alias hypr="nvim $GIT/hyprland-dots/hypr/hyprland.conf"
 alias vim="nvim"
 alias jellyfinstart="sudo systemctl start jellyfin"
 alias jellyfinstop="sudo systemctl stop jellyfin"
+alias clock="tty-clock -s -c -t -C 6"
 # Nitrosense
 alias nitro="~/.config/hypr/scripts/nitrosense"
 alias nitro-auto="~/.config/hypr/scripts/nitrosense a"
@@ -45,6 +46,7 @@ alias nitro-custom="~/.config/hypr/scripts/nitrosense c"
 alias ls='eza --icons --color=always --group-directories-first'
 alias ll='eza -alF --icons --color=always --group-directories-first'
 alias la='eza -a --icons --color=always --group-directories-first'
+alias lt='eza -T --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 
