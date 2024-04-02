@@ -242,14 +242,13 @@
 
 "network": {
   "interval": 1,
-  "format": "󰤭 OFF", 
+  "format": "󰤭 OFF",
   "format-wifi": "{icon} {essid}",
   "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-  "format-disable": " off",
   "format-ethernet": "󰈀 {ifname}",
   //"format-ethernet": "󰈀 | {bandwidthDownBits}  |{bandwidthUpBits} ",
   "format-linked": "{ifname} (No IP) ",
-  "format-disconnected": "Disconnected",
+  "format-disconnected": "󰤯 OFF",
   "tooltip-format-wifi": "Strenght: {signalStrength}% |  {bandwidthDownBits} |  {bandwidthUpBits}",
   "tooltip-format-ethernet": " {bandwidthDownBits} |  {bandwidthUpBits}",
   "on-click": "sleep 0.1 && $HOME/.config/rofi/scripts/wifi.sh || pkill rofi",
@@ -258,11 +257,11 @@
 
 "bluetooth": {
   "interval": 5,
-  "format": " {status}",
-  "format-disabled": "",
+  "format": "{status}",
+  "format-on": " ON",
+  "format-off": " OFF",
   "format-connected": " {device_alias}",
   "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-  // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
   "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
   "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
   "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
