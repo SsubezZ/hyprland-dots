@@ -1,5 +1,5 @@
 @define-color foreground rgb(224, 224, 224);
-@define-color background rgba(15, 15, 15, 0.5);
+@define-color background rgba(15, 15, 15, 1);
 @define-color background-alpha rgba(15, 15, 15, 0.5);
 @define-color accent rgba(224, 224, 224, 1);
 @define-color button-alpha rgba(15, 15, 15, 0.5);

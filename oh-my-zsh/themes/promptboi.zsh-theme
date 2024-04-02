@@ -1,4 +1,3 @@
-
 R="%{$reset_color%}"
 SYM="$R%{$fg_bold[white]%}"
 USR="$R%{$fg_bold[cyan]%}"
