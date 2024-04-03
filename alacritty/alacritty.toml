@@ -26,8 +26,8 @@ white = "0xffffff"
 yellow = "0xfffac2"
 
 [colors.primary]
-background = "0x131621"
-foreground = "0xa6accd"
+background = "0x0f0f0f"
+foreground = "0xe0e0e0"
 
 [colors.search.focused_match]
 background = "0xadd7ff"
@@ -79,7 +79,7 @@ multiplier = 1
 
 [window]
 decorations = "none"
-opacity = 0.8
+opacity = 0.75
 title = "Terminal"
 # dynamic_title = false
 
