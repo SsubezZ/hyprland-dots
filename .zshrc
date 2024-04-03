@@ -15,8 +15,12 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Plugins Customizations
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=06,bold,underline"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=04,underline"
 ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor regexp root line)
+ZSH_HIGHLIGHT_MAXLENGTH=512
+
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
 # PATH
