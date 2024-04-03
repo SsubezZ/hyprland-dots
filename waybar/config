@@ -198,7 +198,7 @@
 },
 
 "battery": {
-  "interval": "once",
+  "interval": 2,
   "states": {
     "good": 95,
     "warning": 30,
