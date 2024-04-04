@@ -13,7 +13,7 @@
 
 #workspaces button {
   transition: all 0.1s ease-in-out;
-  padding: 4px 4px;
+  padding: 4px;
   color: @text;
   margin: 4px;
   text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
@@ -24,9 +24,6 @@
   background: @accent;
   color: @bg;
   text-shadow: none;
-}
-
-#workspaces button.active {
   border: 1px solid @bg;
 }
 
@@ -42,10 +39,6 @@
 
 #workspaces button.empty {
   opacity: 0.5;
-}
-
-#workspaces button.empty:hover {
-    border: 1px solid @accent;
 }
 
 #workspaces {
