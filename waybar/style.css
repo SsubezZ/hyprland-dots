@@ -13,28 +13,39 @@
 
 #workspaces button {
   transition: all 0.1s ease-in-out;
-  padding: 4px 6px;
+  padding: 4px 4px;
   color: @text;
   margin: 4px;
+  text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
 }
 
 #workspaces button.active {
+  margin: 3px;
   background: @accent;
   color: @bg;
+  text-shadow: none;
 }
 
-#workspaces button.active, #workspaces button.focused {
-  margin: 3px;
-  border: 1px solid @accent;
+#workspaces button.active {
+  border: 1px solid @bg;
 }
 
 #workspaces button:hover {
   margin: 3px;
   border: 1px solid @accent;
+  opacity: 0.75;
+}
+
+#workspaces button.active:hover {
+  border: 1px solid @bg;
 }
 
 #workspaces button.empty {
   opacity: 0.5;
+}
+
+#workspaces button.empty:hover {
+    border: 1px solid @accent;
 }
 
 #workspaces {
@@ -42,6 +53,7 @@
   padding: 0 0;
   margin: 5px;
   border: 1px solid @accent;
+  box-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
 }
 
 #window {
@@ -50,7 +62,6 @@
   padding-right: 10px;
   transition: none;
   border: 1px solid @accent;
-  text-shadow: 0 0 2px black, 0 0 2px black;
 }
 
 window#waybar {
@@ -72,7 +83,8 @@ window#waybar.empty #window {
   padding-right: 10px;
   margin: 5px;
   border: 1px solid @accent;
-  text-shadow: 0 0 2px black, 0 0 2px black;
+  text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
+  box-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black;
 }
 
 #privacy {
