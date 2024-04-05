@@ -24,7 +24,7 @@ window {
   border-color:                @foreground;
   /* properties for all widgets */
   enabled:                     true;
-  border-radius:               1px;
+  border-radius:               0px;
   cursor:                      "default";
   background-color:            transparent;
 }
@@ -62,7 +62,7 @@ prompt {
   str:                         "";
   padding:                     8px 12px;
   border:                      1px;
-  border-radius:               0;
+  border-radius:               0px;
   border-color:                @selected;
   background-color:            @foreground;
   text-color:                  @background;
@@ -96,7 +96,7 @@ button {
   text-color:                  inherit;
   cursor:                      pointer;
   border:                      1px;
-  border-radius:               1px;
+  border-radius:               0px;
   border-color:                @selected;
 }
 button selected {
@@ -140,7 +140,7 @@ element normal.urgent {
   background-color:            @urgent;
   text-color:                  @foreground;
   border:                      1px;
-  border-radius:               1px;
+  border-radius:               0px;
   border-color:                @urgent;
 }
 element normal.active {

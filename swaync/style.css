@@ -12,7 +12,7 @@
 
 .floating-notifications.background .notification-row .notification-background {
   border: 1px solid @accent;
-  border-radius: 1px;
+  border-radius: 0px;
   margin-top: 0;
   margin-bottom: 4;
   margin-right: 4;
@@ -23,7 +23,7 @@
 
 .floating-notifications.background .notification-row .notification-background .notification {
   padding: 5px;
-  border-radius: 1px;
+  border-radius: 0px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification.critical {
@@ -52,7 +52,7 @@
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  border-radius: 1px;
+  border-radius: 0px;
   color: @foreground;
   background-color: @background-alpha;
   margin: 5px;
@@ -71,7 +71,7 @@
 .floating-notifications.background .notification-row .notification-background .close-button {
   margin: 2px;
   border: 1px solid @accent;
-  border-radius: 1px;
+  border-radius: 0px;
   color: @foreground;
   background-color: @background;
 }
@@ -87,7 +87,7 @@
 }
 
 .control-center {
-  border-radius: 1px;
+  border-radius: 0px;
   background-color: @background-alpha;
   color: @foreground;
   padding: 10px;
@@ -102,7 +102,7 @@
 
 .control-center .widget-title button {
   font-weight: normal;
-  border-radius: 1px;
+  border-radius: 0px;
   color: @foreground;
   background-color: @background;
   margin: 0;
@@ -121,7 +121,7 @@
 }
 
 .control-center .notification-row .notification-background {
-  border-radius: 1px;
+  border-radius: 0px;
   color: @foreground;
   background-color: @background;
   margin: 4px 0;
@@ -130,7 +130,7 @@
 
 .control-center .notification-row .notification-background .notification {
   padding: 7px;
-  border-radius: 1px;
+  border-radius: 0px;
 }
 
 .control-center .notification-row .notification-background .notification.critical {
@@ -159,7 +159,7 @@
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  border-radius: 1px;
+  border-radius: 0px;
   color: @foreground;
   background-color: @background;
   margin: 7px;
@@ -177,7 +177,7 @@
 
 .control-center .notification-row .notification-background .close-button {
   padding: 2px;
-  border-radius: 1px;
+  border-radius: 0px;
   color: @foreground;
   background-color: @background;
   border: 1px solid @accent;
@@ -206,7 +206,7 @@
 progressbar,
 progress,
 trough {
-  border-radius: 1px;
+  border-radius: 0px;
 }
 
 progressbar {
@@ -231,7 +231,7 @@ trough {
 
 .control-center-dnd {
   margin-top: 5px;
-  border-radius: 1px;
+  border-radius: 0px;
   background: @background;
   border: 1px solid @accent;
 }
@@ -250,7 +250,7 @@ trough {
   margin-right: 20px;
   padding: 5px;
   border: 1px solid @accent;
-  border-radius: 1px;
+  border-radius: 0px;
   background: @button-alpha;
 }
 
