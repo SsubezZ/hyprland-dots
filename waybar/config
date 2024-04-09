@@ -29,7 +29,7 @@
 
 "custom/menu": {
   "format": "󰣇",
-  "on-click": "sleep 0.1 && rofi -show drun -modi drun,run,filebrowser || pkill rofi",
+  "on-click": "sleep 0.1 && rofi -show drun -theme-str 'listview {colums: 2;}' -modi drun,run,filebrowser || pkill rofi",
   "on-click-right": "sleep 0.1 && rofi -show powermenu -modi powermenu:/home/subez/.config/rofi/scripts/power-menu || pkill rofi",
   "tooltip": false,
 },

@@ -1,6 +1,6 @@
 /*****----- Global Properties -----*****/
 * {
-  font:                        "Fira Sans Mono 10";
+  font:                        "Fira Code Nerd Font 10";
   background:                  #0F0F0F;
   background-alt:              #0A0A0A;
   foreground:                  #E0E0E0;
@@ -54,10 +54,21 @@ inputbar {
   background-color:            transparent;
   text-color:                  @foreground;
   orientation:                 horizontal;
-  children:                    [ "prompt", "entry" ];
+  children:                    [ "prompt","textbox-prompt-colon", "entry" ];
 }
 prompt {
-  enabled:                     true;
+  enabled:                     false;
+  expand:                      false;
+  str:                         "";
+  padding:                     8px 12px;
+  border:                      1px;
+  border-radius:               0px;
+  border-color:                @selected;
+  background-color:            @foreground;
+  text-color:                  @background;
+}
+textbox-prompt-colon {
+  enabled:                     false;
   expand:                      false;
   str:                         "";
   padding:                     8px 12px;
@@ -107,7 +118,7 @@ button selected {
 /*****----- Listview -----*****/
 listview {
   enabled:                     true;
-  columns:                     1;
+  columns:                     2;
   lines:                       4;
   cycle:                       true;
   dynamic:                     true;
@@ -115,7 +126,7 @@ listview {
   layout:                      vertical;
   reverse:                     false;
   fixed-height:                true;
-  fixed-columns:               true;
+  fixed-columns:               false;
   spacing:                     10px;
   background-color:            transparent;
   text-color:                  @foreground;
