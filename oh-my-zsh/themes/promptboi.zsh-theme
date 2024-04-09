@@ -2,7 +2,7 @@ R="%{$reset_color%}"
 SYM="$R%{$fg[white]%}"
 USR="$R%{$fg_bold[cyan]%}"
 DIR="$R%{$fg[cyan]%}"
-CRS="%{$R$fg_bold[white]%}─[%{$fg[red]%}X%{$fg_bold[white]%}]"
+CRS="%{$R$fg[white]%}─[%{$fg[red]%}X$R%{$fg[white]%}]"
 ERR="%(?:$SYM:$CRS)"
 
 PROMPT="

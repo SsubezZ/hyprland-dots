@@ -245,8 +245,8 @@
   "format": "󰤭 OFF",
   "format-wifi": "{icon} {essid}",
   "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-  "format-ethernet": "󰈀 {ifname}",
-  //"format-ethernet": "󰈀 | {bandwidthDownBits}  |{bandwidthUpBits} ",
+  "format-ethernet": " {ifname}",
+  //"format-ethernet": " | {bandwidthDownBits}  |{bandwidthUpBits} ",
   "format-linked": "{ifname} (No IP) ",
   "format-disconnected": "󰤯 OFF",
   "tooltip-format-wifi": "Strenght: {signalStrength}% |  {bandwidthDownBits} |  {bandwidthUpBits}",
@@ -285,7 +285,7 @@
 
 "cpu": {
   "interval": 2,
-  "format": " {}%",
+  "format": " {}%",
   "max-length": 10,
   "on-click": "sleep 0.1 && auto-cpufreq-gtk",
 },
