@@ -1,6 +1,6 @@
 /*****----- Global Properties -----*****/
 * {
-  font:                        "Fira Code Nerd Font 10";
+  font:                        "Fira Sans Mono 10";
   background:                  #0F0F0F;
   background-alt:              #0A0A0A;
   foreground:                  #E0E0E0;
