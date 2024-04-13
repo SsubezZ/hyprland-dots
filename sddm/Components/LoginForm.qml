@@ -1,5 +1,5 @@
-import QtQuick 2.11
-import QtQuick.Layouts 1.11
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
 import SddmComponents 2.0 as SDDM
 
 ColumnLayout {
@@ -15,7 +15,8 @@ ColumnLayout {
     Clock {
         id: clock
         Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-        Layout.preferredHeight: root.height / 4
+        // important
+        Layout.preferredHeight: root.height / 3
         Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
     }
 

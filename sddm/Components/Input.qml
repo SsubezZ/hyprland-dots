@@ -1,7 +1,7 @@
-import QtQuick 2.11
-import QtQuick.Layouts 1.11
-import QtQuick.Controls 2.4
-import QtGraphicalEffects 1.0
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
+import Qt5Compat.GraphicalEffects
 
 Column {
     id: inputContainer
@@ -11,9 +11,52 @@ Column {
     property bool failed
 
     Item {
+        // change also in selectSession
+        height: root.font.pointSize * 2
+        width: parent.width / 2
+        anchors.horizontalCenter: parent.horizontalCenter
+        Label {
+            id: errorMessage
+            width: parent.width
+            text: failed ? config.TranslateLoginFailedWarning || textConstants.loginFailed + "!" : keyboard.capsLock ? config.TranslateCapslockWarning || textConstants.capslockWarning : null
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: root.font.pointSize * 0.8
+            font.italic: true
+            color: root.palette.text
+            opacity: 0
+            states: [
+                State {
+                    name: "fail"
+                    when: failed
+                    PropertyChanges {
+                        target: errorMessage
+                        opacity: 1
+                    }
+                },
+                State {
+                    name: "capslock"
+                    when: keyboard.capsLock
+                    PropertyChanges {
+                        target: errorMessage
+                        opacity: 1
+                    }
+                }
+            ]
+            transitions: [
+                Transition {
+                    PropertyAnimation {
+                        properties: "opacity"
+                        duration: 100
+                    }
+                }
+            ]
+        }
+    }
+
+    Item {
         id: usernameField
 
-        height: root.font.pointSize * 4.5
+        height: root.font.pointSize * 3
         width: parent.width / 2
         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -25,6 +68,10 @@ Column {
             height: parent.height
             anchors.left: parent.left
 
+            background: Rectangle {
+                color: "transparent"
+                border.color: "transparent"
+            }
             property var popkey: config.ForceRightToLeft == "true" ? Qt.Key_Right : Qt.Key_Left
             Keys.onPressed: {
                 if (event.key == Qt.Key_Down && !popup.opened)
@@ -42,6 +89,7 @@ Column {
             hoverEnabled: true
             onActivated: {
                 username.text = currentText
+
             }
 
             delegate: ItemDelegate {
@@ -50,7 +98,6 @@ Column {
                 contentItem: Text {
                     text: model.name
                     font.pointSize: root.font.pointSize * 0.8
-                    font.capitalization: Font.Capitalize
                     color: selectUser.highlightedIndex === index ? root.palette.highlight.hslLightness >= 0.7 ? "#444" : "white" : root.palette.window.hslLightness >= 0.8 ? root.palette.highlight.hslLightness >= 0.8 ? "#444" : root.palette.highlight : "white"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
@@ -63,21 +110,21 @@ Column {
 
             indicator: Button {
                     id: usernameIcon
-                    width: selectUser.height * 0.8
+                    width: selectUser.height * 1
                     height: parent.height
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.leftMargin: selectUser.height * 0.125
+                    anchors.leftMargin: selectUser.height * 0
                     icon.height: parent.height * 0.25
                     icon.width: parent.height * 0.25
                     enabled: false
                     icon.color: root.palette.text
-                    icon.source: Qt.resolvedUrl("../Assets/User.svgz")
-            }
-
-            background: Rectangle {
-                color: "transparent"
-                border.color: "transparent"
+                    icon.source: Qt.resolvedUrl("../Assets/User.svg")
+                    
+                    background: Rectangle {
+                        color: "transparent"
+                        border.color: "transparent"
+                    }
             }
 
             popup: Popup {
@@ -154,13 +201,16 @@ Column {
 
         }
 
+
         TextField {
             id: username
             text: config.ForceLastUser == "true" ? selectUser.currentText : null
+            font.bold: true
             anchors.centerIn: parent
             height: root.font.pointSize * 3
             width: parent.width
             placeholderText: config.TranslatePlaceholderUsername || textConstants.userName
+            placeholderTextColor: config.placeholderColor
             selectByMouse: true
             horizontalAlignment: TextInput.AlignHCenter
             renderType: Text.QtRendering
@@ -169,13 +219,14 @@ Column {
                     selectAll()
             }
             background: Rectangle {
-                color: "transparent"
+                color: "#0F0F0F"
+                opacity: 0.25
                 border.color: root.palette.text
                 border.width: parent.activeFocus ? 2 : 1
                 radius: config.RoundCorners || 0
             }
-            onAccepted: loginButton.clicked()
-            KeyNavigation.down: password
+            onAccepted: config.AllowBadUsernames == "false" ? sddm.login(username.text.toLowerCase(), password.text, sessionSelect.selectedSession) : sddm.login(username.text, password.text, sessionSelect.selectedSession)
+            KeyNavigation.down: showPassword
             z: 1
 
             states: [
@@ -193,35 +244,111 @@ Column {
                 }
             ]
         }
-
     }
-
+    
     Item {
         id: passwordField
+
         height: root.font.pointSize * 4.5
         width: parent.width / 2
         anchors.horizontalCenter: parent.horizontalCenter
+        
+        Button {
+            id: showPassword
+            z: 2
+            width: selectUser.height * 1
+            height: parent.height
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.rightMargin: selectUser.height * 0
+            icon.height: parent.height * 0.25
+            icon.width: parent.height * 0.25
+            icon.color: root.palette.text
+            icon.source: Qt.resolvedUrl("../Assets/Password2.svg")
+
+            background: Rectangle {
+                color: "transparent"
+                border.color: "transparent"
+            }
+
+            states: [
+                State {
+                    name: "visiblePasswordFocused"
+                    when: showPassword.checked && showPassword.activeFocus
+                    PropertyChanges {
+                        target: showPassword
+                        icon.source: Qt.resolvedUrl("../Assets/Password.svg")
+                        icon.color: root.palette.highlight
+                    }
+                },
+                State {
+                    name: "visiblePasswordHovered"
+                    when: showPassword.checked && showPassword.hovered
+                    PropertyChanges {
+                        target: showPassword
+                        icon.source: Qt.resolvedUrl("../Assets/Password.svg")
+                        icon.color: root.palette.highlight
+                    }
+                },
+                State {
+                    name: "visiblePassword"
+                    when: showPassword.checked
+                    PropertyChanges {
+                        target: showPassword
+                        icon.source: Qt.resolvedUrl("../Assets/Password.svg")
+                    }
+                },
+                State {
+                    name: "hiddenPasswordFocused"
+                    when:  showPassword.enabled && showPassword.activeFocus
+                    PropertyChanges {
+                        target: showPassword
+                        icon.source: Qt.resolvedUrl("../Assets/Password2.svg")
+                        icon.color: root.palette.highlight
+                    }
+                },
+                State {
+                    name: "hiddenPasswordHovered"
+                    when: showPassword.hovered
+                    PropertyChanges {
+                        target: showPassword
+                        icon.source: Qt.resolvedUrl("../Assets/Password2.svg")
+                        icon.color: root.palette.highlight
+                    }
+                }
+            ]
+
+            onClicked: toggle()
+            Keys.onReturnPressed: toggle()
+            Keys.onEnterPressed: toggle()
+            KeyNavigation.down: password
+
+        }
 
         TextField {
             id: password
             anchors.centerIn: parent
             height: root.font.pointSize * 3
             width: parent.width
+            font.bold: true
             focus: config.ForcePasswordFocus == "true" ? true : false
             selectByMouse: true
-            echoMode: TextInput.Password
+            echoMode: showPassword.checked ? TextInput.Normal : TextInput.Password
             placeholderText: config.TranslatePlaceholderPassword || textConstants.password
+            placeholderTextColor: config.placeholderColor
             horizontalAlignment: TextInput.AlignHCenter
             passwordCharacter: "•"
             passwordMaskDelay: config.ForceHideCompletePassword == "true" ? undefined : 1000
             renderType: Text.QtRendering
             background: Rectangle {
-                color: "transparent"
+                color: "#0F0F0F"
+                opacity: 0.25
                 border.color: root.palette.text
                 border.width: parent.activeFocus ? 2 : 1
                 radius: config.RoundCorners || 0
             }
-            onAccepted: loginButton.clicked()
+            onAccepted: config.AllowBadUsernames == "false" ? sddm.login(username.text.toLowerCase(), password.text, sessionSelect.selectedSession) : sddm.login(username.text, password.text, sessionSelect.selectedSession)
+            KeyNavigation.down: loginButton
         }
 
         states: [
@@ -246,60 +373,21 @@ Column {
                     duration: 150
                 }
             }
-        ]
-    }
-    
-    Item {
-        height: root.font.pointSize * 2.3
-        width: parent.width / 2
-        anchors.horizontalCenter: parent.horizontalCenter
-        Label {
-            id: errorMessage
-            width: parent.width
-            text: failed ? config.TranslateLoginFailedWarning || textConstants.loginFailed + "!" : keyboard.capsLock ? config.TranslateCapslockWarning || textConstants.capslockWarning : null
-            horizontalAlignment: Text.AlignHCenter
-            font.pointSize: root.font.pointSize * 0.8
-            font.italic: true
-            color: root.palette.text
-            opacity: 0
-            states: [
-                State {
-                    name: "fail"
-                    when: failed
-                    PropertyChanges {
-                        target: errorMessage
-                        opacity: 1
-                    }
-                },
-                State {
-                    name: "capslock"
-                    when: keyboard.capsLock
-                    PropertyChanges {
-                        target: errorMessage
-                        opacity: 1
-                    }
-                }
-            ]
-            transitions: [
-                Transition {
-                    PropertyAnimation {
-                        properties: "opacity"
-                        duration: 100
-                    }
-                }
-            ]
-        }
+        ]        
     }
 
     Item {
         id: login
-        height: root.font.pointSize * 3
+        // important
+        height: root.font.pointSize * 9
         width: parent.width / 2
         anchors.horizontalCenter: parent.horizontalCenter
-
+        visible: config.HideLoginButton == "true"  ? false : true
         Button {
+            
             id: loginButton
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             text: config.TranslateLogin || textConstants.login
             height: root.font.pointSize * 3
             implicitWidth: parent.width
@@ -318,8 +406,8 @@ Column {
 
             background: Rectangle {
                 id: buttonBackground
-                color: "black"
-                opacity: 0.5
+                color: "white"
+                opacity: 0.2
                 radius: config.RoundCorners || 0
             }
 
@@ -385,7 +473,6 @@ Column {
                     }
                 }
             ]
-
             onClicked: config.AllowBadUsernames == "false" ? sddm.login(username.text.toLowerCase(), password.text, sessionSelect.selectedSession) : sddm.login(username.text, password.text, sessionSelect.selectedSession)
             Keys.onReturnPressed: clicked()
             Keys.onEnterPressed: clicked()
@@ -395,7 +482,6 @@ Column {
 
     SessionButton {
         id: sessionSelect
-        textConstantSession: textConstants.session
         loginButtonWidth: loginButton.background.width
     }
 

@@ -1,5 +1,5 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.4
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 Column {
     id: clock
@@ -17,7 +17,8 @@ Column {
     Label {
         id: timeLabel
         anchors.horizontalCenter: parent.horizontalCenter
-        font.pointSize: root.font.pointSize * 3
+        font.pointSize: root.font.pointSize * 9
+        font.bold: false
         color: root.palette.text
         renderType: Text.QtRendering
         function updateTime() {
@@ -29,6 +30,8 @@ Column {
         id: dateLabel
         anchors.horizontalCenter: parent.horizontalCenter
         color: root.palette.text
+        font.pointSize: root.font.pointSize * 2
+        font.bold: true
         renderType: Text.QtRendering
         function updateTime() {
             text = new Date().toLocaleDateString(Qt.locale(config.Locale), config.DateFormat == "short" ? Locale.ShortFormat : config.DateFormat !== "" ? config.DateFormat : Locale.LongFormat)
