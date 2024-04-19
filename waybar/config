@@ -148,8 +148,8 @@
 "pulseaudio": {
   "format": "{icon} {volume}%",
   "format-bluetooth": "{icon} {volume}%",
-  "format-bluetooth-muted": "󰝟 {icon}",
-  "format-muted": "󰝟 {volume}%",
+  "format-bluetooth-muted": " {icon}",
+  "format-muted": " {volume}%",
   "format-source": " {volume}%",
   "format-source-muted": "",
   "format-icons": {
@@ -159,7 +159,7 @@
     "phone": "",
     "portable": "",
     "car": "",
-    "default": ["", "", "󰕾"],
+    "default": ["", "", ""],
   },
   "on-click": "swayosd-client --output-volume mute-toggle",
   "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
@@ -206,8 +206,9 @@
     "critical": 20
   },
   "format": "{icon} {capacity}%",
-  "format-charging": " {capacity}%",
+  "format-charging": "{icon}󱐋 {capacity}%",
   "format-plugged": " {capacity}%",
+  "format-full": "󱟢 {capacity}%",
   "format-alt": "{time} {icon}",
   "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
 },
