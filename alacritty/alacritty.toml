@@ -75,7 +75,7 @@ y = 0
 
 [scrolling]
 history = 10000
-multiplier = 1
+multiplier = 5
 
 [window]
 decorations = "none"
