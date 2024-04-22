@@ -115,12 +115,9 @@ tooltip,
 #privacy {
   color: @bg;
   border: 1px solid @accent;
-  background-color: #90ceaa;
+  background-color: #66ccaa;
 }
 
-#privacy.auido-in {
-  background-color: #00cccc;
-}
 #custom-notification {
   font-size: 12px;
 }

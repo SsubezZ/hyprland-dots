@@ -211,6 +211,7 @@
   "format-full": "󱟢 {capacity}%",
   "format-alt": "{time} {icon}",
   "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+  "on-click": "sleep 0.1 && slimbookbattery",
 },
 
 "idle_inhibitor": {
