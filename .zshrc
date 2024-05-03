@@ -98,4 +98,4 @@ alias lt='eza -T --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 
-neofetch
+fastfetch
