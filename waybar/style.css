@@ -112,10 +112,38 @@ tooltip,
     1px 1px 2px black;
 }
 
+#custom-playerctl:hover,
+#clock:hover,
+#battery:hover,
+#pulseaudio:hover,
+#wireplumber:hover,
+#network:hover,
+#bluetooth:hover,
+#backlight:hover,
+#idle_inhibitor:hover,
+#cpu:hover,
+#memory:hover,
+#window:hover,
+#custom-notification:hover,
+#custom-menu:hover {
+  background: @text;
+  color: @bg;
+  text-shadow: none;
+  /* -1px -1px 3px gray, */
+  /* 1px -1px 3px gray, */
+  /* -1px 1px 3px gray, */
+  /* 1px 1px 3px gray; */
+  box-shadow:
+    -1px -1px 2px black,
+    1px -1px 2px black,
+    -1px 1px 2px black,
+    1px 1px 2px black;
+}
+
 #privacy {
   color: @bg;
   border: 1px solid @accent;
-  background-color: #66ccaa;
+  background-color: #90ceaa;
 }
 
 #custom-notification {

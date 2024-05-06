@@ -166,6 +166,7 @@
   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume 1 --max-volume 150",
   "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume -1 --max-volume 150",
   "max-volume": 150,
+  "tooltip-format": "{format_source}",
 },
 
 "wireplumber": {
@@ -177,10 +178,12 @@
     "headphone": "",
     "hands-free": "",
     "headset": "",
-    "default": ["", "", "󰕾"],
+    "default": ["", "", ""],
   },
   "on-click": "swayosd-client --output-volume mute-toggle",
   "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
+  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume 1 --max-volume 150",
+  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume -1 --max-volume 150",
   "max-volume": 150,
   "scroll-step": 2,
 },
@@ -206,12 +209,14 @@
     "critical": 20
   },
   "format": "{icon} {capacity}%",
+  "format-alt": "{icon} {capacity}%",
   "format-charging": "{icon}󱐋 {capacity}%",
   "format-plugged": " {capacity}%",
   "format-full": "󱟢 {capacity}%",
-  "format-alt": "{time} {icon}",
+  "format-discharging": "{icon} {capacity}%",
   "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
   "on-click": "sleep 0.1 && slimbookbattery",
+  "tooltip-format": "{timeTo}\nHealth: {health}%\nPower: {power}",
 },
 
 "idle_inhibitor": {
@@ -303,7 +308,7 @@
 
 "custom/notification": {
   "tooltip": false,
-  "format": "{icon}<span foreground='white'><sup>{}</sup></span>",
+  "format": "{icon}<span><sup>{}</sup></span>",
   "format-icons": {
     "notification": "",
     "none": "",
