@@ -176,11 +176,11 @@ element selected.urgent {
   border-color:                @selected;
 }
 element selected.active {
-  background-color:            transparent;
-  text-color:                  @foreground;
+  background-color:            @foreground;
+  text-color:                  @background;
   border:                      1px;
   border-radius:               1px;
-  border-color:                @foreground;
+  border-color:                @selected;
 }
 element-icon {
   background-color:            transparent;
