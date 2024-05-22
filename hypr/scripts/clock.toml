@@ -1,0 +1,10 @@
+[window]
+decorations = "none"
+opacity = 0
+title = "Wallpaper-Clock"
+
+[colors.bright]
+cyan = "0x89ddff"
+
+[colors.normal]
+cyan = "0xadd7ff"
