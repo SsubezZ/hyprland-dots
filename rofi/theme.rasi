@@ -54,7 +54,7 @@ inputbar {
   background-color:            transparent;
   text-color:                  @foreground;
   orientation:                 horizontal;
-  children:                    [ "prompt","textbox-prompt-colon", "entry" ];
+  children:                    [ "prompt", "textbox-prompt-colon", "entry" ];
 }
 prompt {
   enabled:                     false;
@@ -85,7 +85,7 @@ entry {
   border:                      1px;
   border-radius:               0px;
   border-color:                @selected;
-  background-color:            transparent;
+  background-color:            rgba(15, 15, 15, 0.5);
   text-color:                  inherit;
   cursor:                      text;
   placeholder:                 "";
