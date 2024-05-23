@@ -60,7 +60,7 @@ alias nitro-custom="~/.config/hypr/scripts/nitrosense c"
 export VISUAL="nvim"
 export EDITOR="nvim"
 export PATH="$HOME/.local/bin:$PATH"
-export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
+export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
 export GIT="$HOME/Gits/"
 export PS1
 
