@@ -44,11 +44,8 @@
     "6": [],
     "7": [],
     "8": [],
+    "minimize": [],
   },
-  "on-click": "activate",
-  "on-double-click": "hyprctl dispatch togglespecialworkspace magic",
-  "on-scroll-up": "hyprctl dispatch workspace m+1",
-  "on-scroll-down": "hyprctl dispatch workspace m-1",
   "format": "{icon}",
   "format-icons": {
     "1": "",
@@ -63,7 +60,14 @@
     "10": "󰥔",
     "default": "",
     "OVERVIEW": "",
+    "minimize": "",
   },
+  "on-click": "activate",
+  "on-double-click": "hyprctl dispatch togglespecialworkspace magic",
+  "on-scroll-up": "hyprctl dispatch workspace m+1",
+  "on-scroll-down": "hyprctl dispatch workspace m-1",
+  "show-special": true,
+  "ignore-workspaces": ["special:magic", "special:magic2"],
 },
 
 "hyprland/window": {
