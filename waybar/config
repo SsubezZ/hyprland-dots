@@ -68,6 +68,7 @@
 
 "hyprland/window": {
   "format": "{}",
+  "icon": true,
   "rewrite": {
     "(.*) — LibreWolf": "LibreWolf",
     "LibreWolf Private Browsing": "LibreWolf Private",
