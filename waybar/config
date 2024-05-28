@@ -47,8 +47,8 @@
   },
   "on-click": "activate",
   "on-double-click": "hyprctl dispatch togglespecialworkspace magic",
-  "on-scroll-up": "hyprctl dispatch workspace e+1",
-  "on-scroll-down": "hyprctl dispatch workspace e-1",
+  "on-scroll-up": "hyprctl dispatch workspace m+1",
+  "on-scroll-down": "hyprctl dispatch workspace m-1",
   "format": "{icon}",
   "format-icons": {
     "1": "",
