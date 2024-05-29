@@ -70,13 +70,15 @@
 },
 
 "hyprland/window": {
-  "format": "{}",
+  "format": "{initialTitle}",
   "icon": true,
   "rewrite": {
     "(.*) — LibreWolf": "LibreWolf",
     "LibreWolf Private Browsing": "LibreWolf Private",
     "(.*) — LibreWolf Private Browsing": "LibreWolf Private",
-  },
+    "(.*) - Discord": "Discord",
+    "OBS (.*)": "OBS",
+},
   "separate-outputs": false,
   "on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi",
   "on-click-right": "hyprctl dispatch killactive",
