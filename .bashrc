@@ -44,6 +44,7 @@ PS1+="${symbol}${reset} "
 #alias pacman="sudo pacman"
 alias hypr="nvim $GIT/hyprland-dots/hypr/hyprland.conf"
 alias vim="nvim"
+alias cat="bat"
 alias jellyfinstart="sudo systemctl start jellyfin"
 alias jellyfinstop="sudo systemctl stop jellyfin"
 

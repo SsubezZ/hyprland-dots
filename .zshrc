@@ -79,6 +79,7 @@ export PS1
 #alias pacman="sudo pacman"
 alias hypr="nvim $GIT/hyprland-dots/hypr/hyprland.conf"
 alias vim="nvim"
+alias cat="bat"
 alias jellyfinstart="sudo systemctl start jellyfin"
 alias jellyfinstop="sudo systemctl stop jellyfin"
 alias clock="tty-clock -s -c -t -C 6"
