@@ -2,6 +2,7 @@
 @define-color bg      #0f0f0f;
 @define-color accent  #e0e0e0;
 @define-color text    #e0e0e0;
+@define-color cyan    #00cccc;
 
 * {
   font-family: Symbols Nerd Font;
@@ -62,6 +63,13 @@
     1px 1px 2px black;
 }
 
+#taskbar button.maximized,
+#taskbar button.fullscreen {
+  margin: 3px;
+  border: 1px solid @bg;
+  background: @cyan;
+}
+
 #taskbar.empty {
   border: none;
   box-shadow: none;
@@ -73,6 +81,13 @@ window#waybar {
   margin: 5px;
 }
 
+#waybar.fullscreen {
+  background: @bg;
+}
+
+#waybar.fullscreen * {
+  border-color: @cyan;
+}
 
 #waybar.empty #window {
   border: none;
