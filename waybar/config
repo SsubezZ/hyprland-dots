@@ -1,4 +1,5 @@
-{
+[{
+"name": "eDP-1",
 "layer": "top",
 "position": "top",
 "height": 43,
@@ -42,8 +43,6 @@
     "4": [],
     "5": [],
     "6": [],
-    "7": [],
-    "8": [],
   },
   "format": "{icon}",
   "format-icons": {
@@ -70,7 +69,7 @@
 },
 
 "hyprland/window": {
-  "format": "{initialTitle}",
+  "format": "{title}",
   "icon": true,
   "rewrite": {
     "(.*) — LibreWolf": "LibreWolf",
@@ -79,7 +78,7 @@
     "(.*) - Discord": "Discord",
     "OBS (.*)": "OBS",
 },
-  "separate-outputs": false,
+  "separate-outputs": true,
   "on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi",
   "on-click-right": "hyprctl dispatch killactive",
 },
@@ -262,7 +261,7 @@
   "format-ethernet": " {ifname}",
   //"format-ethernet": " | {bandwidthDownBits}  |{bandwidthUpBits} ",
   "format-linked": "{ifname} (No IP) ",
-  "format-disconnected": "󰤯 ON",
+  "format-disconnected": "󰤭 ON",
   "tooltip-format-wifi": "Strenght: {signalStrength}% |  {bandwidthDownBits} |  {bandwidthUpBits}",
   "tooltip-format-ethernet": " {bandwidthDownBits} |  {bandwidthUpBits}",
   "on-click": "sleep 0.1 && $HOME/.config/rofi/scripts/wifi.sh || pkill rofi",
@@ -332,4 +331,103 @@
   "on-click-right": "sleep 0.1 && swaync-client -d -sw",
   "escape": true,
 },
+},
+
+{
+  "name": "HDMI-A-1",
+  "layer": "top",
+  "position": "top",
+  "height": 48,
+  "output": "HDMI-A-1",
+  "reload_style_on_change": true,
+
+"modules-left": [
+  "hyprland/workspaces",
+  "hyprland/window",
+  "custom/playerctl",
+],
+"modules-center": [
+  "clock",
+],
+"modules-right": [
+  "wlr/taskbar",
+],
+
+//====================MODULES_LEFT====================
+
+
+"hyprland/workspaces": {
+  "persistent-workspaces": {
+    "7": [],
+    "8": [],
+  },
+  "format": " {icon} ",
+  "format-icons": {
+    "7": "",
+    "8": "",
+    "9": "󰻂",
+    "10": "󰥔",
+    "default": "",
+    "OVERVIEW": "",
+  },
+  "on-click": "activate",
+  "on-double-click": "hyprctl dispatch togglespecialworkspace magic",
+  "on-scroll-up": "hyprctl dispatch workspace m+1",
+  "on-scroll-down": "hyprctl dispatch workspace m-1",
+  "show-special": true,
+  "ignore-workspaces": ["special:magic", "special:magic2"],
+},
+
+"hyprland/window": {
+  "format": "{initialTitle}",
+  "icon": true,
+  "rewrite": {
+    "(.*) — LibreWolf": "LibreWolf",
+    "LibreWolf Private Browsing": "LibreWolf Private",
+    "(.*) — LibreWolf Private Browsing": "LibreWolf Private",
+    "(.*) - Discord": "Discord",
+    "OBS (.*)": "OBS",
+},
+  "separate-outputs": true,
+  "on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi",
+  "on-click-right": "hyprctl dispatch killactive",
+},
+
+//====================MODULES_CENTER====================
+
+"clock": {
+  "interval": 1,
+  "format": "{:%I:%M:%OS %p  %A  %h %d %Y}",
+  "tooltip-format": "<tt><small>{calendar}</small></tt>",
+  "calendar": {
+    "mode": "month",
+    "on-scroll": 1,
+    "format": {
+      "months": "<span color='#e0e0e0'>{}</span>",
+      "days": "<span color='#e0e0e0'>{}</span>",
+      "weekdays": "<span color='#e0e0e0'><u>{}</u></span>",
+      "today": "<span color='#e0e0e0'><b><u>{}</u></b></span>"
+    }
+  },
+  "actions":  {
+    "on-scroll-up": "shift_up",
+    "on-scroll-down": "shift_down"
+  }
+},
+
+//====================MODULES_RIGHT====================
+
+"wlr/taskbar": {
+  "format": " {icon} ",
+  "max-length": 25,
+  "all-outputs": true,
+  "icon-size": 14,
+  "active-first": true,
+  "tooltip-format": "{title}",
+  "on-click": "activate",
+  "on-click-right": "close",
+  "ignore-list": ["clock-bg"],
+},
+
 }
+]

@@ -11,7 +11,8 @@
   border-radius: 0px;
 }
 
-#workspaces button {
+#workspaces button,
+#taskbar button {
   transition: all 0.1s ease-in-out;
   padding: 4px;
   color: @text;
@@ -23,7 +24,8 @@
     1px 1px 2px black;
 }
 
-#workspaces button.active {
+#workspaces button.active,
+#taskbar button.active {
   margin: 3px;
   background: @accent;
   color: @bg;
@@ -31,13 +33,15 @@
   border: 1px solid @bg;
 }
 
-#workspaces button:hover {
+#workspaces button:hover,
+#taskbar button:hover {
   margin: 3px;
   border: 1px solid @accent;
   opacity: 0.75;
 }
 
-#workspaces button.active:hover {
+#workspaces button.active:hover,
+#taskbar button.active:hover {
   border: 1px solid @bg;
 }
 
@@ -45,9 +49,10 @@
   opacity: 0.5;
 }
 
-#workspaces {
+#workspaces,
+#taskbar {
   background: @bgm;
-  padding: 0 0;
+  padding: 0;
   margin: 5px;
   border: 1px solid @accent;
   box-shadow:
@@ -57,12 +62,9 @@
     1px 1px 2px black;
 }
 
-#window {
-  margin-left: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: none;
-  border: 1px solid @accent;
+#taskbar.empty {
+  border: none;
+  box-shadow: none;
 }
 
 window#waybar {
@@ -71,10 +73,16 @@ window#waybar {
   margin: 5px;
 }
 
-window#waybar.empty #window {
-  border: 0px solid #000;
+
+#waybar.empty #window {
+  border: none;
   padding: 0;
   margin: 0;
+  box-shadow: none;
+}
+
+window#waybar.swallowing #window {
+  background: #cc0000;
 }
 
 #custom-playerctl,
