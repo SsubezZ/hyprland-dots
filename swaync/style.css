@@ -1,6 +1,7 @@
 @define-color foreground rgb(224, 224, 224);
 @define-color background rgba(15, 15, 15, 1);
 @define-color background-alpha rgba(15, 15, 15, 0.5);
+@define-color background-beta rgba(15, 15, 15, 0.75);
 @define-color accent rgba(224, 224, 224, 1);
 @define-color button-alpha rgba(15, 15, 15, 0.5);
 
@@ -123,7 +124,7 @@
 .control-center .notification-row .notification-background {
   border-radius: 0px;
   color: @foreground;
-  background-color: @background;
+  background-color: @background-beta;
   margin: 4px 0;
   border: 1px solid @accent;
 }
