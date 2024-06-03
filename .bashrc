@@ -65,5 +65,5 @@ export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
 export GIT="$HOME/Gits/"
 export PS1
 
-neofetch
+fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"
 #-----------------------------------------------------------------------------------------------------

@@ -99,4 +99,4 @@ alias lt='eza -T --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 
-fastfetch
+fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"
