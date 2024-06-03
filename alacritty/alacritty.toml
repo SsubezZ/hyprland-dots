@@ -8,7 +8,7 @@ cyan = "0x89ddff"
 green = "0x5de4c7"
 magenta = "0xfae4fc"
 red = "0xd0679d"
-white = "0xffffff"
+white = "0xe0e0e0"
 yellow = "0xfffac2"
 
 [colors.cursor]
@@ -22,7 +22,7 @@ cyan = "0xadd7ff"
 green = "0x5de4c7"
 magenta = "0xfcc5e9"
 red = "0xd0679d"
-white = "0xffffff"
+white = "0xe0e0e0"
 yellow = "0xfffac2"
 
 [colors.primary]
@@ -81,7 +81,7 @@ multiplier = 5
 decorations = "none"
 opacity = 0.75
 title = "Terminal"
-# dynamic_title = false
+blur = true
 
 [window.dimensions]
 columns = 80
