@@ -135,6 +135,22 @@ tooltip,
     1px 1px 2px black;
 }
 
+#pulseaudio,
+#wireplumber,
+#backlight,
+#cpu,
+#battery {
+  min-width: 50px;
+}
+
+#memory {
+  min-width: 70px;
+}
+
+#custom-notification {
+  min-width: 25px;
+}
+
 #custom-playerctl:hover,
 #clock:hover,
 #battery:hover,

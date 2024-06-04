@@ -151,11 +151,11 @@
 },
 
 "pulseaudio": {
-  "format": "{icon} {volume}%",
-  "format-bluetooth": "{icon} {volume}%",
+  "format": "{icon} {volume}",
+  "format-bluetooth": "{icon} {volume}",
   "format-bluetooth-muted": " {icon}",
-  "format-muted": " {volume}%",
-  "format-source": " {volume}%",
+  "format-muted": " {volume}",
+  "format-source": " {volume}",
   "format-source-muted": "",
   "format-icons": {
     "headphone": "",
@@ -175,10 +175,10 @@
 },
 
 "wireplumber": {
-  "format": "{icon} {volume}%",
-  "format-bluetooth": "{volume}% {icon}",
+  "format": "{icon} {volume}",
+  "format-bluetooth": "{volume} {icon}",
   "format-bluetooth-muted": "{icon}",
-  "format-muted": "  {volume}%",
+  "format-muted": "  {volume}",
   "format-icons": {
     "headphone": "",
     "hands-free": "",
@@ -213,12 +213,12 @@
     "warning": 30,
     "critical": 20
   },
-  "format": "{icon} {capacity}%",
-  "format-alt": "{icon} {capacity}%",
-  "format-charging": "{icon}󱐋 {capacity}%",
-  "format-plugged": " {capacity}%",
-  "format-full": "󱟢 {capacity}%",
-  "format-discharging": "{icon} {capacity}%",
+  "format": "{icon} {capacity}",
+  "format-alt": "{icon} {capacity}",
+  "format-charging": "{icon}󱐋 {capacity}",
+  "format-plugged": " {capacity}",
+  "format-full": "󱟢 {capacity}",
+  "format-discharging": "{icon} {capacity}",
   "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
   "on-click": "sleep 0.1 && slimbookbattery",
   "tooltip-format": "{timeTo}\nHealth: {health}%\nPower: {power}",
@@ -235,7 +235,7 @@
 
 "backlight":{
   "device": "acpi_video0",
-  "format": "{icon} {percent}%",
+  "format": "{icon} {percent}",
   "format-icons": ["󰃞","󰃝","󰃟","󰃠"],
   "on-scroll-up": "swayosd-client --brightness raise",
   "on-scroll-down": "swayosd-client --brightness lower",
