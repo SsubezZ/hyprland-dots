@@ -19,7 +19,7 @@
   "privacy",
   "tray",
   //"wireplumber",
-  "pulseaudio",
+  "group/group-audio",
   "group/group-power",
   "group/group-connection",
   "group/group-vitals",
@@ -150,13 +150,23 @@
   "spacing": 10,
 },
 
-"pulseaudio": {
+"group/group-audio": {
+  "orientation": "horizontal",
+  "drawer": {
+    "transition-duration": 500,
+    "transition-left-to-right": false,
+  },
+  "modules": [
+    "pulseaudio#output",
+    "pulseaudio#input",
+  ],
+},
+
+"pulseaudio#output": {
   "format": "{icon} {volume}",
   "format-bluetooth": "{icon} {volume}",
   "format-bluetooth-muted": " {icon}",
   "format-muted": " {volume}",
-  "format-source": " {volume}",
-  "format-source-muted": "",
   "format-icons": {
     "headphone": "",
     "hands-free": "",
@@ -168,10 +178,19 @@
   },
   "on-click": "swayosd-client --output-volume mute-toggle",
   "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
-  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume 1 --max-volume 150",
-  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume -1 --max-volume 150",
-  "max-volume": 150,
-  "tooltip-format": "{format_source}",
+  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume +1 --max-volume 200",
+  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume -1 --max-volume 200",
+  "max-volume": 200,
+},
+
+"pulseaudio#input": {
+  "format": "{format_source}",
+  "format-source": "  {volume}",
+  "format-source-muted": "{volume}",
+  "on-click": "swayosd-client --input-volume mute-toggle",
+  "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in || pkill rofi",
+  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume +1",
+  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume -1",
 },
 
 "wireplumber": {
@@ -185,10 +204,10 @@
     "headset": "",
     "default": ["", "", ""],
   },
-  "on-click": "swayosd-client --output-volume mute-toggle",
-  "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
-  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume 1 --max-volume 150",
-  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume -1 --max-volume 150",
+  "on-click": "swayosd-client --input-volume mute-toggle",
+  "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in || pkill rofi",
+  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume +1 --max-volume 150",
+  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume -1 --max-volume 150",
   "max-volume": 150,
   "scroll-step": 2,
 },
@@ -216,7 +235,7 @@
   "format": "{icon} {capacity}",
   "format-alt": "{icon} {capacity}",
   "format-charging": "{icon}󱐋 {capacity}",
-  "format-plugged": " {capacity}",
+  "format-plugged": " 100",
   "format-full": "󱟢 {capacity}",
   "format-discharging": "{icon} {capacity}",
   "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
@@ -300,7 +319,7 @@
   "interval": 2,
   "format": " {}%",
   "max-length": 10,
-  "on-click": "sleep 0.1 && auto-cpufreq-gtk",
+  "on-click": "sleep 0.1",
 },
 
 "memory": {
