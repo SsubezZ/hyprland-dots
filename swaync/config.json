@@ -8,7 +8,7 @@
   "control-center-margin-left": 0,
   "control-center-width": 500,
   "control-center-height": 800,
-  "control-center-layer": "top",
+  "control-center-layer": "overlay",
   "fit-to-screen": false,
   "notification-inline-replies": true,
   "layer": "overlay",
@@ -26,11 +26,8 @@
   "hide-on-clear": true,
   "hide-on-action": true,
   "script-fail-notify": true,
-  "widgets": [
-    "title",
-    "notifications",
-    "mpris"
-  ],
+  "widgets": ["title", "notifications", "mpris"],
+
   "widget-config": {
     "title": {
       "text": "Notifications",
