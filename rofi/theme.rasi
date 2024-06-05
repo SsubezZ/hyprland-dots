@@ -16,9 +16,9 @@ window {
   location:                    center;
   anchor:                      center;
   fullscreen:                  false;
-  height:                      500px;
-  width:                       450px;
-  x-offset:                    20px;
+  height:                      475px;
+  width:                       425px;
+  x-offset:                    0px;
   y-offset:                    0px;
   border:                      1px;
   border-color:                @foreground;
