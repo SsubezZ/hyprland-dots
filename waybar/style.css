@@ -72,6 +72,8 @@
 
 #taskbar.empty {
   border: none;
+  padding: 0;
+  margin: 0;
   box-shadow: none;
 }
 
@@ -82,7 +84,7 @@ window#waybar {
 }
 
 #waybar.fullscreen {
-  background: @bg;
+  background: black;
 }
 
 #waybar.fullscreen * {
@@ -96,8 +98,8 @@ window#waybar {
   box-shadow: none;
 }
 
-window#waybar.swallowing #window {
-  background: #cc0000;
+#waybar.swallowing * {
+  border-color: #d0679d;
 }
 
 #custom-playerctl,
@@ -140,15 +142,15 @@ tooltip,
 #backlight,
 #cpu,
 #battery {
-  min-width: 50px;
+  min-width: 46px;
 }
 
 #memory {
-  min-width: 70px;
+  min-width: 67px;
 }
 
 #custom-notification {
-  min-width: 25px;
+  min-width: 22px;
 }
 
 #custom-playerctl:hover,
@@ -177,6 +179,10 @@ tooltip,
     1px -1px 2px black,
     -1px 1px 2px black,
     1px 1px 2px black;
+}
+
+#waybar.empty #window:hover {
+  background: transparent;
 }
 
 #privacy {
