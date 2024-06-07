@@ -76,7 +76,6 @@ export GIT="$HOME/Gits/"
 export PS1
 
 # Aliases
-#alias pacman="sudo pacman"
 alias hypr="nvim $GIT/hyprland-dots/hypr/hyprland.conf"
 alias vim="nvim"
 alias cat="bat"
@@ -91,12 +90,14 @@ alias nitro-default="~/.config/hypr/scripts/nitrosense da"
 alias nitro-performance="~/.config/hypr/scripts/nitrosense pa"
 alias nitro-max="~/.config/hypr/scripts/nitrosense m"
 alias nitro-custom="~/.config/hypr/scripts/nitrosense c"
-#"ls" to "exa"
+# ls to eza
 alias ls='eza --icons --color=always --group-directories-first'
 alias ll='eza -alF --icons --color=always --group-directories-first'
 alias la='eza -a --icons --color=always --group-directories-first'
 alias lt='eza -T --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
+# misc
+alias matrix="clear && unimatrix -a -b -c cyan -f -s 98 && clear"
 
 fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"
