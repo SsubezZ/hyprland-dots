@@ -1,6 +1,5 @@
 window#osd {
   background: alpha(#0f0f0f, 0.25);
-  margin: 10px;
   border: 1px solid #e0e0e0;
   border-radius: 0px;
 }
