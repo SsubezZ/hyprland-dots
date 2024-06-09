@@ -98,6 +98,7 @@ alias lt='eza -T --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 # misc
+alias fetch="fastfetch"
 alias matrix="clear && unimatrix -a -b -c cyan -f -s 98 && clear"
 
 fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"
