@@ -2,8 +2,9 @@
 pkill waybar
 waybar &
 disown
-pkill swaync-client
-swaync-client -R -rs -swb &
+swaync-client -R &
+swaync-client -rs &
+swaync-client -swb &
 disown
 pkill swayosd-server
 sleep 1
