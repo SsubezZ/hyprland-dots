@@ -1,4 +1,4 @@
-@define-color bgm     transparent;
+@define-color bgm     alpha(#0f0f0f,0.25);
 @define-color bg      #0f0f0f;
 @define-color accent  #e0e0e0;
 @define-color text    #e0e0e0;
@@ -78,13 +78,12 @@
 }
 
 window#waybar {
-  background: transparent;
+  background: @bgm;
   color: @text;
   margin: 5px;
 }
 
 #waybar.fullscreen {
-  background: black;
 }
 
 #waybar.fullscreen * {
