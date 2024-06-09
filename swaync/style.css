@@ -1,4 +1,6 @@
-@define-color foreground rgb(224, 224, 224);
+@define-color foreground rgba(224, 224, 224, 1);
+@define-color foreground-alpha rgba(224, 224, 224, 0.9);
+@define-color foreground-beta rgba(224, 224, 224, 0.75);
 @define-color background rgba(15, 15, 15, 1);
 @define-color background-alpha rgba(15, 15, 15, 0.5);
 @define-color background-beta rgba(15, 15, 15, 0.75);
@@ -8,23 +10,25 @@
 * {
   all: unset;
   font-family: Fira Sans Mono Font;
-  font-size: 15px;
+  font-size: 14px;
+  border-radius: 0px;
 }
 
 .floating-notifications.background .notification-row .notification-background {
   border: 1px solid @accent;
-  border-radius: 0px;
-  margin-top: 0;
-  margin-bottom: 4;
-  margin-right: 4;
+  margin: 0 5px 5px 0;
   background-color: @background-alpha;
   color: @foreground;
+  text-shadow:
+    -1px -1px 2px black,
+    1px -1px 2px black,
+    -1px 1px 2px black,
+    1px 1px 2px black;
   padding: 5px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification {
   padding: 5px;
-  border-radius: 0px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification.critical {
@@ -36,78 +40,80 @@
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .summary {
   color: @foreground;
+  font-weight: bold;
   margin: 0 5px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .time {
-  color: @foreground;
+  color: @foreground-beta;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .body {
-  color: @foreground;
+  color: @foreground-alpha;
   margin: 0 5px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
-  min-height: 5px;
+  min-height: 45px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  border-radius: 0px;
   color: @foreground;
   background-color: @background-alpha;
+  border: 1px solid @accent;
   margin: 5px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
   background-color: @foreground;
   color: @background;
+  text-shadow: none;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
-  background-color: @foreground;
-  color: @background;
+  background-color: @background;
+  color: @foreground;
 }
 
 .floating-notifications.background .notification-row .notification-background .close-button {
-  margin: 2px;
-  border: 1px solid @accent;
-  border-radius: 0px;
-  color: @foreground;
-  background-color: @background;
+  color: transparent;
+  background-color: transparent;
+  border: none;
 }
 
 .floating-notifications.background .notification-row .notification-background .close-button:hover {
-  background-color: @foreground;
-  color: @background;
+  color: transparent;
+  background-color: transparent;
 }
 
 .floating-notifications.background .notification-row .notification-background .close-button:active {
-  background-color: @foreground;
-  color: @background;
+  color: transparent;
+  background-color: transparent;
 }
 
 .control-center {
-  border-radius: 0px;
   background-color: @background-alpha;
   color: @foreground;
   padding: 10px;
   border: 1px solid @accent;
 }
 
-.control-center .widget-title {
+.control-center .widget-title > label {
   color: @foreground;
-  font-size: 25px;
-  font-weight: bold;
+  text-shadow:
+    -1px -1px 2px black,
+    1px -1px 2px black,
+    -1px 1px 2px black,
+    1px 1px 2px black;
+  font-size: 20px;
 }
 
 .control-center .widget-title button {
   font-weight: normal;
-  border-radius: 0px;
   color: @foreground;
-  background-color: @background;
+  background-color: @background-beta;
   margin: 0;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid @accent;
 }
 
@@ -122,53 +128,59 @@
 }
 
 .control-center .notification-row .notification-background {
-  border-radius: 0px;
   color: @foreground;
   background-color: @background-beta;
-  margin: 4px 0;
+  margin: 5px 0;
   border: 1px solid @accent;
 }
 
 .control-center .notification-row .notification-background .notification {
-  padding: 7px;
-  border-radius: 0px;
+  padding: 5px;
+  text-shadow:
+    -1px -1px 2px black,
+    1px -1px 2px black,
+    -1px 1px 2px black,
+    1px 1px 2px black;
 }
 
 .control-center .notification-row .notification-background .notification.critical {
 }
 
 .control-center .notification-row .notification-background .notification .notification-content {
-  margin: 7px;
+  margin: 0 5px;
 }
 
 .control-center .notification-row .notification-background .notification .notification-content .summary {
   color: @foreground;
+  font-size: 16px;
+  font-weight: bold;
   margin: 0 5px;
 }
 
 .control-center .notification-row .notification-background .notification .notification-content .time {
-  color: @foreground;
+  color: @foreground-beta;
 }
 
 .control-center .notification-row .notification-background .notification .notification-content .body {
-  color: @foreground;
+  color: @foreground-alpha;
   margin: 0 5px;
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * {
-  min-height: 5px;
+  min-height: 45px;
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  border-radius: 0px;
   color: @foreground;
-  background-color: @background;
-  margin: 7px;
+  background-color: @backgrouna-beta;
+  border: 1px solid @accent;
+  margin: 5px;
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
-  background-color: @background;
-  color: @foreground;
+  background-color: @foreground;
+  color: @background-beta;
+  text-shadow: none;
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
@@ -177,25 +189,23 @@
 }
 
 .control-center .notification-row .notification-background .close-button {
-  padding: 2px;
-  border-radius: 0px;
-  color: @foreground;
-  background-color: @background;
-  border: 1px solid @accent;
+  color: transparent;
+  background-color: transparent;
+  border: none;
 }
 
 .control-center .notification-row .notification-background .close-button:hover {
-  background-color: @foreground;
-  color: @background;
+  color: transparent;
+  background-color: transparent;
 }
 
 .control-center .notification-row .notification-background .close-button:active {
-  background-color: @foreground;
-  color: @background;
+  color: transparent;
+  background-color: transparent;
 }
 
 .control-center .notification-row .notification-background:hover {
-  background-color: @background;
+  background-color: cyan;
   color: @foreground;
 }
 
@@ -207,14 +217,13 @@
 progressbar,
 progress,
 trough {
-  border-radius: 0px;
 }
 
 progressbar {
 }
 
 .notification.critical progress {
-  background-color: @background;
+  background-color: @background-alpha;
 }
 
 .notification.low progress,
@@ -223,16 +232,15 @@ progressbar {
 }
 
 trough {
-  background-color: @background;
+  background-color: @background-alpha;
 }
 
 .control-center trough {
-  background-color: @background;
+  background-color: @background-alpha;
 }
 
 .control-center-dnd {
   margin-top: 5px;
-  border-radius: 0px;
   background: @background;
   border: 1px solid @accent;
 }
@@ -243,15 +251,19 @@ trough {
 .widget-mpris image:not(:last-child) {
   margin-top: 15px;
   margin-left: 15px;
+  background: @background-alpha;
   border: 1px solid @accent;
 }
 
 .widget-mpris label {
-  text-shadow: 0 0 2px black, 0 0 2px black;
+  text-shadow:
+    -1px -1px 2px black,
+    1px -1px 2px black,
+    -1px 1px 2px black,
+    1px 1px 2px black;
   margin-right: 20px;
   padding: 5px;
   border: 1px solid @accent;
-  border-radius: 0px;
   background: @button-alpha;
 }
 
@@ -259,9 +271,13 @@ trough {
   margin-top: 15px;
 }
 
+.widget-mpris button {
+  border: 1px solid @accent;
+}
+
 button {
   color: @foreground;
-  background: @background;
+  background: @background-alpha;
   margin: 5px;
   padding: 5px;
   border: 1px solid @accent;
@@ -271,7 +287,6 @@ button:hover {
   color: @background;
   background: @foreground;
   padding: 5px;
-  border: 1px solid @background;
 }
 
 button:disabled {
@@ -279,12 +294,12 @@ button:disabled {
 }
 
 flat image-button {
-  color: cyan;
+  color: @foreground;
 }
 
 carousel {
 }
 
 carouselindicatordots {
-  
+  color: @foreground;
 }
