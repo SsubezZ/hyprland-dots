@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+pkill hyprpaper
+hyprpaper &
+disown
 pkill waybar
 waybar &
 disown
