@@ -18,7 +18,8 @@ progress {
   border-radius: 0px;
 }
 
-image {
+image,
+label {
   background: alpha(#0f0f0f, 0.5);
   padding: 5px;
   color: white;
