@@ -13,6 +13,7 @@ plugins=(
   zsh-autosuggestions
   zsh-history-substring-search
   zsh-syntax-highlighting
+  zsh-fzf-history-search
 )
 source $ZSH/oh-my-zsh.sh
 
