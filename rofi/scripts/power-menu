@@ -40,7 +40,7 @@ icons[cancel]="\Uf0156"
 declare -A actions
 actions[lockscreen]="hyprlock"
 #actions[switchuser]="???"
-actions[logout]="wayland-logout && systemctl --user restart sddm"
+actions[logout]="hyprctl dispatch exit"
 actions[suspend]="systemctl suspend"
 actions[hibernate]="systemctl hibernate"
 actions[reboot]="systemctl reboot"
