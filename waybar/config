@@ -169,8 +169,8 @@
   "format-muted": " {volume}",
   "format-icons": {
     "headphone": "",
-    "hands-free": "",
-    "headset": "",
+    "hands-free": "󱡏",
+    "headset": "",
     "phone": "",
     "portable": "",
     "car": "",
@@ -200,8 +200,8 @@
   "format-muted": "  {volume}",
   "format-icons": {
     "headphone": "",
-    "hands-free": "",
-    "headset": "",
+    "hands-free": "󱡏",
+    "headset": "",
     "default": ["", "", ""],
   },
   "on-click": "swayosd-client --input-volume mute-toggle",
@@ -279,7 +279,7 @@
   "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
   "format-ethernet": " {ifname}",
   //"format-ethernet": " | {bandwidthDownBits}  |{bandwidthUpBits} ",
-  "format-linked": "{ifname} (No IP) ",
+  "format-linked": "{ifname} (No IP) 󰈁",
   "format-disconnected": "󰤭 ON",
   "tooltip-format-wifi": "Strenght: {signalStrength}% |  {bandwidthDownBits} |  {bandwidthUpBits}",
   "tooltip-format-ethernet": " {bandwidthDownBits} |  {bandwidthUpBits}",
@@ -438,7 +438,7 @@
   "actions":  {
     "on-scroll-up": "shift_up",
     "on-scroll-down": "shift_down"
-  }
+  },
 },
 
 //====================MODULES_RIGHT====================
@@ -455,5 +455,5 @@
   "ignore-list": ["clock-bg"],
 },
 
-}
+},
 ]

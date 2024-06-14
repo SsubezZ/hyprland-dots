@@ -10,6 +10,7 @@
   font-size: 14px;
   min-height: 0px;
   border-radius: 0px;
+  transition: none;
 }
 
 #workspaces button,
@@ -17,33 +18,32 @@
   transition: all 0.1s ease-in-out;
   padding: 4px;
   color: @text;
-  margin: 4px;
+  margin: 3px 2px 3px 2px;
   text-shadow:
     -1px -1px 2px black,
     1px -1px 2px black,
     -1px 1px 2px black,
     1px 1px 2px black;
+  border: 1px solid transparent;
 }
 
 #workspaces button.active,
 #taskbar button.active {
-  margin: 3px;
   background: @accent;
   color: @bg;
   text-shadow: none;
-  border: 1px solid @bg;
+  border: 1px solid @accent;
 }
 
 #workspaces button:hover,
 #taskbar button:hover {
-  margin: 3px;
   border: 1px solid @accent;
   opacity: 0.75;
 }
 
 #workspaces button.active:hover,
 #taskbar button.active:hover {
-  border: 1px solid @bg;
+  border: 1px solid @accent;
 }
 
 #workspaces button.empty {
@@ -53,8 +53,8 @@
 #workspaces,
 #taskbar {
   background: @bgm;
-  padding: 0;
-  margin: 5px;
+  padding: 1px 2px 1px 2px;
+  margin: 4px;
   border: 1px solid @accent;
   box-shadow:
     -1px -1px 2px black,
@@ -90,6 +90,10 @@ window#waybar {
   border-color: @cyan;
 }
 
+#waybar.fullscreen #workspaces button:not(:hover) {
+  border-color: transparent;
+}
+
 #waybar.empty #window {
   border: none;
   padding: 0;
@@ -122,7 +126,7 @@ tooltip,
   color: @text;
   padding-left: 10px;
   padding-right: 10px;
-  margin: 5px;
+  margin: 4px;
   border: 1px solid @accent;
   text-shadow:
     -1px -1px 2px black,
