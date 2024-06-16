@@ -15,7 +15,7 @@ find /lib/modules -type f -iname "ec_sys.ko.zst" -exec cp {} ~ \;
 echo on | sudo tee /sys/module/msr/parameters/allow_writes &>/dev/null
 
 if [[ "$(lsmod | grep ec_sys | cut -f1 -d' ' | tr -d '\n' | wc -c)" -ne 6 ]]; then
-	sudo rmmod ec_sys
+	sudo rmmod ec_sys &>/dev/null
 	if [ -f ~/ec_sys.ko ]; then
 		if ! sudo insmod ~/ec_sys.ko write_support=1; then
 			sudo dmesg | tail
