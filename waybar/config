@@ -448,7 +448,7 @@
   "max-length": 25,
   "all-outputs": true,
   "icon-size": 14,
-  "active-first": true,
+  "active-first": false,
   "tooltip-format": "{title}",
   "on-click": "activate",
   "on-click-right": "close",

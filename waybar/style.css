@@ -65,8 +65,7 @@
 
 #taskbar button.maximized,
 #taskbar button.fullscreen {
-  margin: 3px;
-  border: 1px solid @bg;
+  border: 1px solid @cyan;
   background: @cyan;
 }
 
@@ -75,6 +74,7 @@
   padding: 0;
   margin: 0;
   box-shadow: none;
+  opacity: 0;
 }
 
 window#waybar {
