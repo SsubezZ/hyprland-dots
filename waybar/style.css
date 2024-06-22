@@ -33,12 +33,22 @@
   color: @bg;
   text-shadow: none;
   border: 1px solid @accent;
+  box-shadow:
+    -1px -1px 2px black,
+    1px -1px 2px black,
+    -1px 1px 2px black,
+    1px 1px 2px black;
 }
 
 #workspaces button:hover,
 #taskbar button:hover {
   border: 1px solid @accent;
   opacity: 0.75;
+  box-shadow:
+    -1px -1px 2px black,
+    1px -1px 2px black,
+    -1px 1px 2px black,
+    1px 1px 2px black;
 }
 
 #workspaces button.active:hover,
@@ -65,7 +75,16 @@
 
 #taskbar button.maximized,
 #taskbar button.fullscreen {
-  border: 1px solid @cyan;
+  border-color: @cyan;
+  box-shadow:
+    -1px -1px 2px black,
+    1px -1px 2px black,
+    -1px 1px 2px black,
+    1px 1px 2px black;
+}
+
+#taskbar button.maximized.active,
+#taskbar button.fullscreen.active {
   background: @cyan;
 }
 
@@ -83,7 +102,12 @@ window#waybar {
   margin: 5px;
 }
 
-#waybar.fullscreen {
+#waybar.fullscreen .module {
+  background: @bg;
+}
+
+#waybar.fullscreen .module:hover:not(#workspaces):not(#taskbar):not(#tray) {
+  background: @cyan;
 }
 
 #waybar.fullscreen * {
@@ -91,6 +115,12 @@ window#waybar {
 }
 
 #waybar.fullscreen #workspaces button:not(:hover) {
+  border-color: transparent;
+}
+
+#waybar.fullscreen
+  #taskbar
+  button:not(.maximized):not(.fullscreen):not(:hover) {
   border-color: transparent;
 }
 
