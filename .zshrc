@@ -18,7 +18,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Plugins Customizations
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=blue
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=#435789
 ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
 
