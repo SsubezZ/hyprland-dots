@@ -2,7 +2,6 @@
 "name": "eDP-1",
 "layer": "top",
 "position": "top",
-"height": 43,
 "output": "eDP-1",
 "reload_style_on_change": true,
 
@@ -356,7 +355,6 @@
   "name": "HDMI-A-1",
   "layer": "top",
   "position": "top",
-  "height": 48,
   "output": "HDMI-A-1",
   "reload_style_on_change": true,
 
