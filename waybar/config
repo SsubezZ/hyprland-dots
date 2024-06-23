@@ -1,11 +1,8 @@
 [{
-"name": "eDP-1",
 "layer": "top",
 "position": "top",
 "output": "eDP-1",
 "reload_style_on_change": true,
-"margin-left": 4,
-"margin-right": 4,
 
 "modules-left": [
   "custom/menu",
@@ -354,12 +351,10 @@
 },
 
 {
-  "name": "HDMI-A-1",
   "layer": "top",
   "position": "top",
   "output": "HDMI-A-1",
   "reload_style_on_change": true,
-  "margin-top": 4,
 
 "modules-left": [
   "hyprland/workspaces",
