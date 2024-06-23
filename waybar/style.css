@@ -64,7 +64,7 @@
 #taskbar {
   background: @bgm;
   padding: 1px 2px 1px 2px;
-  margin: 4px;
+  margin: 0 4px 0 4px;
   border: 1px solid @accent;
   box-shadow:
     -1px -1px 2px black,
@@ -156,7 +156,7 @@ tooltip,
   color: @text;
   padding-left: 10px;
   padding-right: 10px;
-  margin: 4px;
+  margin: 0 4px 0 4px;
   border: 1px solid @accent;
   text-shadow:
     -1px -1px 2px black,
@@ -184,6 +184,7 @@ tooltip,
 
 #custom-notification {
   min-width: 22px;
+  font-size: 12px;
 }
 
 #custom-playerctl:hover,
@@ -224,10 +225,13 @@ tooltip,
   background-color: #90ceaa;
 }
 
-#custom-notification {
-  font-size: 12px;
-}
-
 tooltip {
   background: @bg;
+}
+
+#custom-menu {
+  margin-left: 0;
+}
+#custom-notification {
+  margin-right: 0;
 }
