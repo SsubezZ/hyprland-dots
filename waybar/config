@@ -8,10 +8,10 @@
   "custom/menu",
   "hyprland/workspaces",
   "hyprland/window",
-  "custom/playerctl",
+  "custom/playerctl"
 ],
 "modules-center": [
-  "clock",
+  "clock"
 ],
 "modules-right": [
   "privacy",
@@ -21,7 +21,7 @@
   "group/group-power",
   "group/group-connection",
   "group/group-vitals",
-  "custom/notification",
+  "custom/notification"
 ],
 
 //====================MODULES_LEFT====================
@@ -30,7 +30,7 @@
   "format": "󰣇",
   "on-click": "sleep 0.1 && rofi -show drun -theme-str 'listview {colums: 2;}' -modi drun,run,filebrowser || pkill rofi",
   "on-click-right": "sleep 0.1 && rofi -show powermenu -modi powermenu:/home/subez/.config/rofi/scripts/power-menu || pkill rofi",
-  "tooltip": false,
+  "tooltip": false
 },
 
 "hyprland/workspaces": {
@@ -40,7 +40,7 @@
     "3": [],
     "4": [],
     "5": [],
-    "6": [],
+    "6": []
   },
   "format": "{icon}",
   "format-icons": {
@@ -56,14 +56,14 @@
     "10": "󰥔",
     "default": "",
     "OVERVIEW": "",
-    "minimize": "",
+    "minimize": ""
   },
   "on-click": "activate",
   "on-double-click": "hyprctl dispatch togglespecialworkspace magic",
   "on-scroll-up": "hyprctl dispatch workspace m+1",
   "on-scroll-down": "hyprctl dispatch workspace m-1",
   "show-special": true,
-  "ignore-workspaces": ["special:magic", "special:magic2"],
+  "ignore-workspaces": ["special:magic", "special:magic2"]
 },
 
 "hyprland/window": {
@@ -74,11 +74,11 @@
     "LibreWolf Private Browsing": "LibreWolf Private",
     "(.*) — LibreWolf Private Browsing": "LibreWolf Private",
     "(.*) - Discord": "Discord",
-    "OBS (.*)": "OBS",
+    "OBS (.*)": "OBS"
 },
   "separate-outputs": true,
   "on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi",
-  "on-click-right": "hyprctl dispatch killactive",
+  "on-click-right": "hyprctl dispatch killactive"
 },
 
 "custom/playerctl": {
@@ -93,8 +93,8 @@
   "on-scroll-down": "playerctl --player spotify volume 0.05-",
   "format-icons": {
     "Playing": "󰏤",
-    "Paused": "󰐊",
-  },
+    "Paused": "󰐊"
+  }
 },
 
 
@@ -130,34 +130,34 @@
   "modules": [
     {
       "type": "screenshare",
-      "tooltip-icon-size": 12,
+      "tooltip-icon-size": 12
     },
     {
       "type": "audio-in",
-      "tooltip-icon-size": 12,
+      "tooltip-icon-size": 12
     },
     {
       "type": "audio-out",
-      "tooltip-icon-size": 12,
-    },
-  ],
+      "tooltip-icon-size": 12
+    }
+  ]
 },
 
 "tray": {
   "icon-size": 15,
-  "spacing": 10,
+  "spacing": 10
 },
 
 "group/group-audio": {
   "orientation": "horizontal",
   "drawer": {
     "transition-duration": 500,
-    "transition-left-to-right": false,
+    "transition-left-to-right": false
   },
   "modules": [
     "pulseaudio#output",
-    "pulseaudio#input",
-  ],
+    "pulseaudio#input"
+  ]
 },
 
 "pulseaudio#output": {
@@ -172,13 +172,13 @@
     "phone": "",
     "portable": "",
     "car": "",
-    "default": ["", "", ""],
+    "default": ["", "", ""]
   },
   "on-click": "swayosd-client --output-volume mute-toggle",
   "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume +1 --max-volume 200",
   "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume -1 --max-volume 200",
-  "max-volume": 200,
+  "max-volume": 200
 },
 
 "pulseaudio#input": {
@@ -188,7 +188,7 @@
   "on-click": "swayosd-client --input-volume mute-toggle",
   "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in || pkill rofi",
   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume +1",
-  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume -1",
+  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume -1"
 },
 
 "wireplumber": {
@@ -200,27 +200,27 @@
     "headphone": "",
     "hands-free": "󱡏",
     "headset": "",
-    "default": ["", "", ""],
+    "default": ["", "", ""]
   },
   "on-click": "swayosd-client --input-volume mute-toggle",
   "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in || pkill rofi",
   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume +1 --max-volume 150",
   "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume -1 --max-volume 150",
   "max-volume": 150,
-  "scroll-step": 2,
+  "scroll-step": 2
 },
 
 "group/group-power": {
   "orientation": "horizontal",
   "drawer": {
     "transition-duration": 500,
-    "transition-left-to-right": false,
+    "transition-left-to-right": false
   },
   "modules": [
     "battery",
     "idle_inhibitor",
-    "backlight",
-  ],
+    "backlight"
+  ]
 },
 
 "battery": {
@@ -238,7 +238,7 @@
   "format-discharging": "{icon} {capacity}",
   "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
   "on-click": "sleep 0.1 && slimbookbattery",
-  "tooltip-format": "{timeTo}\nHealth: {health}%\nPower: {power}",
+  "tooltip-format": "{timeTo}\nHealth: {health}%\nPower: {power}"
 },
 
 "idle_inhibitor": {
@@ -248,6 +248,7 @@
     "deactivated": "󰈉"
   },
   "tooltip": false,
+  "on-click-right": "hyprlock"
 },
 
 "backlight":{
@@ -255,19 +256,19 @@
   "format": "{icon} {percent}",
   "format-icons": ["󰃞","󰃝","󰃟","󰃠"],
   "on-scroll-up": "swayosd-client --brightness +2",
-  "on-scroll-down": "swayosd-client --brightness -2",
+  "on-scroll-down": "swayosd-client --brightness -2"
 },
 
 "group/group-connection": {
   "orientation": "horizontal",
   "drawer": {
     "transition-duration": 500,
-    "transition-left-to-right": false,
+    "transition-left-to-right": false
   },
   "modules": [
     "network",
-    "bluetooth",
-  ],
+    "bluetooth"
+  ]
 },
 
 "network": {
@@ -282,7 +283,7 @@
   "tooltip-format-wifi": "Strenght: {signalStrength}% |  {bandwidthDownBits} |  {bandwidthUpBits}",
   "tooltip-format-ethernet": " {bandwidthDownBits} |  {bandwidthUpBits}",
   "on-click": "sleep 0.1 && $HOME/.config/rofi/scripts/wifi.sh || pkill rofi",
-  "on-click-right": "sleep 0.1 && nm-connection-editor",
+  "on-click-right": "sleep 0.1 && nm-connection-editor"
 },
 
 "bluetooth": {
@@ -298,26 +299,26 @@
   "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
   "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
   "on-click": "$HOME/.config/rofi/scripts/bluetooth",
-  "on-click-right": "sleep 0.1 && blueman-manager",
+  "on-click-right": "sleep 0.1 && blueman-manager"
 },
 
 "group/group-vitals": {
   "orientation": "horizontal",
   "drawer": {
     "transition-duration": 500,
-    "transition-left-to-right": false,
+    "transition-left-to-right": false
   },
   "modules": [
     "memory",
-    "cpu",
-  ],
+    "cpu"
+  ]
 },
 
 "cpu": {
   "interval": 2,
   "format": " {}%",
   "max-length": 10,
-  "on-click": "sleep 0.1",
+  "on-click": "sleep 0.1"
 },
 
 "memory": {
@@ -325,7 +326,7 @@
   "format": "󰑭 {used:0.1f}GiB",
   "max-length": 10,
   "tooltip-format": "Swap: {swapUsed:0.1f}GiB",
-  "on-click": "sleep 0.1 && resources",
+  "on-click": "sleep 0.1 && resources"
 },
 
 "custom/notification": {
@@ -346,8 +347,8 @@
   "exec": "swaync-client -swb",
   "on-click": "sleep 0.1 && swaync-client -t",
   "on-click-right": "sleep 0.1 && swaync-client -d -sw",
-  "escape": true,
-},
+  "escape": true
+}
 },
 
 {
@@ -358,14 +359,14 @@
 
 "modules-left": [
   "hyprland/workspaces",
-  "hyprland/window",
-  "custom/playerctl",
+  "hyprland/window"
+ 
 ],
 "modules-center": [
-  "clock",
+  "clock"
 ],
 "modules-right": [
-  "wlr/taskbar",
+  "wlr/taskbar"
 ],
 
 //====================MODULES_LEFT====================
@@ -374,9 +375,9 @@
 "hyprland/workspaces": {
   "persistent-workspaces": {
     "7": [],
-    "8": [],
+    "8": []
   },
-  "format": " {icon} ",
+  "format": "{icon}",
   "format-icons": {
     "1": "",
     "2": "",
@@ -390,14 +391,14 @@
     "10": "󰥔",
     "default": "",
     "OVERVIEW": "",
-    "minimize": "",
+    "minimize": ""
   },
   "on-click": "activate",
   "on-double-click": "hyprctl dispatch togglespecialworkspace magic",
   "on-scroll-up": "hyprctl dispatch workspace m+1",
   "on-scroll-down": "hyprctl dispatch workspace m-1",
   "show-special": true,
-  "ignore-workspaces": ["special:magic", "special:magic2"],
+  "ignore-workspaces": ["special:magic", "special:magic2"]
 },
 
 "hyprland/window": {
@@ -408,11 +409,11 @@
     "LibreWolf Private Browsing": "LibreWolf Private",
     "(.*) — LibreWolf Private Browsing": "LibreWolf Private",
     "(.*) - Discord": "Discord",
-    "OBS (.*)": "OBS",
+    "OBS (.*)": "OBS"
 },
   "separate-outputs": true,
   "on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi",
-  "on-click-right": "hyprctl dispatch killactive",
+  "on-click-right": "hyprctl dispatch killactive"
 },
 
 //====================MODULES_CENTER====================
@@ -434,22 +435,22 @@
   "actions":  {
     "on-scroll-up": "shift_up",
     "on-scroll-down": "shift_down"
-  },
+  }
 },
 
 //====================MODULES_RIGHT====================
 
 "wlr/taskbar": {
-  "format": " {icon} ",
+  "format": "{icon}",
   "max-length": 25,
   "all-outputs": true,
-  "icon-size": 14,
+  "icon-size": 15,
   "active-first": false,
   "tooltip-format": "{title}",
   "on-click": "activate",
   "on-click-right": "close",
-  "ignore-list": ["clock-bg"],
-},
+  "ignore-list": ["clock-bg"]
+}
 
-},
+}
 ]

@@ -10,12 +10,17 @@
   font-size: 14px;
   min-height: 0px;
   border-radius: 0px;
-  transition: none;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text;
+  margin: 5px;
 }
 
 #workspaces button,
 #taskbar button {
-  transition: all 0.1s ease-in-out;
+  transition: all 0.25s ease-in-out;
   padding: 4px;
   color: @text;
   margin: 3px 2px 3px 2px;
@@ -88,20 +93,6 @@
   background: @cyan;
 }
 
-#taskbar.empty {
-  border: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
-  opacity: 0;
-}
-
-window#waybar {
-  background: @bgm;
-  color: @text;
-  margin: 5px;
-}
-
 #waybar.fullscreen .module {
   background: @bg;
 }
@@ -126,32 +117,32 @@ window#waybar {
 
 #waybar.empty #window {
   border: none;
-  padding: 0;
-  margin: 0;
   box-shadow: none;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#taskbar.empty {
+  border: none;
+  box-shadow: none;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
 }
 
 #waybar.swallowing * {
   border-color: #d0679d;
 }
 
-#custom-playerctl,
-#clock,
-#battery,
-#pulseaudio,
-#wireplumber,
-#network,
-#bluetooth,
-#privacy,
-#tray,
-tooltip,
-#backlight,
-#idle_inhibitor,
-#cpu,
-#memory,
-#window,
-#custom-notification,
-#custom-menu {
+#waybar.swallowing #workspaces button:not(:hover) {
+  border-color: transparent;
+}
+#waybar.swallowing #taskbar button:not(:hover) {
+  border-color: transparent;
+}
+
+.module {
   background: @bgm;
   color: @text;
   padding-left: 10px;
@@ -163,6 +154,17 @@ tooltip,
     1px -1px 2px black,
     -1px 1px 2px black,
     1px 1px 2px black;
+  box-shadow:
+    -1px -1px 2px black,
+    1px -1px 2px black,
+    -1px 1px 2px black,
+    1px 1px 2px black;
+}
+
+.module:hover:not(#workspaces):not(#taskbar):not(#tray) {
+  background: @text;
+  color: @bg;
+  text-shadow: none;
   box-shadow:
     -1px -1px 2px black,
     1px -1px 2px black,
@@ -187,44 +189,20 @@ tooltip,
   font-size: 12px;
 }
 
-#custom-playerctl:hover,
-#clock:hover,
-#battery:hover,
-#pulseaudio:hover,
-#wireplumber:hover,
-#network:hover,
-#bluetooth:hover,
-#backlight:hover,
-#idle_inhibitor:hover,
-#cpu:hover,
-#memory:hover,
-#window:hover,
-#custom-notification:hover,
-#custom-menu:hover {
-  background: @text;
-  color: @bg;
-  text-shadow: none;
-  /* -1px -1px 3px gray, */
-  /* 1px -1px 3px gray, */
-  /* -1px 1px 3px gray, */
-  /* 1px 1px 3px gray; */
-  box-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
-}
-
 #waybar.empty #window:hover {
   background: transparent;
 }
 
 #privacy {
+  margin: 4px;
   color: @bg;
+  padding-left: 10px;
+  padding-right: 10px;
   border: 1px solid @accent;
   background-color: #90ceaa;
 }
 
 tooltip {
   background: @bg;
+  border: 1px solid @accent;
 }
