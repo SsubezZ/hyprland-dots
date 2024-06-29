@@ -158,29 +158,29 @@ element normal.active {
   background-color:            @active;
   text-color:                  @foreground;
   border:                      1px;
-  border-radius:               1px;
+  border-radius:               0px;
   border-color:                @urgent;
 }
 element selected.normal {
   background-color:            @selected;
   text-color:                  @active;
   border:                      1px;
-  border-radius:               1px;
+  border-radius:               0px;
   border-color:                @background;
 }
 element selected.urgent {
   background-color:            @foreground;
   text-color:                  @active;
   border:                      1px;
-  border-radius:               1px;
+  border-radius:               0px;
   border-color:                @selected;
 }
 element selected.active {
   background-color:            @foreground;
   text-color:                  @background;
   border:                      1px;
-  border-radius:               1px;
-  border-color:                @selected;
+  border-radius:               0px;
+  border-color:                @background;
 }
 element-icon {
   background-color:            transparent;
