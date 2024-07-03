@@ -7,14 +7,14 @@
 "modules-left": [
   "custom/menu",
   "hyprland/workspaces",
-  "hyprland/window",
-  "custom/playerctl"
+  "hyprland/window"
 ],
 "modules-center": [
   "clock"
 ],
 "modules-right": [
   "privacy",
+  "custom/playerctl",
   "tray",
   //"wireplumber",
   "group/group-audio",
@@ -81,22 +81,16 @@
   "on-click-right": "hyprctl dispatch killactive"
 },
 
-"custom/playerctl": {
-  "format": "{icon} {}",
-  "return-type": "json",
-  "max-length": 25,
-  "exec": "playerctl --player spotify -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-  "on-click": "playerctl --player spotify previous",
-  "on-click-right": "playerctl --player spotify next",
-  "on-click-middle": "playerctl --player spotify play-pause",
-  "on-scroll-up": "playerctl --player spotify volume 0.05+",
-  "on-scroll-down": "playerctl --player spotify volume 0.05-",
-  "format-icons": {
-    "Playing": "󰏤",
-    "Paused": "󰐊"
-  }
+"wlr/taskbar": {
+  "format": "{icon}",
+  "all-outputs": true,
+  "icon-size": 15,
+  "active-first": false,
+  "tooltip-format": "{title}",
+  "on-click": "activate",
+  "on-click-right": "close",
+  "ignore-list": ["clock-bg"]
 },
-
 
 //====================MODULES_CENTER====================
 
@@ -143,6 +137,18 @@
   ]
 },
 
+"custom/playerctl": {
+  "format": "{}",
+  "return-type": "json",
+  "max-length": 15,
+  "exec": "playerctl --player spotify -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"class\": \"{{status}}\"}' -F",
+  "on-click": "playerctl --player spotify previous",
+  "on-click-right": "playerctl --player spotify next",
+  "on-click-middle": "playerctl --player spotify play-pause",
+  "on-scroll-up": "playerctl --player spotify volume 0.05+",
+  "on-scroll-down": "playerctl --player spotify volume 0.05-"
+},
+
 "tray": {
   "icon-size": 15,
   "spacing": 10
@@ -184,7 +190,7 @@
 "pulseaudio#input": {
   "format": "{format_source}",
   "format-source": "  {volume}",
-  "format-source-muted": "{volume}",
+  "format-source-muted": " {volume}",
   "on-click": "swayosd-client --input-volume mute-toggle",
   "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in || pkill rofi",
   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume +1",

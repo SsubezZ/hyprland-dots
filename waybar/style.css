@@ -20,7 +20,6 @@ window#waybar {
 
 #workspaces button,
 #taskbar button {
-  transition: all 0.25s ease-in-out;
   padding: 4px;
   color: @text;
   margin: 3px 2px 3px 2px;
@@ -30,6 +29,7 @@ window#waybar {
     -1px 1px 2px black,
     1px 1px 2px black;
   border: 1px solid transparent;
+  transition: all 0.25s linear;
 }
 
 #workspaces button.active,
@@ -76,6 +76,7 @@ window#waybar {
     1px -1px 2px black,
     -1px 1px 2px black,
     1px 1px 2px black;
+  transition: all 0.25s linear;
 }
 
 #taskbar button.maximized,
@@ -93,7 +94,7 @@ window#waybar {
   background: @cyan;
 }
 
-#waybar.fullscreen .module {
+#waybar.fullscreen .module:not(.plugged):not(.charging):not(.Playing) {
   background: @bg;
 }
 
@@ -119,7 +120,6 @@ window#waybar {
   border: none;
   box-shadow: none;
   opacity: 0;
-  margin: 0;
   padding: 0;
 }
 
@@ -144,6 +144,7 @@ window#waybar {
 
 .module {
   background: @bgm;
+  background-size: 1000% 1000%;
   color: @text;
   padding-left: 10px;
   padding-right: 10px;
@@ -159,10 +160,12 @@ window#waybar {
     1px -1px 2px black,
     -1px 1px 2px black,
     1px 1px 2px black;
+  transition: all 0.25s linear;
 }
 
 .module:hover:not(#workspaces):not(#taskbar):not(#tray) {
   background: @text;
+  background-size: 1000% 1000%;
   color: @bg;
   text-shadow: none;
   box-shadow:
@@ -189,8 +192,8 @@ window#waybar {
   font-size: 12px;
 }
 
-#waybar.empty #window:hover {
-  background: transparent;
+#custom-playerctl {
+  min-width: 150px;
 }
 
 #privacy {
@@ -205,4 +208,87 @@ window#waybar {
 tooltip {
   background: @bg;
   border: 1px solid @accent;
+}
+
+#battery.charging {
+  background: linear-gradient(
+    180deg,
+    #90ceaa,
+    @bgm,
+    @bgm,
+    #90ceaa,
+    #90ceaa,
+    @bgm,
+    @bgm
+  );
+  background-size: 750% 750%;
+  animation: gradient 5s ease infinite normal;
+}
+
+#battery.plugged {
+  background: linear-gradient(
+    180deg,
+    #add7ff,
+    @bgm,
+    @bgm,
+    #add7ff,
+    #add7ff,
+    @bgm,
+    @bgm
+  );
+  background-size: 750% 750%;
+  animation: gradient 5s linear infinite reverse;
+}
+
+#custom-playerctl.Playing {
+  background: linear-gradient(to left, #90ceaa, #add7ff, #90ceaa, #add7ff);
+  background-size: 750% 750%;
+  color: @bg;
+  text-shadow: none;
+  animation: gradient 1s linear infinite alternate;
+}
+
+#waybar.fullscreen .module.plugged {
+  background: linear-gradient(
+    180deg,
+    #add7ff,
+    @bg,
+    @bg,
+    #add7ff,
+    #add7ff,
+    @bg,
+    @bg
+  );
+  background-size: 750% 750%;
+  animation: gradient 5s linear infinite reverse;
+}
+
+#waybar.fullscreen .module.charging {
+  background: linear-gradient(
+    180deg,
+    #90ceaa,
+    @bg,
+    @bg,
+    #90ceaa,
+    #90ceaa,
+    @bg,
+    @bg
+  );
+  background-size: 750% 750%;
+  animation: gradient 5s linear infinite normal;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 10% 25%;
+  }
+  25% {
+    background-position: 25% 50%;
+  }
+  75% {
+    background-position: 50% 75%;
+  }
+  100% {
+    background-position: 75% 100%;
+  }
 }
