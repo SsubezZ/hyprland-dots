@@ -206,7 +206,7 @@
 }
 
 .control-center .notification-row .notification-background:hover {
-  background-color: cyan;
+  background-color: @background;
   color: @foreground;
 }
 
@@ -282,6 +282,7 @@ button {
   margin: 5px;
   padding: 5px;
   border: 1px solid @accent;
+  transition: all 0.25s linear;
 }
 
 button:hover {
