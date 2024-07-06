@@ -1,0 +1,102 @@
+/*****----- Global Properties -----*****/
+* {
+  font:                        "Fira Sans Nerd Font 11";
+  background:                  #0F0F0F;
+  background-alt:              #0A0A0A;
+  foreground:                  #E0E0E0;
+  selected:                    #E0E0E0;
+  active:                      #0F0F0F;
+  urgent:                      #cccccc;
+}
+
+/*****----- Main Window -----*****/
+window {
+  /* properties for window widget */
+  transparency:                "real";
+  location:                    center;
+  anchor:                      center;
+  fullscreen:                  false;
+  width:                       425px;
+  border:                      1px;
+  border-color:                @foreground;
+  /* properties for all widgets */
+  enabled:                     true;
+  border-radius:               0px;
+  cursor:                      "default";
+  background-color:            transparent;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+  enabled:                     true;
+  spacing:                     0px;
+  background-color:            rgba(15, 15, 15, 0.5);
+  orientation:                 vertical;
+  children:                    [ "inputbar", "listbox" ];
+}
+
+listbox {
+  spacing:                     10px;
+  padding:                     10px;
+  background-color:            transparent;
+  orientation:                 vertical;
+  children:                    [ "message" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+  enabled:                     true;
+  spacing:                     0px;
+  padding:                     10px 10px 0 10px;
+  background-color:            transparent;
+  text-color:                  @foreground;
+  orientation:                 horizontal;
+  children:                    [ "entry" ];
+}
+
+entry {
+  enabled:                     true;
+  expand:                      true;
+  padding:                     8px 12px;
+  border:                      1px;
+  border-radius:               0px;
+  border-color:                @selected;
+  background-color:            rgba(15, 15, 15, 0.5);
+  text-color:                  inherit;
+  cursor:                      text;
+  placeholder:                 "";
+  placeholder-color:           inherit;
+  vertical-align:              0.50;
+  horizontal-align:            0.50;
+}
+
+/*****----- Listview -----*****/
+listview {
+  enabled:                     false;
+}
+
+/*****----- Elements -----*****/
+element {
+  enabled:                     false;
+}
+
+/*****----- Message -----*****/
+message {
+  background-color:            transparent;
+}
+
+textbox {
+  padding:                     8px;
+  border-radius:               0px;
+  background-color:            @background-alt;
+  text-color:                  @foreground;
+  vertical-align:              0.50;
+  horizontal-align:            0.50;
+}
+error-message {
+  padding:                     8px;
+  border-radius:               0px;
+  background-color:            @background;
+  text-color:                  @foreground;
+}
+
