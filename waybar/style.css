@@ -178,11 +178,11 @@ window#waybar {
 #pulseaudio,
 #wireplumber,
 #backlight,
-#cpu,
 #battery {
   min-width: 46px;
 }
 
+#cpu,
 #memory {
   min-width: 67px;
 }
@@ -193,7 +193,7 @@ window#waybar {
 }
 
 #custom-playerctl {
-  min-width: 150px;
+  min-width: 100px;
 }
 
 #privacy {

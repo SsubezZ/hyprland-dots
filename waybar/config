@@ -140,7 +140,7 @@
 "custom/playerctl": {
   "format": "{}",
   "return-type": "json",
-  "max-length": 15,
+  "max-length": 10,
   "exec": "playerctl --player spotify -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"class\": \"{{status}}\"}' -F",
   "on-click": "playerctl --player spotify previous",
   "on-click-right": "playerctl --player spotify next",
