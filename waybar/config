@@ -28,8 +28,8 @@
 
 "custom/menu": {
   "format": "󰣇",
-  "on-click": "sleep 0.1 && rofi -show drun -theme-str 'listview {colums: 2;}' -modi drun,run,filebrowser || pkill rofi",
-  "on-click-right": "sleep 0.1 && rofi -show powermenu -modi powermenu:/home/subez/.config/rofi/scripts/power-menu || pkill rofi",
+  "on-click": "pkill rofi || rofi -show drun -modi drun,run,filebrowser",
+  "on-click-right": "pkill rofi || rofi -theme-str 'configuration {show-icons: false;} window {width: 300px;} inputbar {enabled: false;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher {enabled: false;}' -show powermenu -modi powermenu:/home/subez/.config/rofi/scripts/power-menu",
   "tooltip": false
 },
 
@@ -77,7 +77,7 @@
     "OBS (.*)": "OBS"
 },
   "separate-outputs": true,
-  "on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi",
+  "on-click": "pkill rofi || rofi -show window -modi window",
   "on-click-right": "hyprctl dispatch killactive"
 },
 
@@ -181,7 +181,7 @@
     "default": ["", "", ""]
   },
   "on-click": "swayosd-client --output-volume mute-toggle",
-  "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out || pkill rofi",
+  "on-click-right": "pkill rofi || rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out",
   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume +1 --max-volume 200",
   "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume -1 --max-volume 200",
   "max-volume": 200
@@ -192,7 +192,7 @@
   "format-source": "  {volume}",
   "format-source-muted": " {volume}",
   "on-click": "swayosd-client --input-volume mute-toggle",
-  "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in || pkill rofi",
+  "on-click-right": "pkill rofi || rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in",
   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume +1",
   "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume -1"
 },
@@ -209,7 +209,7 @@
     "default": ["", "", ""]
   },
   "on-click": "swayosd-client --input-volume mute-toggle",
-  "on-click-right": "sleep 0.1 && rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in || pkill rofi",
+  "on-click-right": "pkill rofi || rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in",
   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume +1 --max-volume 150",
   "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume -1 --max-volume 150",
   "max-volume": 150,
@@ -254,7 +254,7 @@
     "deactivated": "󰈉"
   },
   "tooltip": false,
-  "on-click-right": "hyprlock"
+  "on-click-right": "sleep 0.1 && hyprlock"
 },
 
 "backlight":{
@@ -288,7 +288,7 @@
   "format-disconnected": "󰤭 ON",
   "tooltip-format-wifi": "Strenght: {signalStrength}% |  {bandwidthDownBits} |  {bandwidthUpBits}",
   "tooltip-format-ethernet": " {bandwidthDownBits} |  {bandwidthUpBits}",
-  "on-click": "sleep 0.1 && $HOME/.config/rofi/scripts/wifi.sh || pkill rofi",
+  "on-click": "pkill rofi || $HOME/.config/rofi/scripts/wifi.sh",
   "on-click-right": "sleep 0.1 && nm-connection-editor"
 },
 
@@ -304,7 +304,7 @@
   "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
   "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
   "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-  "on-click": "$HOME/.config/rofi/scripts/bluetooth",
+  "on-click": "pkill rofi || $HOME/.config/rofi/scripts/bluetooth",
   "on-click-right": "sleep 0.1 && blueman-manager"
 },
 
@@ -418,7 +418,7 @@
     "OBS (.*)": "OBS"
 },
   "separate-outputs": true,
-  "on-click": "sleep 0.1 && rofi -show window -modi window || pkill rofi",
+  "on-click": "pkill rofi || rofi -show window -modi window",
   "on-click-right": "hyprctl dispatch killactive"
 },
 
