@@ -100,6 +100,7 @@ window#waybar {
 
 #waybar.fullscreen .module:hover:not(#workspaces):not(#taskbar):not(#tray) {
   background: @cyan;
+  background-size: 750% 750%;
 }
 
 #waybar.fullscreen * {
@@ -144,7 +145,7 @@ window#waybar {
 
 .module {
   background: @bgm;
-  background-size: 1000% 1000%;
+  background-size: 750% 750%;
   color: @text;
   padding-left: 10px;
   padding-right: 10px;
@@ -165,7 +166,7 @@ window#waybar {
 
 .module:hover:not(#workspaces):not(#taskbar):not(#tray) {
   background: @text;
-  background-size: 1000% 1000%;
+  background-size: 750% 750%;
   color: @bg;
   text-shadow: none;
   box-shadow:
