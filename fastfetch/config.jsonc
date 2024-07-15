@@ -3,7 +3,6 @@
 
   "logo": {
     "type": "none",
-    "separate": false,
     "padding": {
       "top": 2,
       "left": 2,
@@ -24,7 +23,6 @@
       "type": "title",
       "outputColor": "bright_underline_cyan",
       "format": "{1}{#37}@{#36}{2}",
-      "temp": true,
     },
     "os",
     "host",
