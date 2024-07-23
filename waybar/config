@@ -69,10 +69,11 @@
 "hyprland/window": {
   "format": "{title}",
   "icon": true,
+  "max-length": 50,
   "rewrite": {
-    "(.*) — LibreWolf": "LibreWolf",
-    "LibreWolf Private Browsing": "LibreWolf Private",
-    "(.*) — LibreWolf Private Browsing": "LibreWolf Private",
+    // "(.*) — LibreWolf": "LibreWolf",
+    // "LibreWolf Private Browsing": "LibreWolf Private",
+    // "(.*) — LibreWolf Private Browsing": "LibreWolf Private",
     "(.*) - Discord": "Discord",
     "OBS (.*)": "OBS"
 },
