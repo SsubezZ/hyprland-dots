@@ -47,7 +47,7 @@
     },
     {
       "type": "gpu",
-      "format": "{1} {2} @ {12} GHz - {4}",
+      "format": "{1} {2} - {4}",
       "temp": true,
     },
     "memory",

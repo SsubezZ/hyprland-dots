@@ -4,6 +4,7 @@
     "type": "data",
     "color": { "1": "cyan", "2": "white", "3": "default" },
     "source": "$3      $1/\\$3\n     $1/  \\$3\n    $1/\\   \\$3\n   $2/      \\$3\n  $2/   __   \\$3\n $2/   |$3  $2|  -\\$3\n$2/_-''$3    $2''-_\\$3",
+    "padding": { "left": 0, "right": 2 },
   },
   "display": {
     "separator": ": ",
@@ -38,6 +39,7 @@
       "type": "gpu",
       "key": " GPU",
       "hideType": "integrated",
+      "format": "{1} {2}",
       "keyColor": "cyan",
     },
     {
