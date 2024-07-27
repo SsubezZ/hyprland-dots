@@ -39,9 +39,8 @@ export PS1
 alias hypr="nvim $GIT/hyprland-dots/hypr/hyprland.conf"
 alias vim="nvim"
 alias cat="bat"
-alias startjellyfin="sudo systemctl start jellyfin"
-alias stopjellyfin="sudo systemctl stop jellyfin"
-alias clock="tty-clock -s -c -t -C 6"
+alias startjellyfin="systemctl start jellyfin"
+alias stopjellyfin="systemctl stop jellyfin"
 # Nitrosense
 alias nitro="~/.config/hypr/scripts/nitrosense"
 alias auto-nitro="~/.config/hypr/scripts/nitrosense a"
@@ -58,6 +57,7 @@ alias lt='eza -T --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 # misc
+alias clock="tty-clock -s -c -t -C 6"
 alias fetch="fastfetch"
 alias matrix="clear && unimatrix -a -b -c cyan -f -s 98 && clear"
 

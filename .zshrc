@@ -80,8 +80,8 @@ export PS1
 alias hypr="nvim $GIT/hyprland-dots/hypr/hyprland.conf"
 alias vim="nvim"
 alias cat="bat"
-alias startjellyfin="sudo systemctl start jellyfin"
-alias stopjellyfin="sudo systemctl stop jellyfin"
+alias startjellyfin="systemctl start jellyfin"
+alias stopjellyfin="systemctl stop jellyfin"
 # Nitrosense
 alias nitro="~/.config/hypr/scripts/nitrosense"
 alias auto-nitro="~/.config/hypr/scripts/nitrosense a"
