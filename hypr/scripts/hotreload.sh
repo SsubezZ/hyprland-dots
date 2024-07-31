@@ -15,7 +15,7 @@ swayosd-server -s /home/subez/.config/swayosd/style.css &
 disown
 hyprctl reload &
 disown
-notify-send -e "Refreshed!" &
+notify-send "Refreshed!" -e -h string:x-canonical-private-synchronous:hot_reload &
 disown
 
 exit
