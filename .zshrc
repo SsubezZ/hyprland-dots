@@ -25,6 +25,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC="true"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern regexp root line)
 ZSH_HIGHLIGHT_MAXLENGTH=512
 ZSH_HIGHLIGHT_STYLES[default]=none
+ZSH_HIGHLIGHT_STYLES[root]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=white
 ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=cyan,bold
 ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
@@ -102,4 +103,4 @@ alias clock="tty-clock -s -c -t -C 6"
 alias fetch="fastfetch"
 alias matrix="clear && unimatrix -a -b -c cyan -f -s 98 && clear"
 
-fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"
+if [[ ${EUID} != 0 ]]; then fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"; fi

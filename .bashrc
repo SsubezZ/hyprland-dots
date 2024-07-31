@@ -1,3 +1,4 @@
+[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 white="\033[37m"
 red="\033[31m"
 blue="\033[34m"
@@ -22,10 +23,6 @@ PS1+="${etc_color}]─["
 PS1+="${directory_color}\w"
 PS1+="${etc_color}]\n└───▶ "
 PS1+="${symbol}${reset} "
-
-# Use bash-completion, if available
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] &&
-  . /usr/share/bash-completion/bash_completion
 
 # PATH
 export VISUAL="nvim"
@@ -61,4 +58,6 @@ alias clock="tty-clock -s -c -t -C 6"
 alias fetch="fastfetch"
 alias matrix="clear && unimatrix -a -b -c cyan -f -s 98 && clear"
 
-fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"
+if [[ ${EUID} != 0 ]]; then fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"; fi
+
+[[ ${BLE_VERSION-} ]] && ble-attach
