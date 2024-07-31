@@ -29,7 +29,7 @@
 "custom/menu": {
   "format": "󰣇",
   "on-click": "pkill rofi || rofi -theme-str 'window {location: north west; x-offset: 4;}' -show drun -modi drun,run,filebrowser",
-  "on-click-right": "pkill rofi || rofi -theme-str 'configuration {show-icons: false;} window {location: north west; x-offset: 4; width: 300px;} inputbar {enabled: false;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher {enabled: false;}' -show powermenu -modi powermenu:/home/subez/.config/rofi/scripts/power-menu",
+  "on-click-right": "pkill rofi || rofi -theme-str 'configuration {show-icons: false;} window {location: north west; x-offset: 4; width: 200px;} inputbar {enabled: false;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher {enabled: false;}' -show powermenu -modi powermenu:/home/subez/.config/rofi/scripts/power-menu",
   "tooltip": false
 },
 
@@ -255,6 +255,7 @@
     "deactivated": "󰈉"
   },
   "tooltip": false,
+  "on-click": "notify-send -e -h string:x-canonical-private-synchronous:idle_inhibited 'Idle_Inhibition Changed!'",
   "on-click-right": "sleep 0.1 && hyprlock"
 },
 
