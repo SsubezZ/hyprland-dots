@@ -181,10 +181,10 @@
     "car": "",
     "default": ["", "", ""]
   },
-  "on-click": "swayosd-client --output-volume mute-toggle",
+  "on-click": "swayosd-client --output-volume mute-toggle --max-volume 200 || wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
   "on-click-right": "pkill rofi || rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out",
-  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume +1 --max-volume 200",
-  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | swayosd-client --output-volume -1 --max-volume 200",
+  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | (swayosd-client --output-volume +1 --max-volume 200 || wpctl set-volume -l '1.5' @DEFAULT_AUDIO_SINK@ 1%+)",
+  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | (swayosd-client --output-volume -1 --max-volume 200 || wpctl set-volume -l '1.5' @DEFAULT_AUDIO_SINK@ 1%-)",
   "max-volume": 200
 },
 
@@ -192,30 +192,30 @@
   "format": "{format_source}",
   "format-source": "  {volume}",
   "format-source-muted": " {volume}",
-  "on-click": "swayosd-client --input-volume mute-toggle",
+  "on-click": "swayosd-client --input-volume mute-toggle || wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
   "on-click-right": "pkill rofi || rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in",
-  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume +1",
-  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume -1"
+  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | (swayosd-client --input-volume +1 || wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+)",
+  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | (swayosd-client --input-volume -1 || wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-)"
 },
 
-"wireplumber": {
-  "format": "{icon} {volume}",
-  "format-bluetooth": "{volume} {icon}",
-  "format-bluetooth-muted": "{icon}",
-  "format-muted": "  {volume}",
-  "format-icons": {
-    "headphone": "",
-    "hands-free": "󱡏",
-    "headset": "",
-    "default": ["", "", ""]
-  },
-  "on-click": "swayosd-client --input-volume mute-toggle",
-  "on-click-right": "pkill rofi || rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in",
-  "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume +1 --max-volume 150",
-  "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume -1 --max-volume 150",
-  "max-volume": 150,
-  "scroll-step": 2
-},
+// "wireplumber": {
+//   "format": "{icon} {volume}",
+//   "format-bluetooth": "{volume} {icon}",
+//   "format-bluetooth-muted": "{icon}",
+//   "format-muted": "  {volume}",
+//   "format-icons": {
+//     "headphone": "",
+//     "hands-free": "󱡏",
+//     "headset": "",
+//     "default": ["", "", ""]
+//   },
+//   "on-click": "swayosd-client --input-volume mute-toggle",
+//   "on-click-right": "pkill rofi || rofi -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in",
+//   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume +1 --max-volume 150",
+//   "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | swayosd-client --input-volume -1 --max-volume 150",
+//   "max-volume": 150,
+//   "scroll-step": 2
+// },
 
 "group/group-power": {
   "orientation": "horizontal",
@@ -263,8 +263,10 @@
   "device": "acpi_video0",
   "format": "{icon} {percent}",
   "format-icons": ["󰃞","󰃝","󰃟","󰃠"],
-  "on-scroll-up": "swayosd-client --brightness +2",
-  "on-scroll-down": "swayosd-client --brightness -2"
+  "on-click": "swayosd-client --brightness 25 || brightnessctl set 25%",
+  "on-double-click": "swayosd-client --brightness 50 || brightnessctl set 50%",
+  "on-scroll-up": "swayosd-client --brightness +2 || brightnessctl set 2%+",
+  "on-scroll-down": "swayosd-client --brightness -2 || brightnessctl set 2%-",
 },
 
 "group/group-connection": {
