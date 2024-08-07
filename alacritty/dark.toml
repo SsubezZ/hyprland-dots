@@ -1,0 +1,37 @@
+[colors.bright]
+black = "0xa6accd"
+blue = "0xadd7ff"
+cyan = "0x89ddff"
+green = "0x5de4c7"
+magenta = "0xfae4fc"
+red = "0xf0679d"
+white = "0xffffff"
+yellow = "0xfffac2"
+
+[colors.normal]
+black = "0x1b1e28"
+blue = "0x86aaec"
+cyan = "0xadd7ff"
+green = "0x95d3af"
+magenta = "0xfcc5e9"
+red = "0xd0679d"
+white = "0xe0e0e0"
+yellow = "0xf1d8a5"
+
+[colors.primary]
+background = "0x0f0f0f"
+foreground = "0xe0e0e0"
+
+[colors.search.focused_match]
+background = "0xadd7ff"
+foreground = "0x1b1e28"
+
+[colors.search.matches]
+background = "0xadd7ff"
+foreground = "0x1b1e28"
+
+[window]
+decorations = "none"
+opacity = 0.75
+title = "Terminal"
+blur = true

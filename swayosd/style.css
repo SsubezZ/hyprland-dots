@@ -1,29 +1,35 @@
+@define-color background    @theme_bg_color;
+@define-color backgroundm   alpha(@theme_bg_color, 0.5);
+@define-color backgroundn   alpha(@theme_bg_color, 0.25);
+@define-color foreground    @theme_fg_color;
+@define-color border        @borders;
+
 window#osd {
-  background: alpha(#0f0f0f, 0.25);
-  border: 1px solid #e0e0e0;
+  background: @backgroundm;
+  border: 1px solid @border;
   border-radius: 0px;
 }
 
 progressbar {
-  background: alpha(#0f0f0f, 0.5);
+  background: @backgroundm;
   padding: 10px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid @border;
   border-radius: 0px;
 }
 
 progress {
-  background: white;
-  border: 1px solid #0f0f0f;
-  border-right: 4px solid #0f0f0f;
+  background: @foreground;
+  border: 1px solid @border;
+  border-right: 4px solid @border;
   border-radius: 0px;
 }
 
 image,
 label {
-  background: alpha(#0f0f0f, 0.5);
+  background: @backgroundm;
   padding: 5px;
-  color: white;
-  border: 1px solid #e0e0e0;
+  color: @theme_fg_color;
+  border: 1px solid @border;
   font-weight: bold;
   min-width: 40px;
   min-height: 40px;

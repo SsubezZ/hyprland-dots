@@ -3,6 +3,9 @@
 "position": "top",
 "output": "eDP-1",
 "reload_style_on_change": true,
+"margin-top": 4,
+"margin-left": 4,
+"margin-right": 4,
 
 "modules-left": [
   "custom/menu",
@@ -103,10 +106,10 @@
     "mode": "month",
     "on-scroll": 1,
     "format": {
-      "months": "<span color='#e0e0e0'>{}</span>",
-      "days": "<span color='#e0e0e0'>{}</span>",
-      "weekdays": "<span color='#e0e0e0'><u>{}</u></span>",
-      "today": "<span color='#e0e0e0'><b><u>{}</u></b></span>"
+      "months": "<span>{}</span>",
+      "days": "<span>{}</span>",
+      "weekdays": "<span><u>{}</u></span>",
+      "today": "<span><b><u>{}</u></b></span>"
     }
   },
   "actions":  {
@@ -397,6 +400,10 @@
   "position": "top",
   "output": "HDMI-A-1",
   "reload_style_on_change": true,
+  "margin-top": 4,
+  "margin-left": 4,
+  "margin-right": 4,
+
 
 "modules-left": [
   "hyprland/workspaces",

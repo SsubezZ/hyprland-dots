@@ -1,9 +1,11 @@
-@define-color bgm     alpha(#0f0f0f,0.25);
-@define-color bgn     alpha(#0f0f0f,0.75);
-@define-color bg      #0f0f0f;
-@define-color accent  #e0e0e0;
-@define-color text    #e0e0e0;
-@define-color cyan    #00cccc;
+@define-color background         @theme_bg_color;
+@define-color background-alpha   alpha(@theme_bg_color,0.25);
+@define-color background-beta    alpha(@theme_bg_color,0.75);
+@define-color border             @borders;
+@define-color accent-bg          @theme_selected_bg_color;
+@define-color accent-fg          @theme_selected_fg_color;
+@define-color text               @theme_text_color;
+@define-color cyan               #00cccc;
 
 * {
   font-family: Symbols Nerd Font;
@@ -14,9 +16,14 @@
 }
 
 window#waybar {
-  background: @bgn;
+  background: @background-beta;
   color: @text;
+  border: 1px solid alpha(@border, 0.75);
   margin: 5px;
+}
+
+#window image {
+  margin: 0 -4px 0 -4px;
 }
 
 #workspaces button,
@@ -25,41 +32,41 @@ window#waybar {
   color: @text;
   margin: 3px 2px 3px 2px;
   text-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
+    -1px -1px 2px @background,
+    1px -1px 2px @background,
+    -1px 1px 2px @background,
+    1px 1px 2px @background;
   border: 1px solid transparent;
   transition: all 0.25s linear;
 }
 
 #workspaces button.active,
 #taskbar button.active {
-  background: @accent;
-  color: @bg;
+  background: @accent-bg;
+  color: @accent-fg;
   text-shadow: none;
-  border: 1px solid @accent;
+  border: 1px solid @border;
   box-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
+    -1px -1px 2px alpha(@border, 0.25),
+    1px -1px 2px alpha(@border, 0.25),
+    -1px 1px 2px alpha(@border, 0.25),
+    1px 1px 2px alpha(@border, 0.25);
 }
 
 #workspaces button:hover,
 #taskbar button:hover {
-  border: 1px solid @accent;
+  border: 1px solid @border;
   opacity: 0.75;
   box-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
+    -1px -1px 2px alpha(@border, 0.25),
+    1px -1px 2px alpha(@border, 0.25),
+    -1px 1px 2px alpha(@border, 0.25),
+    1px 1px 2px alpha(@border, 0.25);
 }
 
 #workspaces button.active:hover,
 #taskbar button.active:hover {
-  border: 1px solid @accent;
+  border: 1px solid @border;
 }
 
 #workspaces button.empty {
@@ -68,26 +75,12 @@ window#waybar {
 
 #workspaces,
 #taskbar {
-  background: @bgm;
   padding: 1px 2px 1px 2px;
-  margin: 4px;
-  border: 1px solid @accent;
-  box-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
-  transition: all 0.25s linear;
 }
 
 #taskbar button.maximized,
 #taskbar button.fullscreen {
   border-color: @cyan;
-  box-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
 }
 
 #taskbar button.maximized.active,
@@ -96,7 +89,7 @@ window#waybar {
 }
 
 #waybar.fullscreen .module:not(.plugged):not(.charging):not(.Playing) {
-  background: @bg;
+  background: @background;
 }
 
 #waybar.fullscreen .module:hover:not(#workspaces):not(#taskbar):not(#tray) {
@@ -143,43 +136,38 @@ window#waybar {
 }
 
 .module {
-  background: @bgm;
+  background: @background-alpha;
   background-size: 750% 750%;
   color: @text;
   padding-left: 10px;
   padding-right: 10px;
-  margin: 4px;
-  border: 1px solid @accent;
+  margin: 0 4px 0 4px;
+  border: 1px solid @border;
   text-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
-  box-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
+    -1px -1px 2px @background,
+    1px -1px 2px @background,
+    -1px 1px 2px @background,
+    1px 1px 2px @background;
   transition: all 0.25s linear;
 }
 
 .module:hover:not(#workspaces):not(#taskbar):not(#tray) {
-  background: @text;
+  background: @accent-bg;
   background-size: 750% 750%;
-  color: @bg;
+  color: @accent-fg;
   text-shadow: none;
-  box-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
 }
 
 #pulseaudio,
 #wireplumber,
 #backlight,
+#custom-wl-gammarelay-brightness,
 #battery {
   min-width: 46px;
+}
+
+#custom-wl-gammarelay-temperature {
+  min-width: 55px;
 }
 
 #cpu,
@@ -194,32 +182,41 @@ window#waybar {
 
 #custom-playerctl {
   min-width: 100px;
+  background-size: 750% 750%;
 }
 
 #privacy {
-  margin: 4px;
-  color: @bg;
+  color: #0f0f0f;
   padding-left: 10px;
   padding-right: 10px;
-  border: 1px solid @accent;
+  border: 1px solid @border;
   background-color: #90ceaa;
 }
 
 tooltip {
-  background: @bg;
-  border: 1px solid @accent;
+  background: @background;
+  color: @text;
+  border: 1px solid @border;
+}
+
+.modules-left {
+  margin-left: -4px;
+}
+
+.modules-right {
+  margin-right: -4px;
 }
 
 #battery.charging {
   background: linear-gradient(
     180deg,
     #90ceaa,
-    @bgm,
-    @bgm,
+    @background-alpha,
+    @background-alpha,
     #90ceaa,
     #90ceaa,
-    @bgm,
-    @bgm
+    @background-alpha,
+    @background-alpha
   );
   background-size: 750% 750%;
   animation: gradient 5s ease infinite normal;
@@ -229,12 +226,12 @@ tooltip {
   background: linear-gradient(
     180deg,
     #add7ff,
-    @bgm,
-    @bgm,
+    @background-alpha,
+    @background-alpha,
     #add7ff,
     #add7ff,
-    @bgm,
-    @bgm
+    @background-alpha,
+    @background-alpha
   );
   background-size: 750% 750%;
   animation: gradient 5s linear infinite reverse;
@@ -243,7 +240,7 @@ tooltip {
 #custom-playerctl.Playing {
   background: linear-gradient(to left, #90ceaa, #add7ff, #90ceaa, #add7ff);
   background-size: 750% 750%;
-  color: @bg;
+  color: #0f0f0f;
   text-shadow: none;
   animation: gradient 1s linear infinite alternate;
 }
@@ -252,12 +249,12 @@ tooltip {
   background: linear-gradient(
     180deg,
     #add7ff,
-    @bg,
-    @bg,
+    @background,
+    @background,
     #add7ff,
     #add7ff,
-    @bg,
-    @bg
+    @background,
+    @background
   );
   background-size: 750% 750%;
   animation: gradient 5s linear infinite reverse;
@@ -267,12 +264,12 @@ tooltip {
   background: linear-gradient(
     180deg,
     #90ceaa,
-    @bg,
-    @bg,
+    @background,
+    @background,
     #90ceaa,
     #90ceaa,
-    @bg,
-    @bg
+    @background,
+    @background
   );
   background-size: 750% 750%;
   animation: gradient 5s linear infinite normal;

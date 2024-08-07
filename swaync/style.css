@@ -1,11 +1,13 @@
-@define-color foreground rgba(224, 224, 224, 1);
-@define-color foreground-alpha rgba(224, 224, 224, 0.9);
-@define-color foreground-beta rgba(224, 224, 224, 0.75);
-@define-color background rgba(15, 15, 15, 1);
-@define-color background-alpha rgba(15, 15, 15, 0.5);
-@define-color background-beta rgba(15, 15, 15, 0.75);
-@define-color accent rgba(224, 224, 224, 1);
-@define-color button-alpha rgba(15, 15, 15, 0.5);
+@define-color foreground         alpha(@theme_fg_color, 1);
+@define-color foreground-alpha   alpha(@theme_fg_color, 0.9);
+@define-color foreground-beta    alpha(@theme_fg_color, 0.75);
+@define-color background         alpha(@theme_bg_color, 1);
+@define-color background-alpha   alpha(@theme_base_color, 0.5);
+@define-color background-beta    alpha(@theme_base_color, 0.75);
+@define-color border             alpha(@borders, 1);
+@define-color button-alpha       alpha(@theme_selected_bg_color, 0.5);
+@define-color accent-bg          alpha(@theme_selected_bg_color, 1);
+@define-color accent-fg          alpha(@theme_selected_fg_color, 1);
 
 * {
   all: unset;
@@ -15,15 +17,10 @@
 }
 
 .floating-notifications.background .notification-row .notification-background {
-  border: 1px solid @accent;
-  margin: 0 4px 4px 0;
+  border: 1px solid @border;
+  margin: 2px 4px 4px 0;
   background-color: @background-alpha;
   color: @foreground;
-  text-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
   padding: 5px;
 }
 
@@ -60,13 +57,13 @@
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
   color: @foreground;
   background-color: @background-alpha;
-  border: 1px solid @accent;
+  border: 1px solid @border;
   margin: 5px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
-  background-color: @foreground;
-  color: @background;
+  background-color: @accent-bg;
+  color: @accent-fg;
   text-shadow: none;
 }
 
@@ -95,16 +92,11 @@
   background-color: @background-alpha;
   color: @foreground;
   padding: 10px;
-  border: 1px solid @accent;
+  border: 1px solid @border;
 }
 
 .control-center .widget-title > label {
   color: @foreground;
-  text-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
   font-size: 20px;
   font-weight: bold;
 }
@@ -112,15 +104,16 @@
 .control-center .widget-title button {
   font-weight: normal;
   color: @foreground;
-  background-color: @background-beta;
+  background-color: @background;
   margin: 0;
   padding: 10px;
-  border: 1px solid @accent;
+  border: 1px solid @border;
+  min-width: 100px;
 }
 
 .control-center .widget-title button:hover {
-  background-color: @foreground;
-  color: @background;
+  background-color: @accent-bg;
+  color: @accent-fg;
 }
 
 .control-center .widget-title button:active {
@@ -132,16 +125,16 @@
   color: @foreground;
   background-color: @background-beta;
   margin: 5px 0;
-  border: 1px solid @accent;
+  border: 1px solid @border;
 }
 
 .control-center .notification-row .notification-background .notification {
   padding: 5px;
   text-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
+    -1px -1px 2px @background-alpha,
+    1px -1px 2px @background-alpha,
+    -1px 1px 2px @background-alpha,
+    1px 1px 2px @background-alpha;
 }
 
 .control-center .notification-row .notification-background .notification.critical {
@@ -167,6 +160,10 @@
   margin: 0 5px;
 }
 
+.control-center .notification-row .notification-background .notification .notification-content image {
+  margin-left: -10px;
+}
+
 .control-center .notification-row .notification-background .notification > *:last-child > * {
   min-height: 45px;
 }
@@ -174,13 +171,13 @@
 .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
   color: @foreground;
   background-color: @backgrouna-beta;
-  border: 1px solid @accent;
+  border: 1px solid @border;
   margin: 5px;
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
-  background-color: @foreground;
-  color: @background-beta;
+  background-color: @accent-bg;
+  color: @accent-fg;
   text-shadow: none;
 }
 
@@ -206,8 +203,8 @@
 }
 
 .control-center .notification-row .notification-background:hover {
-  background-color: @background;
-  color: @foreground;
+  background-color: @accent-bg;
+  color: @accent-fg;
 }
 
 .control-center .notification-row .notification-background:active {
@@ -243,7 +240,7 @@ trough {
 .control-center-dnd {
   margin-top: 5px;
   background: @background;
-  border: 1px solid @accent;
+  border: 1px solid @border;
 }
 
 .widget-mpris {
@@ -253,19 +250,19 @@ trough {
   margin-top: 15px;
   margin-left: 15px;
   background: @background-alpha;
-  border: 1px solid @accent;
+  border: 1px solid @border;
 }
 
 .widget-mpris label {
   text-shadow:
-    -1px -1px 2px black,
-    1px -1px 2px black,
-    -1px 1px 2px black,
-    1px 1px 2px black;
+    -1px -1px 2px @background-alpha,
+    1px -1px 2px @background-alpha,
+    -1px 1px 2px @background-alpha,
+    1px 1px 2px @background-alpha;
   margin-right: 20px;
   padding: 5px;
-  border: 1px solid @accent;
-  background: @button-alpha;
+  border: 1px solid @border;
+  background: @background-alpha;
 }
 
 .widget-mpris label:first-child {
@@ -273,21 +270,23 @@ trough {
 }
 
 .widget-mpris button {
-  border: 1px solid @accent;
+  background: @background-alpha;
+  border: 1px solid @border;
 }
 
 button {
   color: @foreground;
-  background: @background-alpha;
+  background: @background-beta;
   margin: 5px;
   padding: 5px;
-  border: 1px solid @accent;
+  border: 1px solid @border;
   transition: all 0.25s linear;
+
 }
 
 button:hover {
-  color: @background;
-  background: @foreground;
+  color: @accent-fg;
+  background: @accent-bg;
   padding: 5px;
 }
 
@@ -298,7 +297,9 @@ button:disabled {
 flat image-button {
   color: @foreground;
 }
-
+image {
+  padding: 0;
+}
 carousel {
 }
 
