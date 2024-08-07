@@ -142,12 +142,12 @@
   "format": "{}",
   "return-type": "json",
   "max-length": 10,
-  "exec": "playerctl --player spotify -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"class\": \"{{status}}\"}' -F",
-  "on-click": "playerctl --player spotify previous",
-  "on-click-right": "playerctl --player spotify next",
-  "on-click-middle": "playerctl --player spotify play-pause",
-  "on-scroll-up": "playerctl --player spotify volume 0.05+",
-  "on-scroll-down": "playerctl --player spotify volume 0.05-"
+  "exec": "playerctl -i firefox -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"class\": \"{{status}}\"}' -F",
+  "on-click": "playerctl -i firefox previous",
+  "on-click-right": "playerctl -i firefox next",
+  "on-click-middle": "playerctl -i firefox play-pause",
+  "on-scroll-up": "playerctl -i firefox volume 0.05+",
+  "on-scroll-down": "playerctl -i firefox volume 0.05-"
 },
 
 "tray": {
