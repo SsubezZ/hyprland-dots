@@ -226,6 +226,8 @@
   "modules": [
     "battery",
     "idle_inhibitor",
+    "custom/wl-gammarelay-temperature",
+    "custom/wl-gammarelay-brightness",
     "backlight"
   ]
 },
@@ -267,7 +269,36 @@
   "on-double-click": "swayosd-client --brightness 50 || brightnessctl set 50%",
   "on-scroll-up": "swayosd-client --brightness +2 || brightnessctl set 2%+",
   "on-scroll-down": "swayosd-client --brightness -2 || brightnessctl set 2%-",
+  "tooltip-format": "Backlight"
 },
+
+"custom/wl-gammarelay-temperature": {
+  "format": "󰽥 {}",
+  "exec": "wl-gammarelay-rs watch {t}",
+  "on-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 4500",
+  "on-double-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500",
+  "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +100",
+  "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -100",
+  "tooltip-format": "Temperature"
+},
+
+"custom/wl-gammarelay-brightness": {
+  "format": "󰌵 {}",
+  "exec": "wl-gammarelay-rs watch {bp}",
+  "on-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d 0.8",
+  "on-double-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d 1",
+  "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d +0.01",
+  "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -0.01",
+  "tooltip-format": "Brightness"
+},
+
+// "custom/wl-gammarelay-gamma": {
+//    "format": "{}% γ",
+//    "exec": "wl-gammarelay-rs watch {g}",
+//    "on-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500",
+//    "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d +0.02",
+//    "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d -0.02"
+// },
 
 "group/group-connection": {
   "orientation": "horizontal",
