@@ -10,4 +10,4 @@ configuration {
   me-accept-entry:            "!MousePrimary";
 }
 
-@theme "/home/subez/.config/rofi/theme.rasi"
+@theme ".config/rofi/theme.rasi"

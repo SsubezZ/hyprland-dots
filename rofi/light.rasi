@@ -1,0 +1,10 @@
+* {
+  font:                        "Fira Sans Nerd Font 11";
+  background:                  #E0E0E0;
+  background-alt:              #D0D0D0;
+  foreground:                  #0F0F0F;
+  selected:                    #0F0F0F;
+  active:                      #E0E0E0;
+  urgent:                      #DDDDDD;
+  background-alpha:            rgba(255, 255, 255, 0.5);
+}

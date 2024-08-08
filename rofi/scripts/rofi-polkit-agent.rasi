@@ -1,13 +1,5 @@
-/*****----- Global Properties -----*****/
-* {
-  font:                        "Fira Sans Nerd Font 11";
-  background:                  #0F0F0F;
-  background-alt:              #0A0A0A;
-  foreground:                  #E0E0E0;
-  selected:                    #E0E0E0;
-  active:                      #0F0F0F;
-  urgent:                      #cccccc;
-}
+/*****----- Colors -----*****/
+@theme ".config/rofi/dark.rasi"
 
 /*****----- Main Window -----*****/
 window {
@@ -30,7 +22,7 @@ window {
 mainbox {
   enabled:                     true;
   spacing:                     0px;
-  background-color:            rgba(15, 15, 15, 0.5);
+  background-color:            @background-alpha;
   orientation:                 vertical;
   children:                    [ "inputbar", "listbox" ];
 }
@@ -61,7 +53,7 @@ entry {
   border:                      1px;
   border-radius:               0px;
   border-color:                @selected;
-  background-color:            rgba(15, 15, 15, 0.5);
+  background-color:            @background-alpha;
   text-color:                  inherit;
   cursor:                      text;
   placeholder:                 "";
