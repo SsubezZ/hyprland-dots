@@ -12,7 +12,7 @@ swaync-client -swb &
 disown && sleep 0.25
 pkill swayosd-server
 sleep 1
-swayosd-server -s /home/subez/.config/swayosd/style.css &
+swayosd-server -s $HOME/.config/swayosd/style.css &
 disown && sleep 0.25
 hyprctl reload &
 disown

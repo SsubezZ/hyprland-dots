@@ -10,4 +10,4 @@ configuration {
   me-accept-entry:            "!MousePrimary";
 }
 
-@theme ".config/rofi/theme.rasi"
+@theme "~/.config/rofi/theme.rasi"

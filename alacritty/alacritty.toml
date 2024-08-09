@@ -1,7 +1,7 @@
 live_config_reload = true
 working_directory = "None"
 
-import = [".config/alacritty/dark.toml"]
+import = ["~/.config/alacritty/dark.toml"]
 
 [colors.selection]
 background = "CellForeground"
