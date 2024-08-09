@@ -6,5 +6,6 @@
   selected:                    #0F0F0F;
   active:                      #E0E0E0;
   urgent:                      #DDDDDD;
+  border:                      #E1E1E1;
   background-alpha:            rgba(255, 255, 255, 0.5);
 }

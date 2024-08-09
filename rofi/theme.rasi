@@ -10,7 +10,7 @@ window {
   fullscreen:                  false;
   width:                       425px;
   border:                      1px;
-  border-color:                @foreground;
+  border-color:                @border;
   /* properties for all widgets */
   enabled:                     true;
   border-radius:               0px;
@@ -52,7 +52,7 @@ prompt {
   padding:                     8px 12px;
   border:                      1px;
   border-radius:               0px;
-  border-color:                @selected;
+  border-color:                @border;
   background-color:            @foreground;
   text-color:                  @background;
 }
@@ -63,7 +63,7 @@ textbox-prompt-colon {
   padding:                     8px 12px;
   border:                      1px;
   border-radius:               0px;
-  border-color:                @selected;
+  border-color:                @border;
   background-color:            @foreground;
   text-color:                  @background;
 }
@@ -73,7 +73,7 @@ entry {
   padding:                     8px 12px;
   border:                      1px;
   border-radius:               0px;
-  border-color:                @selected;
+  border-color:                @border;
   background-color:            @background-alpha;
   text-color:                  inherit;
   cursor:                      text;
@@ -99,7 +99,7 @@ button {
   cursor:                      pointer;
   border:                      1px;
   border-radius:               0px;
-  border-color:                @selected;
+  border-color:                @border;
 }
 button selected {
   background-color:            @selected;
@@ -157,7 +157,7 @@ element selected.normal {
 element selected.urgent {
   background-color:            @foreground;
   text-color:                  @active;
-  border-color:                @selected;
+  border-color:                @border;
 }
 element selected.active {
   background-color:            @foreground;
