@@ -14,7 +14,7 @@ if [ "$CURRENT" = "prefer-dark" ]; then
   gsettings set org.gnome.desktop.interface icon-theme Papirus-Light
   sed -i "s/dark/light/" ~/.config/alacritty/alacritty.toml
   sed -i "1s/[^ ]*[^ ]/\"$GTK_LIGHT\"/2" ~/.config/xsettingsd/xsettingsd.conf
-  sed -i "s/dark/light/" ~/.config/rofi/theme.rasi ~/.config/rofi/scripts/rofi-polkit-agent.rasi
+  sed -i "s/dark/light/" ~/.config/rofi/colorscheme.rasi
   hyprctl --batch "\
     keyword windowrulev2 opacity 1 1 override class:^(.*)$;\
     keyword general:col.active_border rgb(0F0F0F);\
@@ -26,7 +26,7 @@ else
   gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
   sed -i "s/light/dark/" ~/.config/alacritty/alacritty.toml
   sed -i "1s/[^ ]*[^ ]/\"$GTK_DARK\"/2" ~/.config/xsettingsd/xsettingsd.conf
-  sed -i "s/light/dark/" ~/.config/rofi/theme.rasi ~/.config/rofi/scripts/rofi-polkit-agent.rasi
+  sed -i "s/light/dark/" ~/.config/rofi/colorscheme.rasi
   hyprctl reload
   notify-send --app-name "Theme" "Theme Changed" "Switched to Dark" -e -h string:x-canonical-private-synchronous:themechange
 fi

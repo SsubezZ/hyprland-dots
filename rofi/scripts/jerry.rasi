@@ -1,3 +1,10 @@
+configuration {
+  me-select-entry:            "MousePrimary,MouseSecondary";
+  me-accept-entry:            "!MousePrimary";
+  hover-select:               true;
+
+}
+
 /*****----- Colors -----*****/
 @theme "~/.config/rofi/colorscheme.rasi"
 
@@ -85,7 +92,7 @@ entry {
 
 /*****----- Mode Switcher -----*****/
 mode-switcher{
-  enabled:                     true;
+  enabled:                     false;
   spacing:                     10px;
   background-color:            transparent;
   text-color:                  @foreground;

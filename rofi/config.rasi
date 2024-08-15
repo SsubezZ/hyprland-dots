@@ -8,6 +8,7 @@ configuration {
   window-format:              "{w} · {c} · {t}";
   me-select-entry:            "MousePrimary,MouseSecondary";
   me-accept-entry:            "!MousePrimary";
+  hover-select:               true;
 }
 
 @theme "~/.config/rofi/theme.rasi"

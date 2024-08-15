@@ -1,5 +1,5 @@
 /*****----- Colors -----*****/
-@theme "~/.config/rofi/dark.rasi"
+@theme "~/.config/rofi/colorscheme.rasi"
 
 /*****----- Main Window -----*****/
 window {
