@@ -11,7 +11,7 @@ elif [[ "$connected" =~ "disabled" ]]; then
 fi
 
 # Use rofi to select wifi network
-chosen_network=$(echo -e "$toggle\n$wifi_list" | uniq -u | rofi -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -3; width: 225px;} listview {columns: 1;} inputbar {enabled: false;} mode-switcher {enabled: false;}' -dmenu -i -selected-row 1 -p "Wi-Fi SSID: ")
+chosen_network=$(echo -e "$toggle\n$wifi_list" | rofi -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -4; y-offset: 2; width: 225px;} listview {columns: 1;} inputbar {enabled: false;} mode-switcher {enabled: false;}' -dmenu -i -selected-row 1)
 # Get name of connection
 read -r chosen_id <<<"${chosen_network:3}"
 
@@ -30,7 +30,7 @@ else
     nmcli connection up id "$chosen_id" | grep "successfully" && notify-send -e "Connection Established" "$success_message"
   else
     if [[ "$chosen_network" =~ "" ]]; then
-      wifi_password=$(rofi -theme-str 'window {location: north east; x-offset: -4; width: 225px;} listview {enabled: false;} mode-switcher {enabled: false;} element {enabled: false;}' -dmenu -mesg 'Input Password' -password)
+      wifi_password=$(rofi -theme-str 'window {location: north east; x-offset: -4; y-offset: 2; width: 225px;} listview {enabled: false;} mode-switcher {enabled: false;} element {enabled: false;}' -dmenu -mesg 'Input Password' -password)
     fi
     nmcli device wifi connect "$chosen_id" password "$wifi_password" | grep "successfully" && notify-send -e "Connection Established" "$success_message"
   fi

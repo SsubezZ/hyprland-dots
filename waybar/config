@@ -31,8 +31,8 @@
 
 "custom/menu": {
   "format": "󰣇",
-  "on-click": "pkill rofi || rofi -theme-str 'window {location: north west; x-offset: 4;}' -show drun -modi drun,run,filebrowser",
-  "on-click-right": "pkill rofi || rofi -theme-str 'configuration {show-icons: false;} window {location: north west; x-offset: 4; width: 200px;} inputbar {enabled: false;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher {enabled: false;}' -show powermenu -modi powermenu:$HOME/.config/rofi/scripts/power-menu",
+  "on-click": "pkill rofi || rofi -theme-str 'window {location: north west; x-offset: 4; y-offset: 2;}' -show drun -modi drun,run,filebrowser",
+  "on-click-right": "pkill rofi || rofi -theme-str 'configuration {show-icons: false;} window {location: north west; x-offset: 4; y-offset: 2; width: 200px;} inputbar {enabled: false;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher {enabled: false;}' -show powermenu -modi powermenu:$HOME/.config/rofi/scripts/power-menu",
   "tooltip": false
 },
 
@@ -370,7 +370,8 @@
   "format": "󰑭 {used:0.1f}GiB",
   "max-length": 10,
   "tooltip-format": "Swap: {swapUsed:0.1f}GiB",
-  "on-click": "sleep 0.1 && resources"
+  "on-click": "sleep 0.1 && missioncenter",
+  "on-click-right": "sleep 0.1 && resources"
 },
 
 "custom/notification": {

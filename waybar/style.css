@@ -187,6 +187,7 @@ window#waybar {
 
 #privacy {
   color: #0f0f0f;
+  margin: 0 4px 0 4px;
   padding-left: 10px;
   padding-right: 10px;
   border: 1px solid @border;
