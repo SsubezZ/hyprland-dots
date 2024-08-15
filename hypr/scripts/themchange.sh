@@ -16,7 +16,7 @@ if [ "$CURRENT" = "prefer-dark" ]; then
   sed -i "1s/[^ ]*[^ ]/\"$GTK_LIGHT\"/2" ~/.config/xsettingsd/xsettingsd.conf
   sed -i "s/dark/light/" ~/.config/rofi/theme.rasi ~/.config/rofi/scripts/rofi-polkit-agent.rasi
   hyprctl --batch "\
-    keyword windowrulev2 opacity 1 override 1 override 1 override class:(.*);\
+    keyword windowrulev2 opacity 1 1 override class:^(.*)$;\
     keyword general:col.active_border rgb(0F0F0F);\
     keyword general:col.inactive_border rgb(D0D0D0)"
   notify-send --app-name "Theme" "Theme Changed" "Switched to Light" -e -h string:x-canonical-private-synchronous:themechange
