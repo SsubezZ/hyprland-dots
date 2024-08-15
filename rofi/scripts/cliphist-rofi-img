@@ -4,8 +4,8 @@ tmp_dir="/tmp/cliphist"
 rm -rf "$tmp_dir"
 
 if [[ -n "$1" ]]; then
-    cliphist decode <<<"$1" | wl-copy
-    exit
+  cliphist decode <<<"$1" | wl-copy
+  exit
 fi
 
 mkdir -p "$tmp_dir"
@@ -18,5 +18,7 @@ match(\$0, /^([0-9]+)\s(\[\[\s)?binary.*(jpg|jpeg|png|bmp)/, grp) {
     next
 }
 1
+
 EOF
-cliphist list | gawk "$prog"
+
+cliphist list | gawk "$prog" | rofi -theme-str 'listview {columns: 1;} mode-switcher {enabled: false;}' -dmenu -display-columns 2 -display- | cut -f 2- | wl-copy
