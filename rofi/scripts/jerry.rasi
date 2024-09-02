@@ -15,7 +15,7 @@ window {
   location:                    center;
   anchor:                      center;
   fullscreen:                  false;
-  width:                       425px;
+  width:                       550px;
   border:                      1px;
   border-color:                @border;
   /* properties for all widgets */
@@ -116,7 +116,7 @@ button selected {
 /*****----- Listview -----*****/
 listview {
   enabled:                     true;
-  columns:                     2;
+  columns:                     1;
   lines:                       6;
   cycle:                       true;
   dynamic:                     true;

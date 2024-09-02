@@ -1,3 +1,7 @@
+[colors.primary]
+background = "0x0f0f0f"
+foreground = "0xe0e0e0"
+
 [colors.bright]
 black = "0xa6accd"
 blue = "0xadd7ff"
@@ -18,10 +22,6 @@ red = "0xd0679d"
 white = "0xe0e0e0"
 yellow = "0xf1d8a5"
 
-[colors.primary]
-background = "0x0f0f0f"
-foreground = "0xe0e0e0"
-
 [colors.search.focused_match]
 background = "0xadd7ff"
 foreground = "0x1b1e28"
@@ -31,7 +31,5 @@ background = "0xadd7ff"
 foreground = "0x1b1e28"
 
 [window]
-decorations = "none"
 opacity = 0.75
-title = "Terminal"
 blur = true

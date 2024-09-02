@@ -5,7 +5,7 @@
   foreground:                  #E0E0E0;
   selected:                    #E0E0E0;
   active:                      #0F0F0F;
-  urgent:                      #cccccc;
+  urgent:                      #CCCCCC;
   border:                      #2B2B2B;
   background-alpha:            rgba(15, 15, 15, 0.5);
 }
