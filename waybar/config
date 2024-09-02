@@ -100,7 +100,7 @@
 
 "clock": {
   "interval": 1,
-  "format": "{:%I:%M:%OS %p  %A  %h %d %Y}",
+  "format": "{:%I:%M:%OS %p  %A  %d %h %Y}",
   "tooltip-format": "<tt><small>{calendar}</small></tt>",
   "calendar": {
     "mode": "month",
