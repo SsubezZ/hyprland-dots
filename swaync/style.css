@@ -11,7 +11,7 @@
 
 * {
   all: unset;
-  font-family: Fira Sans Mono Font;
+  font-family: Fira Mono;
   font-size: 14px;
   border-radius: 0px;
 }
@@ -19,7 +19,7 @@
 .floating-notifications.background .notification-row .notification-background {
   border: 1px solid @border;
   margin: 2px 4px 4px 0;
-  background-color: @background-alpha;
+  background-color: @background-beta;
   color: @foreground;
   padding: 5px;
 }
@@ -89,7 +89,7 @@
 }
 
 .control-center {
-  background-color: @background-alpha;
+  background-color: @background-beta;
   color: @foreground;
   padding: 10px;
   border: 1px solid @border;

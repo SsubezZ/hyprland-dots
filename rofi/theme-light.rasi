@@ -7,5 +7,5 @@
   active:                      #E0E0E0;
   urgent:                      #DDDDDD;
   border:                      rgba (0, 0, 0, 0.15);
-  background-alpha:            rgba(255, 255, 255, 0.5);
+  background-alpha:            rgba(255, 255, 255, 0.75);
 }

@@ -1,5 +1,5 @@
 @define-color background    @theme_bg_color;
-@define-color backgroundm   alpha(@theme_bg_color, 0.5);
+@define-color backgroundm   alpha(@theme_bg_color, 0.75);
 @define-color backgroundn   alpha(@theme_bg_color, 0.25);
 @define-color foreground    @theme_fg_color;
 @define-color border        @borders;
@@ -30,6 +30,7 @@ label {
   padding: 5px;
   color: @theme_fg_color;
   border: 1px solid @border;
+  font-family: Fira Mono;
   font-weight: bold;
   min-width: 40px;
   min-height: 40px;
