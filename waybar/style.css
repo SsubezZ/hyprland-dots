@@ -162,7 +162,8 @@ window#waybar {
 #wireplumber,
 #backlight,
 #custom-wl-gammarelay-brightness,
-#battery {
+#battery,
+#network{
   min-width: 46px;
 }
 
