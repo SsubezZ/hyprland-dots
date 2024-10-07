@@ -4,6 +4,7 @@ declare -A GTK_THEMES=(["light"]="Colloid-Light" ["dark"]="Colloid-Dark")
 declare -A ICN_THEMES=(["light"]="Papirus-Light" ["dark"]="Papirus-Dark")
 declare -A CUR_THEMES=(["light"]="Graphite-dark-cursors" ["dark"]="Graphite-light-cursors")
 
+declare -A CUR_SIZE=24
 declare -A ALACRITTY_THEMES=(["light"]="theme-light.toml" ["dark"]="theme-dark.toml")
 declare -A ROFI_THEMES=(["light"]="theme-light.rasi" ["dark"]="theme-dark.rasi")
 declare -A HYPR_THEMES=(["light"]="theme-light.conf" ["dark"]="theme-dark.conf")
@@ -30,7 +31,8 @@ set_theme() {
   gsettings set org.gnome.desktop.interface gtk-theme "${GTK_THEMES[$mode]}" &>/dev/null
   gsettings set org.gnome.desktop.interface icon-theme "${ICN_THEMES[$mode]}" &>/dev/null
   gsettings set org.gnome.desktop.interface cursor-theme "${CUR_THEMES[$mode]}" &>/dev/null
-  hyprctl setcursor "${CUR_THEMES[$mode]}" 24 &>/dev/null
+  gsettings set org.gnome.desktop.interface cursor-size "$CUR_SIZE" &>/dev/null
+  hyprctl setcursor "${CUR_THEMES[$mode]}" "$CUR_SIZE" &>/dev/null
 
   echo "Updating xsettingsd configuration..."
   sed -i -e "/^Net\/ThemeName/s/\"[^\"]*\"/\"${GTK_THEMES[$mode]}\"/" \
@@ -43,7 +45,6 @@ set_theme() {
 
   echo "Applying Rofi theme..."
   sed -i "/^@theme .*theme-.*\.rasi/s|@theme \".*\"|@theme \"${ROFI_THEMES[$mode]}\"|" ~/.config/rofi/colorscheme.rasi &>/dev/null
-
   echo "Applying Hyprland theme..."
   sed -i "/^source = .*theme-.*\.conf/s|source = .*|source = ./themes/${HYPR_THEMES[$mode]}|" ~/.config/hypr/hyprland.conf &>/dev/null
 
