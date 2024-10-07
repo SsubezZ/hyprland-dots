@@ -1,22 +1,57 @@
 #!/usr/bin/env bash
 
-pkill hyprpaper
-hyprpaper &
-disown && sleep 0.25
-pkill waybar
-waybar &
-disown && sleep 0.25
+reload_process() {
+  local process_name=$1
+  local start_command=$2
+
+  pkill "$process_name"
+
+  while pgrep -x "$process_name" >/dev/null; do
+    sleep 0.1
+  done
+
+  $start_command &
+  disown
+}
+
+reload_process "hyprpaper" "hyprpaper" &
+reload_process "waybar" "waybar" &
+wait
+
 swaync-client -R &
 swaync-client -rs &
 swaync-client -swb &
-disown && sleep 0.25
+disown
+
 pkill swayosd-server
-sleep 1
-swayosd-server -s $HOME/.config/swayosd/style.css &
-disown && sleep 0.25
+while pgrep -x "swayosd-server" >/dev/null; do
+  sleep 0.1
+done
+swayosd-server -s "$HOME/.config/swayosd/style.css" &
+disown
+
 hyprctl reload &
 disown
-notify-send --app-name "Hot Reload" "Hot Reload" "Refreshed!\n  Hyprpaper\n  Waybar\n  Swaync\n  Swayosd\n  Hyprctl" -e -h string:x-canonical-private-synchronous:hot_reload &
-disown && sleep 0.25
+
+restarted="Hyprpaper\nWaybar\nSwaync\nSwayOSD\nHyprctl"
+
+if ! pgrep -x "hyprpaper" >/dev/null; then
+  restarted="${restarted/Hyprpaper/}"
+fi
+
+if ! pgrep -x "waybar" >/dev/null; then
+  restarted="${restarted/Waybar/}"
+fi
+
+if ! pgrep -x "swaync-client" >/dev/null; then
+  restarted="${restarted/Swaync/}"
+fi
+
+if ! pgrep -x "swayosd-server" >/dev/null; then
+  restarted="${restarted/SwayOSD/}"
+fi
+
+notify-send --app-name "Hot Reload" "Hot Reload" "Refreshed!\n$restarted" -e -h string:x-canonical-private-synchronous:hot_reload &
+disown
 
 exit
