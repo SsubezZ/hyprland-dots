@@ -32,7 +32,7 @@
 "custom/menu": {
   "format": "󰣇",
   "on-click": "pkill rofi || rofi -theme-str 'window {location: north west; x-offset: 4; y-offset: 2;}' -show drun -modi run,drun,filebrowser",
-  "on-click-right": "pkill rofi || rofi -theme-str 'configuration {show-icons: false;} window {location: north west; x-offset: 4; y-offset: 2; width: 200px;} inputbar {enabled: false;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher {enabled: false;}' -show powermenu -modi powermenu:$HOME/.config/rofi/scripts/power-menu",
+  "on-click-right": "pkill rofi || $HOME/.config/rofi/scripts/power-menu",
   "tooltip": false
 },
 
@@ -252,7 +252,7 @@
   "format-full": "󱟢 {capacity}",
   "format-discharging": "{icon} {capacity}",
   "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-  "on-click": "sleep 0.1 && slimbookbattery",
+  "on-click": "sleep 0.1 && power-options-gtk",
   "tooltip-format": "{timeTo}\nHealth: {health}%\nPower: {power}"
 },
 
