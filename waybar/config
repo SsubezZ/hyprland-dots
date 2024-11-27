@@ -378,7 +378,7 @@
 
 "custom/notification": {
   "tooltip": false,
-  "format": "{icon}<span><sup>{}</sup></span>",
+  "format": "{icon}<span><sup>{0}</sup></span>",
   "format-icons": {
     "notification": "",
     "none": "",
