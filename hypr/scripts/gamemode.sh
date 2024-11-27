@@ -13,10 +13,12 @@ if [ "$HYPRGAMEMODE" = 1 ]; then
     # keyword general:border_size 1;\
     # keyword decoration:rounding 0"
   notify-send --app-name "Gamemode" "Gamemode Enabled" "Decorations Diasabled" -e -h string:x-canonical-private-synchronous:gamemode
+  hyprpm enable csgo-vulkan-fix
 else
   hyprpaper &
   hyprctl reload
   notify-send --app-name "Gamemode" "Gamemode Disabled" "Decorations Enabled" -e -h string:x-canonical-private-synchronous:gamemode
+  hyprpm disable csgo-vulkan-fix
 fi
 
 exit
