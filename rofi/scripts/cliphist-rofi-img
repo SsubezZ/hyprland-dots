@@ -21,4 +21,4 @@ match(\$0, /^([0-9]+)\s(\[\[\s)?binary.*(jpg|jpeg|png|bmp)/, grp) {
 
 EOF
 
-cliphist list | gawk "$prog" | rofi -theme-str 'listview {columns: 1;} mode-switcher {enabled: false;}' -dmenu -display-columns 2 -display- | cut -f 2- | wl-copy
+cliphist list | gawk "$prog"
