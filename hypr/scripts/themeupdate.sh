@@ -62,9 +62,8 @@ echo "Tweaks: $TWEAKS"
 echo "Colorscheme: $COLORSCHEME"
 
 echo
-echo "Cleaning up old theme directories..."
+echo "Cleaning up old clone directory..."
 suppress_output rm -rf "$BASE_DIR"
-suppress_output rm -rf "${THEME_DIR:?}/${THEME_NAME:?}"*
 
 echo
 echo "Cloning the theme repository..."
@@ -104,6 +103,10 @@ find . -depth -name "$THEME_NAME*" | while read -r path; do
     echo "Renamed $path to $new_path"
   fi
 done
+
+echo
+echo "Cleaning up old theme directories..."
+suppress_output rm -rf "${THEME_DIR:?}/${THEME_NAME:?}"*
 
 echo
 echo "Copying themes to the themes directory..."

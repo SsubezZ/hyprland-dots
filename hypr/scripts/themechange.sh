@@ -1,6 +1,7 @@
 #!/bin/bash
 
-declare -A GTK_THEMES=(["light"]="Colloid-Light" ["dark"]="Colloid-Dark")
+# declare -A GTK_THEMES=(["light"]="Colloid-Light" ["dark"]="Colloid-Dark")
+declare -A GTK_THEMES=(["light"]="Graphite-Light" ["dark"]="Graphite-Dark")
 declare -A ICN_THEMES=(["light"]="Papirus-Light" ["dark"]="Papirus-Dark")
 declare -A CUR_THEMES=(["light"]="Graphite-dark-cursors" ["dark"]="Graphite-light-cursors")
 
@@ -61,7 +62,7 @@ post() {
   killall -HUP xsettingsd &>/dev/null
   echo "Reloading Hyprland..."
   hyprctl reload &>/dev/null
-  echo "Reloading Yazi..."
+  # echo "Reloading Yazi..."
   # yazi --reload &>/dev/null
   if pgrep -x spotify >/dev/null; then
     echo "Restarting Spicetify watch..."
