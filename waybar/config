@@ -82,7 +82,9 @@
 },
   "separate-outputs": true,
   "on-click": "pkill rofi || rofi -theme-str 'window {location: north west; x-offset: 240; y-offset: 2;}' -show window -modi window",
-  "on-click-right": "hyprctl dispatch killactive"
+  "on-click-right": "hyprctl dispatch killactive",
+  "on-scroll-up": "hyprctl dispatch movefocus r",
+  "on-scroll-down": "hyprctl dispatch movefocus l",
 },
 
 "wlr/taskbar": {
