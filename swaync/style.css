@@ -114,6 +114,7 @@
 .control-center .widget-title button:hover {
   background-color: @accent-bg;
   color: @accent-fg;
+  border: 1px solid @background;
 }
 
 .control-center .widget-title button:active {
@@ -287,6 +288,7 @@ button {
 button:hover {
   color: @accent-fg;
   background: @accent-bg;
+  border: 1px solid @background;
   padding: 5px;
 }
 

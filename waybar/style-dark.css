@@ -16,7 +16,7 @@
 }
 
 window#waybar {
-  background: @background;
+  background: @background-beta;
   color: @text;
   border: 1px solid alpha(@border, 0.75);
   margin: 5px;
