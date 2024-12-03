@@ -32,7 +32,7 @@
 "custom/menu": {
   "format": "󰣇",
   "on-click": "pkill rofi || rofi -theme-str 'window {location: north west; x-offset: 4; y-offset: 2;}' -show drun -modi run,drun,filebrowser",
-  "on-click-right": "pkill rofi || $HOME/.config/rofi/scripts/power-menu",
+  "on-click-right": "pkill rofi || $HOME/.config/rofi/scripts/power-menu waybar",
   "tooltip": false
 },
 
