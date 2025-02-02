@@ -1,7 +1,9 @@
 [{
+"id": 1,
 "layer": "top",
 "position": "top",
 "output": "eDP-1",
+"ipc": false,
 "reload_style_on_change": true,
 "margin-top": 4,
 "margin-left": 4,
@@ -399,6 +401,7 @@
 },
 
 {
+  "id": 2,
   "layer": "top",
   "position": "top",
   "output": "HDMI-A-1",
@@ -502,6 +505,43 @@
   "on-click-right": "close",
   "ignore-list": ["clock-bg"]
 }
+
+},
+
+
+
+{
+  "id": 3,
+  "layer": "top",
+  "position": "bottom",
+  "output": "eDP-1",
+  "ipc": true,
+  "start_hidden": true,
+  "reload_style_on_change": true,
+  "margin-bottom": 4,
+  "margin-left": 4,
+  "margin-right": 4,
+
+  "modules-left": [
+  ],
+  "modules-center": [
+    "wlr/taskbar"
+  ],
+  "modules-right": [
+  ],
+
+"wlr/taskbar": {
+  "format": "{icon}",
+  "max-length": 25,
+  "all-outputs": true,
+  "icon-size": 15,
+  "active-first": false,
+  "tooltip-format": "{title}",
+  "on-click": "activate",
+  "on-click-right": "close",
+  "ignore-list": ["clock-bg"]
+}
+
 
 }
 ]
