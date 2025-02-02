@@ -27,7 +27,7 @@ pkill swayosd-server
 while pgrep -x "swayosd-server" >/dev/null; do
   sleep 0.1
 done
-swayosd-server -s "$HOME/.config/swayosd/style.css" &
+swayosd-server
 disown
 
 hyprctl reload &
