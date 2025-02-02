@@ -1,39 +1,55 @@
 @define-color background    @theme_bg_color;
 @define-color backgroundm   alpha(@theme_bg_color, 0.75);
 @define-color backgroundn   alpha(@theme_bg_color, 0.25);
+@define-color accent-bg     @theme_selected_bg_color;
+@define-color accent-fg     @theme_selected_fg_color;
 @define-color foreground    @theme_fg_color;
 @define-color border        @borders;
 
 window#osd {
   background: @backgroundm;
-  padding: 0px;
-  margin: 0px;
+  color: @accent-bg;
+  padding: 5px;
+  margin: 10px;
   border: 1px solid @border;
   border-radius: 0px;
 }
 
 progressbar {
-  min-width: 100px;
   background: @backgroundm;
+  color: @accent-bg;
   padding: 10px;
+  margin: 5px;
   border: 1px solid @border;
   border-radius: 0px;
 }
 
 progress {
-  background: @foreground;
+  background: @accent-bg;
+  color: @backgroundm;
   border: 1px solid @border;
   border-right: 4px solid @border;
   border-radius: 0px;
+  transition: all 0.25s ease;
+}
+
+trough {
+  background: @backgroundn;
+  border: 1px solid @border;
 }
 
 image,
 label {
   background: @backgroundm;
+  color: @accent-bg;
   padding: 5px;
   margin: -5px;
-  color: @theme_fg_color;
   border: 1px solid @border;
+  text-shadow:
+    -1px -1px 2px @background,
+    1px -1px 2px @background,
+    -1px 1px 2px @background,
+    1px 1px 2px @background;
   font-family: Fira Mono;
   font-size: 14px;
   font-weight: bold;
