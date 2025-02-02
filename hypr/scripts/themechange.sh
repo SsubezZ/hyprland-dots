@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# declare -A GTK_THEMES=(["light"]="Colloid-Light" ["dark"]="Colloid-Dark")
-declare -A GTK_THEMES=(["light"]="Graphite-Light" ["dark"]="Graphite-Dark")
+declare -A GTK_THEMES=(["light"]="Colloid-light" ["dark"]="Colloid-dark")
+# declare -A GTK_THEMES=(["light"]="Graphite-light" ["dark"]="Graphite-dark")
 declare -A ICN_THEMES=(["light"]="Papirus-Light" ["dark"]="Papirus-Dark")
 declare -A CUR_THEMES=(["light"]="Graphite-dark-cursors" ["dark"]="Graphite-light-cursors")
 
@@ -22,6 +22,11 @@ pre() {
   #   spicetify watch -s &>/dev/null &
   #   sleep 1 && pkill -x spicetify &>/dev/null
   # fi
+	if pgrep -x spotify >/dev/null; then
+		echo "Starting Spicetify watch..."
+		spicetify watch -s &>/dev/null &
+		sleep 1 && pkill -x spicetify &>/dev/null
+	fi
 }
 
 set_theme() {

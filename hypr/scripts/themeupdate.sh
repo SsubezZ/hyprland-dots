@@ -93,8 +93,6 @@ echo "Renaming theme files..."
 cd "$BASE_DIR/build" || exit 1
 find . -depth -name "$THEME_NAME*" | while read -r path; do
   new_path=$(dirname "$path")/$(
-    basename "$path" | sed -e 's/\(Blue\|Purple\|Pink\|Red\|Orange\|Yellow\|Green\|Teal\|Grey\|Compact\|compact\)-//gI' \
-      -e 's/-\(Nord\|Dracula\|Gruvbox\|Everforest\|Catppuccin\|Compact\|compact\)//gI'
   )
 
   if [ "$path" != "$new_path" ]; then
@@ -102,6 +100,10 @@ find . -depth -name "$THEME_NAME*" | while read -r path; do
     suppress_output mv "$path" "$new_path"
     echo "Renamed $path to $new_path"
   fi
+		basename "$path" | sed -e 's/\(Blue\|Purple\|Pink\|Red\|Orange\|Yellow\|Green\|Teal\|Grey\|Compact\|compact\)-//gI' \
+			-e 's/-\(Nord\|Dracula\|Gruvbox\|Everforest\|Catppuccin\|Compact\|compact\)//gI' \
+			-e 's/-Dark/-dark/g' \
+			-e 's/-Light/-light/g'
 done
 
 echo
@@ -113,14 +115,14 @@ echo "Copying themes to the themes directory..."
 suppress_output cp -r $THEME_NAME* "$THEME_DIR"
 
 if [[ "$(suppress_output gsettings get org.gnome.desktop.interface color-scheme | cut -d "'" -f2 | xargs)" == "prefer-light" ]]; then
-  THEME_NAME="$THEME_NAME"-Light
   TEMP_THEME="Adwaita"
   THEME_COLOR="prefer-light"
+	THEME_NAME="$THEME_NAME"-light
 
 else
-  THEME_NAME="$THEME_NAME"-Dark
   TEMP_THEME="Adwaita-dark"
   THEME_COLOR="prefer-dark"
+	THEME_NAME="$THEME_NAME"-dark
 fi
 
 echo
