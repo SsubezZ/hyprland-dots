@@ -31,7 +31,7 @@
 
 "custom/menu": {
   "format": "󰣇",
-  "on-click": "pkill rofi || rofi -theme-str 'window {location: north west; x-offset: 4; y-offset: 2;}' -show drun -modi run,drun,filebrowser",
+  "on-click": "pkill rofi || rofi -theme-str 'window {location: north west; x-offset: 4; y-offset: 2;} listview {columns: 2;}' -show drun -modi run,drun,filebrowser",
   "on-click-right": "pkill rofi || $HOME/.config/rofi/scripts/power-menu waybar",
   "tooltip": false
 },
@@ -81,7 +81,7 @@
     "OBS (.*)": "OBS"
 },
   "separate-outputs": true,
-  "on-click": "pkill rofi || rofi -theme-str 'window {location: north west; x-offset: 240; y-offset: 2;}' -show window -modi window",
+  "on-click": "pkill rofi || rofi -theme-str 'window {location: north west; width: 600px; x-offset: 234; y-offset: 2;}' -show window -modi window",
   "on-click-right": "hyprctl dispatch killactive",
   "on-scroll-up": "hyprctl dispatch movefocus r",
   "on-scroll-down": "hyprctl dispatch movefocus l",
@@ -188,7 +188,7 @@
     "default": ["", "", ""]
   },
   "on-click": "swayosd-client --output-volume mute-toggle --max-volume 200 || wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-  "on-click-right": "pkill rofi || rofi -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -305; y-offset: 2; width: 250px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;}' -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out",
+  "on-click-right": "pkill rofi || rofi -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -307; y-offset: 2; width: 250px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;}' -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out",
   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | (swayosd-client --output-volume +1 --max-volume 200 || wpctl set-volume -l '1.5' @DEFAULT_AUDIO_SINK@ 1%+)",
   "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | (swayosd-client --output-volume -1 --max-volume 200 || wpctl set-volume -l '1.5' @DEFAULT_AUDIO_SINK@ 1%-)",
   "max-volume": 200
@@ -199,7 +199,7 @@
   "format-source": "  {volume}",
   "format-source-muted": " {volume}",
   "on-click": "swayosd-client --input-volume mute-toggle || wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-  "on-click-right": "pkill rofi || rofi -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -381; y-offset: 2; width: 250px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;}' -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in",
+  "on-click-right": "pkill rofi || rofi -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -383; y-offset: 2; width: 250px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;}' -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in",
   "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | (swayosd-client --input-volume +1 || wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+)",
   "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | (swayosd-client --input-volume -1 || wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-)"
 },

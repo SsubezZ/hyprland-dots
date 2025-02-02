@@ -1,5 +1,4 @@
 * {
-  font:                        "Fira Sans Nerd Font 11";
   background:                  #0F0F0F;
   background-alt:              #0A0A0A;
   foreground:                  #E0E0E0;
@@ -8,4 +7,8 @@
   urgent:                      #CCCCCC;
   border:                      #2B2B2B;
   background-alpha:            rgba(15, 15, 15, 0.5);
+}
+
+configuration {
+  icon-theme:                  "Papirus-Dark";
 }

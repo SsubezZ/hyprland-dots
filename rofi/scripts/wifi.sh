@@ -11,7 +11,7 @@ elif [[ "$connected" =~ "disabled" ]]; then
 fi
 
 # Use rofi to select wifi network
-chosen_network=$(echo -e "$toggle\n$wifi_list" | rofi -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -153; y-offset: 2; width: 225px;} listview {columns: 1;} inputbar {enabled: false;} mode-switcher {enabled: false;}' -dmenu -i -selected-row 1)
+chosen_network=$(echo -e "$toggle\n$wifi_list" | rofi -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -155; y-offset: 2; width: 225px;} listview {columns: 1;} inputbar {enabled: false;} mode-switcher {enabled: false;}' -dmenu -i -selected-row 1)
 # Get name of connection
 read -r chosen_id <<<"${chosen_network:3}"
 

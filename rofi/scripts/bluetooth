@@ -216,7 +216,7 @@ device_menu() {
   options="$connected\n$paired\n$trusted\n$divider\n$goback\nExit"
 
   # Open rofi menu, read chosen option
-  chosen="$(echo -e "$options" | $rofi_command -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -239; y-offset: 2; width: 225px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;} mode-switcher {enabled: false;}' "$device_name")"
+  chosen="$(echo -e "$options" | $rofi_command -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -231; y-offset: 2; width: 225px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;} mode-switcher {enabled: false;}' "$device_name")"
 
   # Match chosen option to command
   case "$chosen" in
@@ -261,7 +261,7 @@ show_menu() {
   fi
 
   # Open rofi menu, read chosen option
-  chosen="$(echo -e "$options" | $rofi_command -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -239; y-offset: 2; width: 225px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;} mode-switcher {enabled: false;}' "Bluetooth")"
+  chosen="$(echo -e "$options" | $rofi_command -theme-str 'configuration {show-icons: false;} window {location: north east; x-offset: -231; y-offset: 2; width: 225px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;} mode-switcher {enabled: false;}' "Bluetooth")"
 
   # Match chosen option to command
   case "$chosen" in

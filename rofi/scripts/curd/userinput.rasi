@@ -1,0 +1,10 @@
+/*****----- Main -----*****/
+@theme "~/.config/rofi/theme.rasi"
+
+/*****----- Main Window -----*****/
+window {
+  width:                       500px;
+}
+listbox{
+  children:                    [ "message" ];
+}

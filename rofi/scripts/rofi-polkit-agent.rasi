@@ -1,65 +1,14 @@
-/*****----- Colors -----*****/
-@theme "~/.config/rofi/colorscheme.rasi"
+/*****----- Main -----*****/
+@theme "~/.config/rofi/theme.rasi"
 
 /*****----- Main Window -----*****/
-window {
-  /* properties for window widget */
-  transparency:                "real";
-  location:                    center;
-  anchor:                      center;
-  fullscreen:                  false;
-  width:                       425px;
-  border:                      1px;
-  border-color:                @border;
-  /* properties for all widgets */
-  enabled:                     true;
-  border-radius:               0px;
-  cursor:                      "default";
-  background-color:            transparent;
-}
-
-/*****----- Main Box -----*****/
-mainbox {
-  enabled:                     true;
-  spacing:                     0px;
-  background-color:            @background-alpha;
-  orientation:                 vertical;
-  children:                    [ "inputbar", "listbox" ];
-}
-
 listbox {
-  spacing:                     10px;
-  padding:                     10px;
-  background-color:            transparent;
-  orientation:                 vertical;
   children:                    [ "message" ];
 }
 
-/*****----- Inputbar -----*****/
-inputbar {
-  enabled:                     true;
-  spacing:                     0px;
-  padding:                     10px 10px 0 10px;
-  background-color:            transparent;
-  text-color:                  @foreground;
-  orientation:                 horizontal;
-  children:                    [ "entry" ];
-}
-
-entry {
-  enabled:                     true;
-  expand:                      true;
-  padding:                     8px 12px;
-  border:                      1px;
-  border-radius:               0px;
-  border-color:                @border;
-  background-color:            @background-alpha;
-  text-color:                  inherit;
-  cursor:                      text;
-  placeholder:                 "";
-  placeholder-color:           inherit;
-  vertical-align:              0.50;
-  horizontal-align:            0.50;
+/*****----- Mode Switcher -----*****/
+mode-switcher {
+  enabled:                     false;
 }
 
 /*****----- Listview -----*****/
@@ -70,25 +19,5 @@ listview {
 /*****----- Elements -----*****/
 element {
   enabled:                     false;
-}
-
-/*****----- Message -----*****/
-message {
-  background-color:            transparent;
-}
-
-textbox {
-  padding:                     8px;
-  border-radius:               0px;
-  background-color:            @background-alt;
-  text-color:                  @foreground;
-  vertical-align:              0.50;
-  horizontal-align:            0.50;
-}
-error-message {
-  padding:                     8px;
-  border-radius:               0px;
-  background-color:            @background;
-  text-color:                  @foreground;
 }
 

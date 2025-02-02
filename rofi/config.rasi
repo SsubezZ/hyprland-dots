@@ -1,5 +1,6 @@
 configuration {
   show-icons:                 true;
+  font:                        "Fira Book Nerd Font 11";
   display-drun:               "Apps";
   display-run:                "Run";
   display-filebrowser:        "Files";

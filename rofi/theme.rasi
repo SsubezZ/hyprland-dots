@@ -39,7 +39,7 @@ listbox {
 inputbar {
   enabled:                     true;
   spacing:                     0px;
-  padding:                     10px 10px 0 10px;
+  padding:                     10px 10px 1px 10px;
   background-color:            transparent;
   text-color:                  @foreground;
   orientation:                 horizontal;
@@ -86,6 +86,7 @@ entry {
 /*****----- Mode Switcher -----*****/
 mode-switcher{
   enabled:                     true;
+  padding:                     0 0 1px 0;
   spacing:                     10px;
   background-color:            transparent;
   text-color:                  @foreground;
@@ -94,7 +95,7 @@ button {
   enabled:                     true;
   padding:                     8px;
   border-radius:               0px;
-  background-color:            @background-alt;
+  background-color:            @background-alpha;
   text-color:                  inherit;
   cursor:                      pointer;
   border:                      1px;
@@ -109,7 +110,7 @@ button selected {
 /*****----- Listview -----*****/
 listview {
   enabled:                     true;
-  columns:                     2;
+  columns:                     1;
   lines:                       6;
   cycle:                       true;
   dynamic:                     true;
