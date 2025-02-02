@@ -18,72 +18,133 @@
 
 .floating-notifications.background .notification-row .notification-background {
   border: 1px solid @border;
-  margin: 2px 4px 4px 0;
+  margin: 2px 4px 0 0;
   background-color: @background-beta;
   color: @foreground;
   padding: 5px;
+  transition:
+    background-color 0.25s linear,
+    color 0.25s linear,
+    border-color 0.5s linear;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification {
   padding: 5px;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification.critical {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification.critical {
 }
 
-.floating-notifications.background .notification-row .notification-background .notification .notification-content {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification
+  .notification-content {
   margin: 5px;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification .notification-content .summary {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification
+  .notification-content
+  .summary {
   color: @foreground;
   font-weight: bold;
   margin: 0 5px;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification .notification-content .time {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification
+  .notification-content
+  .time {
   color: @foreground-beta;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification .notification-content .body {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification
+  .notification-content
+  .body {
   color: @foreground-alpha;
   margin: 0 5px;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > * {
   min-height: 45px;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > *
+  .notification-action {
   color: @foreground;
   background-color: @background-alpha;
   border: 1px solid @border;
   margin: 5px;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > *
+  .notification-action:hover {
   background-color: @accent-bg;
   color: @accent-fg;
   text-shadow: none;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > *
+  .notification-action:active {
   background-color: @background;
   color: @foreground;
 }
 
-.floating-notifications.background .notification-row .notification-background .close-button {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .close-button {
   color: transparent;
   background-color: transparent;
   border: none;
 }
 
-.floating-notifications.background .notification-row .notification-background .close-button:hover {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .close-button:hover {
   color: transparent;
   background-color: transparent;
 }
 
-.floating-notifications.background .notification-row .notification-background .close-button:active {
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .close-button:active {
   color: transparent;
   background-color: transparent;
 }
@@ -93,6 +154,10 @@
   color: @foreground;
   padding: 10px;
   border: 1px solid @border;
+  transition:
+    background-color 0.25s linear,
+    color 0.25s linear,
+    border-color 0.5s linear;
 }
 
 .control-center .widget-title > label {
@@ -104,7 +169,7 @@
 .control-center .widget-title button {
   font-weight: normal;
   color: @foreground;
-  background-color: @background;
+  background-color: @background-alpha;
   margin: 0;
   padding: 10px;
   border: 1px solid @border;
@@ -125,7 +190,7 @@
 .control-center .notification-row .notification-background {
   color: @foreground;
   background-color: @background-beta;
-  margin: 5px 0;
+  margin: 1px 0;
   border: 1px solid @border;
 }
 
@@ -138,51 +203,101 @@
     1px 1px 2px @background-alpha;
 }
 
-.control-center .notification-row .notification-background .notification.critical {
+.control-center
+  .notification-row
+  .notification-background
+  .notification.critical {
 }
 
-.control-center .notification-row .notification-background .notification .notification-content {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  .notification-content {
   margin: 0 5px;
 }
 
-.control-center .notification-row .notification-background .notification .notification-content .summary {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  .notification-content
+  .summary {
   color: @foreground;
   font-size: 16px;
   font-weight: bold;
   margin: 0 5px;
 }
 
-.control-center .notification-row .notification-background .notification .notification-content .time {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  .notification-content
+  .time {
   color: @foreground-beta;
 }
 
-.control-center .notification-row .notification-background .notification .notification-content .body {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  .notification-content
+  .body {
   color: @foreground-alpha;
   margin: 0 5px;
 }
 
-.control-center .notification-row .notification-background .notification .notification-content image {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  .notification-content
+  image {
   margin-left: -10px;
 }
 
-.control-center .notification-row .notification-background .notification > *:last-child > * {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > * {
   min-height: 45px;
 }
 
-.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > *
+  .notification-action {
   color: @foreground;
-  background-color: @backgrouna-beta;
+  background-color: @background-beta;
   border: 1px solid @border;
   margin: 5px;
 }
 
-.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > *
+  .notification-action:hover {
   background-color: @accent-bg;
   color: @accent-fg;
   text-shadow: none;
 }
 
-.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > *
+  .notification-action:active {
   background-color: @background;
   color: @foreground;
 }
@@ -198,7 +313,10 @@
   background-color: transparent;
 }
 
-.control-center .notification-row .notification-background .close-button:active {
+.control-center
+  .notification-row
+  .notification-background
+  .close-button:active {
   color: transparent;
   background-color: transparent;
 }
@@ -230,6 +348,26 @@ progressbar {
   background-color: @foreground;
 }
 
+button {
+  color: @foreground;
+  background: @background-beta;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid @border;
+  transition: all 0.25s linear;
+}
+
+button:hover {
+  color: @accent-fg;
+  background: @accent-bg;
+  border: 1px solid @background;
+  padding: 5px;
+}
+
+button:disabled {
+  opacity: 0.2;
+}
+
 trough {
   background-color: @background-alpha;
 }
@@ -245,13 +383,26 @@ trough {
 }
 
 .widget-mpris {
-}
-
-.widget-mpris image:not(:last-child) {
-  margin-top: 15px;
-  margin-left: 15px;
+  margin: 15px 0px 0 0px;
   background: @background-alpha;
   border: 1px solid @border;
+}
+
+.widget-mpris-player {
+  background: transparent;
+  margin: 5px;
+  padding: 0;
+  border: 1px solid @border;
+}
+
+.widget-mpris-album-art {
+  margin: 10px -2px 0 10px;
+  background: @background-alpha;
+  border: 1px solid @border;
+}
+
+.widget-mpris label:first-child {
+  margin: 10px 10px 1px 0;
 }
 
 .widget-mpris label {
@@ -260,14 +411,37 @@ trough {
     1px -1px 2px @background-alpha,
     -1px 1px 2px @background-alpha,
     1px 1px 2px @background-alpha;
-  margin-right: 20px;
+  margin-right: 10px;
   padding: 5px;
   border: 1px solid @border;
   background: @background-alpha;
 }
 
-.widget-mpris label:first-child {
-  margin-top: 15px;
+.widget-mpris .image-button:not(.circular) {
+  margin: 5px;
+  background: @background-alpha;
+  border: 1px solid @border;
+}
+
+.widget-mpris .image-button:not(.circular):hover {
+  color: @accent-fg;
+  background: @accent-bg;
+}
+
+.widget-mpris .image-button:not(.circular):hover image {
+  background: @accent-fg;
+}
+
+.widget-mpris .image-button:first-child:not(.circular) {
+  margin-right: 0;
+}
+
+.widget-mpris .image-button:last-child:not(.circular) {
+  margin-left: 0;
+}
+
+.widget-mpris .image-button.circular {
+  margin: 6px 2px 10px 2px;
 }
 
 .widget-mpris button {
@@ -275,36 +449,124 @@ trough {
   border: 1px solid @border;
 }
 
-button {
-  color: @foreground;
-  background: @background-beta;
-  margin: 5px;
-  padding: 5px;
-  border: 1px solid @border;
-  transition: all 0.25s linear;
-
-}
-
-button:hover {
+.widget-mpris button:hover {
   color: @accent-fg;
   background: @accent-bg;
   border: 1px solid @background;
   padding: 5px;
 }
 
-button:disabled {
-  opacity: 0.2;
+.widget-dnd {
+  margin: 1px 4px 1px 4px;
 }
 
-flat image-button {
+.widget-dnd > switch {
+  color: transparent;
+  font-size: initial;
+  background: @background;
+  border: 1px solid @border;
+  box-shadow: none;
+}
+
+.widget-dnd > switch:checked {
+  background: @background;
+  color: transparent;
+}
+
+.widget-dnd > switch slider {
+  margin: 2px;
+  color: @background;
+  background: @foreground;
+  border: 1px solid @border;
+}
+
+.widget-volume,
+.widget-backlight {
+  margin: 0;
+  background: @background-alpha;
+  border: 1px solid @border;
+}
+
+.widget-volume {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.widget-backlight {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.widget-volume trough,
+.widget-backlight trough {
+  padding: 0 5px 0 5px;
+  background: @background-beta;
+  border: 1px solid @border;
+  min-height: 10px;
+}
+
+.widget-volume trough highlight,
+.widget-backlight trough highlight {
+  background: @accent-bg;
+  min-height: 5px;
+  min-width: 5px;
+  margin-left: -5px;
+  margin-right: -5px;
+  border-right: 1px solid @border;
+}
+
+.widget-volume trough slider,
+.widget-backlight trough slider {
+  background: @accent-bg;
+  margin: -5px;
+  min-height: 5px;
+  min-width: 5px;
+}
+
+.widget-volume label,
+.widget-backlight label {
   color: @foreground;
-}
-image {
-  padding: 0;
-}
-carousel {
+  padding: 5px 15px 5px 5px;
 }
 
-carouselindicatordots {
+.widget-backlight .KB {
+}
+
+.widget-volume {
+  border-bottom: none;
+  padding: 5px 10px 0px 10px;
+}
+
+.widget-backlight {
+  border-top: none;
+  padding: 0px 10px 5px 10px;
+}
+
+.widget-volume .text-button {
+  margin: 0 0 0 5px;
+  padding: 0;
+  background: @background-alpha;
+}
+
+.widget-volume .text-button:hover {
+  color: @accent-fg;
+  background: @accent-bg;
+  border: 1px solid @background;
+}
+
+.widget-volume .text-button label {
+  margin: 0 5px;
+  padding: 0 5px;
+}
+
+.widget-volume .text-button:hover label {
+  color: @background;
+}
+
+.widget-volume .per-app-volume {
+  padding-left: 45px;
+}
+
+.carouselindicatordots {
   color: @foreground;
 }
