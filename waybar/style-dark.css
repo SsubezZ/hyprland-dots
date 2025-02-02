@@ -1,6 +1,6 @@
 @define-color background         @theme_bg_color;
-@define-color background-alpha   alpha(@theme_bg_color,0.25);
-@define-color background-beta    alpha(@theme_bg_color,0.75);
+@define-color background-alpha   alpha(@theme_bg_color, 0.25);
+@define-color background-beta    alpha(@theme_bg_color, 0.75);
 @define-color border             @borders;
 @define-color accent-bg          @theme_selected_bg_color;
 @define-color accent-fg          @theme_selected_fg_color;
@@ -8,6 +8,7 @@
 @define-color cyan               #00cccc;
 
 * {
+  all: unset;
   font-family: Symbols Nerd Font;
   font-weight: normal;
   font-size: 14px;
@@ -20,18 +21,18 @@ window#waybar {
   color: @text;
   border: 1px solid alpha(@border, 0.75);
   margin: 5px;
-  transition: background-color 0.25s, color 0.25s;
-}
-
-#window image {
-  margin: 0 -4px 0 -4px;
+  transition:
+    background-color 0.25s linear,
+    color 0.25s linear,
+    border-color 0.5s linear;
 }
 
 #workspaces button,
 #taskbar button {
   padding: 4px;
   color: @text;
-  margin: 3px 2px 3px 2px;
+  margin: 2px;
+  min-width: 15px;
   text-shadow:
     -1px -1px 2px @background,
     1px -1px 2px @background,
@@ -42,7 +43,8 @@ window#waybar {
 }
 
 #workspaces button.active,
-#taskbar button.active {
+#taskbar button.active,
+#workspaces button.visible:not(.active) {
   background: @accent-bg;
   color: @accent-fg;
   text-shadow: none;
@@ -52,6 +54,10 @@ window#waybar {
     -1px 1px 2px alpha(@border, 0.25),
     1px 1px 2px alpha(@border, 0.25);
   border: 1px solid @background;
+}
+
+#workspaces button.visible:not(.active) {
+  opacity: 0.5;
 }
 
 #workspaces button:hover,
@@ -65,8 +71,9 @@ window#waybar {
   border: 1px solid @background;
 }
 
-#workspaces button.active:hover,
-#taskbar button.active:hover {
+#workspaces button:hover:not(.active),
+#taskbar button:hover:not(.active):not(.maximized):not(.fullscreen) {
+  border-color: @accent-bg;
 }
 
 #workspaces button.empty {
@@ -75,7 +82,7 @@ window#waybar {
 
 #workspaces,
 #taskbar {
-  padding: 1px 2px 1px 2px;
+  padding: 1px 2px;
 }
 
 #taskbar button.maximized,
@@ -88,60 +95,45 @@ window#waybar {
   background: @cyan;
 }
 
-#waybar.fullscreen .module:not(.plugged):not(.charging):not(.Playing) {
+#waybar.fullscreen {
   background: @background;
-}
-
-#waybar.fullscreen .module:hover:not(#workspaces):not(#taskbar):not(#tray) {
-  background: @cyan;
-  background-size: 750% 750%;
-}
-
-#waybar.fullscreen * {
   border-color: @cyan;
 }
 
-#waybar.fullscreen #workspaces button:not(:hover) {
-  border-color: transparent;
+#waybar.fullscreen .module:not(.plugged):not(.charging):not(.Playing) {
+  /* Uncomment this if needed */
+  /* background: @background; */
 }
 
+#waybar.fullscreen #workspaces button:not(.active),
 #waybar.fullscreen
   #taskbar
   button:not(.maximized):not(.fullscreen):not(:hover) {
   border-color: transparent;
 }
 
-#waybar.empty #window {
+#waybar.fullscreen #workspaces button:hover:not(.active),
+#waybar.swallowing #workspaces button:hover:not(.active) {
+  border-color: @accent-bg;
+}
+
+#waybar.empty #window,
+#taskbar.empty {
   border: none;
   box-shadow: none;
   opacity: 0;
   padding: 0;
 }
 
-#taskbar.empty {
-  border: none;
-  box-shadow: none;
-  opacity: 0;
-}
-
-#waybar.swallowing * {
+#waybar.swallowing:not(#taskbar) {
   border-color: #d0679d;
 }
 
-#waybar.swallowing #workspaces button:not(:hover) {
-  border-color: transparent;
-}
-#waybar.swallowing #taskbar button:not(:hover) {
-  border-color: transparent;
-}
-
 .module {
-  background: @background-alpha;
-  background-size: 750% 750%;
+  background: @background-alpha 0 0 / 750% 750%;
   color: @text;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 0 4px 0 4px;
+  padding: 0 10px;
+  margin: 0 4px;
   border: 1px solid @border;
   text-shadow:
     -1px -1px 2px @background,
@@ -152,11 +144,74 @@ window#waybar {
 }
 
 .module:hover:not(#workspaces):not(#taskbar):not(#tray) {
-  background: @accent-bg;
-  background-size: 750% 750%;
+  background: @accent-bg 0 0 / 750% 750%;
   color: @accent-fg;
   border: 1px solid @background;
   text-shadow: none;
+}
+
+#privacy {
+  color: #0f0f0f;
+  margin: 0 4px;
+  padding: 0 10px;
+  border: 1px solid @border;
+  background-color: #90ceaa;
+}
+
+tooltip {
+  margin: 2px;
+  background: @background-beta;
+  color: @text;
+  border: 1px solid @border;
+  text-shadow:
+    -1px -1px 2px @background,
+    1px -1px 2px @background,
+    -1px 1px 2px @background,
+    1px 1px 2px @background;
+  box-shadow:
+    -1px -1px 2px alpha(@border, 0.25),
+    1px -1px 2px alpha(@border, 0.25),
+    -1px 1px 2px alpha(@border, 0.25),
+    1px 1px 2px alpha(@border, 0.25);
+}
+
+#tray menu {
+  background: @background-beta;
+  box-shadow: none;
+  margin: 2px;
+  padding: 5px;
+  border: 1px solid @border;
+}
+
+#tray menu menuitem {
+  padding: 2px 20px 2px 20px;
+  margin: 2px;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.1s,
+    color 0.1s,
+    border-color 0.1s,
+    text-shadow 0.1s;
+}
+
+#tray menu menuitem:disabled label {
+  opacity: 0.75;
+}
+
+#tray menu menuitem:hover:not(:disabled) {
+  background-color: @text;
+  color: @accent-fg;
+  text-shadow: none;
+  border-color: @border;
+  margin: 2px;
+}
+
+.modules-left {
+  margin-left: -4px;
+}
+
+.modules-right {
+  margin-right: -4px;
 }
 
 #pulseaudio,
@@ -164,7 +219,7 @@ window#waybar {
 #backlight,
 #custom-wl-gammarelay-brightness,
 #battery,
-#network{
+#network {
   min-width: 46px;
 }
 
@@ -184,98 +239,49 @@ window#waybar {
 
 #custom-playerctl {
   min-width: 140px;
-  background-size: 750% 750%;
 }
 
-#privacy {
-  color: #0f0f0f;
-  margin: 0 4px 0 4px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 1px solid @border;
-  background-color: #90ceaa;
-}
-
-tooltip {
-  background: @background;
-  color: @text;
-  border: 1px solid @border;
-}
-
-.modules-left {
-  margin-left: -4px;
-}
-
-.modules-right {
-  margin-right: -4px;
+#battery.charging,
+#battery.plugged,
+#custom-playerctl.Playing {
+  animation: gradient 5s linear infinite;
 }
 
 #battery.charging {
   background: linear-gradient(
-    180deg,
-    #90ceaa,
-    @background-alpha,
-    @background-alpha,
-    #90ceaa,
-    #90ceaa,
-    @background-alpha,
-    @background-alpha
-  );
-  background-size: 750% 750%;
-  animation: gradient 5s ease infinite normal;
+      180deg,
+      #90ceaa,
+      @background-alpha,
+      @background-alpha,
+      #90ceaa,
+      #90ceaa,
+      @background-alpha,
+      @background-alpha
+    )
+    0 0 / 750% 750%;
 }
 
 #battery.plugged {
   background: linear-gradient(
-    180deg,
-    #add7ff,
-    @background-alpha,
-    @background-alpha,
-    #add7ff,
-    #add7ff,
-    @background-alpha,
-    @background-alpha
-  );
-  background-size: 750% 750%;
-  animation: gradient 5s linear infinite reverse;
+      180deg,
+      #add7ff,
+      @background-alpha,
+      @background-alpha,
+      #add7ff,
+      #add7ff,
+      @background-alpha,
+      @background-alpha
+    )
+    0 0 / 750% 750%;
+  animation-direction: reverse;
 }
 
 #custom-playerctl.Playing {
-  background: linear-gradient(to left, #90ceaa, #add7ff, #90ceaa, #add7ff);
-  background-size: 750% 750%;
-  color: #0f0f0f;
+  background: linear-gradient(to left, #90ceaa, #add7ff, #90ceaa, #add7ff) 0 0 /
+    750% 750%;
   text-shadow: none;
-  animation: gradient 1s linear infinite alternate;
-}
-
-#waybar.fullscreen .module.plugged {
-  background: linear-gradient(
-    180deg,
-    #add7ff,
-    @background,
-    @background,
-    #add7ff,
-    #add7ff,
-    @background,
-    @background
-  );
-  background-size: 750% 750%;
-  animation: gradient 5s linear infinite reverse;
-}
-
-#waybar.fullscreen .module.charging {
-  background: linear-gradient(
-    180deg,
-    #90ceaa,
-    @background,
-    @background,
-    #90ceaa,
-    #90ceaa,
-    @background,
-    @background
-  );
-  background-size: 750% 750%;
-  animation: gradient 5s linear infinite normal;
+  color: #0f0f0f;
+  animation-direction: alternate;
 }
 
 @keyframes gradient {
