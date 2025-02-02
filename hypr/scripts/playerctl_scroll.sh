@@ -4,16 +4,21 @@ get_metadata() {
   playerctl -i firefox -a metadata --format '{"title":"{{title}}","artist":"{{artist}}","status":"{{status}}"}'
 }
 
-max_length=17
+check_players() {
+  # Check if any players are running, excluding 'firefox'
+  playerctl -l | grep -q -v firefox
+}
+
+max_length=16
 scroll_speed=2
 scroll_interval=0.25
 front_separator=""
 back_separator="  "
-update_interval=0.5
 last_metadata=""
 current_metadata=""
 scroll_title=""
 scroll_position=0
+last_output_text=""
 
 pad_title() {
   local title="$1"
@@ -36,14 +41,27 @@ wrap_title() {
   fi
 }
 
+escape_markup() {
+  local text="$1"
+  echo "${text//&/&amp;}"
+}
+
 while true; do
-  current_metadata=$(get_metadata)
-  if [[ -z "$current_metadata" ]]; then
+  if ! check_players; then
     echo '{"text": "", "tooltip": "", "class": ""}'
-    sleep $update_interval
+    sleep $scroll_interval
     continue
   fi
 
+  current_metadata=$(get_metadata)
+
+  # If metadata retrieval fails (e.g., no current track), skip printing.
+  if [[ -z "$current_metadata" ]]; then
+    sleep $scroll_interval
+    continue
+  fi
+
+  # Process metadata only if it has changed.
   if [[ "$current_metadata" != "$last_metadata" ]]; then
     last_metadata="$current_metadata"
     title=$(echo "$current_metadata" | jq -r '.title')
@@ -51,9 +69,24 @@ while true; do
     status=$(echo "$current_metadata" | jq -r '.status')
     scroll_title=$(wrap_title "$title")
     scroll_position=0
+    last_output_text=""
+  fi
+
+  if [[ "$status" == "Paused" ]]; then
+    output_text=$(pad_title "$title")
+
+    if [[ "$output_text" != "$last_output_text" ]]; then
+      last_output_text="$output_text"
+      output_text=$(escape_markup "$output_text")
+      echo "{\"text\": \"$output_text\", \"tooltip\": \"$artist - $title\", \"class\": \"Paused\"}"
+    fi
+
+    sleep $scroll_interval
+    continue
   fi
 
   output_text=""
+
   if [[ ${#title} -gt $max_length ]]; then
     full_scroll_title="${scroll_title}${scroll_title}"
     output_text="${full_scroll_title:$scroll_position:$max_length}"
@@ -64,28 +97,24 @@ while true; do
     fi
 
     output_text="${output_text//"$front_separator"/}"
+
+    if [[ "$output_text" != "$last_output_text" ]]; then
+      last_output_text="$output_text"
+      output_text="$front_separator$output_text$back_separator"
+      output_text=$(pad_title "$output_text")
+      output_text=$(escape_markup "$output_text")
+      echo "{\"text\": \"$output_text\", \"tooltip\": \"$artist - $title\", \"class\": \"$status\"}"
+    fi
+
   else
     output_text=$(pad_title "$title")
+
+    if [[ "$output_text" != "$last_output_text" ]]; then
+      last_output_text="$output_text"
+      output_text=$(escape_markup "$output_text")
+      echo "{\"text\": \"$output_text\", \"tooltip\": \"$artist - $title\", \"class\": \"$status\"}"
+    fi
   fi
-
-  if [[ "$status" != "Playing" ]]; then
-    output_text=$(pad_title "$title")
-  fi
-
-  first_word_title=$(echo "$title" | awk '{print $1}')
-  first_word_output=$(echo "$output_text" | awk '{print $1}')
-
-  if [[ "$first_word_title" == "$first_word_output" ]]; then
-    output_text="${output_text//"$front_separator"/}"
-  fi
-
-  if [[ ${#title} -gt $max_length ]]; then
-    output_text="$front_separator$output_text$back_separator"
-  fi
-
-  output_text=$(pad_title "$output_text")
-
-  echo "{\"text\": \"$output_text\", \"tooltip\": \"$artist - $title\", \"class\": \"$status\"}"
 
   sleep $scroll_interval
 done
