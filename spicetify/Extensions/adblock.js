@@ -23,9 +23,18 @@ const loadWebpack = () => {
     return { cache: [], functionModules: [] };
   }
 };
-const getSettingsClient = (cache) => {
+const getSettingsClient = (cache, functionModules = [], transport = {}) => {
   try {
-    return cache.find((m) => m.settingsClient).settingsClient;
+    const settingsClient = cache.find((m) => m?.settingsClient)?.settingsClient;
+    if (!settingsClient) {
+      const settings = functionModules.find(
+        (m) =>
+          m?.SERVICE_ID === "spotify.ads.esperanto.settings.proto.Settings" ||
+          m?.SERVICE_ID === "spotify.ads.esperanto.proto.Settings",
+      );
+      return new settings(transport);
+    }
+    return settingsClient;
   } catch (error) {
     console.error("adblockify: Failed to get ads settings client", error);
     return null;
@@ -58,24 +67,24 @@ const retryCounter = (slotId, action) => {
   await new Promise((res) => Spicetify.Events.webpackLoaded.on(res));
   const webpackCache = loadWebpack();
   // @ts-expect-error: createInternalMap, RemoteConfigResolver is not defined in types
-  const {
-    CosmosAsync,
-    Platform,
-    createInternalMap,
-    Locale,
-    RemoteConfigResolver,
-  } = Spicetify;
+  const { Platform, createInternalMap, Locale, RemoteConfigResolver } =
+    Spicetify;
   const { AdManagers } = Platform;
+  if (!AdManagers?.audio || Object.keys(AdManagers).length === 0) {
+    setTimeout(adblockify, 100);
+    return;
+  }
   const { audio } = AdManagers;
   const { UserAPI } = Platform;
   const productState =
     UserAPI._product_state ||
     UserAPI._product_state_service ||
     Platform?.ProductStateAPI?.productStateApi;
-  if (!CosmosAsync) {
+  if (!Spicetify?.CosmosAsync) {
     setTimeout(adblockify, 100);
     return;
   }
+  const { CosmosAsync } = Spicetify;
   const slots = await CosmosAsync.get("sp://ads/v1/slots");
   const hideAdLikeElements = () => {
     const css = document.createElement("style");
@@ -166,7 +175,11 @@ const retryCounter = (slotId, action) => {
   };
   const updateSlotSettings = async (slotId) => {
     try {
-      const settingsClient = getSettingsClient(webpackCache.cache);
+      const settingsClient = getSettingsClient(
+        webpackCache.cache,
+        webpackCache.functionModules,
+        productState.transport,
+      );
       if (!settingsClient) return;
       await settingsClient.updateAdServerEndpoint({
         slotIds: [slotId],
@@ -229,10 +242,18 @@ const retryCounter = (slotId, action) => {
       const expFeatures = JSON.parse(
         localStorage.getItem("spicetify-exp-features") || "{}",
       );
-      expFeatures.enableEsperantoMigration.value = true;
-      expFeatures.enableInAppMessaging.value = false;
-      expFeatures.hideUpgradeCTA.value = true;
-      expFeatures.enableSmartShuffle.value = false;
+      if (typeof expFeatures?.enableEsperantoMigration?.value !== "undefined")
+        expFeatures.enableEsperantoMigration.value = true;
+      if (typeof expFeatures?.enableInAppMessaging?.value !== "undefined")
+        expFeatures.enableInAppMessaging.value = false;
+      if (typeof expFeatures?.hideUpgradeCTA?.value !== "undefined")
+        expFeatures.hideUpgradeCTA.value = true;
+      if (
+        typeof expFeatures?.enablePremiumUserForMiniPlayer?.value !==
+        "undefined"
+      )
+        expFeatures.enablePremiumUserForMiniPlayer.value = true;
+      // if (typeof expFeatures?.enableSmartShuffle?.value !== "undefined") expFeatures.enableSmartShuffle.value = false;
       localStorage.setItem(
         "spicetify-exp-features",
         JSON.stringify(expFeatures),
@@ -241,7 +262,8 @@ const retryCounter = (slotId, action) => {
         enableEsperantoMigration: true,
         enableInAppMessaging: false,
         hideUpgradeCTA: true,
-        enableSmartShuffle: false,
+        //enableSmartShuffle: false,
+        enablePremiumUserForMiniPlayer: true,
       };
       const map = createInternalMap(overrides);
       RemoteConfigResolver.value.setOverrides(map);
