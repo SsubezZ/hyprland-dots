@@ -16,7 +16,7 @@ style = "Beam"
 vi_mode_style = "None"
 
 [env]
-TERM = "xterm-256color"
+TERM = "alacritty"
 
 [font]
 size = 11

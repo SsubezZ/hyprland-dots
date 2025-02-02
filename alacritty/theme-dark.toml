@@ -33,3 +33,4 @@ foreground = "0x1b1e28"
 [window]
 opacity = 0.75
 blur = true
+decorations_theme_variant = "Dark"
