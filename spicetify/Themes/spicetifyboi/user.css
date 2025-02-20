@@ -37,13 +37,12 @@
   --now-playing-bar-height: 5rem;
 
   /* Font */
-  --default-font-family: "Fira Book";
+  --default-font-family: "Fira Sans";
   --normal-font-weight: 500;
   --bold-font-weight: 700;
   --extra-bold-font-weight: var(--bold-font-weight);
-  --font-to-use: var(--default-font-family), CircularSp, CircularSp-Arab,
-    CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva,
-    var(--fallback-fonts, sans-serif);
+  --font-to-use: var(--default-font-family), Fira Sans,
+    sans-serif Fira Mono var(--fallback-fonts, sans-serif);
 
   --top-bar-backdrop: blur(24px) saturate(140%);
 
@@ -103,6 +102,10 @@ input {
 .encore-text-body-medium,
 .encore-text-body-large {
   font-weight: 500;
+}
+
+.playback-bar {
+  font-family: "Fira Mono";
 }
 
 /* Main container */
