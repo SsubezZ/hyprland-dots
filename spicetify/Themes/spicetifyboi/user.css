@@ -1,9 +1,9 @@
 :root {
   /* Border */
   --border-thickness: 1px;
-  --border-radius-sm: 0rem;
-  --border-radius-md: 0rem;
-  --border-radius-lg: 0rem;
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.5rem;
 
   --default-border: var(--border-thickness) solid var(--spice-border);
 

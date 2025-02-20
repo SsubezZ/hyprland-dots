@@ -6,13 +6,16 @@
 @define-color foreground    @theme_fg_color;
 @define-color border        @borders;
 
+* {
+  border-radius: 6px;
+}
+
 window#osd {
   background: @backgroundm;
   color: @accent-bg;
   padding: 5px;
   margin: 10px;
   border: 1px solid @border;
-  border-radius: 0px;
 }
 
 progressbar {
@@ -21,7 +24,6 @@ progressbar {
   padding: 10px;
   margin: 5px;
   border: 1px solid @border;
-  border-radius: 0px;
 }
 
 progress {
@@ -29,7 +31,6 @@ progress {
   color: @backgroundm;
   border: 1px solid @border;
   border-right: 4px solid @border;
-  border-radius: 0px;
   transition: all 0.25s ease;
 }
 
