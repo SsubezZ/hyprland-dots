@@ -6,3 +6,7 @@ local opt = vim.opt
 
 opt.wrap = true
 opt.relativenumber = false
+
+vim.filetype.add({
+	pattern = { [".*/hypr/.*%.conf"] = "hyprlang", [".*%.rasi"] = "rasi" },
+})
