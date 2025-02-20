@@ -1,26 +1,41 @@
 # hyprland-dots
-![workflow_d](https://github.com/user-attachments/assets/5154a2ee-c802-48a9-be0b-b8d6fb5a2776)
-![workflow_l](https://github.com/user-attachments/assets/e32bf7b3-f9f0-4c22-94f0-2b9c7331e22d)
+
+![main](https://github.com/user-attachments/assets/213c0244-94b3-4016-b3e0-d113cd3d7ea0)
 
 ## waybar
-![waybar](https://github.com/user-attachments/assets/beddc27b-8ddc-43fc-8a90-91e376f06da1)
+
+![waybar](https://github.com/user-attachments/assets/a30cd435-e5cf-4c55-80eb-155ae173372c)
 
 ## rofi
-![rofi](https://github.com/user-attachments/assets/7c50fda6-2b76-4948-bbca-96098913dad6)
+
+![rofi](https://github.com/user-attachments/assets/3e1c8396-c353-473d-8fe5-7906d1d14bd6)
 
 ## neovim
-![nvim](https://github.com/user-attachments/assets/d6ccb4e2-8279-4e28-932f-43b4ec79ce0c)
 
+![neovim](https://github.com/user-attachments/assets/f7d444b3-2193-45b4-ae16-91e7bc39fba2)
+
+![nvim_browser](https://github.com/user-attachments/assets/1a69fc2f-83e9-4cc9-a12c-7c67b37f560a)
 
 ## librewolf
+
 ![librewolf](https://github.com/user-attachments/assets/0ce15b0d-2217-471e-8700-db652e581a1f)
-| Themes |
-| ------ |
-| [dark](https://addons.mozilla.org/en-US/firefox/addon/graphite-black/) |
+
+| Themes                                                                  |
+| ----------------------------------------------------------------------- |
+| [dark](https://addons.mozilla.org/en-US/firefox/addon/graphite-black/)  |
 | [light](https://addons.mozilla.org/en-US/firefox/addon/graphite-white/) |
 
 ## spotify
-![spo](https://github.com/user-attachments/assets/6f6ecc6e-ef07-417e-a214-38050a89bd37)
+
+![spicetify](https://github.com/user-attachments/assets/7e7bb263-218d-4266-bc42-08d9607bca07)
+
+## hyprlock
+
+![hyprlock](https://github.com/user-attachments/assets/54684f07-349b-4ce1-ac53-e584dc2d3345)
 
 ## sddm
+
+> [!WARNING]
+> I use autologin now, so sddm configs are deprecated.
+
 ![sddm](https://github.com/user-attachments/assets/b225bd2c-8507-4996-b1f2-94db17fd5eeb)
