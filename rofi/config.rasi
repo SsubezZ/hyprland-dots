@@ -1,5 +1,5 @@
 configuration {
-  show-icons:                 true;
+  show-icons:                 false;
   font:                       "Fira Sans 11";
   display-drun:               "Apps";
   display-run:                "Run";
