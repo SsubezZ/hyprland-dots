@@ -2,16 +2,16 @@
 IFS=$'\n'
 
 if [ "$@" ]; then
-	desc="$*"
-	device=$(pactl list sinks | grep -C2 -F "Description: $desc" | grep Name | cut -d: -f2 | xargs)
-	if pactl set-default-sink "$device"; then
-		notify-send "Activated: $desc"
-	else
-		notify-send "Error activating $desc"
-	fi
+  desc="$*"
+  device=$(pactl list sinks | grep -C2 -F "Description: $desc" | grep Name | cut -d: -f2 | xargs)
+  if pactl set-default-sink "$device"; then
+    notify-send "Activated: $desc"
+  else
+    notify-send "Error activating $desc"
+  fi
 else
-	echo -en "\x00prompt\x1fOutput Device\n"
-	for x in $(pactl list sinks | grep -ie "description:" | cut -d: -f2 | sort); do
-		echo "$x" | xargs
-	done
+  echo -en "\x00prompt\x1fOutput Device\n"
+  for x in $(pactl list sinks | grep -ie "description:" | cut -d: -f2 | sort); do
+    echo "$x" | xargs
+  done
 fi

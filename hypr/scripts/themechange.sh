@@ -17,16 +17,11 @@ pre() {
   rm -rf ~/.config/gtk-4.0 &>/dev/null
   echo "Killing any running Rofi instances..."
   pkill -x rofi &>/dev/null
-  # if pgrep -x spotify >/dev/null; then
-  #   echo "Starting Spicetify watch..."
-  #   spicetify watch -s &>/dev/null &
-  #   sleep 1 && pkill -x spicetify &>/dev/null
-  # fi
-	if pgrep -x spotify >/dev/null; then
-		echo "Starting Spicetify watch..."
-		spicetify watch -s &>/dev/null &
-		sleep 1 && pkill -x spicetify &>/dev/null
-	fi
+  if pgrep -x spotify >/dev/null; then
+    echo "Starting Spicetify watch..."
+    spicetify watch -s &>/dev/null &
+    sleep 1 && pkill -x spicetify &>/dev/null
+  fi
 }
 
 set_theme() {
@@ -54,9 +49,6 @@ set_theme() {
   echo "Applying Hyprland theme..."
   sed -i "/^source = .*theme-.*\.conf/s|source = .*|source = ./themes/${HYPR_THEMES[$mode]}|" ~/.config/hypr/hyprland.conf &>/dev/null
 
-  # echo "Applying Yazi theme..."
-  # cp "$HOME/.config/yazi/${YAZI_THEMES[$mode]}" ~/.config/yazi/theme.toml &>/dev/null
-
   echo "Applying Spicetify theme..."
   spicetify config color_scheme "${SPICETIFY_THEMES[$mode]}" &>/dev/null
   spicetify apply -n &>/dev/null
@@ -69,6 +61,8 @@ post() {
   hyprctl reload &>/dev/null
   # echo "Reloading Yazi..."
   # yazi --reload &>/dev/null
+  hyprpm reload -f &>/dev/null
+  hyprctl dismissnotify
   if pgrep -x spotify >/dev/null; then
     echo "Restarting Spicetify watch..."
     spicetify watch -s &>/dev/null &
@@ -76,13 +70,26 @@ post() {
   fi
 }
 
-pre
-CURRENT=$(gsettings get org.gnome.desktop.interface color-scheme | tr -d "'")
-if [[ "$CURRENT" == "prefer-dark" ]]; then
-  set_theme "light"
+# Main script logic to handle command line arguments or toggle mode by default
+if [[ $# -eq 0 ]]; then
+  CURRENT=$(gsettings get org.gnome.desktop.interface color-scheme | tr -d "'")
+
+  if [[ "$CURRENT" == "prefer-dark" ]]; then
+    MODE="light"
+  else
+    MODE="dark"
+  fi
 else
-  set_theme "dark"
+  MODE=$1
+
+  if [[ ! ${GTK_THEMES[$MODE]} ]]; then
+    echo "Invalid argument: $MODE. Please use 'light' or 'dark'."
+    exit 1
+  fi
 fi
+
+pre
+set_theme "$MODE"
 post
 
-exit
+exit 0

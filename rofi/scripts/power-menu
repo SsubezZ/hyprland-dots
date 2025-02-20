@@ -7,7 +7,7 @@ declare -A actions=(
   [Shutdown]="systemctl poweroff"
   [Reboot]="systemctl reboot"
   [Suspend]="systemctl suspend"
-  [Log Out]="hyprctl dispatch exit"
+  [Log Out]="loginctl terminate-user $USER"
 )
 
 options=("Shutdown" "Reboot" "Suspend" "Log Out")

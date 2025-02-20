@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 reload_process() {
-  local process_name=$1
-  local start_command=$2
+	local process_name=$1
+	local start_command=$2
 
-  pkill "$process_name"
+	pkill "$process_name"
 
-  while pgrep -x "$process_name" >/dev/null; do
-    sleep 0.1
-  done
+	while pgrep -x "$process_name" >/dev/null; do
+		sleep 0.1
+	done
 
-  $start_command &
-  disown
+	$start_command &
+	disown
 }
 
 reload_process "hyprpaper" "hyprpaper" &
@@ -25,7 +25,7 @@ disown
 
 pkill swayosd-server
 while pgrep -x "swayosd-server" >/dev/null; do
-  sleep 0.1
+	sleep 0.1
 done
 swayosd-server
 disown
@@ -36,19 +36,19 @@ disown
 restarted="Hyprpaper\nWaybar\nSwaync\nSwayOSD\nHyprctl"
 
 if ! pgrep -x "hyprpaper" >/dev/null; then
-  restarted="${restarted/Hyprpaper/}"
+	restarted="${restarted/Hyprpaper/}"
 fi
 
 if ! pgrep -x "waybar" >/dev/null; then
-  restarted="${restarted/Waybar/}"
+	restarted="${restarted/Waybar/}"
 fi
 
 if ! pgrep -x "swaync-client" >/dev/null; then
-  restarted="${restarted/Swaync/}"
+	restarted="${restarted/Swaync/}"
 fi
 
 if ! pgrep -x "swayosd-server" >/dev/null; then
-  restarted="${restarted/SwayOSD/}"
+	restarted="${restarted/SwayOSD/}"
 fi
 
 notify-send --app-name "Hot Reload" "Hot Reload" "Refreshed!\n$restarted" -e -h string:x-canonical-private-synchronous:hot_reload &
