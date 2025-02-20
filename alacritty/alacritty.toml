@@ -15,9 +15,6 @@ text = "CellBackground"
 style = "Beam"
 vi_mode_style = "None"
 
-[env]
-TERM = "alacritty"
-
 [font]
 size = 11
 

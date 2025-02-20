@@ -331,9 +331,9 @@
   color: @foreground;
 }
 
-progressbar,
 progress,
 trough {
+  border: 1px solid @border;
 }
 
 progressbar {

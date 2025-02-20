@@ -52,6 +52,9 @@ set_theme() {
   echo "Applying Spicetify theme..."
   spicetify config color_scheme "${SPICETIFY_THEMES[$mode]}" &>/dev/null
   spicetify apply -n &>/dev/null
+
+  # echo "Applying Yazi theme..."
+  # cp "$HOME/.config/yazi/${YAZI_THEMES[$mode]}" ~/.config/yazi/theme.toml &>/dev/null
 }
 
 post() {

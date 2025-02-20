@@ -16,6 +16,7 @@ alias rcat="/bin/cat"
 alias cat="bat --theme=base16"
 alias startjellyfin="systemctl start jellyfin"
 alias stopjellyfin="systemctl stop jellyfin"
+alias curd="$(find $HOME/Programs/curd/releases -type f -name curd -executable | sort -V | tail -n 1)"
 # Nitrosense
 alias nitro="~/.config/hypr/scripts/nitrosense"
 alias auto-nitro="~/.config/hypr/scripts/nitrosense a"
