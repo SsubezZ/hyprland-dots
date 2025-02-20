@@ -1,9 +1,3 @@
-  "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "mode": "month",
-      "months": "<span>{}</span>",
-      "days": "<span>{}</span>",
-      "weekdays": "<span><u>{}</u></span>",
-      "today": "<span><b><u>{}</u></b></span>"
 [
   {
     "id": 1,
@@ -107,12 +101,21 @@
     "clock": {
       "interval": 1,
       "format": "{:%I:%M:%OS %p  %A  %d %h %Y}",
+      "tooltip-format": "<tt>{calendar}</tt>",
       "calendar": {
+        "mode": "month",
+        "mode-mon-col": 4,
         "on-scroll": 1,
         "format": {
+          "months": "<span><b><u>{}</u></b></span>",
+          "days": "<span><small>{}</small></span>",
+          "weekdays": "<span><b><u>{}</u></b></span>",
+          "today": "<span foreground='#00CCCC'><big><b><u>{}</u></b></big></span>",
         },
       },
       "actions": {
+        "on-click": "mode",
+        "on-click-right": "shift_reset",
         "on-scroll-up": "shift_up",
         "on-scroll-down": "shift_down",
       },
@@ -434,11 +437,6 @@
       "ignore-workspaces": ["special:magic", "special:magic2"],
     },
 
-    "mode": "month",
-      "months": "<span color='#e0e0e0'>{}</span>",
-      "days": "<span color='#e0e0e0'>{}</span>",
-      "weekdays": "<span color='#e0e0e0'><u>{}</u></span>",
-      "today": "<span color='#e0e0e0'><b><u>{}</u></b></span>"
     "hyprland/window": {
       "format": "{initialTitle}",
       "icon": true,
@@ -461,11 +459,19 @@
       "format": "{:%I:%M:%OS %p  %A  %d %h %Y}",
       "tooltip-format": "<tt>{calendar}</tt>",
       "calendar": {
+        "mode": "month",
+        "mode-mon-col": 4,
         "on-scroll": 1,
         "format": {
+          "months": "<span><b><u>{}</u></b></span>",
+          "days": "<span><small>{}</small></span>",
+          "weekdays": "<span><b><u>{}</u></b></span>",
+          "today": "<span foreground='#00CCCC'><big><b><u>{}</u></b></big></span>",
         },
       },
       "actions": {
+        "on-click": "mode",
+        "on-click-right": "shift_reset",
         "on-scroll-up": "shift_up",
         "on-scroll-down": "shift_down",
       },
