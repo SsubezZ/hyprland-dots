@@ -9,8 +9,10 @@ export GIT="$HOME/Gits/"
 export PS1
 
 # Aliases
+alias snvim="sudo -E -s nvim"
 alias hypr="nvim $GIT/hyprland-dots/hypr/hyprland.conf"
 alias vim="nvim"
+alias rcat="/bin/cat"
 alias cat="bat --theme=base16"
 alias startjellyfin="systemctl start jellyfin"
 alias stopjellyfin="systemctl stop jellyfin"

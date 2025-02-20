@@ -3,13 +3,15 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="promptboi"
 
-ENABLE_CORRECTION="false"
+ENABLE_CORRECTION="true"
 
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
+  autoupdate
   git
   archlinux
+  sudo
   zsh-autosuggestions
   zsh-history-substring-search
   zsh-syntax-highlighting
@@ -18,9 +20,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Plugins Customizations
+
+ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=10
+
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=#435789
-ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
-ZSH_AUTOSUGGEST_USE_ASYNC="true"
+# ZSH_AUTOSUGGEST_STRATEGY=(completion math_prev_cmd)
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern regexp root line)
 ZSH_HIGHLIGHT_MAXLENGTH=512

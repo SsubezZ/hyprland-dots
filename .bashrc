@@ -1,4 +1,3 @@
-[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 white="\033[37m"
 red="\033[31m"
 blue="\033[34m"
