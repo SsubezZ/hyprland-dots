@@ -1,3 +1,4 @@
+@import url("./launch_animation.css");
 @define-color background         @theme_bg_color;
 @define-color background-alpha   alpha(@theme_bg_color, 0.25);
 @define-color background-beta    alpha(@theme_bg_color, 0.75);
@@ -20,7 +21,6 @@ window#waybar {
   background: @background-beta;
   color: @text;
   border: 1px solid alpha(@border, 0.75);
-  margin: 5px;
   transition:
     background-color 0.25s linear,
     color 0.25s linear,
@@ -29,9 +29,9 @@ window#waybar {
 
 #workspaces button,
 #taskbar button {
-  padding: 4px;
+  padding: 2px;
   color: @text;
-  margin: 2px;
+  margin: 3px 2px;
   min-width: 15px;
   text-shadow:
     -1px -1px 2px @background,
@@ -42,17 +42,17 @@ window#waybar {
   transition: all 0.25s linear;
 }
 
+window#waybar:not(.eDP-1) #workspaces button,
+window#waybar:not(.eDP-1) #taskbar button {
+  padding: 4px;
+}
+
 #workspaces button.active,
 #taskbar button.active,
 #workspaces button.visible:not(.active) {
   background: @accent-bg;
   color: @accent-fg;
   text-shadow: none;
-  box-shadow:
-    -1px -1px 2px alpha(@border, 0.25),
-    1px -1px 2px alpha(@border, 0.25),
-    -1px 1px 2px alpha(@border, 0.25),
-    1px 1px 2px alpha(@border, 0.25);
   border: 1px solid @background;
 }
 
@@ -63,11 +63,6 @@ window#waybar {
 #workspaces button:hover,
 #taskbar button:hover {
   opacity: 0.75;
-  box-shadow:
-    -1px -1px 2px alpha(@border, 0.75),
-    1px -1px 2px alpha(@border, 0.75),
-    -1px 1px 2px alpha(@border, 0.75),
-    1px 1px 2px alpha(@border, 0.75);
   border: 1px solid @background;
 }
 
@@ -82,7 +77,7 @@ window#waybar {
 
 #workspaces,
 #taskbar {
-  padding: 1px 2px;
+  padding: 0 2px;
 }
 
 #taskbar button.maximized,
@@ -95,7 +90,11 @@ window#waybar {
   background: @cyan;
 }
 
-#waybar.fullscreen {
+window#waybar.fullscreen {
+  border-color: @cyan;
+}
+
+window#waybar.fullscreen #window {
   background: @background;
   border-color: @cyan;
 }
@@ -117,15 +116,16 @@ window#waybar {
   border-color: @accent-bg;
 }
 
-#waybar.empty #window,
+window#waybar.empty #window,
 #taskbar.empty {
-  border: none;
-  box-shadow: none;
+  border-color: transparent;
+  background-color: transparent;
   opacity: 0;
   padding: 0;
+  margin: 0;
 }
 
-#waybar.swallowing:not(#taskbar) {
+window#waybar.swallowing #window {
   border-color: #d0679d;
 }
 
@@ -239,62 +239,4 @@ tooltip {
 
 #custom-playerctl {
   min-width: 140px;
-}
-
-#battery.charging,
-#battery.plugged,
-#custom-playerctl.Playing {
-  animation: gradient 5s linear infinite;
-}
-
-#battery.charging {
-  background: linear-gradient(
-      180deg,
-      #90ceaa,
-      @background-alpha,
-      @background-alpha,
-      #90ceaa,
-      #90ceaa,
-      @background-alpha,
-      @background-alpha
-    )
-    0 0 / 750% 750%;
-}
-
-#battery.plugged {
-  background: linear-gradient(
-      180deg,
-      #add7ff,
-      @background-alpha,
-      @background-alpha,
-      #add7ff,
-      #add7ff,
-      @background-alpha,
-      @background-alpha
-    )
-    0 0 / 750% 750%;
-  animation-direction: reverse;
-}
-
-#custom-playerctl.Playing {
-  background: linear-gradient(to left, #90ceaa, #add7ff, #90ceaa, #add7ff) 0 0 /
-    750% 750%;
-  text-shadow: none;
-  color: #0f0f0f;
-  animation-direction: alternate;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 10% 25%;
-  }
-  25% {
-    background-position: 25% 50%;
-  }
-  75% {
-    background-position: 50% 75%;
-  }
-  100% {
-    background-position: 75% 100%;
-  }
 }
