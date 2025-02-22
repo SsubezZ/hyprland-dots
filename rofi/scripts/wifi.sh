@@ -65,13 +65,13 @@ while true; do
   # Update Ethernet toggle if applicable.
   if [ -n "$eth_interface" ]; then
     eth_state=$(nmcli device status | awk -v iface="$eth_interface" '$1 == iface {print $3}')
-    if [ "$eth_state" = "connected" ]; then
-      eth_toggle="Disable Ethernet"
-    else
-      eth_toggle="Enable Ethernet"
+    if [ "$eth_state" != "unavailable" ]; then
+      if [ "$eth_state" = "connected" ]; then
+        eth_toggle="Disable Ethernet"
+      else
+        eth_toggle="Enable Ethernet"
+      fi
     fi
-  else
-    eth_toggle=""
   fi
 
   # Determine current Wi-Fi state.
