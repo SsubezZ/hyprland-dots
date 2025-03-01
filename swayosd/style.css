@@ -5,6 +5,7 @@
 @define-color accent-fg     @theme_selected_fg_color;
 @define-color foreground    @theme_fg_color;
 @define-color border        @borders;
+@define-color text          @theme_text_color;
 
 * {
   border-radius: 6px;
@@ -42,7 +43,7 @@ trough {
 image,
 label {
   background: @backgroundm;
-  color: @accent-bg;
+  color: @text;
   padding: 5px;
   margin: -5px;
   border: 1px solid @border;
@@ -51,7 +52,7 @@ label {
     1px -1px 2px @background,
     -1px 1px 2px @background,
     1px 1px 2px @background;
-  font-family: "Fira Mono Nerd Font";
+  font-family: "Fira Sans Regular";
   font-size: 14px;
   font-weight: bold;
   min-width: 40px;

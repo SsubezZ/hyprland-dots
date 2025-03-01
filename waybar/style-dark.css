@@ -10,9 +10,8 @@
 
 * {
   all: unset;
-  font-family: "Symbols Nerd Font", "Fira Sans Nerd Font";
-  font-weight: normal;
-  font-size: 14px;
+  font-family: "Symbols Nerd Font Mono", "Fira Sans Regular";
+  font-size: 1rem;
   min-height: 0px;
   border-radius: 6px;
 }

@@ -5,9 +5,9 @@
 
 window.HDMI-A-1 #workspaces {
   opacity: 0;
-  padding: 0;
+  margin: 0;
   animation:
-    workspaces 0.25s linear 0.25s forwards,
+    workspaces 0.15s linear 0.25s forwards,
     module_expand 0.25s linear 0.35s forwards;
 }
 
@@ -27,9 +27,9 @@ window.HDMI-A-1 #pulseaudio {
 window.eDP-1 #workspaces,
 window.HDMI-A-1 #taskbar {
   opacity: 0;
-  padding: 0;
+  margin: 0;
   animation:
-    workspaces 0.25s linear 0.5s forwards,
+    workspaces 0.15s linear 0.5s forwards,
     module_expand 0.25s linear 0.6s forwards;
 }
 
@@ -116,7 +116,7 @@ window.eDP-1 #privacy {
 @keyframes workspaces {
   to {
     opacity: 1;
-    padding: 0 2px;
+    margin: 0 4px;
   }
 }
 
