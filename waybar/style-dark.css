@@ -120,8 +120,6 @@ window#waybar.empty #window,
   border-color: transparent;
   background-color: transparent;
   opacity: 0;
-  padding: 0;
-  margin: 0;
 }
 
 window#waybar.swallowing #window {
@@ -226,9 +224,12 @@ tooltip {
   min-width: 55px;
 }
 
-#cpu,
-#memory {
+#cpu {
   min-width: 67px;
+}
+
+#memory {
+  min-width: 72px;
 }
 
 #custom-notification {

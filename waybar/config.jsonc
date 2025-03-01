@@ -10,7 +10,11 @@
     "margin-left": 4,
     "margin-right": 4,
 
-    "modules-left": ["custom/menu", "hyprland/workspaces", "hyprland/window"],
+    "modules-left": [
+      "group/group-menu",
+      "hyprland/workspaces",
+      "hyprland/window",
+    ],
     "modules-center": ["clock"],
     "modules-right": [
       "privacy",
@@ -21,16 +25,63 @@
       "group/group-power",
       "group/group-connection",
       "group/group-vitals",
-      "custom/notification",
+      "group/group-notification",
     ],
 
     //====================MODULES_LEFT====================
+
+    "group/group-menu": {
+      "orientation": "horizontal",
+      "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": true,
+      },
+      "modules": [
+        "custom/menu",
+        "idle_inhibitor",
+        "custom/themechange",
+        "custom/gamemode",
+      ],
+    },
 
     "custom/menu": {
       "format": "󰣇",
       "on-click": "$ROFI 'rofi -show-icons -theme-str \"window {location: north west; x-offset: 4; y-offset: 2;} listview {columns: 2;}\" -show drun -modi run,drun,filebrowser'",
       "on-click-right": "$ROFI '$HOME/.config/rofi/scripts/power-menu waybar'",
       "tooltip": false,
+    },
+
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "󰅶",
+        "deactivated": "󰾪",
+      },
+      "tooltip": true,
+      "tooltip-format-activated": "Idle Inhibited",
+      "tooltip-format-deactivated": " Not Idle Inhibited",
+      "on-click-right": "hyprlock",
+    },
+
+    "custom/themechange": {
+      "signal": 8,
+      "restart-interval": 1,
+      "format": "{}",
+      "return-type": "json",
+      "exec": "cat $HOME/.local/state/._state_themechange.txt",
+      "on-click": "$HOME/.config/hypr/scripts/themechange.sh",
+      "on-click-right": "$HOME/.config/hypr/scripts/hotreload.sh",
+      "tooltip": true,
+    },
+
+    "custom/gamemode": {
+      "signal": 8,
+      "restart-interval": 0,
+      "format": "{}",
+      "return-type": "json",
+      "exec": "cat $HOME/.local/state/._state_gamemode.txt",
+      "on-click": "$HOME/.config/hypr/scripts/gamemode.sh",
+      "tooltip": true,
     },
 
     "hyprland/workspaces": {
@@ -44,17 +95,17 @@
       },
       "format": "{icon}",
       "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "󰞷",
+        "1": "",
+        "2": "",
+        "3": "",
         "4": "",
-        "5": "󰊗",
-        "6": "󰭹",
+        "5": "",
+        "6": "",
         "7": "",
         "8": "",
-        "9": "󰻂",
-        "10": "󰥔",
-        "default": "",
+        "9": "",
+        "10": "",
+        "default": "",
         "OVERVIEW": "",
         "minimize": "",
       },
@@ -78,7 +129,7 @@
         "OBS (.*)": "OBS",
       },
       "separate-outputs": true,
-      "on-click": "$ROFI 'rofi -show-icons -theme-str \"window {location: north west; width: 600px; x-offset: 210; y-offset: 2;}\" -show window -modi window'",
+      "on-click": "$ROFI 'rofi -show-icons -theme-str \"window {location: north west; width: 600px; x-offset: 213; y-offset: 2;}\" -show window -modi window'",
       "on-click-right": "hyprctl dispatch killactive",
       "on-click-middle": "hyprctl dispatch fullscreenstate 1",
       "on-scroll-up": "hyprctl dispatch movefocus r",
@@ -172,8 +223,8 @@
 
     "pulseaudio#output": {
       "format": "{icon} {volume}",
-      "format-bluetooth": "{icon} {volume}",
-      "format-bluetooth-muted": " {icon}",
+      "format-bluetooth": "{icon} {volume} ",
+      "format-bluetooth-muted": " {icon} ",
       "format-muted": " {volume}",
       "format-icons": {
         "headphone": "",
@@ -184,8 +235,9 @@
         "car": "",
         "default": ["", "", ""],
       },
+      "ignored-sinks": ["Easy Effects Sink"],
       "on-click": "swayosd-client --output-volume mute-toggle --max-volume 200 || wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-      "on-click-right": "$ROFI 'rofi -theme-str \"configuration {show-icons: false;} window {location: north east; x-offset: -307; y-offset: 2; width: 250px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;}\" -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out'",
+      "on-click-right": "$ROFI 'rofi -theme-str \"configuration {show-icons: false;} window {location: north east; x-offset: -312; y-offset: 2; width: 250px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;}\" -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out'",
       "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | (swayosd-client --output-volume +1 --max-volume 200 || wpctl set-volume -l '1.5' @DEFAULT_AUDIO_SINK@ 1%+)",
       "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | (swayosd-client --output-volume -1 --max-volume 200 || wpctl set-volume -l '1.5' @DEFAULT_AUDIO_SINK@ 1%-)",
       "max-volume": 200,
@@ -193,10 +245,11 @@
 
     "pulseaudio#input": {
       "format": "{format_source}",
-      "format-source": "  {volume}",
-      "format-source-muted": " {volume}",
+      "format-source": "󰍬 {volume}",
+      "format-source-muted": "󰍭 {volume}",
+      "ignored-sinks": ["Easy Effects Sink", "Analog Stereo Output"],
       "on-click": "swayosd-client --input-volume mute-toggle || wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-      "on-click-right": "$ROFI 'rofi -theme-str \"configuration {show-icons: false;} window {location: north east; x-offset: -383; y-offset: 2; width: 250px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;}\" -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in'",
+      "on-click-right": "$ROFI 'rofi -theme-str \"configuration {show-icons: false;} window {location: north east; x-offset: -388; y-offset: 2; width: 250px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;}\" -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in'",
       "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | (swayosd-client --input-volume +1 || wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+)",
       "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | (swayosd-client --input-volume -1 || wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-)",
     },
@@ -209,7 +262,6 @@
       },
       "modules": [
         "battery",
-        "idle_inhibitor",
         "custom/wl-gammarelay-temperature",
         "custom/wl-gammarelay-brightness",
         "backlight",
@@ -225,29 +277,20 @@
       },
       "format": "{icon} {capacity}",
       "format-alt": "{icon} {capacity}",
-      "format-charging": "{icon}󱐋 {capacity}",
+      "format-charging": "{icon}󱐋{capacity}",
       "format-plugged": " 100",
       "format-full": "󱟢 {capacity}",
       "format-discharging": "{icon} {capacity}",
       "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-      "on-click": "sleep 0.1 && power-options-gtk",
+      "on-click": "$ROFI '$HOME/.config/rofi/scripts/power-options-daemon.sh'",
+      "on-click-right": "power-options-gtk",
       "tooltip-format": "{timeTo}\nHealth: {health}%\nPower: {power}",
-    },
-
-    "idle_inhibitor": {
-      "format": "{icon}",
-      "format-icons": {
-        "activated": "󰈈",
-        "deactivated": "󰈉",
-      },
-      "tooltip": false,
-      "on-click": "notify-send -e -h string:x-canonical-private-synchronous:idle_inhibited 'Idle_Inhibition Changed!'",
-      "on-click-right": "sleep 0.1 && hyprlock",
     },
 
     "backlight": {
       "device": "acpi_video0",
       "format": "{icon} {percent}",
+      "format-icons": ["", "", "", "", "", "", "", "", ""],
       "on-click": "swayosd-client --brightness 25 || brightnessctl set 25%",
       "on-double-click": "swayosd-client --brightness 50 || brightnessctl set 50%",
       "on-scroll-up": "swayosd-client --brightness +2 || brightnessctl set 2%+",
@@ -289,13 +332,14 @@
       "format": "󰤮 OFF",
       "format-wifi": "{icon} ON",
       "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-      "format-ethernet": "  ON",
+      "format-ethernet": " ON",
       "format-linked": "󰈁 ON",
       "format-disconnected": "󰤮 ON",
-      "tooltip-format-wifi": "<span><b><u>{essid}</u></b></span>\t\t\t{ipaddr}\n\t {bandwidthDownBits} |  {bandwidthUpBits}",
-      "tooltip-format-ethernet": "<span><b><u>{ifname}</u></b></span>\t\t\t{ipaddr}\n\t {bandwidthDownBits} |  {bandwidthUpBits}",
+      "family": "ipv4",
+      "tooltip-format-wifi": "<span><big><b>{essid}</b></big></span>\t\t\t{ipaddr}\n\t {bandwidthDownBits} |  {bandwidthUpBits}",
+      "tooltip-format-ethernet": "<span><big><b>{ifname}</b></big></span>\t\t\t{ipaddr}\n\t {bandwidthDownBits} |  {bandwidthUpBits}",
       "on-click": "$ROFI '$HOME/.config/waybar/scripts/wifi.sh'",
-      "on-click-right": "sleep 0.1 && nm-connection-editor",
+      "on-click-right": "nm-connection-editor",
     },
 
     "bluetooth": {
@@ -311,7 +355,7 @@
       "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
       "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
       "on-click": "$ROFI '$HOME/.config/waybar/scripts/bluetooth'",
-      "on-click-right": "sleep 0.1 && blueman-manager",
+      "on-click-right": "blueberry",
     },
 
     "group/group-vitals": {
@@ -327,16 +371,30 @@
       "interval": 2,
       "format": " {}%",
       "max-length": 10,
-      "on-click": "sleep 0.1",
+      "on-click": "",
     },
 
     "memory": {
       "interval": 2,
-      "format": "󰑭 {used:0.1f}GiB",
+      "format": " {used:0.1f}GiB",
       "max-length": 10,
       "tooltip-format": "Swap: {swapUsed:0.1f}GiB",
-      "on-click": "sleep 0.1 && missioncenter",
-      "on-click-right": "sleep 0.1 && resources",
+      "on-click": "resources",
+      "on-click-right": "missioncenter",
+    },
+
+    "group/group-notification": {
+      "orientation": "horizontal",
+      "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": false,
+      },
+      "modules": [
+        "custom/notification",
+        "custom/screenrecord",
+        "custom/hyprpicker",
+        "custom/grimblast",
+      ],
     },
 
     "custom/notification": {
@@ -355,8 +413,8 @@
       "return-type": "json",
       "exec-if": "which swaync-client",
       "exec": "swaync-client -swb",
-      "on-click": "sleep 0.1 && swaync-client -t",
-      "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
       "escape": true,
     },
 
@@ -388,7 +446,33 @@
 //    "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d +0.02",
 //    "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d -0.02"
 // },
+    "custom/hyprpicker": {
+      "format": "",
+      "on-click": "$HOME/.config/hypr/scripts/hyprpicker.sh hex",
+      "on-click-right": "$HOME/.config/hypr/scripts/hyprpicker.sh rgb",
+      "on-click-middle": "$HOME/.config/hypr/scripts/hyprpicker.sh hsv",
+      "tooltip": true,
+      "tooltip-format": "Hyprpicker",
+      "escape": true,
+    },
 
+    "custom/grimblast": {
+      "format": "",
+      "on-click": "$HOME/.config/hypr/scripts/screenshot.sh area",
+      "on-click-right": "$HOME/.config/hypr/scripts/screenshot.sh screen",
+      "on-click-middle": "$HOME/.config/hypr/scripts/screenshot.sh screens",
+      "tooltip": true,
+      "tooltip-format": "Screenshot",
+      "escape": true,
+    },
+
+    "custom/screenrecord": {
+      "format": "",
+      "on-click": "$HOME/.config/hypr/scripts/screenrecord.sh",
+      "tooltip": true,
+      "tooltip-format": "Screenrecord",
+      "escape": true,
+    },
   },
 
   {
@@ -415,17 +499,11 @@
       },
       "format": "{icon}",
       "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "󰞷",
-        "4": "",
-        "5": "󰊗",
-        "6": "󰭹",
         "7": "",
         "8": "",
-        "9": "󰻂",
-        "10": "󰥔",
-        "default": "",
+        "9": "",
+        "10": "",
+        "default": "",
         "OVERVIEW": "",
         "minimize": "",
       },
@@ -489,8 +567,8 @@
 
     "pulseaudio#output": {
       "format": "{icon} {volume}",
-      "format-bluetooth": "{icon} {volume}",
-      "format-bluetooth-muted": " {icon}",
+      "format-bluetooth": "{icon} {volume} ",
+      "format-bluetooth-muted": " {icon} ",
       "format-muted": " {volume}",
       "format-icons": {
         "headphone": "",
@@ -501,6 +579,7 @@
         "car": "",
         "default": ["", "", ""],
       },
+      "ignored-sinks": ["Easy Effects Sink"],
       "on-click": "swayosd-client --output-volume mute-toggle --max-volume 200 || wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
       "on-click-right": "$ROFI 'rofi -theme-str \"configuration {show-icons: false;} window {location: north east; x-offset: -4; y-offset: 2; width: 250px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;}\" -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show out'",
       "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 | (swayosd-client --output-volume +1 --max-volume 200 || wpctl set-volume -l '1.5' @DEFAULT_AUDIO_SINK@ 1%+)",
@@ -510,8 +589,9 @@
 
     "pulseaudio#input": {
       "format": "{format_source}",
-      "format-source": " {volume}",
-      "format-source-muted": " {volume}",
+      "format-source": "󰍬 {volume}",
+      "format-source-muted": "󰍭 {volume}",
+      "ignored-sinks": ["Easy Effects Sink", "Analog Stereo Output"],
       "on-click": "swayosd-client --input-volume mute-toggle || wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
       "on-click-right": "$ROFI 'rofi -theme-str \"configuration {show-icons: false;} window {location: north east; x-offset: -80; y-offset: 2; width: 250px;} listview {columns: 1;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} inputbar {enabled: false;}\" -modes out:$HOME/.config/rofi/scripts/sound-output-port.sh,in:$HOME/.config/rofi/scripts/sound-input-port.sh -show in'",
       "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 | (swayosd-client --input-volume +1 || wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+)",

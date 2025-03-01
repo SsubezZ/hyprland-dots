@@ -81,8 +81,8 @@ function set_power_limits() {
   # $2: PL2 limit
   # $3: governor string (e.g. "powersave" or "performance")
   echo "$3" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-  echo "Current scaling governors:"
-  cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+  # echo "Current scaling governors:"
+  # cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
   MSR="/sys/devices/virtual/powercap/intel-rapl/intel-rapl:0"
   MCH="/sys/devices/virtual/powercap/intel-rapl-mmio/intel-rapl-mmio:0"
   for N in "$MSR" "$MCH"; do

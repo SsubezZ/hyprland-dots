@@ -3,7 +3,7 @@ IFS=$'\n'
 
 if [ "$@" ]; then
   desc="$*"
-  device=$(pactl list sources | grep "$desc" | grep "output" | grep "type" | awk '{print $1}' | cut -d ":" -f1 | xargs)
+  device=$(pactl list sources | grep "$desc" | grep "input" | grep "type" | awk '{print $1}' | cut -d ":" -f1 | xargs)
   pactl set-source-port 0 "$device"
 else
   echo -en "\x00prompt\x1fInput Port\n"
