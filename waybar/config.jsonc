@@ -294,7 +294,7 @@
       "format-disconnected": "󰤮 ON",
       "tooltip-format-wifi": "<span><b><u>{essid}</u></b></span>\t\t\t{ipaddr}\n\t {bandwidthDownBits} |  {bandwidthUpBits}",
       "tooltip-format-ethernet": "<span><b><u>{ifname}</u></b></span>\t\t\t{ipaddr}\n\t {bandwidthDownBits} |  {bandwidthUpBits}",
-      "on-click": "$ROFI '$HOME/.config/rofi/scripts/wifi.sh'",
+      "on-click": "$ROFI '$HOME/.config/waybar/scripts/wifi.sh'",
       "on-click-right": "sleep 0.1 && nm-connection-editor",
     },
 
@@ -310,7 +310,7 @@
       "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
       "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
       "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-      "on-click": "$ROFI '$HOME/.config/rofi/scripts/bluetooth'",
+      "on-click": "$ROFI '$HOME/.config/waybar/scripts/bluetooth'",
       "on-click-right": "sleep 0.1 && blueman-manager",
     },
 

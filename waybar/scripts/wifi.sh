@@ -61,7 +61,7 @@ while true; do
   menu_list=$(printf "%b" "$menu_list" | sed '/^[[:space:]]*$/d')
 
   # Show ROFI menu
-  chosen=$(printf "%b" "$menu_list" | rofi -theme-str 'configuration { show-icons: false; } window { location: north east; x-offset: -155; y-offset: 2; width: 225px; } listview { columns: 1; lines: 50; } inputbar { enabled: false; } mode-switcher { enabled: false; }' -dmenu -i)
+  chosen=$(printf "%b" "$menu_list" | rofi -theme-str 'configuration { show-icons: false; } window { location: north east; x-offset: -155; y-offset: 2; width: 225px; } listview { columns: 1; lines: 25; } inputbar { enabled: false; } mode-switcher { enabled: false; }' -dmenu -i)
   [ -z "$chosen" ] && break
 
   # Handle toggle selections
