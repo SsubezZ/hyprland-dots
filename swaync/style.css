@@ -83,6 +83,15 @@
   .notification-row
   .notification-background
   .notification
+  .notification-content
+  image {
+  margin-right: 10px;
+}
+
+.floating-notifications.background
+  .notification-row
+  .notification-background
+  .notification
   > *:last-child
   > * {
   min-height: 45px;
@@ -159,6 +168,9 @@
     color 0.25s linear,
     border-color 0.5s linear;
 }
+.control-center .widget-title {
+  margin-bottom: -5px;
+}
 
 .control-center .widget-title > label {
   color: @foreground;
@@ -190,7 +202,7 @@
 .control-center .notification-row .notification-background {
   color: @foreground;
   background-color: @background-beta;
-  margin: 1px 0;
+  margin: 5px 0;
   border: 1px solid @border;
 }
 
@@ -329,6 +341,21 @@
 .control-center .notification-row .notification-background:active {
   background-color: @background;
   color: @foreground;
+}
+
+.control-center
+  .notification-group:not(.collapsed)
+  .notification-row
+  .notification-background {
+  margin: 1px 0;
+}
+
+.control-center .notification-group.collapsed .notification-row {
+  margin: 3px 0;
+}
+
+.control-center .notification-group button {
+  margin: 0;
 }
 
 progress,
