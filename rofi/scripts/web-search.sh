@@ -15,32 +15,54 @@ declare -A SEARCH_ENGINES=(
 
 ENGINE_ORDER=("Google" "Perplexity" "ChatGPT" "YouTube" "DuckDuckGo" "GitHub" "Arch Wiki" "Twitch" "Twitter")
 
-# Generate engine list
-engines_list=""
-for index in "${!ENGINE_ORDER[@]}"; do
-	engine="${ENGINE_ORDER[$index]}"
-	[ $index -ne 0 ] && engines_list+="\n"
-	engines_list+="$engine"
-done
-
 # Get search query first
 query=$(
 	rofi -dmenu -mesg "Enter Search Query" -theme-str 'window {width: 400px;} listview {columns: 1;} listview {enabled: false;} mode-switcher {enabled: false;}'
 )
 [ -z "$query" ] && exit # Exit if no query entered
 
-# Select search engine
-selected_engine=$(
-	echo -e "$engines_list" | rofi -dmenu -mesg "Search With" -theme-str 'window {width: 400px;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher { enabled: false; }'
-)
-[ -z "${SEARCH_ENGINES[$selected_engine]}" ] && exit
-
-# Default to Google if invalid selection
-if [ -z "$selected_engine" ]; then
-	selected_engine="Google"
+# Check if query looks like a domain
+domain_regex='^(https?://)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(/.*)?$'
+domain_flag=0
+if [[ "$query" =~ $domain_regex ]]; then
+	domain_flag=1
+	# Option for going directly to the domain.
+	domain_option="Go to ${query}"
 fi
 
-# URL-encode query
+# Build search engine menu list
+engines_list=""
+if [ $domain_flag -eq 1 ]; then
+	engines_list+="${domain_option}\n"
+fi
+for engine in "${ENGINE_ORDER[@]}"; do
+	engines_list+="${engine}\n"
+done
+# Remove trailing newline
+engines_list=$(echo -e "$engines_list" | sed '/^$/d')
+
+# Select search engine
+selected_option=$(
+	echo -e "$engines_list" | rofi -dmenu -mesg "Search With" -theme-str 'window {width: 400px;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher { enabled: false; }'
+)
+[ -z "$selected_option" ] && exit
+
+# If "Go to" option, open the domain directly
+if [ "$domain_flag" -eq 1 ] && [ "$selected_option" == "$domain_option" ]; then
+	# Prepend https:// if missing
+	if [[ ! "$query" =~ ^https?:// ]]; then
+		query="https://$query"
+	fi
+	$BROWSER "$query"
+	exit
+fi
+
+# If selection is not a valid search engine, default to Google
+if [ -z "${SEARCH_ENGINES[$selected_option]}" ]; then
+	selected_option="Google"
+fi
+
+# URL-encode query function
 urlencode() {
 	local length="${#1}"
 	local encoded=""
@@ -54,11 +76,10 @@ urlencode() {
 	echo "$encoded"
 }
 
-# Encode query
 encoded_query=$(urlencode "$query")
 
-# Construct URL
-url="${SEARCH_ENGINES[$selected_engine]//<QUERY>/$encoded_query}"
+# Construct the URL using the chosen search engine
+url="${SEARCH_ENGINES[$selected_option]//<QUERY>/$encoded_query}"
 
-# Open in browser
+# Open the URL in the browser
 $BROWSER "$url"
