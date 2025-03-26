@@ -10,15 +10,15 @@ set -Eeuo pipefail
 
 # --- Help and Usage ---
 if [ $# -le 0 ]; then
-  echo "Usage: $0 [options]"
-  echo "Options:"
-  echo "  ENA: [w]rite to ec"
-  echo "  PWR: [q]uiet  [d]efault  [p]erformance"
-  echo "  FAN: [a]uto   [c]ustom <pct>   [m]ax"
-  echo "  DBG: [r]ead from ec"
-  echo "  DBG: [e]nergy data from intel_rapl"
-  echo "  DBG: [n]vidia-powerd restart"
-  exit 1
+	echo "Usage: $0 [options]"
+	echo "Options:"
+	echo "  ENA: [w]rite to ec"
+	echo "  PWR: [q]uiet  [d]efault  [p]erformance"
+	echo "  FAN: [a]uto   [c]ustom <pct>   [m]ax"
+	echo "  DBG: [r]ead from ec"
+	echo "  DBG: [e]nergy data from intel_rapl"
+	echo "  DBG: [n]vidia-powerd restart"
+	exit 1
 fi
 
 # --- Copy compressed module if available ---
@@ -29,24 +29,24 @@ echo on | sudo tee /sys/module/msr/parameters/allow_writes &>/dev/null
 
 # --- Unload ec_sys if already loaded ---
 if [[ "$(lsmod | grep ec_sys | wc -c)" -gt 1 ]]; then
-  if [ -f ~/ec_sys.ko ]; then
-    sudo rmmod ec_sys
-  else
-    sudo modprobe -r ec_sys
-  fi
+	if [ -f ~/ec_sys.ko ]; then
+		sudo rmmod ec_sys
+	else
+		sudo modprobe -r ec_sys
+	fi
 fi
 
 # --- Load ec_sys with write support ---
 if [ -f ~/ec_sys.ko ]; then
-  if ! sudo insmod ~/ec_sys.ko write_support=1; then
-    sudo dmesg | tail
-    exit 1
-  fi
+	if ! sudo insmod ~/ec_sys.ko write_support=1; then
+		sudo dmesg | tail
+		exit 1
+	fi
 else
-  if ! sudo modprobe ec_sys write_support=1; then
-    sudo dmesg | tail
-    exit 1
-  fi
+	if ! sudo modprobe ec_sys write_support=1; then
+		sudo dmesg | tail
+		exit 1
+	fi
 fi
 
 # --- Define EC interface ---
@@ -54,49 +54,49 @@ EC="/sys/kernel/debug/ec/ec0/io"
 
 # --- Debug: Read EC dump ---
 if [[ $* =~ "r" ]]; then
-  if [[ $(sudo ls $EC 2>/dev/null) ]]; then
-    sudo xxd -g1 $EC
-  else
-    echo "EC interface not enabled"
-  fi
+	if [[ $(sudo ls $EC 2>/dev/null) ]]; then
+		sudo xxd -g1 $EC
+	else
+		echo "EC interface not enabled"
+	fi
 fi
 
 # --- Debug: Energy data ---
 if [[ $* =~ "e" ]]; then
-  find /sys/devices/virtual/powercap -type f -iname "energy_uj" -print | while read -r f; do
-    echo -e "$f\n$(cat "$f")"
-  done
+	find /sys/devices/virtual/powercap -type f -iname "energy_uj" -print | while read -r f; do
+		echo -e "$f\n$(cat "$f")"
+	done
 fi
 
 # --- Function: ecw ---
 # Write one byte to EC at a given offset.
 function ecw() {
-  # $1: offset, $2: value (e.g. '\x11')
-  printf "$2" | sudo dd of=$EC bs=1 seek="$1" count=1 conv=notrunc &>/dev/null
+	# $1: offset, $2: value (e.g. '\x11')
+	printf "$2" | sudo dd of=$EC bs=1 seek="$1" count=1 conv=notrunc &>/dev/null
 }
 
 # --- Function: set_power_limits ---
 function set_power_limits() {
-  # $1: PL1 limit (in watts, without trailing zeros)
-  # $2: PL2 limit
-  # $3: governor string (e.g. "powersave" or "performance")
-  echo "$3" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-  # echo "Current scaling governors:"
-  # cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-  MSR="/sys/devices/virtual/powercap/intel-rapl/intel-rapl:0"
-  MCH="/sys/devices/virtual/powercap/intel-rapl-mmio/intel-rapl-mmio:0"
-  for N in "$MSR" "$MCH"; do
-    echo "${1}000000" | sudo tee "$N/constraint_0_power_limit_uw" &>/dev/null
-    echo "${2}000000" | sudo tee "$N/constraint_1_power_limit_uw" &>/dev/null
-    echo "128000000" | sudo tee "$N/constraint_0_time_window_us" &>/dev/null
-    echo "128000000" | sudo tee "$N/constraint_1_time_window_us" &>/dev/null
-    if [[ "$N" == "$MSR" ]]; then
-      NODE="MSR"
-    else
-      NODE="MCH"
-    fi
-    echo "[$NODE] PL1 [$(cat "$N/constraint_0_power_limit_uw") $(cat "$N/constraint_0_time_window_us")] PL2 [$(cat "$N/constraint_1_power_limit_uw") $(cat "$N/constraint_1_time_window_us")]"
-  done
+	# $1: PL1 limit (in watts, without trailing zeros)
+	# $2: PL2 limit
+	# $3: governor string (e.g. "powersave" or "performance")
+	echo "$3" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+	# echo "Current scaling governors:"
+	# cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+	MSR="/sys/devices/virtual/powercap/intel-rapl/intel-rapl:0"
+	MCH="/sys/devices/virtual/powercap/intel-rapl-mmio/intel-rapl-mmio:0"
+	for N in "$MSR" "$MCH"; do
+		echo "${1}000000" | sudo tee "$N/constraint_0_power_limit_uw" &>/dev/null
+		echo "${2}000000" | sudo tee "$N/constraint_1_power_limit_uw" &>/dev/null
+		echo "128000000" | sudo tee "$N/constraint_0_time_window_us" &>/dev/null
+		echo "128000000" | sudo tee "$N/constraint_1_time_window_us" &>/dev/null
+		if [[ "$N" == "$MSR" ]]; then
+			NODE="MSR"
+		else
+			NODE="MCH"
+		fi
+		echo "[$NODE] PL1 [$(cat "$N/constraint_0_power_limit_uw") $(cat "$N/constraint_0_time_window_us")] PL2 [$(cat "$N/constraint_1_power_limit_uw") $(cat "$N/constraint_1_time_window_us")]"
+	done
 }
 
 # --- Enable EC Write-Enable ---
@@ -104,60 +104,60 @@ ecw $((0x03)) '\x11'
 
 # --- Main Control Section ---
 if [[ $(sudo ls $EC 2>/dev/null) ]]; then
-  # Power settings
-  if [[ $* =~ "q" ]]; then
-    echo "PWR - Quiet"
-    ecw $((0x2c)) '\x00' # Set power mode register to quiet
-    ecw $((0x2d)) '\x04'
-    set_power_limits 10 10 "powersave"
-    echo "powersupersave" | sudo tee /sys/module/pcie_aspm/parameters/policy
-    echo "power" | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
-  fi
-  if [[ $* =~ "d" ]]; then
-    echo "PWR - Default"
-    ecw $((0xab)) '\x0a' # SDTM: default shutdown therm temp
-    ecw $((0x2c)) '\x01'
-    ecw $((0x2d)) '\x04'
-    set_power_limits 75 75 "performance"
-    echo "performance" | sudo tee /sys/module/pcie_aspm/parameters/policy
-    echo "performance" | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
-  fi
-  if [[ $* =~ "p" ]]; then
-    echo "PWR - Performance"
-    ecw $((0xab)) '\x0a'
-    ecw $((0x2c)) '\x04'
-    ecw $((0x2d)) '\x04'
-    set_power_limits 95 95 "performance"
-    echo "performance" | sudo tee /sys/module/pcie_aspm/parameters/policy
-    echo "performance" | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
-  fi
-  if [[ $* =~ "n" ]]; then
-    echo "PWR - nvidia-powerd restart"
-    sudo systemctl restart nvidia-powerd
-  fi
-  # Fan settings
-  if [[ $* =~ "a" ]]; then
-    echo "FAN - Auto"
-    ecw $((0x21)) '\x10' # GPU fan: auto mode
-    ecw $((0x22)) '\x04' # CPU fan: auto mode
-  fi
-  if [[ $* =~ "c" ]]; then
-    if [ -z "$2" ]; then
-      echo "Specify FAN Percentage as Second Arg"
-    else
-      PCT="\x$(printf %x "$2")"
-      echo "FAN - Custom ($2%)"
-      ecw $((0x21)) '\x30' # Set GPU fan to custom manual mode
-      ecw $((0x22)) '\x0c' # Set CPU fan to custom manual mode
-      ecw $((0x37)) "$PCT" # CPU fan speed: set to percentage (0-100)
-      ecw $((0x3a)) "$PCT" # GPU fan speed: set to percentage (0-100)
-    fi
-  fi
-  if [[ $* =~ "m" ]]; then
-    echo "FAN - Max"
-    ecw $((0x21)) '\x20'
-    ecw $((0x22)) '\x08'
-  fi
+	# Power settings
+	if [[ $* =~ "q" ]]; then
+		echo "PWR - Quiet"
+		ecw $((0x2c)) '\x00' # Set power mode register to quiet
+		ecw $((0x2d)) '\x04'
+		set_power_limits 10 10 "powersave"
+		echo "powersupersave" | sudo tee /sys/module/pcie_aspm/parameters/policy
+		echo "power" | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
+	fi
+	if [[ $* =~ "d" ]]; then
+		echo "PWR - Default"
+		ecw $((0xab)) '\x0a' # SDTM: default shutdown therm temp
+		ecw $((0x2c)) '\x01'
+		ecw $((0x2d)) '\x04'
+		set_power_limits 75 75 "performance"
+		echo "performance" | sudo tee /sys/module/pcie_aspm/parameters/policy
+		echo "performance" | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
+	fi
+	if [[ $* =~ "p" ]]; then
+		echo "PWR - Performance"
+		ecw $((0xab)) '\x0a'
+		ecw $((0x2c)) '\x04'
+		ecw $((0x2d)) '\x04'
+		set_power_limits 95 95 "performance"
+		echo "performance" | sudo tee /sys/module/pcie_aspm/parameters/policy
+		echo "performance" | sudo tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
+	fi
+	if [[ $* =~ "n" ]]; then
+		echo "PWR - nvidia-powerd restart"
+		sudo systemctl restart nvidia-powerd
+	fi
+	# Fan settings
+	if [[ $* =~ "a" ]]; then
+		echo "FAN - Auto"
+		ecw $((0x21)) '\x10' # GPU fan: auto mode
+		ecw $((0x22)) '\x04' # CPU fan: auto mode
+	fi
+	if [[ $* =~ "c" ]]; then
+		if [ -z "$2" ]; then
+			echo "Specify FAN Percentage as Second Arg"
+		else
+			PCT="\x$(printf %x "$2")"
+			echo "FAN - Custom ($2%)"
+			ecw $((0x21)) '\x30' # Set GPU fan to custom manual mode
+			ecw $((0x22)) '\x0c' # Set CPU fan to custom manual mode
+			ecw $((0x37)) "$PCT" # CPU fan speed: set to percentage (0-100)
+			ecw $((0x3a)) "$PCT" # GPU fan speed: set to percentage (0-100)
+		fi
+	fi
+	if [[ $* =~ "m" ]]; then
+		echo "FAN - Max"
+		ecw $((0x21)) '\x20'
+		ecw $((0x22)) '\x08'
+	fi
 else
-  echo "EC interface not enabled"
+	echo "EC interface not enabled"
 fi

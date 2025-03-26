@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 if [ "$#" -ne 1 ]; then
-  echo "Usage: $0 [hex|rgb|hsv]"
-  exit 1
+	echo "Usage: $0 [hex|rgb|hsv]"
+	exit 1
 fi
 
 format="${1,,}"
@@ -14,7 +14,7 @@ exit_status=$?
 
 # Check for cancellation/empty output
 if [ $exit_status -ne 0 ] || [ -z "$color" ]; then
-  exit 1
+	exit 1
 fi
 
 # Format specification

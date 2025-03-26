@@ -6,12 +6,12 @@ SET="$PDM set-profile-override"
 
 # Define the options for the Rofi menu
 options=(
-  "Powersave++"
-  "Powersave"
-  "Balanced"
-  "Performance"
-  "Performance++"
-  "Reset Override"
+	"Powersave++"
+	"Powersave"
+	"Balanced"
+	"Performance"
+	"Performance++"
+	"Reset Override"
 )
 
 # Display the menu using Rofi

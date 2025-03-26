@@ -3,7 +3,7 @@
 sleep 0.25
 
 if [ -z "$XDG_PICTURES_DIR" ]; then
-  XDG_PICTURES_DIR="$HOME/Pictures"
+	XDG_PICTURES_DIR="$HOME/Pictures"
 fi
 
 save_dir="${2:-$XDG_PICTURES_DIR/Screenshots}"
@@ -12,7 +12,7 @@ full_path="$save_dir/$save_file"
 mkdir -p "$save_dir"
 
 function print_error {
-  cat <<"EOF"
+	cat <<"EOF"
     ./screenshot.sh <action>
     ...valid actions are...
         area     : snip selected area
@@ -28,22 +28,22 @@ active) grimblast --freeze copysave active "$full_path" ;;
 screen) grimblast copysave output "$full_path" ;;
 screens) grimblast copysave screen "$full_path" ;;
 *)
-  print_error
-  exit 1
-  ;;
+	print_error
+	exit 1
+	;;
 esac
 
 if [ -f "$full_path" ]; then
-  editor="${SCREENSHOT_EDITOR:-swappy}"
-  ACTION=$(notify-send -a "Screenshot" -i "$full_path" "Screenshot saved" "$full_path" \
-    -A "view=View" -A "edit=Edit" -A "open=Open Folder" -A "delete=Delete")
+	editor="${SCREENSHOT_EDITOR:-swappy}"
+	ACTION=$(notify-send -a "Screenshot" -i "$full_path" "Screenshot saved" "$full_path" \
+		-A "view=View" -A "edit=Edit" -A "open=Open Folder" -A "delete=Delete")
 
-  case "$ACTION" in
-  view) xdg-open "$full_path" ;;
-  edit) "$editor" -f "$full_path" ;;
-  open) xdg-open "$save_dir" ;;
-  delete) rm "$full_path" ;;
-  esac
+	case "$ACTION" in
+	view) xdg-open "$full_path" ;;
+	edit) "$editor" -f "$full_path" ;;
+	open) xdg-open "$save_dir" ;;
+	delete) rm "$full_path" ;;
+	esac
 else
-  exit 1
+	exit 1
 fi
