@@ -1,0 +1,17 @@
+@theme "~/.config/rofi/config.rasi"
+
+
+listbox {
+  children:                    [ "listview", "message" ];
+}
+
+textbox {
+  padding:                     8px;
+  background-color:            @selected;
+  text-color:                  @active;
+  cursor:                      pointer;
+  border:                      1px;
+  border-color:                @border;
+  vertical-align:              0.50;
+  horizontal-align:            0.50;
+}
