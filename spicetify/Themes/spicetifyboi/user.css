@@ -37,11 +37,12 @@
   --now-playing-bar-height: 5rem;
 
   /* Font */
-  --default-font-family: "Fira Sans";
+  --default-font-family: "Fira Sans Regular";
   --normal-font-weight: 500;
   --bold-font-weight: 700;
   --extra-bold-font-weight: var(--bold-font-weight);
-  --font-to-use: var(--default-font-family), Fira Sans,
+  --font-to-use:
+    var(--default-font-family), Fira Sans Regular,
     sans-serif Fira Mono var(--fallback-fonts, sans-serif);
 
   --top-bar-backdrop: blur(24px) saturate(140%);
@@ -105,7 +106,7 @@ input {
 }
 
 .playback-bar {
-  font-family: "Fira Mono";
+  /* font-family: "Fira Mono"; */
 }
 
 /* Main container */

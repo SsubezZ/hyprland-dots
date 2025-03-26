@@ -16,25 +16,19 @@ style = "Beam"
 vi_mode_style = "None"
 
 [font]
-size = 11
-
-[font.bold]
-family = "Fira Code Nerd Font"
-style = "Bold"
-
-[font.glyph_offset]
-y = 0
-
-[font.italic]
-family = "Fira Code Nerd Font"
-style = "Italic"
+size = 12
 
 [font.normal]
 family = "Fira Code Nerd Font"
 style = "Regular"
 
-[font.offset]
-y = 0
+[font.bold]
+family = "Fira Code Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "Fira Code Nerd Font"
+style = "Italic"
 
 [scrolling]
 history = 10000
