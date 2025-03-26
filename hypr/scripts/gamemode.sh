@@ -13,8 +13,8 @@ enable_gamemode() {
   pkill hyprpaper
   hyprctl --batch "\
     #keyword animations:enabled 0;\
-    keyword windowrulev2 forcergbx, class:.*;\
-    keyword windowrulev2 opaque, class:.*;\
+    keyword windowrule forcergbx, class:.*;\
+    keyword windowrule opaque override, class:.*;\
     keyword decoration:shadow:enabled 0;\
     #keyword decoration:rounding 0;\
     keyword decoration:blur:enabled 0"

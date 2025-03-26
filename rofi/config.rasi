@@ -1,6 +1,6 @@
 configuration {
   show-icons:                 false;
-  font:                       "Fira Sans 11";
+  font:                       "Fira Sans Regular 11";
   display-drun:               "Apps";
   display-run:                "Run";
   display-filebrowser:        "Files";
@@ -10,6 +10,7 @@ configuration {
   me-select-entry:            "MousePrimary,MouseSecondary";
   me-accept-entry:            "!MousePrimary";
   hover-select:               true;
+  run-command:                "uwsm app -- {cmd}";
 }
 
 @theme "~/.config/rofi/theme.rasi"
