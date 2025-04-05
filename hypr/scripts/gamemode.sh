@@ -11,17 +11,36 @@ enable_gamemode() {
 	hyprctl keyword misc:disable_autoreload 1
 	power-daemon-mgr -q set-profile-override Performance++
 	pkill hyprpaper
-	hyprctl --batch "\
+	if [ "$(gsettings get org.gnome.desktop.interface color-scheme | tr -d "'")" == "prefer-dark" ]; then
+		hyprctl --batch "\
     #keyword animations:enabled 0;\
-    keyword windowrule forcergbx, class:.*;\
+    #keyword windowrule forcergbx, class:.*;\
     keyword windowrule opaque override, class:.*;\
     keyword decoration:shadow:enabled 0;\
     #keyword decoration:rounding 0;\
-    keyword decoration:blur:enabled 0;\
-    keyword decoration:blur:popups 0;\
-    keyword decoration:blur:ignore_opacity 0"
+    #keyword decoration:blur:enabled 0;\
+    keyword decoration:blur:size 0;\
+    keyword decoration:blur:passes 0;\
+    keyword decoration:blur:brightness 0;\
+    # keyword decoration:blur:contrast 0;\
+    keyword decoration:blur:popups 0"
+	else
+		hyprctl --batch "\
+    #keyword animations:enabled 0;\
+    #keyword windowrule forcergbx, class:.*;\
+    keyword windowrule opaque override, class:.*;\
+    keyword decoration:shadow:enabled 0;\
+    #keyword decoration:rounding 0;\
+    #keyword decoration:blur:enabled 0;\
+    keyword decoration:blur:size 0;\
+    keyword decoration:blur:passes 0;\
+    keyword decoration:blur:brightness 2;\
+    # keyword decoration:blur:contrast 0;\
+    keyword decoration:blur:popups 0"
+	fi
 	write_state "󰖺" "Gamemode ON"
 	sleep 0.5
+
 }
 
 disable_gamemode() {
@@ -31,9 +50,10 @@ disable_gamemode() {
 	$HOME/.config/hypr/scripts/hyprpaper.sh
 	write_state "󰖻" "Gamemode OFF"
 	sleep 0.5
+
 }
 
-HYPRGAMEMODE=$(hyprctl getoption decoration:blur:enabled | awk 'NR==1{print $2}')
+HYPRGAMEMODE=$(hyprctl getoption decoration:blur:size | awk 'NR==1{print $2}')
 CURRENT_STATE="off"
 [ "$HYPRGAMEMODE" = "0" ] && CURRENT_STATE="on"
 
