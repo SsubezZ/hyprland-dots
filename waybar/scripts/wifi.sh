@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Find the Ethernet interface (if available)
 eth_interface=$(nmcli device status | awk '$2 == "ethernet" {print $1; exit}')

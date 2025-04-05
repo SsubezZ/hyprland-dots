@@ -38,7 +38,7 @@ window#waybar {
     -1px 1px 2px @background,
     1px 1px 2px @background;
   border: 1px solid transparent;
-  transition: all 0.25s linear;
+  transition: all 0.3s linear;
 }
 
 window#waybar:not(.eDP-1) #workspaces button,
@@ -115,7 +115,7 @@ window#waybar.fullscreen #window {
   border-color: @accent-bg;
 }
 
-window#waybar.empty #window,
+window#waybar.empty #window:not(:hover),
 #taskbar.empty {
   border-color: transparent;
   background-color: transparent;

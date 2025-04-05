@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -A GTK_THEMES=(["light"]="Colloid-light" ["dark"]="Colloid-dark")
 # declare -A GTK_THEMES=(["light"]="Graphite-light" ["dark"]="Graphite-dark")

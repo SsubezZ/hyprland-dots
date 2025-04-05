@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 get_metadata() {
 	playerctl -i firefox -a metadata --format '{"title":"{{title}}","artist":"{{artist}}","status":"{{status}}"}'

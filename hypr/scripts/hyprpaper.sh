@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 CONFIG_FILE="$HOME/.config/wallpapers/wallpapers.conf"
 VAR_FILE="$HOME/.config/wallpapers/.wallpapers"

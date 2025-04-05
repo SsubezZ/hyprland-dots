@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Define the path to your script as a variable
 SCRIPT_PATH="$HOME/.config/hypr/scripts/nitrosense"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 suppress_output() {
 	"$@" >/dev/null 2>&1

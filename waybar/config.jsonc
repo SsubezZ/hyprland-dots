@@ -528,6 +528,9 @@
       "separate-outputs": true,
       "on-click": "$ROFI 'rofi -show-icons -theme-str \"window {location: north west; width: 600px; x-offset: 76; y-offset: 2;}\" -show window -modi window'",
       "on-click-right": "hyprctl dispatch killactive",
+      "on-click-middle": "hyprctl dispatch fullscreenstate 1",
+      "on-scroll-up": "hyprctl dispatch movefocus r",
+      "on-scroll-down": "hyprctl dispatch movefocus l",
     },
 
     //====================MODULES_CENTER====================

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Define the path to your script as a variable
 PDM="power-daemon-mgr -q"

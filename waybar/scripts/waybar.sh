@@ -71,7 +71,11 @@ if ! pgrep -x waybar >/dev/null; then
 	exit
 fi
 
-if ! hyprctl activewindow | grep -q 'fullscreenClient: 2'; then
+# if ! hyprctl activewindow | grep -q 'fullscreenClient: 2'; then
+# 	exit
+# fi
+
+if ! hyprctl activewindow | grep -q 'fullscreen: 2'; then
 	exit
 fi
 
