@@ -25,6 +25,7 @@ PS1+="${symbol}${reset} "
 
 source /home/subez/.aliases
 
+if [[ ${EUID} != 0 ]]; then source "$XDG_CONFIG_HOME/wallpapers/.wallpapers" 2>/dev/null || true; fi
 if [[ ${EUID} != 0 ]]; then fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"; fi
 
 [[ ${BLE_VERSION-} ]] && ble-attach

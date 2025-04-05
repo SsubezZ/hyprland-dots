@@ -14,7 +14,7 @@ reload_process() {
 	disown
 }
 
-reload_process "hyprpaper" "hyprpaper" &
+reload_process "hyprpaper" "$HOME/.config/hypr/scripts/hyprpaper.sh" &
 reload_process "waybar" "waybar" &
 wait
 

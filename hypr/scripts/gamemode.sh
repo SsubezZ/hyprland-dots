@@ -28,7 +28,7 @@ disable_gamemode() {
 	hyprctl reload
 	hyprctl dismissnotify
 	power-daemon-mgr -q reset-profile-override
-	hyprpaper &
+	$HOME/.config/hypr/scripts/hyprpaper.sh
 	write_state "󰖻" "Gamemode OFF"
 	sleep 0.5
 }
