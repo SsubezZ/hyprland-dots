@@ -9,11 +9,13 @@ declare -A SEARCH_ENGINES=(
 	["DuckDuckGo"]="https://duckduckgo.com/?q=<QUERY>"
 	["GitHub"]="https://github.com/search?q=<QUERY>"
 	["Arch Wiki"]="https://wiki.archlinux.org/index.php?search=<QUERY>"
+	["Arch Packages"]="https://archlinux.org/packages/?q=<QUERY>"
+	["Arch AUR"]="https://aur.archlinux.org/packages?SeB=nd&K=<QUERY>"
 	["Twitch"]="https://www.twitch.tv/<QUERY>"
 	["Twitter"]="https://www.twitter.com/<QUERY>"
 )
 
-ENGINE_ORDER=("Google" "Perplexity" "ChatGPT" "YouTube" "DuckDuckGo" "GitHub" "Arch Wiki" "Twitch" "Twitter")
+ENGINE_ORDER=("Google" "Perplexity" "ChatGPT" "YouTube" "DuckDuckGo" "GitHub" "Arch Wiki" "Arch Packages" "Arch AUR" "Twitch" "Twitter")
 
 # Get search query first
 query=$(

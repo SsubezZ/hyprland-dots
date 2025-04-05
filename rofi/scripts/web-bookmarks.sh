@@ -34,15 +34,24 @@ get_bookmarks() {
 
 	trap '[[ -n $cleanup ]] && rm -f "$profile_db"' EXIT
 
-	local query="SELECT DISTINCT
+	local query="WITH RECURSIVE menu_folders AS (
+        SELECT id FROM moz_bookmarks WHERE guid = 'menu________' AND type = 2
+        UNION ALL
+        SELECT b.id FROM moz_bookmarks b
+        JOIN menu_folders mf ON b.parent = mf.id
+        WHERE b.type = 2
+    )
+    SELECT DISTINCT
         b.title,
         p.url
-        FROM moz_bookmarks b
-        JOIN moz_places p ON b.fk = p.id
-        WHERE b.type = 1
-        AND p.hidden = 0
-        AND p.url NOT LIKE 'place:%'
-        ORDER BY b.lastModified DESC"
+    FROM moz_bookmarks b
+    JOIN moz_places p ON b.fk = p.id
+    WHERE b.type = 1
+    AND p.hidden = 0
+    AND p.url NOT LIKE 'place:%'
+    ORDER BY
+        CASE WHEN b.parent IN (SELECT id FROM menu_folders) THEN 0 ELSE 1 END,
+        b.lastModified DESC"
 
 	sqlite3 -separator ' | ' "$profile_db" "$query" 2>/dev/null |
 		awk -F' \\| ' 'NF == 2 && $1 != "" {print $1 " | " $2}'
