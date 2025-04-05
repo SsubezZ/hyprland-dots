@@ -38,6 +38,7 @@ enable_gamemode() {
     # keyword decoration:blur:contrast 0;\
     keyword decoration:blur:popups 0"
 	fi
+	swayosd-client --custom-message "Gamemode Enabled" --custom-icon "input-gaming" || notify-send --app-name "Gamemode" "Gamemode Enabled" "Decorations Disabled" -e -h string:x-canonical-private-synchronous:gamemode
 	write_state "󰖺" "Gamemode ON"
 	sleep 0.5
 
@@ -48,6 +49,7 @@ disable_gamemode() {
 	hyprctl dismissnotify
 	power-daemon-mgr -q reset-profile-override
 	$HOME/.config/hypr/scripts/hyprpaper.sh
+	swayosd-client --custom-message "Gamemode Disabled" --custom-icon "input-gaming" || notify-send --app-name "Gamemode" "Gamemode Disabled" "Decorations Enabled" -e -h string:x-canonical-private-synchronous:gamemode
 	write_state "󰖻" "Gamemode OFF"
 	sleep 0.5
 

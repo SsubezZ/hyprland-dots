@@ -8,36 +8,42 @@
 @define-color text          @theme_text_color;
 
 * {
+  all: unset;
   border-radius: 6px;
+  min-width: 0;
 }
 
 window#osd {
   background: @backgroundm;
-  color: @accent-bg;
-  padding: 5px;
-  margin: 10px;
+  color: @text;
   border: 1px solid @border;
+}
+
+#container {
+  margin: 10px 12px;
 }
 
 progressbar {
   background: @backgroundm;
-  color: @accent-bg;
+  color: @text;
   padding: 10px;
-  margin: 5px;
   border: 1px solid @border;
-}
-
-progress {
-  background: @accent-bg;
-  color: @backgroundm;
-  border: 1px solid @border;
-  border-right: 4px solid @border;
-  transition: all 0.25s ease;
+  min-width: 10rem;
 }
 
 trough {
   background: @backgroundn;
   border: 1px solid @border;
+  min-height: 25px;
+}
+
+progress {
+  background: @accent-bg;
+  border: 1px solid @border;
+  /* border-right: 2px solid @border; */
+  margin: 0;
+  transition: all 0.25s ease;
+  min-height: 25px;
 }
 
 image,
@@ -45,7 +51,6 @@ label {
   background: @backgroundm;
   color: @text;
   padding: 5px;
-  margin: -5px;
   border: 1px solid @border;
   text-shadow:
     -1px -1px 2px @background,
@@ -57,4 +62,11 @@ label {
   font-weight: bold;
   min-width: 40px;
   min-height: 40px;
+  margin: 0 -2px;
+}
+
+progressbar:disabled,
+image:disabled,
+label:disabled {
+  opacity: 0.5;
 }
