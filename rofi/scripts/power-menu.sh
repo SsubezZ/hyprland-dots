@@ -23,6 +23,7 @@ else
 fi
 
 chosen=$(printf "%s\n" "${options[@]}" | rofi -dmenu \
+                                              -i \
                                               -mesg "Uptime: $uptime" \
                                               -theme-str "$theme")
 

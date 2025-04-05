@@ -14,13 +14,13 @@ options=(
 )
 
 # Display the menu using Rofi
-selected_option=$(printf '%s\n' "${options[@]}" | rofi -dmenu -theme-str "$THEME" -mesg "NitroSense")
+selected_option=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -theme-str "$THEME" -mesg "NitroSense")
 
 # Handle the selected option
 case "$selected_option" in
 "Power Management")
 	power_options=("Quiet" "Default" "Performance")
-	selected_power=$(printf '%s\n' "${power_options[@]}" | rofi -dmenu -theme-str "$THEME" -mesg "Select power mode:")
+	selected_power=$(printf '%s\n' "${power_options[@]}" | rofi -dmenu -i -theme-str "$THEME" -mesg "Select power mode:")
 	case "$selected_power" in
 	"Quiet")
 		pkexec "$SCRIPT_PATH" q
@@ -42,7 +42,7 @@ case "$selected_option" in
 	;;
 "Fan Control")
 	fan_options=("Auto" "Custom" "Max")
-	selected_fan=$(printf '%s\n' "${fan_options[@]}" | rofi -dmenu -theme-str "$THEME" -mesg "Select fan mode:")
+	selected_fan=$(printf '%s\n' "${fan_options[@]}" | rofi -dmenu -i -theme-str "$THEME" -mesg "Select fan mode:")
 	case "$selected_fan" in
 	"Auto")
 		pkexec "$SCRIPT_PATH" a

@@ -43,7 +43,7 @@ engines_list=$(echo -e "$engines_list" | sed '/^$/d')
 
 # Select search engine
 selected_option=$(
-	echo -e "$engines_list" | rofi -dmenu -mesg "Search With" -theme-str 'window {width: 400px;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher { enabled: false; }'
+	echo -e "$engines_list" | rofi -dmenu -i -mesg "Search With" -theme-str 'window {width: 400px;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher { enabled: false; }'
 )
 [ -z "$selected_option" ] && exit
 
