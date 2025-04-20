@@ -1,24 +1,24 @@
 # hyprland-dots
 
-![main](https://github.com/user-attachments/assets/213c0244-94b3-4016-b3e0-d113cd3d7ea0)
+![main](https://github.com/user-attachments/assets/ee8dd075-9c05-4c1d-89d2-8afe3693088e)
+
+![nvim_browser](https://github.com/user-attachments/assets/755e13e8-e61a-46e2-b174-fc23f9b229eb)
 
 ## waybar
 
-![waybar](https://github.com/user-attachments/assets/a30cd435-e5cf-4c55-80eb-155ae173372c)
+![waybar](https://github.com/user-attachments/assets/d8096b12-040a-4855-827a-210e8da0a077)
 
 ## rofi
 
-![rofi](https://github.com/user-attachments/assets/3e1c8396-c353-473d-8fe5-7906d1d14bd6)
+![rofi_all](https://github.com/user-attachments/assets/1b9115dc-2826-4227-ab71-cf9cf46a7498)
 
 ## neovim
 
-![neovim](https://github.com/user-attachments/assets/f7d444b3-2193-45b4-ae16-91e7bc39fba2)
-
-![nvim_browser](https://github.com/user-attachments/assets/1a69fc2f-83e9-4cc9-a12c-7c67b37f560a)
+![neovim](https://github.com/user-attachments/assets/4298f0ee-a46f-49f9-a8a0-35021b928a11)
 
 ## librewolf
 
-![librewolf](https://github.com/user-attachments/assets/0ce15b0d-2217-471e-8700-db652e581a1f)
+![browser](https://github.com/user-attachments/assets/a8e4f42e-ad03-47e4-89de-9402756eb95f)
 
 | Themes                                                                  |
 | ----------------------------------------------------------------------- |
@@ -27,11 +27,11 @@
 
 ## spotify
 
-![spicetify](https://github.com/user-attachments/assets/7e7bb263-218d-4266-bc42-08d9607bca07)
+![spicetify](https://github.com/user-attachments/assets/68e8b885-99f6-414b-9115-7518498997af)
 
 ## hyprlock
 
-![hyprlock](https://github.com/user-attachments/assets/54684f07-349b-4ce1-ac53-e584dc2d3345)
+![hyprlock](https://github.com/user-attachments/assets/dbdf8c1e-ea95-4181-97ba-7c992fb8c148)
 
 ## sddm
 
