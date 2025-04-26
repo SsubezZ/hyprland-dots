@@ -23,7 +23,7 @@ enable_gamemode() {
     keyword decoration:blur:passes 0;\
     keyword decoration:blur:brightness 0;\
     # keyword decoration:blur:contrast 0;\
-    keyword decoration:blur:popups 0"
+    keyword decoration:blur:popups 1"
 	else
 		hyprctl --batch "\
     #keyword animations:enabled 0;\
@@ -36,7 +36,7 @@ enable_gamemode() {
     keyword decoration:blur:passes 0;\
     keyword decoration:blur:brightness 2;\
     # keyword decoration:blur:contrast 0;\
-    keyword decoration:blur:popups 0"
+    keyword decoration:blur:popups 1"
 	fi
 	swayosd-client --custom-message "Gamemode Enabled" --custom-icon "input-gaming" || notify-send --app-name "Gamemode" "Gamemode Enabled" "Decorations Disabled" -e -h string:x-canonical-private-synchronous:gamemode
 	write_state "󰖺" "Gamemode ON"
