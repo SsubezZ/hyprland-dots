@@ -23,8 +23,7 @@ if pgrep -x rofi >/dev/null; then
 	sleep 0.1
 
 	if [ "$CMD" = "$last_cmd" ]; then
-		# If the new command is identical to the last one,
-		# just clear the state and exit (toggle off).
+		# If the new command is identical to the last one, ust clear the state and exit (toggle off).
 		rm -f "$STATEFILE"
 		exit 0
 	else

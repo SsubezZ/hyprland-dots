@@ -24,7 +24,7 @@ toggle_recording() {
 start_recording() {
 	local output_file="${SAVE_DIR}/${SCREENCAST_NAME}"
 
-	gpu-screen-recorder -w portal -q ultra -a default_output \
+	gpu-screen-recorder -w eDP-1 -q ultra -a default_output \
 		-k h264 -ac opus -cr full -f 144 -o "${output_file}" &
 	RECORDER_PID=$!
 

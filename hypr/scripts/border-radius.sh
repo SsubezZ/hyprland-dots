@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Check if an argument is provided
 if [ "$#" -ne 1 ]; then
 	echo "Usage: $0 <border-radius-value>"
 	exit 1
@@ -8,7 +7,6 @@ fi
 
 BORDER_RADIUS=$1
 
-# Validate that the input is a number
 if ! [[ "$BORDER_RADIUS" =~ ^[0-9]+$ ]]; then
 	echo "Error: Border radius must be a numeric value."
 	exit 1

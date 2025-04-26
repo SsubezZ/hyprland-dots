@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Configuration
-BROWSER_CMD=("librewolf" "--new-window")
+BROWSER=("librewolf" "--new-window")
 
 find_places_db() {
 	find "${HOME}/.librewolf" -type f -name 'places.sqlite' -printf '%T@ %p\n' 2>/dev/null |
@@ -80,7 +80,7 @@ main() {
 		sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
 	echo "Opening URL: ${url}"
-	"${BROWSER_CMD[@]}" "$url" &>/dev/null &
+	"${BROWSER[@]}" "$url" &>/dev/null &
 }
 
 main

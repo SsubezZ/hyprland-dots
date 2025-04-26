@@ -1,10 +1,6 @@
 #!/bin/bash
 
-# This script writes directly to the EC registers for power and fan control.
-# It combines the robust error handling and feedback from one version with the
-#
-# WARNING: Writing to EC registers can be dangerous. Verify your EC addresses and
-# test thoroughly before regular use.
+# WARNING: Writing to EC registers can be dangerous. Verify your EC addresses and test thoroughly before regular use.
 
 set -Eeuo pipefail
 

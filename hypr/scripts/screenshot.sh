@@ -7,7 +7,7 @@ if [ -z "$XDG_PICTURES_DIR" ]; then
 fi
 
 save_dir="${2:-$XDG_PICTURES_DIR/Screenshots}"
-save_file=$(date '+%F_%T_%3N')
+save_file=$(date '+%F_%T_%3N').png
 full_path="$save_dir/$save_file"
 mkdir -p "$save_dir"
 

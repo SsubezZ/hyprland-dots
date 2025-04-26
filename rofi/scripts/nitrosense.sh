@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
-# Define the path to your script as a variable
 SCRIPT_PATH="$HOME/.config/hypr/scripts/nitrosense"
-THEME='configuration {show-icons: false;} window {width: 300px;} inputbar {enabled: false;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher {enabled: false;}'
-THEME_PER='configuration {show-icons: false; }window { width: 300px; } listview { enabled: false; } mode-switcher { enabled: false; } element { enabled: false; }'
+THEME_KEYBIND='configuration {show-icons: false;} window {width: 300px;} inputbar {enabled: false;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher {enabled: false;}'
+THEME_WAYBAR='configuration {show-icons: false;} window {location: north east; x-offset: -236; y-offset: 2; width: 250px;} inputbar {enabled: false;} element-text {vertical-align: 0.50; horizontal-align: 0.50;} mode-switcher {enabled: false;}'
+THEME_KEYBIND_PER='configuration {show-icons: false;} window {width: 300px;} listview {enabled: false;} mode-switcher {enabled: false;} element {enabled: false;}'
+THEME_WAYBAR_PER='configuration {show-icons: false;} window {location: north east; x-offset: -236; y-offset: 2; width: 300px;} listview {enabled: false;} mode-switcher {enabled: false;} element {enabled: false;}'
 
-# Define the options for the Rofi menu
+if [[ "${1:-}" == "waybar" ]]; then
+	THEME="$THEME_WAYBAR"
+	THEME_PER="$THEME_WAYBAR_PER"
+else
+	THEME="$THEME_KEYBIND"
+	THEME_PER="$THEME_KEYBIND_PER"
+fi
+
 options=(
 	"Power Management"
 	"Fan Control"
@@ -13,10 +21,8 @@ options=(
 	"Restart NVIDIA Power Daemon"
 )
 
-# Display the menu using Rofi
 selected_option=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -theme-str "$THEME" -mesg "NitroSense")
 
-# Handle the selected option
 case "$selected_option" in
 "Power Management")
 	power_options=("Quiet" "Default" "Performance")
@@ -51,14 +57,17 @@ case "$selected_option" in
 		;;
 	"Custom")
 		while true; do
-			fan_percentage=$(rofi -dmenu -theme-str "$THEME_PER" -mesg "Please enter a fan percentage (0-100):")
-			if [[ "$fan_percentage" =~ ^[0-9]+$ ]] && [ "$fan_percentage" -ge 0 ] && [ "$fan_percentage" -le 100 ]; then
+			fan_percentage=$(rofi -dmenu -theme-str "$THEME_PER" -mesg "Enter a fan percentage (0-100):")
+			rofi_exit_code=$?
+			if [[ $rofi_exit_code -ne 0 ]]; then
+				break
+			elif [[ "$fan_percentage" =~ ^[0-9]+$ ]] && [ "$fan_percentage" -ge 0 ] && [ "$fan_percentage" -le 100 ]; then
 				pkexec "$SCRIPT_PATH" c "$fan_percentage"
 				wait
 				notify-send -e "Nitrosense" --appname="Nitrosense" "Fan speed set to $fan_percentage%"
 				break
 			else
-				rofi -e "Invalid percentage. Please enter a number between 0 and 100."
+				rofi -theme-str "$THEME_PER" -e "Invalid percentage. Enter a number between 0 and 100."
 			fi
 		done
 		;;

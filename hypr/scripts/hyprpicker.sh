@@ -8,11 +8,11 @@ fi
 format="${1,,}"
 temp_img="/tmp/color.png"
 
-# Get color directly from hyprpicker output
+# Get Color
 color=$(hyprpicker -n -a -f "$format")
 exit_status=$?
 
-# Check for cancellation/empty output
+# Cancel Check
 if [ $exit_status -ne 0 ] || [ -z "$color" ]; then
 	exit 1
 fi
