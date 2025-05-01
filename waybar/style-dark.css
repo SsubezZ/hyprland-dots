@@ -6,7 +6,7 @@
 @define-color accent-bg          @theme_selected_bg_color;
 @define-color accent-fg          @theme_selected_fg_color;
 @define-color text               @theme_text_color;
-@define-color cyan               #00cccc;
+@define-color cyan               alpha(#00cccc, 0.75);
 
 * {
   all: unset;
