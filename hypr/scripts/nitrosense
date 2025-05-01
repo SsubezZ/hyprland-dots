@@ -2,7 +2,7 @@
 
 # WARNING: Writing to EC registers can be dangerous. Verify your EC addresses and test thoroughly before regular use.
 
-set -Eeuo pipefail
+# set -Eeuo pipefail
 
 # --- Help and Usage ---
 if [ $# -le 0 ]; then
@@ -91,7 +91,7 @@ function set_power_limits() {
 		else
 			NODE="MCH"
 		fi
-		echo "[$NODE] PL1 [$(cat "$N/constraint_0_power_limit_uw") $(cat "$N/constraint_0_time_window_us")] PL2 [$(cat "$N/constraint_1_power_limit_uw") $(cat "$N/constraint_1_time_window_us")]"
+		# echo "[$NODE] PL1 [$(cat "$N/constraint_0_power_limit_uw") $(cat "$N/constraint_0_time_window_us")] PL2 [$(cat "$N/constraint_1_power_limit_uw") $(cat "$N/constraint_1_time_window_us")]"
 	done
 }
 

@@ -284,6 +284,7 @@
       "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
       "on-click": "$ROFI '$HOME/.config/rofi/scripts/power-options-daemon.sh'",
       "on-click-right": "power-options-gtk",
+      "on-click-middle": "$ROFI '$HOME/.config/rofi/scripts/nitrosense.sh waybar'",
       "tooltip-format": "{timeTo}\nHealth: {health}%\nPower: {power}",
     },
 
