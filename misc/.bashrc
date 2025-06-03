@@ -1,3 +1,5 @@
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 white="\033[37m"
 red="\033[31m"
 blue="\033[34m"
@@ -11,7 +13,7 @@ er_color=$reset$bold$red
 host_color=${reset}${bold}${cyan}
 directory_color=$reset$blue
 etc_color=$reset$white
-on_error="\$([[ \$? != 0 ]] && echo \"${etc_color}[${er_color}X${etc_color}]─\")"
+on_error="\$(if [ \$? -ne 0 ]; then echo \"${etc_color}[${er_color}X${etc_color}]─\"; fi)"
 symbol="${reset}${white}$(if [[ ${EUID} == 0 ]]; then echo '#'; else echo '$'; fi)"
 PS1="
 ${etc_color}┌─${on_error}["
@@ -21,11 +23,10 @@ PS1+="${username_color}\u"
 PS1+="${etc_color}]─["
 PS1+="${directory_color}\w"
 PS1+="${etc_color}]\n└───▶ "
-PS1+="${symbol}${reset} "
+# PS1+="${symbol}${reset} "
+PS1+="${reset}"
 
 source /home/subez/.aliases
 
 if [[ ${EUID} != 0 ]]; then source $XDG_CONFIG_HOME/hypr/wallpapers/.wallpapers 2>/dev/null || true; fi
 if [[ ${EUID} != 0 ]]; then fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"; fi
-
-[[ ${BLE_VERSION-} ]] && ble-attach

@@ -8,5 +8,5 @@ SIG="$R%{$fg[white]%}$(if [[ ${EUID} == 0 ]]; then echo '#'; else echo '$'; fi)"
 
 PROMPT="
 $SYM┌\$ERR\$SYM─[\$USR\$SYM]─[\$DIR\$SYM]
-$SYM└───▶ $SIG $R\
+$SYM└───▶ $R\
 "

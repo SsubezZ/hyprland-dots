@@ -1,11 +1,22 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="promptboi"
+prompt() {
+  PROMPT=$'\n'
+  PROMPT+='%F{white}┌─'
+  PROMPT+='%(?..%F{white}[%B%F{red}X%f%b%F{white}]─)'
+  PROMPT+='[%(!.%B%F{red}.%B%F{cyan})%n%f%b%F{white}]─'
+  PROMPT+='[%F{blue}%~%F{white}]'$'\n'
+  PROMPT+='%F{white}└───▶%f%b '
+}
+prompt
+
+# ZSH_THEME="promptboi"
 
 ENABLE_CORRECTION="true"
 
 COMPLETION_WAITING_DOTS="true"
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
 plugins=(
   autoupdate
@@ -17,7 +28,10 @@ plugins=(
   zsh-syntax-highlighting
   zsh-fzf-history-search
 )
+
+DISABLE_AUTO_UPDATE="true"
 source $ZSH/oh-my-zsh.sh
+
 if [[ ${EUID} != 0 ]]; then source $HOME/.config/hypr/wallpapers/.wallpapers 2>/dev/null || true; fi
 
 # Plugins Customizations
@@ -72,6 +86,7 @@ ZSH_HIGHLIGHT_STYLES[bracket-level-4]=fg=yellow,bold
 ZSH_HIGHLIGHT_STYLES[bracket-level-5]=fg=cyan,bold
 ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=standout
 
+HISTFILE=$HOME/.local/state/zsh/.zsh_history
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
 source /home/subez/.aliases
