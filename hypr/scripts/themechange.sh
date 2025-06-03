@@ -21,6 +21,7 @@ pre() {
 		spicetify watch -s &>/dev/null &
 		sleep 1 && pkill -x spicetify &>/dev/null
 	fi
+  hyprctl keyword plugin:hyprbars:enabled false
 }
 
 set_theme() {
@@ -71,6 +72,7 @@ post() {
 		spicetify watch -s &>/dev/null &
 		sleep 1 && pkill -x spicetify &>/dev/null
 	fi
+  hyprctl keyword plugin:hyprbars:enabled true
 }
 
 write_state() {
@@ -81,7 +83,6 @@ write_state() {
 	echo "{\"text\": \"${icon}\", \"tooltip\": \"Switch to ${to}\"}" >"${state_dir}/._state_themechange.txt"
 }
 
-# Main script logic to handle command line arguments or toggle mode by default
 if [[ $# -eq 0 ]]; then
 	CURRENT=$(gsettings get org.gnome.desktop.interface color-scheme | tr -d "'")
 
