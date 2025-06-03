@@ -1,5 +1,5 @@
 @import url("./style-dark.css");
 
 window#waybar {
-  background: @background;
+  /* background: @background; */
 }

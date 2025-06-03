@@ -26,8 +26,13 @@
   "hide-on-clear": true,
   "hide-on-action": true,
   "script-fail-notify": true,
-  "widgets": ["title", "notifications", "volume", "backlight", "mpris"],
-
+  "widgets": [
+    "title",
+    "notifications",
+    "volume",
+    "backlight",
+    "mpris"
+  ],
   "widget-config": {
     "title": {
       "text": "Notifications",

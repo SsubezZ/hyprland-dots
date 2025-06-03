@@ -13,7 +13,7 @@
   all: unset;
   font-family: "Fira Sans Regular";
   font-size: 14px;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .floating-notifications.background .notification-row .notification-background {
@@ -168,8 +168,9 @@
     color 0.25s linear,
     border-color 0.5s linear;
 }
+
 .control-center .widget-title {
-  margin-bottom: -5px;
+  margin-bottom: 0px;
 }
 
 .control-center .widget-title > label {
@@ -455,8 +456,8 @@ trough {
   background: @accent-bg;
 }
 
-.widget-mpris .image-button:not(.circular):hover image {
-  background: @accent-fg;
+.widget-mpris .image-button:not(.circular) image {
+  /* background: @accent-fg; */
 }
 
 .widget-mpris .image-button:first-child:not(.circular) {
@@ -566,6 +567,7 @@ trough {
 
 .widget-backlight {
   border-top: none;
+  /* margin-bottom: 10px; */
   padding: 0px 10px 5px 10px;
 }
 
@@ -578,7 +580,6 @@ trough {
 .widget-volume .text-button:hover {
   color: @accent-fg;
   background: @accent-bg;
-  border: 1px solid @background;
 }
 
 .widget-volume .text-button label {
@@ -592,6 +593,29 @@ trough {
 
 .widget-volume .per-app-volume {
   padding-left: 45px;
+}
+
+.widget-buttons-grid {
+  margin: 0 0 10px 0;
+  padding: 5px;
+  background: @background-alpha;
+  border: 1px solid @border;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  margin: 5px;
+  padding: 1rem 3rem;
+  background: @background-alpha;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: @accent-bg;
+  color: @accent-fg;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  background: @accent-bg;
+  color: @accent-fg;
 }
 
 .carouselindicatordots {

@@ -645,7 +645,8 @@ input:hover:not([disabled], :active) ~ .x-toggle-indicatorWrapper,
 
 .main-entityHeader-overlay {
   --bgColor: var(--spice-card) !important;
-  background: -webkit-gradient(
+  background:
+    -webkit-gradient(
       linear,
       left top,
       left bottom,
@@ -653,10 +654,8 @@ input:hover:not([disabled], :active) ~ .x-toggle-indicatorWrapper,
       to(rgba(var(--spice-rgb-main), 0.5))
     ),
     var(--background-noise);
-  background: linear-gradient(
-      transparent 0,
-      rgba(var(--spice-rgb-main), 0.5) 100%
-    ),
+  background:
+    linear-gradient(transparent 0, rgba(var(--spice-rgb-main), 0.5) 100%),
     var(--background-noise);
 }
 
