@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-CONFIG_FILE="$HOME/.config/wallpapers/wallpapers.conf"
-VAR_FILE="$HOME/.config/wallpapers/.wallpapers"
+CONFIG_FILE="$HOME/.config/hypr/wallpapers/wallpapers.conf"
+VAR_FILE="$HOME/.config/hypr/wallpapers/.wallpapers"
 
 hyprpaper &
 

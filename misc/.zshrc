@@ -18,7 +18,7 @@ plugins=(
   zsh-fzf-history-search
 )
 source $ZSH/oh-my-zsh.sh
-if [[ ${EUID} != 0 ]]; then source "$XDG_CONFIG_HOME/wallpapers/.wallpapers" 2>/dev/null || true; fi
+if [[ ${EUID} != 0 ]]; then source $HOME/.config/hypr/wallpapers/.wallpapers 2>/dev/null || true; fi
 
 # Plugins Customizations
 
