@@ -6,7 +6,7 @@ return {
 		terminal_colors = true,
 		styles = {
 			sidebars = "transparent",
-			-- floats = "transparent",
+			floats = "transparent",
 		},
 	},
 }
