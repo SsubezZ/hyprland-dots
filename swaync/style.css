@@ -17,11 +17,10 @@
 }
 
 .floating-notifications.background .notification-row .notification-background {
-  border: 1px solid @border;
-  margin: 2px 4px 0 0;
-  background-color: @background-beta;
   color: @foreground;
-  padding: 5px;
+  background-color: @background-beta;
+  margin: 2px 4px 0 0;
+  border: 1px solid @border;
   transition:
     background-color 0.25s linear,
     color 0.25s linear,
@@ -33,6 +32,11 @@
   .notification-background
   .notification {
   padding: 5px;
+  text-shadow:
+    -1px -1px 2px @background-alpha,
+    1px -1px 2px @background-alpha,
+    -1px 1px 2px @background-alpha,
+    1px 1px 2px @background-alpha;
 }
 
 .floating-notifications.background
@@ -56,6 +60,7 @@
   .notification-content
   .summary {
   color: @foreground;
+  font-size: 16px;
   font-weight: bold;
   margin: 0 5px;
 }
@@ -85,7 +90,8 @@
   .notification
   .notification-content
   image {
-  margin-right: 10px;
+  margin-left: 0;
+  border: 1px solid alpha(@border, 0.25);
 }
 
 .floating-notifications.background
@@ -205,6 +211,10 @@
   background-color: @background-beta;
   margin: 5px 0;
   border: 1px solid @border;
+  transition:
+    background-color 0.25s linear,
+    color 0.25s linear,
+    border-color 0.5s linear;
 }
 
 .control-center .notification-row .notification-background .notification {
@@ -227,7 +237,7 @@
   .notification-background
   .notification
   .notification-content {
-  margin: 0 5px;
+  margin: 5px;
 }
 
 .control-center
@@ -267,7 +277,8 @@
   .notification
   .notification-content
   image {
-  margin-left: -10px;
+  margin-left: 0;
+  border: 1px solid alpha(@border, 0.25);
 }
 
 .control-center
@@ -288,6 +299,19 @@
   .notification-action {
   color: @foreground;
   background-color: @background-beta;
+  border: 1px solid @border;
+  margin: 5px;
+}
+
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > *
+  .notification-action {
+  color: @foreground;
+  background-color: @background-alpha;
   border: 1px solid @border;
   margin: 5px;
 }
