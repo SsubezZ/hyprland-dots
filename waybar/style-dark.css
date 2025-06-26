@@ -240,3 +240,63 @@ tooltip {
 #custom-playerctl {
   min-width: 145px;
 }
+
+/* <<--< OTHERS >-->> */
+
+/* #battery.charging, */
+/* #battery.plugged, */
+/* #custom-playerctl.Playing { */
+/*   animation: gradient 5s linear infinite; */
+/* } */
+
+#battery.charging {
+  background: linear-gradient(
+      180deg,
+      #90ceaa,
+      @background-alpha,
+      @background-alpha,
+      #90ceaa,
+      #90ceaa,
+      @background-alpha,
+      @background-alpha
+    )
+    0 0 / 750% 750%;
+}
+
+#battery.plugged {
+  background: linear-gradient(
+      180deg,
+      #add7ff,
+      @background-alpha,
+      @background-alpha,
+      #add7ff,
+      #add7ff,
+      @background-alpha,
+      @background-alpha
+    )
+    0 0 / 750% 750%;
+  animation: gradient 5s linear infinite reverse;
+}
+
+#custom-playerctl.Playing {
+  background: linear-gradient(to left, #90ceaa, #add7ff, #90ceaa, #add7ff) 0 0 /
+    750% 750%;
+  text-shadow: none;
+  color: #0f0f0f;
+  /* animation-direction: alternate; */
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 10% 25%;
+  }
+  25% {
+    background-position: 25% 50%;
+  }
+  75% {
+    background-position: 50% 75%;
+  }
+  100% {
+    background-position: 75% 100%;
+  }
+}
