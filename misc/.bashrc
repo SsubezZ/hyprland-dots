@@ -29,4 +29,17 @@ PS1+="${reset}"
 source /home/subez/.aliases
 
 if [[ ${EUID} != 0 ]]; then source $XDG_CONFIG_HOME/hypr/wallpapers/.wallpapers 2>/dev/null || true; fi
-if [[ ${EUID} != 0 ]]; then fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"; fi
+
+slowfetch() {
+  bash -c '
+    stty -echo
+    trap "stty echo" EXIT
+
+    script -q -c "fastfetch --config \"$HOME/.config/fastfetch/for_shell.jsonc\"" /dev/null |
+    while IFS= read -r -d "" -n1 char; do
+      printf "%s" "$char"
+      sleep 0.0005
+    done
+  '
+}
+if [[ ${EUID} != 0 ]]; then slowfetch; fi

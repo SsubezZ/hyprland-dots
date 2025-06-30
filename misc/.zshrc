@@ -32,8 +32,6 @@ plugins=(
 DISABLE_AUTO_UPDATE="true"
 source $ZSH/oh-my-zsh.sh
 
-if [[ ${EUID} != 0 ]]; then source $HOME/.config/hypr/wallpapers/.wallpapers 2>/dev/null || true; fi
-
 # Plugins Customizations
 
 ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=10
@@ -91,4 +89,18 @@ zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
 source /home/subez/.aliases
 
-if [[ ${EUID} != 0 ]]; then fastfetch --config "$HOME/.config/fastfetch/for_shell.jsonc"; fi
+if [[ ${EUID} != 0 ]]; then source $HOME/.config/hypr/wallpapers/.wallpapers 2>/dev/null || true; fi
+
+slowfetch() {
+  bash -c '
+    stty -echo
+    trap "stty echo" EXIT
+
+    script -q -c "fastfetch --config \"$HOME/.config/fastfetch/for_shell.jsonc\"" /dev/null |
+    while IFS= read -r -d "" -n1 char; do
+      printf "%s" "$char"
+      sleep 0.000025
+    done
+  '
+}
+if [[ ${EUID} != 0 ]]; then slowfetch; fi

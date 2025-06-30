@@ -6,18 +6,17 @@ export PATH="$HOME/.local/bin:$PATH"
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
 export BAT_THEME="Github"
 export GIT="$HOME/Gits/"
-export PS1
 
 # Aliases
 alias snvim="sudo -E -s nvim"
 alias hypr="nvim $GIT/hyprland-dots/hypr/hyprland.conf"
 alias vim="nvim"
-alias rcat="/bin/cat"
+alias rvim="/bin/vim"
 alias cat="bat --theme=base16"
-alias startjellyfin="sudo systemctl start jellyfin && exit"
-alias stopjellyfin="sudo systemctl stop jellyfin && exit"
-alias curd="$(find $HOME/Programs/curd/releases -type f -name curd -executable | sort -V | tail -n 1)"
-alias linutil="curl -fsSL christitus.com/linux | sh"
+alias rcat="/bin/cat"
+# Jellyfin
+alias startjellyfin="sudo /usr/bin/systemctl start jellyfin.service && notify-send -a 'Jellyfin' -i jellyfin 'Jellyfin' 'Server Started' -h string:x-canonical-private-synchronous:jellyfin"
+alias stopjellyfin="sudo /usr/bin/systemctl stop jellyfin.service && notify-send -a 'Jellyfin' -i jellyfin 'Jellyfin' 'Server Stopped' -h string:x-canonical-private-synchronous:jellyfin"
 # Nitrosense
 alias nitro="~/.config/hypr/scripts/nitrosense"
 alias auto-nitro="~/.config/hypr/scripts/nitrosense a"
@@ -32,8 +31,16 @@ alias ll='eza -alF --icons --color=always --group-directories-first'
 alias la='eza -a --icons --color=always --group-directories-first'
 alias lt='eza -T --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
-alias l.='eza -a | egrep "^\."'
+alias l.='eza -ad .*'
+alias rls='/bin/ls --color=auto'
+alias rll='/bin/ls -alF --color=auto'
+alias rla='/bin/ls -a --color=auto'
+alias rlt='/bin/ls -lR --color=auto'
+alias rl='/bin/ls -F --color=auto'
+alias rl.='/bin/ls -Ad .* --color=auto'
 # misc
 alias clock="tty-clock -s -c -t -C 6"
 alias fetch="fastfetch"
 alias matrix="clear && unimatrix -a -b -c cyan -f -s 98 && clear"
+alias curd="$(find $HOME/Programs/curd/releases -type f -name curd -executable | sort -V | tail -n 1)"
+alias linutil="curl -fsSL christitus.com/linux | sh"
