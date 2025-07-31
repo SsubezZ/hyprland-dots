@@ -78,9 +78,10 @@ post() {
 write_state() {
 	local icon="$1"
 	local to="$2"
-	local state_dir=$HOME/.local/state
-
-	echo "{\"text\": \"${icon}\", \"tooltip\": \"Switch to ${to}\"}" >"${state_dir}/._state_themechange.txt"
+  local state_file="$HOME/.local/state/._state_themechange.txt"
+	mkdir -p "$(dirname "$state_file")"
+	[ -f "$state_file" ] || echo '{"text": "󰖻", "tooltip": "Gamemode OFF"}' >"$state_file"
+	echo "{\"text\": \"${icon}\", \"tooltip\": \"Switch to ${to}\"}" >"${state_file}"
 }
 
 if [[ $# -eq 0 ]]; then
