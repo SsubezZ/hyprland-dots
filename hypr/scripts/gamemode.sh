@@ -3,8 +3,10 @@
 write_state() {
 	local icon="$1"
 	local tt="$2"
-	local state_dir=$HOME/.local/state
-	echo "{\"text\": \"${icon}\", \"tooltip\": \"${tt}\"}" >"${state_dir}/._state_gamemode.txt"
+	local state_file="$HOME/.local/state/._state_gamemode.txt"
+	mkdir -p "$(dirname "$state_file")"
+	[ -f "$state_file" ] || echo '{"text": "󰖻", "tooltip": "Gamemode OFF"}' >"$state_file"
+	echo "{\"text\": \"${icon}\", \"tooltip\": \"${tt}\"}" >"$state_file"
 }
 
 enable_gamemode() {
