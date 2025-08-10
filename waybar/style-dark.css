@@ -184,11 +184,6 @@ tooltip {
   padding: 2px 20px 2px 20px;
   margin: 2px;
   border: 1px solid transparent;
-  transition:
-    background-color 0.1s,
-    color 0.1s,
-    border-color 0.1s,
-    text-shadow 0.1s;
 }
 
 #tray menu menuitem:disabled label {
