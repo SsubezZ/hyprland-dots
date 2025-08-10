@@ -1,34 +1,34 @@
 [colors.primary]
 background = "0xffffff"
-foreground = "0x1F2328"
+foreground = "0x1f1f1f"
 
 [colors.bright]
-black = "0x24292f"
-blue = "0x0969da"
-cyan = "0x1b7c83"
-green = "0x116329"
-magenta = "0x8250df"
-red = "0xcf222e"
-white = "0x6e7781"
-yellow = "0x4d2d00"
+black = "0x5a5a5a"
+blue = "0x4a90d9"
+cyan = "0x2aa198"
+green = "0x859900"
+magenta = "0xd33682"
+red = "0xdc322f"
+white = "0x1f1f1f"
+yellow = "0xb58900"
 
 [colors.normal]
-black = "0x57606a"
-blue = "0x218bff"
-cyan = "0x1b7c83"
-green = "0x1a7f37"
-magenta = "0x8250df"
-red = "0xa40e26"
-white = "0x6e7781"
-yellow = "0x633c01"
+black = "0x7f7f7f"
+blue = "0x268bd2"
+cyan = "0x2aa198"
+green = "0x719e07"
+magenta = "0xd33682"
+red = "0xcc241d"
+white = "0x4a4a4a"
+yellow = "0xb58900"
 
 [colors.search.focused_match]
-background = "0x1b7c83"
-foreground = "0x57606a"
+background = "0x2aa198"
+foreground = "0xffffff"
 
 [colors.search.matches]
-background = "0x1b7c83"
-foreground = "0x57606a"
+background = "0x2aa198"
+foreground = "0xffffff"
 
 [window]
 opacity = 1
