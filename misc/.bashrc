@@ -28,7 +28,37 @@ PS1+="${reset}"
 
 source /home/subez/.aliases
 
-if [[ ${EUID} != 0 ]]; then source $XDG_CONFIG_HOME/hypr/wallpapers/.wallpapers 2>/dev/null || true; fi
+pkg_install() {
+  local query="$1"
+  pkg_name=$(yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:80% --query="$query")
+  if [[ -n "$pkg_name" ]]; then
+    yay -Sy $pkg_name
+    sudo updatedb
+  fi
+}
+
+pkg_uninstall() {
+  local query="$1"
+  pkg_name=$(yay -Qqe | fzf --multi --preview 'yay -Qi {1}' --preview-window=down:80% --query="$query")
+  if [[ -n "$pkg_name" ]]; then
+    yay -Rns $pkg_name
+    sudo updatedb
+  fi
+}
+
+_pkg_install_completion() {
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  COMPREPLY=($(compgen -W "$(yay -Slq)" -- "$cur"))
+}
+
+complete -F _pkg_install_completion pkg_install
+
+_pkg_uninstall_completion() {
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  COMPREPLY=($(compgen -W "$(yay -Qqe)" -- "$cur"))
+}
+
+complete -F _pkg_uninstall_completion pkg_uninstall
 
 slowfetch() {
   bash -c '

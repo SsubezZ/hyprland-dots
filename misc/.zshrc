@@ -89,7 +89,39 @@ zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
 source /home/subez/.aliases
 
-if [[ ${EUID} != 0 ]]; then source $HOME/.config/hypr/wallpapers/.wallpapers 2>/dev/null || true; fi
+pkg_install() {
+  local query="$1"
+  pkg_name=$(yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:80% --query="$query")
+  if [[ -n "$pkg_name" ]]; then
+    yay -Sy $pkg_name
+    sudo updatedb
+  fi
+}
+
+pkg_uninstall() {
+  local query="$1"
+  pkg_name=$(yay -Qqe | fzf --multi --preview 'yay -Qi {1}' --preview-window=down:80% --query="$query")
+  if [[ -n "$pkg_name" ]]; then
+    yay -Rns $pkg_name
+    sudo updatedb
+  fi
+}
+
+_pkg_install_completion() {
+  local -a packages
+  packages=(${(f)"$(yay -Slq)"})
+  _describe 'package' packages
+}
+
+compdef _pkg_install_completion pkg_install
+
+_pkg_uninstall_completion() {
+  local -a packages
+  packages=(${(f)"$(yay -Qqe)"})
+  _describe 'package' packages
+}
+
+compdef _pkg_uninstall_completion pkg_uninstall
 
 slowfetch() {
   bash -c '

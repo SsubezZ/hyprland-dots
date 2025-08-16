@@ -29,7 +29,7 @@ alias custom-nitro="~/.config/hypr/scripts/nitrosense c"
 alias ls='eza --icons --color=always --group-directories-first'
 alias ll='eza -alF --icons --color=always --group-directories-first'
 alias la='eza -a --icons --color=always --group-directories-first'
-alias lt='eza -T --icons --color=always --group-directories-first'
+alias lt='eza -T --icons=never --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -ad .*'
 alias rls='/bin/ls --color=auto'
@@ -44,3 +44,7 @@ alias fetch="fastfetch"
 alias matrix="clear && unimatrix -a -b -c cyan -f -s 98 && clear"
 alias curd="$(find $HOME/Programs/curd/releases -type f -name curd -executable | sort -V | tail -n 1)"
 alias linutil="curl -fsSL christitus.com/linux | sh"
+#Packages
+alias pi='pkg_install'
+alias pu='pkg_uninstall'
+alias pup='upgrade'
