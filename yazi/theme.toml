@@ -1,7 +1,3 @@
-[status]
-sep_left = { open = "", close = "" }
-sep_right = { open = "", close = "" }
-
 [mgr]
 preview_hovered = { underline = false }
 border_symbol = "│"
@@ -14,6 +10,10 @@ select_main = { fg = "#1f1f1f", bg = "#bb9af7", bold = true }
 select_alt  = { fg = "#bb9af7", bg = "#2f2f2f"}
 unset_main  = { fg = "#1f1f1f", bg = "#f2cdcd", bold = true }
 unset_alt   = { fg = "#f2cdcd", bg = "#2f2f2f"}
+
+[status]
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
 
 [which]
 cols            = 1
