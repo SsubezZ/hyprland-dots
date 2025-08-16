@@ -89,7 +89,7 @@
   .notification-background
   .notification
   .notification-content
-  image {
+  image:not(.app-icon) {
   margin-left: 0;
   border: 1px solid alpha(@border, 0.25);
 }
@@ -176,7 +176,7 @@
 }
 
 .control-center .widget-title {
-  margin-bottom: 0px;
+  margin-bottom: 8px;
 }
 
 .control-center .widget-title > label {
@@ -276,7 +276,7 @@
   .notification-background
   .notification
   .notification-content
-  image {
+  image:not(.app-icon) {
   margin-left: 0;
   border: 1px solid alpha(@border, 0.25);
 }
@@ -359,8 +359,7 @@
 }
 
 .control-center .notification-row .notification-background:hover {
-  background-color: @accent-bg;
-  color: @accent-fg;
+  text-shadow: none;
 }
 
 .control-center .notification-row .notification-background:active {
@@ -372,15 +371,26 @@
   .notification-group:not(.collapsed)
   .notification-row
   .notification-background {
-  margin: 1px 0;
+  margin: 2px 0;
 }
 
 .control-center .notification-group.collapsed .notification-row {
   margin: 3px 0;
 }
 
-.control-center .notification-group button {
-  margin: 0;
+.control-center .notification-group .notification-group-buttons {
+  margin: 3px -5px -3px 0;
+}
+
+.control-center .notification-group .notification-group-collapse-button {
+  margin: 0px -5px 0 0;
+}
+
+.control-center .notification-group .notification-group-close-button {
+  margin: 3px -5px 0 0;
+}
+
+.control-center stack {
 }
 
 progress,
@@ -414,6 +424,7 @@ button:hover {
   background: @accent-bg;
   border: 1px solid @background;
   padding: 5px;
+  text-shadow: none;
 }
 
 button:disabled {
@@ -425,7 +436,12 @@ trough {
 }
 
 .control-center trough {
-  background-color: @background-alpha;
+  background-color: transparent;
+}
+
+scrollbar {
+  background: transparent;
+  color: transparent;
 }
 
 .control-center-dnd {
@@ -451,6 +467,10 @@ trough {
   margin: 10px -2px 0 10px;
   background: @background-alpha;
   border: 1px solid @border;
+}
+
+.mpris-background {
+  filter: blur(10px);
 }
 
 .widget-mpris label:first-child {
@@ -493,7 +513,8 @@ trough {
 }
 
 .widget-mpris .image-button.circular {
-  margin: 6px 2px 10px 2px;
+  margin: 10px 2px;
+  padding: 12px;
 }
 
 .widget-mpris button {

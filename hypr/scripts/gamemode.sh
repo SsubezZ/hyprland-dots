@@ -12,6 +12,7 @@ write_state() {
 enable_gamemode() {
 	hyprctl keyword misc:disable_autoreload 1
 	power-daemon-mgr -q set-profile-override Performance++
+  powerprofilesctl set performance
 	pkill hyprpaper
 	if [ "$(gsettings get org.gnome.desktop.interface color-scheme | tr -d "'")" == "prefer-dark" ]; then
 		hyprctl --batch "\
@@ -24,7 +25,7 @@ enable_gamemode() {
     keyword decoration:blur:size 0;\
     keyword decoration:blur:passes 0;\
     keyword decoration:blur:brightness 0;\
-    # keyword decoration:blur:contrast 0;\
+    keyword decoration:blur:contrast 0;\
     keyword decoration:blur:popups 1"
 	else
 		hyprctl --batch "\
@@ -37,7 +38,7 @@ enable_gamemode() {
     keyword decoration:blur:size 0;\
     keyword decoration:blur:passes 0;\
     keyword decoration:blur:brightness 2;\
-    # keyword decoration:blur:contrast 0;\
+    keyword decoration:blur:contrast 0;\
     keyword decoration:blur:popups 1"
 	fi
 	swayosd-client --custom-message "Gamemode Enabled" --custom-icon "input-gaming" || notify-send --app-name "Gamemode" "Gamemode Enabled" "Decorations Disabled" -e -h string:x-canonical-private-synchronous:gamemode
@@ -47,10 +48,11 @@ enable_gamemode() {
 }
 
 disable_gamemode() {
-	hyprctl reload
+	hyprctl reload config-only
 	hyprctl dismissnotify
-	power-daemon-mgr -q reset-profile-override
-	$HOME/.config/hypr/scripts/hyprpaper.sh
+	# power-daemon-mgr -q reset-profile-override
+  powerprofilesctl set balanced
+  $HOME/.config/hypr/scripts/hyprpaper.sh
 	swayosd-client --custom-message "Gamemode Disabled" --custom-icon "input-gaming" || notify-send --app-name "Gamemode" "Gamemode Disabled" "Decorations Enabled" -e -h string:x-canonical-private-synchronous:gamemode
 	write_state "󰖻" "Gamemode OFF"
 	sleep 0.5

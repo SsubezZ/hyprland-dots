@@ -29,6 +29,7 @@ mainbox {
   background-color:            @background-alpha;
   orientation:                 vertical;
   children:                    [ "inputbar", "listbox" ];
+  border-radius:               0px;
 }
 
 listbox {

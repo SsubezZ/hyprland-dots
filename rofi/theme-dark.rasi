@@ -6,7 +6,7 @@
   active:                      #0F0F0F;
   urgent:                      #CCCCCC;
   border:                      #2B2B2B;
-  background-alpha:            rgba(15, 15, 15, 0.5);
+  background-alpha:            rgba(15, 15, 15, 0.75);
 }
 
 configuration {

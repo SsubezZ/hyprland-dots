@@ -35,14 +35,18 @@ change_radius() {
 	sed -i "s/^\(\s*border-radius:\s*\).*/\1$SWAYOSD_RADIUS;/" ~/.config/swayosd/style.css
 
 	# Rofi
-	sed -i "s/^\(\s*border-radius:\s*\).*/\1$ROFI_RADIUS;/" ~/.config/rofi/theme.rasi
+	sed -i "s/^\(\s*border-radius:\s*\).*/\1$ROFI_RADIUS;/" ~/.config/rofi/config.rasi
 
 	# MPV(uosc)
 	sed -i "s/^\(\s*border_radius=\s*\).*/\1$BORDER_RADIUS/" ~/.config/mpv/script-opts/uosc.conf
 }
 
 post() {
-	hyprctl reload &>/dev/null &
+if [[ "$CALL" == "1" ]]; then
+  exit
+fi
+
+	hyprctl reload config-only &>/dev/null &
 	disown
 
 	swaync-client -rs &>/dev/null &

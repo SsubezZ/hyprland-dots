@@ -88,6 +88,7 @@ HISTFILE=$HOME/.local/state/zsh/.zsh_history
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
 source /home/subez/.aliases
+eval "$(zoxide init zsh)"
 
 pkg_install() {
   local query="$1"

@@ -5,7 +5,7 @@ LINK_DIR="$HOME/.config/hypr/wallpapers"
 
 pgrep -x hyprpaper >/dev/null || hyprpaper &
 
-sleep 0.25
+sleep 1
 
 while IFS='=' read -r monitor wallpaper; do
   monitor=$(echo "$monitor" | xargs)

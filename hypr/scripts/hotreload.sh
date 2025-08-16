@@ -30,7 +30,7 @@ done
 swayosd-server &
 disown
 
-hyprctl reload &
+hyprctl reload config-only &
 disown
 
 restarted="Hyprpaper\nWaybar\nSwaync\nSwayOSD\nHyprctl"
@@ -50,6 +50,10 @@ fi
 if ! pgrep -x "swayosd-server" >/dev/null; then
 	restarted="${restarted/SwayOSD/}"
 fi
+
+sleep 1
+CALL=1 $HOME/.config//hypr/scripts/border-radius.sh 8 
+wait
 
 notify-send --app-name "Hot Reload" "Hot Reload" "Refreshed!\n$restarted" -e -h string:x-canonical-private-synchronous:hot_reload &
 disown

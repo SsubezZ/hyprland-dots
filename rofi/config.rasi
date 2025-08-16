@@ -10,7 +10,10 @@ configuration {
   me-select-entry:            "MousePrimary,MouseSecondary";
   me-accept-entry:            "!MousePrimary";
   hover-select:               true;
-  run-command:                "uwsm app -- {cmd}";
 }
 
 @theme "~/.config/rofi/theme.rasi"
+
+* {
+  border-radius:               8px;
+}

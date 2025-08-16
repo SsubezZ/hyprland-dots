@@ -12,6 +12,7 @@ declare -A HYPR_THEMES=(["light"]="theme-light.conf" ["dark"]="theme-dark.conf")
 declare -A SPICETIFY_THEMES=(["light"]="light" ["dark"]="dark")
 
 pre() {
+  hyprctl keyword misc:disable_autoreload 1
 	echo "Cleaning up previous GTK 4.0 configuration..."
 	rm -rf ~/.config/gtk-4.0 &>/dev/null
 	echo "Killing any running Rofi instances..."
@@ -62,7 +63,7 @@ post() {
 	echo "Reloading xsettingsd..."
 	killall -HUP xsettingsd &>/dev/null
 	echo "Reloading Hyprland..."
-	hyprctl reload &>/dev/null
+	hyprctl reload config-only &>/dev/null
 	# echo "Reloading Yazi..."
 	# yazi --reload &>/dev/null
 	hyprpm reload &>/dev/null

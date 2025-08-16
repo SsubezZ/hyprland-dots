@@ -17,6 +17,10 @@
 }
 
 window#waybar {
+  background-color: transparent;
+}
+
+#waybar > box {
   background: @background-beta;
   color: @text;
   border: 1px solid alpha(@border, 0.75);
@@ -24,6 +28,11 @@ window#waybar {
     background-color 0.25s linear,
     color 0.25s linear,
     border-color 0.5s linear;
+  box-shadow:
+    -12px 12px 0 -11px black,
+    12px 12px 0 -11px black,
+    -12px -12px 0 -11px black,
+    12px -12px 0 -11px black;
 }
 
 #workspaces button,
@@ -52,7 +61,7 @@ window#waybar:not(.eDP-1) #taskbar button {
   background: @accent-bg;
   color: @accent-fg;
   text-shadow: none;
-  border: 1px solid @background;
+  border: 1px solid @border;
 }
 
 #workspaces button.visible:not(.active) {
@@ -94,8 +103,10 @@ window#waybar.fullscreen {
 }
 
 window#waybar.fullscreen #window {
-  background: @background;
-  border-color: @cyan;
+  background: @cyan;
+  color: #0f0f0f;
+  /* border-color: @cyan; */
+  text-shadow: none;
 }
 
 #waybar.fullscreen .module:not(.plugged):not(.charging):not(.Playing) {
@@ -123,11 +134,14 @@ window#waybar.empty #window:not(:hover),
 }
 
 window#waybar.swallowing #window {
-  border-color: #d0679d;
+  background: #d0679d;
+  color: #0f0f0f;
+  /* border-color: #d0679d; */
+  text-shadow: none;
 }
 
 .module {
-  background: @background-alpha 0 0 / 750% 750%;
+  background: @background-beta 0 0 / 750% 750%;
   color: @text;
   padding: 0 10px;
   margin: 0 4px;

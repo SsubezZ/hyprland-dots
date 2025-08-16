@@ -26,11 +26,11 @@ alias performance-nitro="~/.config/hypr/scripts/nitrosense pa"
 alias max-nitro="~/.config/hypr/scripts/nitrosense m"
 alias custom-nitro="~/.config/hypr/scripts/nitrosense c"
 # ls to eza
-alias ls='eza --icons --color=always --group-directories-first'
-alias ll='eza -alF --icons --color=always --group-directories-first'
-alias la='eza -a --icons --color=always --group-directories-first'
-alias lt='eza -T --icons=never --color=always --group-directories-first'
-alias l='eza -F --icons --color=always --group-directories-first'
+alias ls='eza --icons --color=always --group-directories-first --hyperlink'
+alias ll='eza -alF --icons --color=always --group-directories-first --hyperlink'
+alias la='eza -a --icons --color=always --group-directories-first --hyperlink'
+alias lt='eza -T --icons=never --color=never --group-directories-first --hyperlink'
+alias l='eza -F --icons --color=always --group-directories-first --hyperlink'
 alias l.='eza -ad .*'
 alias rls='/bin/ls --color=auto'
 alias rll='/bin/ls -alF --color=auto'

@@ -2,6 +2,7 @@
 
 BROWSER="librewolf --new-window"
 declare -A SEARCH_ENGINES=(
+    ["Startpage"]="https://www.startpage.com/sp/search?q=<QUERY>"
 	["Google"]="https://www.google.com/search?q=<QUERY>"
 	["Perplexity"]="https://www.perplexity.com/search?q=<QUERY>"
 	["ChatGPT"]="https://chatgpt.com/?q=<QUERY>"
@@ -15,7 +16,7 @@ declare -A SEARCH_ENGINES=(
 	["Twitter"]="https://www.twitter.com/<QUERY>"
 )
 
-ENGINE_ORDER=("Google" "Perplexity" "ChatGPT" "YouTube" "DuckDuckGo" "GitHub" "Arch Wiki" "Arch Packages" "Arch AUR" "Twitch" "Twitter")
+ENGINE_ORDER=("Startpage" "Google" "Perplexity" "ChatGPT" "YouTube" "DuckDuckGo" "GitHub" "Arch Wiki" "Arch Packages" "Arch AUR" "Twitch" "Twitter")
 
 # Get search query first
 query=$(
