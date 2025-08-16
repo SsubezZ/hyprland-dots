@@ -6,6 +6,8 @@ local opt = vim.opt
 
 opt.wrap = true
 opt.relativenumber = false
+opt.winborder = "rounded" -- or "single", "double", "solid", "custom".
+opt.swapfile = false
 
 vim.filetype.add({
 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang", [".*%.rasi"] = "rasi" },

@@ -7,3 +7,7 @@ local map = vim.keymap.set
 map("n", "<leader>rr", ":RunCode<CR>", { desc = "Run code" })
 map("n", "<leader>rf", ":RunFile<CR>", { desc = "Run file" })
 map("n", "<leader>rp", ":RunProject<CR>", { desc = "Run Project" })
+
+map("n", "<leader>fc", function()
+  Snacks.dashboard.pick("files", { cwd = vim.fn.stdpath("config"), follow = true, hidden = true })
+end, { desc = "Find Config Files" })
