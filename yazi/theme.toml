@@ -1,3 +1,25 @@
-[flavor]
-dark = "theme-dark"
-light = "theme-light"
+[status]
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+[mgr]
+preview_hovered = { underline = false }
+border_symbol = "│"
+border_style  = { fg = "#6b6b6b" }
+
+[mode]
+normal_main = { fg = "#1f1f1f", bg = "#add7ff", bold = true }
+normal_alt  = { fg = "#add7ff", bg = "#2f2f2f"}
+select_main = { fg = "#1f1f1f", bg = "#bb9af7", bold = true }
+select_alt  = { fg = "#bb9af7", bg = "#2f2f2f"}
+unset_main  = { fg = "#1f1f1f", bg = "#f2cdcd", bold = true }
+unset_alt   = { fg = "#f2cdcd", bg = "#2f2f2f"}
+
+[which]
+cols            = 1
+mask            = { bg = "#1c1c1c" }
+cand            = { fg = "#add7ff" }
+rest            = { fg = "#add7ff" }
+desc            = { fg = "#bb9af7" }
+separator       = "  "
+separator_style = { fg = "#545d85" }
