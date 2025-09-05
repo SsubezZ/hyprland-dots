@@ -92,11 +92,8 @@ case "$selected_option" in
 	fi
 	;;
 "Default Auto")
-	if runpk d; then
-		notify "Power mode set to Default"
-	fi
-	if runpk a; then
-		notify "Fan mode set to Auto"
+	if runpk da; then
+		notify "Power mode set to Default\nFan mode set to Auto"
 	fi
 	;;
 esac
