@@ -117,6 +117,7 @@
         "default": "",
         "OVERVIEW": "",
         "minimize": "",
+        "btop": "",
       },
       "on-click": "activate",
       "on-double-click": "hyprctl dispatch togglespecialworkspace magic",
