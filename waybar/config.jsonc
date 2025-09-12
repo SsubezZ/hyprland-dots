@@ -302,20 +302,20 @@
     "custom/wl-gammarelay-temperature": {
       "format": "󰽥 {}",
       "exec": "wl-gammarelay-rs watch {t}",
-      "on-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 4500",
-      "on-double-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500",
-      "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +100",
-      "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -100",
+      "on-click": "$HOME/.config/hypr/scripts/wl-gammarelay-rs.sh temperature 4500 || busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 4500",
+      "on-double-click": "$HOME/.config/hypr/scripts/wl-gammarelay-rs.sh temperature 6500 || busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500",
+      "on-scroll-up": "$HOME/.config/hypr/scripts/wl-gammarelay-rs.sh temperature up || busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +100",
+      "on-scroll-down": "$HOME/.config/hypr/scripts/wl-gammarelay-rs.sh temperature down || busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -100",
       "tooltip-format": "Temperature",
     },
 
     "custom/wl-gammarelay-brightness": {
       "format": "󰌵 {}",
       "exec": "wl-gammarelay-rs watch {bp}",
-      "on-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d 0.8",
-      "on-double-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d 1",
-      "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d +0.01",
-      "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -0.01",
+      "on-click": "$HOME/.config/hypr/scripts/wl-gammarelay-rs.sh brightness 0.8 || busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d 0.8",
+      "on-double-click": "$HOME/.config/hypr/scripts/wl-gammarelay-rs.sh brightness 1 ||busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d 1",
+      "on-scroll-up": "$HOME/.config/hypr/scripts/wl-gammarelay-rs.sh brightness up || busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d +0.01",
+      "on-scroll-down": "$HOME/.config/hypr/scripts/wl-gammarelay-rs.sh brightness down || busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -0.01",
       "tooltip-format": "Brightness",
     },
 
