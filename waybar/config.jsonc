@@ -38,7 +38,7 @@
       },
       "modules": [
         "custom/menu",
-        "idle_inhibitor",
+        "custom/hypridle",
         "custom/themechange",
         "custom/gamemode",
       ],
@@ -61,6 +61,15 @@
       "tooltip-format-activated": "Idle Inhibited",
       "tooltip-format-deactivated": " Not Idle Inhibited",
       "on-click-right": "hyprlock",
+    },
+
+    "custom/hypridle": {
+      "format": "{}",
+      "return-type": "json",
+      "exec": "~/.config/waybar/scripts/hypridle.sh",
+      "restart-interval": 2,
+      "signal": 10,
+      "on-click": "~/.config/waybar/scripts/hypridle.sh toggle",
     },
 
     "custom/themechange": {
